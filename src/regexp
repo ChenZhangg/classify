@@ -1,0 +1,1188 @@
+=========================cannot_implement_zc0
+^[^\n]*in[^\n]*cannot implement[^\n]*in[^\n]*\nfound[^\n]*\nrequired[^\n]*\n
+=========================incompatible_types_zc0
+^[^\n]*incompatible types[^\n]*\nfound[^\n]*\nrequired[^\n]*\n
+=========================cannot_find_symbol_zc1
+^[^\n]*cannot[^\n]*find[^\n]*symbol\n[^\n]*\n
+=========================cannot_find_symbol_zc0
+^[^\n]*cannot[^\n]*find[^\n]*symbol\nsymbol[^\n]*\nlocation[^\n]*\n
+=========================compiler_err_dc_unterminated_string
+^[^\n]*unterminated string\n
+=========================compiler_err_dc_unterminated_signature
+^[^\n]*unterminated signature\n
+=========================compiler_err_dc_unterminated_inline_tag
+^[^\n]*unterminated inline tag\n
+=========================compiler_err_dc_unexpected_content
+^[^\n]*unexpected content\n
+=========================compiler_err_dc_ref_unexpected_input
+^[^\n]*unexpected text\n
+=========================compiler_err_dc_ref_syntax_error
+^[^\n]*syntax error in reference\n
+=========================compiler_err_dc_ref_bad_parens
+^[^\n]*''\)'' missing in reference\n
+=========================compiler_err_dc_gt_expected
+^[^\n]*''>'' expected\n
+=========================compiler_err_dc_no_tag_name
+^[^\n]*no tag name after '@'\n
+=========================compiler_err_dc_no_content
+^[^\n]*no content\n
+=========================compiler_err_dc_missing_semicolon
+^[^\n]*semicolon missing\n
+=========================compiler_err_dc_malformed_html
+^[^\n]*malformed HTML\n
+=========================compiler_err_dc_identifier_expected
+^[^\n]*identifier expected\n
+=========================compiler_err_dc_bad_inline_tag
+^[^\n]*incorrect use of inline tag\n
+=========================compiler_err_dc_bad_gt
+^[^\n]*bad use of ''>''\n
+=========================compiler_err_dc_bad_entity
+^[^\n]*bad HTML entity\n
+=========================compiler_misc_where_description_intersection_1
+^[^\n]*where [^\n]* are intersection types:\n
+=========================compiler_misc_where_description_typevar_1
+^[^\n]*where [^\n]* are type-variables:\n
+=========================compiler_misc_where_description_captured_1
+^[^\n]*where [^\n]* are fresh type-variables:\n
+=========================compiler_misc_where_description_intersection
+^[^\n]*where [^\n]* is an intersection type:\n
+=========================compiler_misc_where_description_typevar
+^[^\n]*where [^\n]* is a type-variable:\n
+=========================compiler_misc_where_description_captured
+^[^\n]*where [^\n]* is a fresh type-variable:\n
+=========================compiler_misc_where_typevar
+^[^\n]*[^\n]* extends [^\n]* declared in [^\n]* [^\n]*\n
+=========================compiler_misc_where_captured
+^[^\n]*[^\n]* extends [^\n]* super: [^\n]* from capture of [^\n]*\n
+=========================compiler_misc_where_captured_1
+^[^\n]*[^\n]* extends [^\n]* from capture of [^\n]*\n
+=========================compiler_misc_where_fresh_typevar
+^[^\n]*[^\n]* extends [^\n]*\n
+=========================compiler_misc_intersection_type
+^[^\n]*INT#[^\n]*\n
+=========================compiler_misc_captured_type
+^[^\n]*CAP#[^\n]*\n
+=========================compiler_misc_type_null
+^[^\n]*<null>\n
+=========================compiler_note_deferred_method_inst
+^[^\n]*Deferred instantiation of method [^\n]*[^\n]*\n[^\n]*instantiated signature: [^\n]*[^\n]*\n[^\n]*target-type: [^\n]*\n
+=========================compiler_note_verbose_resolve_multi_1
+^[^\n]*erroneous resolution for method [^\n]* in type [^\n]*[^\n]*\n[^\n]*phase: [^\n]*[^\n]*\n[^\n]*with actuals: [^\n]*[^\n]*\n[^\n]*with type-args: [^\n]*[^\n]*\n[^\n]*candidates:\n
+=========================compiler_note_verbose_resolve_multi
+^[^\n]*resolving method [^\n]* in type [^\n]* to candidate [^\n]*[^\n]*\n[^\n]*phase: [^\n]*[^\n]*\n[^\n]*with actuals: [^\n]*[^\n]*\n[^\n]*with type-args: [^\n]*[^\n]*\n[^\n]*candidates:\n
+=========================compiler_misc_partial_inst_sig
+^[^\n]*partially instantiated to: [^\n]*\n
+=========================compiler_misc_not_applicable_method_found
+^[^\n]*#[^\n]* not applicable method found: [^\n]*[^\n]*\n[^\n]*\([^\n]*\)\n
+=========================compiler_misc_applicable_method_found_1
+^[^\n]*#[^\n]* applicable method found: [^\n]*[^\n]*\n[^\n]*\([^\n]*\)\n
+=========================compiler_misc_applicable_method_found
+^[^\n]*#[^\n]* applicable method found: [^\n]*\n
+=========================compiler_err_static_intf_method_invoke_not_supported_in_source
+^[^\n]*static interface method invocations are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 8 or higher to enable static interface method invocations\)\n
+=========================compiler_err_static_intf_methods_not_supported_in_source
+^[^\n]*static interface methods are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 8 or higher to enable static interface methods\)\n
+=========================compiler_err_intersection_types_in_cast_not_supported_in_source
+^[^\n]*intersection types in cast are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 8 or higher to enable default methods\)\n
+=========================compiler_err_default_methods_not_supported_in_source
+^[^\n]*default methods are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 8 or higher to enable default methods\)\n
+=========================compiler_err_method_references_not_supported_in_source
+^[^\n]*method references are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 8 or higher to enable method references\)\n
+=========================compiler_err_lambda_not_supported_in_source
+^[^\n]*lambda expressions are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 8 or higher to enable lambda expressions\)\n
+=========================compiler_err_string_switch_not_supported_in_source
+^[^\n]*strings in switch are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 7 or higher to enable strings in switch\)\n
+=========================compiler_err_multicatch_not_supported_in_source
+^[^\n]*multi-catch statement is not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 7 or higher to enable multi-catch statement\)\n
+=========================compiler_err_diamond_not_supported_in_source
+^[^\n]*diamond operator is not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 7 or higher to enable diamond operator\)\n
+=========================compiler_err_enums_not_supported_in_source
+^[^\n]*enums are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 5 or higher to enable enums\)\n
+=========================compiler_err_static_import_not_supported_in_source
+^[^\n]*static import declarations are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 5 or higher to enable static import declarations\)\n
+=========================compiler_err_foreach_not_supported_in_source
+^[^\n]*enhanced for loops are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 5 or higher to enable for-each loops\)\n
+=========================compiler_err_repeatable_annotations_not_supported_in_source
+^[^\n]*repeated annotations are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 8 or higher to enable repeated annotations\)\n
+=========================compiler_err_annotations_after_type_params_not_supported_in_source
+^[^\n]*annotations after method type parameters are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 8 or higher to enable annotations after method type parameters\)\n
+=========================compiler_err_type_annotations_not_supported_in_source
+^[^\n]*type annotations are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 8 or higher to enable type annotations\)\n
+=========================compiler_err_annotations_not_supported_in_source
+^[^\n]*annotations are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 5 or higher to enable annotations\)\n
+=========================compiler_err_varargs_not_supported_in_source
+^[^\n]*variable-arity methods are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 5 or higher to enable variable-arity methods\)\n
+=========================compiler_err_generics_not_supported_in_source
+^[^\n]*generics are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 5 or higher to enable generics\)\n
+=========================compiler_err_no_annotations_on_dot_class
+^[^\n]*no annotations are allowed in the type of a class literal\n
+=========================compiler_err_incorrect_constructor_receiver_name
+^[^\n]*the receiver name does not match the enclosing outer class type[^\n]*\n[^\n]*required: [^\n]*[^\n]*\n[^\n]*found: [^\n]*\n
+=========================compiler_err_incorrect_constructor_receiver_type
+^[^\n]*the receiver type does not match the enclosing outer class type[^\n]*\n[^\n]*required: [^\n]*[^\n]*\n[^\n]*found: [^\n]*\n
+=========================compiler_err_incorrect_receiver_type
+^[^\n]*the receiver type does not match the enclosing class type[^\n]*\n[^\n]*required: [^\n]*[^\n]*\n[^\n]*found: [^\n]*\n
+=========================compiler_err_incorrect_receiver_name
+^[^\n]*the receiver name does not match the enclosing class type[^\n]*\n[^\n]*required: [^\n]*[^\n]*\n[^\n]*found: [^\n]*\n
+=========================compiler_err_cant_type_annotate_scoping
+^[^\n]*scoping construct cannot be annotated with type-use annotations: [^\n]*\n
+=========================compiler_err_cant_type_annotate_scoping_1
+^[^\n]*scoping construct cannot be annotated with type-use annotation: [^\n]*\n
+=========================compiler_err_receiver_parameter_not_applicable_constructor_toplevel_class
+^[^\n]*receiver parameter not applicable for constructor of top-level class\n
+=========================compiler_err_this_as_identifier
+^[^\n]*as of release 8, ''this'' is allowed as the parameter name for the receiver type only, which has to be the first parameter\n
+=========================compiler_err_assert_as_identifier
+^[^\n]*as of release 1\.4, ''assert'' is a keyword, and may not be used as an identifier[^\n]*\n[^\n]*\(use -source 1\.3 or lower to use ''assert'' as an identifier\)\n
+=========================compiler_err_enum_as_identifier
+^[^\n]*as of release 5, ''enum'' is a keyword, and may not be used as an identifier[^\n]*\n[^\n]*\(use -source 1\.4 or lower to use ''enum'' as an identifier\)\n
+=========================compiler_err_underscore_as_identifier_in_lambda
+^[^\n]*''_'' used as an identifier[^\n]*\n[^\n]*\(use of ''_'' as an identifier is forbidden for lambda parameters\)\n
+=========================compiler_warn_underscore_as_identifier
+^[^\n]*''_'' used as an identifier[^\n]*\n[^\n]*\(use of ''_'' as an identifier might not be supported in releases after Java SE 8\)\n
+=========================compiler_warn_assert_as_identifier
+^[^\n]*as of release 1\.4, ''assert'' is a keyword, and may not be used as an identifier[^\n]*\n[^\n]*\(use -source 1\.4 or higher to use ''assert'' as a keyword\)\n
+=========================compiler_warn_enum_as_identifier
+^[^\n]*as of release 5, ''enum'' is a keyword, and may not be used as an identifier[^\n]*\n[^\n]*\(use -source 5 or higher to use ''enum'' as a keyword\)\n
+=========================compiler_err_try_with_resources_not_supported_in_source
+^[^\n]*try-with-resources is not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 7 or higher to enable try-with-resources\)\n
+=========================compiler_err_unsupported_underscore_lit
+^[^\n]*underscores in literals are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 7 or higher to enable underscores in literals\)\n
+=========================compiler_err_unsupported_binary_lit
+^[^\n]*binary literals are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 7 or higher to enable binary literals\)\n
+=========================compiler_err_unsupported_fp_lit
+^[^\n]*hexadecimal floating point literals are not supported in -source [^\n]*[^\n]*\n[^\n]*\(use -source 5 or higher to enable hexadecimal floating point literals\)\n
+=========================compiler_misc_inapplicable_method
+^[^\n]*[^\n]* [^\n]*\.[^\n]* is not applicable[^\n]*\n[^\n]*\([^\n]*\)\n
+=========================compiler_misc_diamond_and_anon_class
+^[^\n]*cannot use ''<>'' with anonymous inner classes\n
+=========================compiler_misc_unchecked_implement
+^[^\n]*[^\n]* in [^\n]* implements [^\n]* in [^\n]*\n
+=========================compiler_misc_clashes_with
+^[^\n]*[^\n]* in [^\n]* clashes with [^\n]* in [^\n]*\n
+=========================compiler_misc_cant_implement
+^[^\n]*[^\n]* in [^\n]* cannot implement [^\n]* in [^\n]*\n
+=========================compiler_misc_cant_override
+^[^\n]*[^\n]* in [^\n]* cannot override [^\n]* in [^\n]*\n
+=========================compiler_warn_override_equals_but_not_hashcode
+^[^\n]*Class [^\n]* overrides equals, but neither it nor any superclass overrides hashCode method\n
+=========================compiler_warn_override_unchecked_ret
+^[^\n]*[^\n]*[^\n]*\n[^\n]*return type requires unchecked conversion from [^\n]* to [^\n]*\n
+=========================compiler_err_override_incompatible_ret
+^[^\n]*[^\n]*[^\n]*\n[^\n]*return type [^\n]* is not compatible with [^\n]*\n
+=========================compiler_err_override_weaker_access
+^[^\n]*[^\n]*[^\n]*\n[^\n]*attempting to assign weaker access privileges; was [^\n]*\n
+=========================compiler_err_override_meth_doesnt_throw
+^[^\n]*[^\n]*[^\n]*\n[^\n]*overridden method does not throw [^\n]*\n
+=========================compiler_err_override_meth
+^[^\n]*[^\n]*[^\n]*\n[^\n]*overridden method is [^\n]*\n
+=========================compiler_err_override_static
+^[^\n]*[^\n]*[^\n]*\n[^\n]*overriding method is static\n
+=========================compiler_misc_kindname_static
+^[^\n]*static\n
+=========================compiler_misc_no_args
+^[^\n]*no arguments\n
+=========================compiler_misc_kindname_instance_init
+^[^\n]*instance initializer\n
+=========================compiler_misc_kindname_static_init
+^[^\n]*static initializer\n
+=========================compiler_misc_kindname_type_variable_bound
+^[^\n]*bound of type variable\n
+=========================compiler_misc_kindname_enum
+^[^\n]*enum\n
+=========================compiler_misc_kindname_annotation
+^[^\n]*@interface\n
+=========================compiler_err_cant_resolve_location_args_params
+^[^\n]*cannot find symbol[^\n]*\n[^\n]*symbol:   [^\n]* <[^\n]*>[^\n]*\([^\n]*\)[^\n]*\n[^\n]*location: [^\n]*\n
+=========================compiler_err_cant_resolve_location_args
+^[^\n]*cannot find symbol[^\n]*\n[^\n]*symbol:   [^\n]* [^\n]*\([^\n]*\)[^\n]*\n[^\n]*location: [^\n]*\n
+=========================compiler_err_cant_resolve_location
+^[^\n]*cannot find symbol[^\n]*\n[^\n]*symbol:   [^\n]* [^\n]*[^\n]*\n[^\n]*location: [^\n]*\n
+=========================compiler_err_cant_resolve_args_params
+^[^\n]*cannot find symbol[^\n]*\n[^\n]*symbol: [^\n]* <[^\n]*>[^\n]*\([^\n]*\)\n
+=========================compiler_err_cant_resolve_args
+^[^\n]*cannot find symbol[^\n]*\n[^\n]*symbol: [^\n]* [^\n]*\([^\n]*\)\n
+=========================compiler_err_cant_resolve
+^[^\n]*cannot find symbol[^\n]*\n[^\n]*symbol: [^\n]* [^\n]*\n
+=========================compiler_err_unexpected_mref
+^[^\n]*method reference not expected here\n
+=========================compiler_err_unexpected_lambda
+^[^\n]*lambda expression not expected here\n
+=========================compiler_misc_static_method_in_unbound_lookup
+^[^\n]*static [^\n]* [^\n]* found in unbound lookup\n
+=========================compiler_err_non
+^[^\n]*non-static [^\n]* [^\n]* cannot be referenced from a static context\n
+=========================compiler_err_abstract_cant_be_accessed_directly
+^[^\n]*abstract [^\n]* [^\n]* in [^\n]* cannot be accessed directly\n
+=========================compiler_warn_auxiliary_class_accessed_from_outside_of_its_source_file
+^[^\n]*auxiliary class [^\n]* in [^\n]* should not be accessed from outside its own source file\n
+=========================compiler_misc_arg_length_mismatch
+^[^\n]*actual and formal argument lists differ in length\n
+=========================compiler_misc_explicit_param_do_not_conform_to_bounds
+^[^\n]*explicit type argument [^\n]* does not conform to declared bound\(s\) [^\n]*\n
+=========================compiler_misc_mref_infer_and_explicit_params
+^[^\n]*cannot use raw constructor reference with explicit type parameters for constructor\n
+=========================compiler_misc_diamond_and_explicit_params
+^[^\n]*cannot use ''<>'' with explicit type parameters for constructor\n
+=========================compiler_misc_diamond_non_generic
+^[^\n]*cannot use ''<>'' with non-generic class [^\n]*\n
+=========================compiler_misc_diamond
+^[^\n]*[^\n]*<>\n
+=========================compiler_misc_inferred_do_not_conform_to_eq_bounds
+^[^\n]*inferred type does not conform to equality constraint\(s\)[^\n]*\n[^\n]*inferred: [^\n]*[^\n]*\n[^\n]*equality constraints\(s\): [^\n]*\n
+=========================compiler_misc_inferred_do_not_conform_to_lower_bounds
+^[^\n]*inferred type does not conform to lower bound\(s\)[^\n]*\n[^\n]*inferred: [^\n]*[^\n]*\n[^\n]*lower bound\(s\): [^\n]*\n
+=========================compiler_misc_inferred_do_not_conform_to_upper_bounds
+^[^\n]*inferred type does not conform to upper bound\(s\)[^\n]*\n[^\n]*inferred: [^\n]*[^\n]*\n[^\n]*upper bound\(s\): [^\n]*\n
+=========================compiler_misc_infer_varargs_argument_mismatch
+^[^\n]*cannot infer type-variable\(s\) [^\n]*[^\n]*\n[^\n]*\(varargs mismatch; [^\n]*\)\n
+=========================compiler_misc_varargs_argument_mismatch
+^[^\n]*varargs mismatch; [^\n]*\n
+=========================compiler_misc_infer_arg_length_mismatch
+^[^\n]*cannot infer type-variable\(s\) [^\n]*[^\n]*\n[^\n]*\(actual and formal argument lists differ in length\)\n
+=========================compiler_misc_infer_no_conforming_assignment_exists
+^[^\n]*cannot infer type-variable\(s\) [^\n]*[^\n]*\n[^\n]*\(argument mismatch; [^\n]*\)\n
+=========================compiler_misc_no_conforming_assignment_exists
+^[^\n]*argument mismatch; [^\n]*\n
+=========================compiler_misc_infer_no_conforming_instance_exists
+^[^\n]*no instance\(s\) of type variable\(s\) [^\n]* exist so that [^\n]* conforms to [^\n]*\n
+=========================compiler_misc_incompatible_eq_lower_bounds
+^[^\n]*inference variable [^\n]* has incompatible bounds[^\n]*\n[^\n]*equality constraints: [^\n]*[^\n]*\n[^\n]*lower bounds: [^\n]*\n
+=========================compiler_misc_incompatible_eq_upper_bounds
+^[^\n]*inference variable [^\n]* has incompatible bounds[^\n]*\n[^\n]*equality constraints: [^\n]*[^\n]*\n[^\n]*upper bounds: [^\n]*\n
+=========================compiler_misc_incompatible_upper_bounds
+^[^\n]*inference variable [^\n]* has incompatible upper bounds [^\n]*\n
+=========================compiler_misc_no_unique_minimal_instance_exists
+^[^\n]*no unique minimal instance exists for type variable [^\n]* with lower bounds [^\n]*\n
+=========================compiler_misc_no_unique_maximal_instance_exists
+^[^\n]*no unique maximal instance exists for type variable [^\n]* with upper bounds [^\n]*\n
+=========================compiler_misc_type_parameter
+^[^\n]*type parameter [^\n]*\n
+=========================compiler_misc_type_req_exact
+^[^\n]*class or interface without bounds\n
+=========================compiler_misc_type_req_array_or_iterable
+^[^\n]*array or java\.lang\.Iterable\n
+=========================compiler_misc_type_req_class_array
+^[^\n]*class or array\n
+=========================compiler_err_type_found_req
+^[^\n]*unexpected type[^\n]*\n[^\n]*required: [^\n]*[^\n]*\n[^\n]*found:    [^\n]*\n
+=========================compiler_misc_try_not_applicable_to_type
+^[^\n]*try-with-resources not applicable to variable type[^\n]*\n[^\n]*\([^\n]*\)\n
+=========================compiler_misc_unchecked_cast_to_type
+^[^\n]*unchecked cast\n
+=========================compiler_misc_unchecked_assign
+^[^\n]*unchecked conversion\n
+=========================compiler_misc_possible_loss_of_precision
+^[^\n]*possible lossy conversion from [^\n]* to [^\n]*\n
+=========================compiler_misc_inconvertible_types
+^[^\n]*[^\n]* cannot be converted to [^\n]*\n
+=========================compiler_warn_prob_found_req
+^[^\n]*[^\n]*[^\n]*\n[^\n]*required: [^\n]*[^\n]*\n[^\n]*found:    [^\n]*\n
+=========================compiler_err_prob_found_req
+^[^\n]*incompatible types: [^\n]*\n
+=========================compiler_err_not_within_bounds
+^[^\n]*type argument [^\n]* is not within bounds of type-variable [^\n]*\n
+=========================compiler_misc_wrong_version
+^[^\n]*class file has wrong version [^\n]*\.[^\n]*, should be [^\n]*\.[^\n]*\n
+=========================compiler_misc_undecl_type_var
+^[^\n]*undeclared type variable: [^\n]*\n
+=========================compiler_misc_unicode_str_not_supported
+^[^\n]*unicode string in class file not supported\n
+=========================compiler_misc_unable_to_access_file
+^[^\n]*unable to access file: [^\n]*\n
+=========================compiler_misc_illegal_start_of_class_file
+^[^\n]*illegal start of class file\n
+=========================compiler_misc_file_does_not_contain_package
+^[^\n]*file does not contain package [^\n]*\n
+=========================compiler_misc_file_doesnt_contain_class
+^[^\n]*file does not contain class [^\n]*\n
+=========================compiler_misc_invalid_static_interface
+^[^\n]*static method found in version [^\n]*\.[^\n]* classfile\n
+=========================compiler_misc_invalid_default_interface
+^[^\n]*default method found in version [^\n]*\.[^\n]* classfile\n
+=========================compiler_misc_class_file_not_found
+^[^\n]*class file for [^\n]* not found\n
+=========================compiler_misc_class_file_wrong_class
+^[^\n]*class file contains wrong class: [^\n]*\n
+=========================compiler_misc_bad_type_annotation_value
+^[^\n]*bad type annotation target type value: [^\n]*\n
+=========================compiler_misc_bad_signature
+^[^\n]*bad signature: [^\n]*\n
+=========================compiler_misc_bad_const_pool_tag_at
+^[^\n]*bad constant pool tag: [^\n]* at [^\n]*\n
+=========================compiler_misc_bad_const_pool_tag
+^[^\n]*bad constant pool tag: [^\n]*\n
+=========================compiler_misc_bad_runtime_invisible_param_annotations
+^[^\n]*bad RuntimeInvisibleParameterAnnotations attribute: [^\n]*\n
+=========================compiler_misc_bad_enclosing_method
+^[^\n]*bad enclosing method attribute for class [^\n]*\n
+=========================compiler_misc_bad_enclosing_class
+^[^\n]*bad enclosing class for [^\n]*: [^\n]*\n
+=========================compiler_misc_bad_class_signature
+^[^\n]*bad class signature: [^\n]*\n
+=========================compiler_misc_bad_source_file_header
+^[^\n]*bad source file: [^\n]*[^\n]*\n[^\n]*[^\n]*[^\n]*\n[^\n]*Please remove or make sure it appears in the correct subdirectory of the sourcepath\.\n
+=========================compiler_misc_bad_class_file_header
+^[^\n]*bad class file: [^\n]*[^\n]*\n[^\n]*[^\n]*[^\n]*\n[^\n]*Please remove or make sure it appears in the correct subdirectory of the classpath\.\n
+=========================compiler_misc_bad_const_pool_entry
+^[^\n]*bad constant pool entry in [^\n]*[^\n]*\n[^\n]*expected [^\n]* at index [^\n]*\n
+=========================compiler_misc_unnamed_package
+^[^\n]*unnamed package\n
+=========================compiler_misc_type_none
+^[^\n]*<none>\n
+=========================compiler_misc_type_captureof
+^[^\n]*capture#[^\n]* of [^\n]*\n
+=========================compiler_misc_type_captureof_1
+^[^\n]*capture#[^\n]*\n
+=========================compiler_misc_type_var
+^[^\n]*[^\n]*#[^\n]*\n
+=========================compiler_misc_anonymous_class
+^[^\n]*<anonymous [^\n]*>\n
+=========================compiler_err_orphaned
+^[^\n]*orphaned [^\n]*\n
+=========================compiler_err_dot_class_expected
+^[^\n]*''\.class'' expected\n
+=========================compiler_err_premature_eof
+^[^\n]*reached end of file while parsing\n
+=========================compiler_err_expected3
+^[^\n]*[^\n]*, [^\n]*, or [^\n]* expected\n
+=========================compiler_err_expected2
+^[^\n]*[^\n]* or [^\n]* expected\n
+=========================compiler_err_expected
+^[^\n]*[^\n]* expected\n
+=========================compiler_misc_token_end
+^[^\n]*<end of input>\n
+=========================compiler_misc_token_bad
+^[^\n]*<bad symbol>\n
+=========================compiler_misc_token_double
+^[^\n]*<double>\n
+=========================compiler_misc_token_float
+^[^\n]*<float>\n
+=========================compiler_misc_token_long
+^[^\n]*<long integer>\n
+=========================compiler_misc_token_integer
+^[^\n]*<integer>\n
+=========================compiler_misc_token_string
+^[^\n]*<string>\n
+=========================compiler_misc_token_character
+^[^\n]*<character>\n
+=========================compiler_misc_token_identifier
+^[^\n]*<identifier>\n
+=========================compiler_warn_access_to_sensitive_member_from_serializable_element
+^[^\n]*access to sensitive member [^\n]* from serializable element can be publicly accessible to untrusted code\n
+=========================compiler_warn_varargs_redundant_trustme_anno
+^[^\n]*Redundant [^\n]* annotation\. [^\n]*\n
+=========================compiler_warn_diamond_redundant_args_1
+^[^\n]*redundant type arguments in new expression \(use diamond operator instead\)\.[^\n]*\n[^\n]*explicit: [^\n]*[^\n]*\n[^\n]*inferred: [^\n]*\n
+=========================compiler_warn_diamond_redundant_args
+^[^\n]*redundant type arguments in new expression \(use diamond operator instead\)\.\n
+=========================compiler_warn_raw_class_use
+^[^\n]*found raw type: [^\n]*[^\n]*\n[^\n]*missing type arguments for generic class [^\n]*\n
+=========================compiler_warn_unknown_enum_constant_reason
+^[^\n]*unknown enum constant [^\n]*\.[^\n]*[^\n]*\n[^\n]*reason: [^\n]*\n
+=========================compiler_warn_unknown_enum_constant
+^[^\n]*unknown enum constant [^\n]*\.[^\n]*\n
+=========================compiler_warn_annotation_method_not_found_reason
+^[^\n]*Cannot find annotation method ''[^\n]*\(\)'' in type ''[^\n]*'': [^\n]*\n
+=========================compiler_warn_annotation_method_not_found
+^[^\n]*Cannot find annotation method ''[^\n]*\(\)'' in type ''[^\n]*''\n
+=========================compiler_warn_empty_if
+^[^\n]*empty statement after if\n
+=========================compiler_warn_div_zero
+^[^\n]*division by zero\n
+=========================compiler_warn_unexpected_archive_file
+^[^\n]*Unexpected extension for archive file: [^\n]*\n
+=========================compiler_warn_invalid_archive_file
+^[^\n]*Unexpected file on path: [^\n]*\n
+=========================compiler_warn_missing_deprecated_annotation
+^[^\n]*deprecated item is not annotated with @Deprecated\n
+=========================compiler_warn_varargs_unsafe_use_varargs_param
+^[^\n]*Varargs method could cause heap pollution from non-reifiable varargs parameter [^\n]*\n
+=========================compiler_warn_unchecked_varargs_non_reifiable_type
+^[^\n]*Possible heap pollution from parameterized vararg type [^\n]*\n
+=========================compiler_warn_unchecked_generic_array_creation
+^[^\n]*unchecked generic array creation for varargs parameter of type [^\n]*\n
+=========================compiler_warn_unchecked_meth_invocation_applied
+^[^\n]*unchecked method invocation: [^\n]* [^\n]* in [^\n]* [^\n]* is applied to given types[^\n]*\n[^\n]*required: [^\n]*[^\n]*\n[^\n]*found: [^\n]*\n
+=========================compiler_warn_unchecked_cast_to_type
+^[^\n]*unchecked cast to type [^\n]*\n
+=========================compiler_warn_unchecked_call_mbr_of_raw_type
+^[^\n]*unchecked call to [^\n]* as a member of the raw type [^\n]*\n
+=========================compiler_warn_unchecked_assign_to_var
+^[^\n]*unchecked assignment to variable [^\n]* as member of raw type [^\n]*\n
+=========================compiler_warn_unchecked_assign
+^[^\n]*unchecked assignment: [^\n]* to [^\n]*\n
+=========================compiler_warn_try_resource_throws_interrupted_exc
+^[^\n]*auto-closeable resource [^\n]* has a member method close\(\) that could throw InterruptedException\n
+=========================compiler_warn_try_resource_not_referenced
+^[^\n]*auto-closeable resource [^\n]* is never referenced in body of corresponding try statement\n
+=========================compiler_warn_try_explicit_close_call
+^[^\n]*explicit call to close\(\) on an auto-closeable resource\n
+=========================compiler_warn_proc_unmatched_processor_options
+^[^\n]*The following options were not recognized by any processor: ''[^\n]*''\n
+=========================compiler_warn_proc_unclosed_type_files
+^[^\n]*Unclosed files for the types ''[^\n]*''; these types will not undergo annotation processing\n
+=========================compiler_warn_proc_use_proc_or_implicit
+^[^\n]*Implicitly compiled files were not subject to annotation processing\.[^\n]*\n[^\n]*Use -proc:none to disable annotation processing or -implicit to specify a policy for implicit compilation\.\n
+=========================compiler_warn_proc_use_implicit
+^[^\n]*Implicitly compiled files were not subject to annotation processing\.[^\n]*\n[^\n]*Use -implicit to specify a policy for implicit compilation\.\n
+=========================compiler_warn_proc_proc
+^[^\n]*Annotation processing without compilation requested but no processors were found\.\n
+=========================compiler_warn_proc_processor_incompatible_source_version
+^[^\n]*Supported source version ''[^\n]*'' from annotation processor ''[^\n]*'' less than -source ''[^\n]*''\n
+=========================compiler_warn_proc_annotations_without_processors
+^[^\n]*No processor claimed any of these annotations: [^\n]*\n
+=========================compiler_warn_proc_malformed_supported_string
+^[^\n]*Malformed string ''[^\n]*'' for a supported annotation type returned by processor ''[^\n]*''\n
+=========================compiler_warn_proc_file_create_last_round
+^[^\n]*File for type ''[^\n]*'' created in the last round will not be subject to annotation processing\.\n
+=========================compiler_warn_proc_suspicious_class_name
+^[^\n]*Creating file for a type whose name ends in [^\n]*: ''[^\n]*''\n
+=========================compiler_warn_proc_illegal_file_name
+^[^\n]*Cannot create file for illegal name ''[^\n]*''\.\n
+=========================compiler_warn_proc_type_recreate
+^[^\n]*Attempt to create a file for type ''[^\n]*'' multiple times\n
+=========================compiler_warn_proc_type_already_exists
+^[^\n]*A file for type ''[^\n]*'' already exists on the sourcepath or classpath\n
+=========================compiler_warn_proc_file_reopening
+^[^\n]*Attempt to create a file for ''[^\n]*'' multiple times\n
+=========================compiler_warn_future_attr
+^[^\n]*[^\n]* attribute introduced in version [^\n]*\.[^\n]* class files is ignored in version [^\n]*\.[^\n]* class files\n
+=========================compiler_warn_option_obsolete_suppression
+^[^\n]*To suppress warnings about obsolete options, use -Xlint:-options\.\n
+=========================compiler_warn_option_obsolete_target
+^[^\n]*target value [^\n]* is obsolete and will be removed in a future release\n
+=========================compiler_warn_option_obsolete_source
+^[^\n]*source value [^\n]* is obsolete and will be removed in a future release\n
+=========================compiler_warn_source_no_bootclasspath
+^[^\n]*bootstrap class path not set in conjunction with -source [^\n]*\n
+=========================compiler_warn_static_not_qualified_by_type
+^[^\n]*static [^\n]* should be qualified by type name, [^\n]*, instead of by an expression\n
+=========================compiler_warn_big_major_version
+^[^\n]*[^\n]*: major version [^\n]* is newer than [^\n]*, the highest major version supported by this compiler\.[^\n]*\n[^\n]*It is recommended that the compiler be upgraded\.\n
+=========================compiler_warn_position_overflow
+^[^\n]*Position encoding overflows at line [^\n]*\n
+=========================compiler_warn_redundant_cast
+^[^\n]*redundant cast to [^\n]*\n
+=========================compiler_warn_possible_fall
+^[^\n]*possible fall-through into case\n
+=========================compiler_warn_path_element_not_found
+^[^\n]*bad path element "[^\n]*": no such file or directory\n
+=========================compiler_warn_pkg
+^[^\n]*a package-info\.java file has already been seen for package [^\n]*\n
+=========================compiler_warn_override_bridge
+^[^\n]*[^\n]*; overridden method is a bridge method\n
+=========================compiler_warn_override_varargs_extra
+^[^\n]*[^\n]*; overriding method is missing ''\.\.\.''\n
+=========================compiler_warn_override_varargs_missing
+^[^\n]*[^\n]*; overridden method has no ''\.\.\.''\n
+=========================compiler_warn_potentially_ambiguous_overload
+^[^\n]*[^\n]* in [^\n]* is potentially ambiguous with [^\n]* in [^\n]*\n
+=========================compiler_warn_missing_SVUID
+^[^\n]*serializable class [^\n]* has no definition of serialVersionUID\n
+=========================compiler_warn_long_SVUID
+^[^\n]*serialVersionUID must be of type long in class [^\n]*\n
+=========================compiler_warn_unreachable_catch_1
+^[^\n]*unreachable catch clause[^\n]*\n[^\n]*thrown types [^\n]* have already been caught\n
+=========================compiler_warn_unreachable_catch
+^[^\n]*unreachable catch clause[^\n]*\n[^\n]*thrown type [^\n]* has already been caught\n
+=========================compiler_warn_inexact_non
+^[^\n]*non-varargs call of varargs method with inexact argument type for last parameter;[^\n]*\n[^\n]*cast to [^\n]* for a varargs call[^\n]*\n[^\n]*cast to [^\n]* for a non-varargs call and to suppress this warning\n
+=========================compiler_misc_count_warn
+^[^\n]*[^\n]* warning\n
+=========================compiler_warn_improper_SVUID
+^[^\n]*serialVersionUID must be declared static final in class [^\n]*\n
+=========================compiler_warn_sun_proprietary
+^[^\n]*[^\n]* is internal proprietary API and may be removed in a future release\n
+=========================compiler_warn_has_been_deprecated
+^[^\n]*[^\n]* in [^\n]* has been deprecated\n
+=========================compiler_warn_finally_cannot_complete
+^[^\n]*finally clause cannot complete normally\n
+=========================compiler_warn_dir_path_element_not_found
+^[^\n]*bad path element "[^\n]*": no such directory\n
+=========================compiler_warn_constant_SVUID
+^[^\n]*serialVersionUID must be constant in class [^\n]*\n
+=========================compiler_warn_lintOption
+^[^\n]*\[[^\n]*\]\u0020\n
+=========================compiler_warn_warning
+^[^\n]*warning:\u0020\n
+=========================compiler_misc_resume_abort
+^[^\n]*R\)esume, A\)bort>\n
+=========================compiler_misc_ccf_unrecognized_attribute
+^[^\n]*unrecognized attribute: [^\n]*\n
+=========================compiler_misc_ccf_found_later_version
+^[^\n]*class file has later version than expected: [^\n]*\n
+=========================compiler_misc_verbose_classpath
+^[^\n]*\[search path for class files: [^\n]*\]\n
+=========================compiler_misc_verbose_sourcepath
+^[^\n]*\[search path for source files: [^\n]*\]\n
+=========================compiler_misc_verbose_loading
+^[^\n]*\[loading [^\n]*\]\n
+=========================compiler_misc_verbose_retro_with_list
+^[^\n]*\tretrofitting [^\n]* with type parameters [^\n]*, supertype [^\n]*, interfaces [^\n]*\n
+=========================compiler_misc_verbose_retro_with
+^[^\n]*\tretrofitting [^\n]* with [^\n]*\n
+=========================compiler_misc_verbose_retro
+^[^\n]*\[retrofitting [^\n]*\]\n
+=========================compiler_misc_verbose_wrote_file
+^[^\n]*\[wrote [^\n]*\]\n
+=========================compiler_misc_verbose_total
+^[^\n]*\[total [^\n]*ms\]\n
+=========================compiler_misc_verbose_parsing_started
+^[^\n]*\[parsing started [^\n]*\]\n
+=========================compiler_misc_verbose_parsing_done
+^[^\n]*\[parsing completed [^\n]*ms\]\n
+=========================compiler_misc_verbose_checking_attribution
+^[^\n]*\[checking [^\n]*\]\n
+=========================compiler_misc_version_not_available
+^[^\n]*\(version info not available\)\n
+=========================compiler_misc_count_warn_plural
+^[^\n]*[^\n]* warnings\n
+=========================compiler_misc_count_error_plural
+^[^\n]*[^\n]* errors\n
+=========================compiler_misc_count_error
+^[^\n]*[^\n]* error\n
+=========================compiler_note_sunapi_plural_additional
+^[^\n]*Some input files additionally use internal proprietary API that may be removed in a future release\.\n
+=========================compiler_note_sunapi_filename_additional
+^[^\n]*[^\n]* uses additional internal proprietary API that may be removed in a future release\.\n
+=========================compiler_note_sunapi_recompile
+^[^\n]*Recompile with -Xlint:sunapi for details\.\n
+=========================compiler_note_sunapi_plural
+^[^\n]*Some input files use internal proprietary API that may be removed in a future release\.\n
+=========================compiler_note_sunapi_filename
+^[^\n]*[^\n]* uses internal proprietary API that may be removed in a future release\.\n
+=========================compiler_note_unchecked_plural_additional
+^[^\n]*Some input files additionally use unchecked or unsafe operations\.\n
+=========================compiler_note_unchecked_filename_additional
+^[^\n]*[^\n]* has additional unchecked or unsafe operations\.\n
+=========================compiler_note_unchecked_recompile
+^[^\n]*Recompile with -Xlint:unchecked for details\.\n
+=========================compiler_note_unchecked_plural
+^[^\n]*Some input files use unchecked or unsafe operations\.\n
+=========================compiler_note_unchecked_filename
+^[^\n]*[^\n]* uses unchecked or unsafe operations\.\n
+=========================compiler_note_deprecated_plural_additional
+^[^\n]*Some input files additionally use or override a deprecated API\.\n
+=========================compiler_note_deprecated_filename_additional
+^[^\n]*[^\n]* has additional uses or overrides of a deprecated API\.\n
+=========================compiler_note_deprecated_recompile
+^[^\n]*Recompile with -Xlint:deprecation for details\.\n
+=========================compiler_note_deprecated_plural
+^[^\n]*Some input files use or override a deprecated API\.\n
+=========================compiler_note_deprecated_filename
+^[^\n]*[^\n]* uses or overrides a deprecated API\.\n
+=========================compiler_note_note
+^[^\n]*Note:\u0020\n
+=========================compiler_note_mref_stat_1
+^[^\n]*Translating method reference[^\n]*\n[^\n]*alternate metafactory = [^\n]*[^\n]*\n[^\n]*bridge method = [^\n]*\n
+=========================compiler_note_mref_stat
+^[^\n]*Translating method reference[^\n]*\n[^\n]*alternate metafactory = [^\n]*\n
+=========================compiler_note_lambda_stat
+^[^\n]*Translating lambda expression[^\n]*\n[^\n]*alternate metafactory = [^\n]*[^\n]*\n[^\n]*synthetic method = [^\n]*\n
+=========================compiler_note_potential_lambda_found
+^[^\n]*This anonymous inner class creation can be turned into a lambda expression\.\n
+=========================compiler_note_compressed_diags
+^[^\n]*Some messages have been simplified; recompile with -Xdiags:verbose to get full output\n
+=========================compiler_misc_x_print_rounds
+^[^\n]*Round [^\n]*:tinput files: [^\n]*\n\tannotations: [^\n]*\n\tlast round: [^\n]*\n
+=========================compiler_misc_x_print_processor_info
+^[^\n]*Processor [^\n]* matches [^\n]* and returns [^\n]*\.\n
+=========================compiler_misc_base_membership
+^[^\n]*all your base class are belong to us\n
+=========================compiler_misc_source_unavailable
+^[^\n]*\(source unavailable\)\n
+=========================compiler_misc_fatal_err_cant_close
+^[^\n]*Fatal Error: Cannot close compiler resources\n
+=========================compiler_misc_fatal_err_cant_locate_ctor
+^[^\n]*Fatal Error: Unable to find constructor for [^\n]*\n
+=========================compiler_misc_fatal_err_cant_locate_field
+^[^\n]*Fatal Error: Unable to find field [^\n]*\n
+=========================compiler_misc_fatal_err_cant_locate_meth
+^[^\n]*Fatal Error: Unable to find method [^\n]*\n
+=========================compiler_misc_fatal_err_no_java_lang
+^[^\n]*Fatal Error: Unable to find package java\.lang in classpath or bootclasspath\n
+=========================compiler_err_cant_read_file
+^[^\n]*cannot read: [^\n]*\n
+=========================compiler_err_error
+^[^\n]*error:\u0020\n
+=========================compiler_err_class_public_should_be_in_file
+^[^\n]*class [^\n]* is public, should be declared in a file named [^\n]*\.java\n
+=========================compiler_misc_where_typevar_1
+^[^\n]*[^\n]* declared in [^\n]* [^\n]*\n
+=========================compiler_err_class_cant_write
+^[^\n]*error while writing [^\n]*: [^\n]*\n
+=========================compiler_misc_inaccessible_varargs_type
+^[^\n]*formal varargs element type [^\n]* is not accessible from [^\n]* [^\n]*\n
+=========================compiler_misc_varargs_trustme_on_virtual_varargs
+^[^\n]*Instance method [^\n]* is not final\.\n
+=========================compiler_misc_varargs_trustme_on_non_varargs_meth
+^[^\n]*Method [^\n]* is not a varargs method\.\n
+=========================compiler_misc_varargs_trustme_on_reifiable_varargs
+^[^\n]*Varargs element type [^\n]* is reifiable\.\n
+=========================compiler_err_varargs_invalid_trustme_anno
+^[^\n]*Invalid [^\n]* annotation\. [^\n]*\n
+=========================compiler_err_var_might_be_assigned_in_loop
+^[^\n]*variable [^\n]* might be assigned in loop\n
+=========================compiler_err_var_not_initialized_in_default_constructor
+^[^\n]*variable [^\n]* not initialized in the default constructor\n
+=========================compiler_err_var_might_not_have_been_initialized
+^[^\n]*variable [^\n]* might not have been initialized\n
+=========================compiler_err_var_might_already_be_assigned
+^[^\n]*variable [^\n]* might already have been assigned\n
+=========================compiler_err_wrong_number_type_args
+^[^\n]*wrong number of type arguments; required [^\n]*\n
+=========================compiler_err_void_not_allowed_here
+^[^\n]*''void'' type not allowed here\n
+=========================compiler_err_unsupported_cross_fp_lit
+^[^\n]*hexadecimal floating-point literals are not supported on this VM\n
+=========================compiler_err_unreported_exception_implicit_close
+^[^\n]*unreported exception [^\n]*; must be caught or declared to be thrown[^\n]*\n[^\n]*exception thrown from implicit call to close\(\) on resource variable ''[^\n]*''\n
+=========================compiler_err_unreported_exception_default_constructor
+^[^\n]*unreported exception [^\n]* in default constructor\n
+=========================compiler_err_unreported_exception_need_to_catch_or_throw
+^[^\n]*unreported exception [^\n]*; must be caught or declared to be thrown\n
+=========================compiler_err_initializer_must_be_able_to_complete_normally
+^[^\n]*initializer must be able to complete normally\n
+=========================compiler_err_unreachable_stmt
+^[^\n]*unreachable statement\n
+=========================compiler_err_cant_apply_diamond_1
+^[^\n]*cannot infer type arguments for [^\n]*[^\n]*\n[^\n]*reason: [^\n]*\n
+=========================compiler_err_cant_apply_diamond
+^[^\n]*cannot infer type arguments for [^\n]*\n
+=========================compiler_err_undef_label
+^[^\n]*undefined label: [^\n]*\n
+=========================compiler_err_io_exception
+^[^\n]*error reading source file: [^\n]*\n
+=========================compiler_err_unsupported_encoding
+^[^\n]*unsupported encoding: [^\n]*\n
+=========================compiler_err_unclosed_str_lit
+^[^\n]*unclosed string literal\n
+=========================compiler_err_unclosed_comment
+^[^\n]*unclosed comment\n
+=========================compiler_err_unclosed_char_lit
+^[^\n]*unclosed character literal\n
+=========================compiler_misc_redundant_supertype
+^[^\n]*redundant interface [^\n]* is extended by [^\n]*\n
+=========================compiler_misc_overridden_default
+^[^\n]*method [^\n]* is overridden in [^\n]*\n
+=========================compiler_err_illegal_default_super_call
+^[^\n]*bad type qualifier [^\n]* in default super call[^\n]*\n[^\n]*[^\n]*\n
+=========================compiler_err_illegal_static_intf_meth_call
+^[^\n]*illegal static interface method call[^\n]*\n[^\n]*the receiver expression should be replaced with the type qualifier ''[^\n]*''\n
+=========================compiler_err_default_overrides_object_member
+^[^\n]*default method [^\n]* in [^\n]* [^\n]* overrides a member of java\.lang\.Object\n
+=========================compiler_err_types_incompatible_abstract_default
+^[^\n]*[^\n]* [^\n]* inherits abstract and default for [^\n]*\([^\n]*\) from types [^\n]* and [^\n]*\n
+=========================compiler_err_types_incompatible_unrelated_defaults
+^[^\n]*[^\n]* [^\n]* inherits unrelated defaults for [^\n]*\([^\n]*\) from types [^\n]* and [^\n]*\n
+=========================compiler_err_types_incompatible_diff_ret
+^[^\n]*types [^\n]* and [^\n]* are incompatible; both define [^\n]*, but with unrelated return types\n
+=========================compiler_err_type_var_more_than_once_in_result
+^[^\n]*type variable [^\n]* occurs more than once in type of [^\n]*; cannot be left uninstantiated\n
+=========================compiler_err_type_var_more_than_once
+^[^\n]*type variable [^\n]* occurs more than once in result type of [^\n]*; cannot be left uninstantiated\n
+=========================compiler_err_type_var_may_not_be_followed_by_other_bounds
+^[^\n]*a type variable may not be followed by other bounds\n
+=========================compiler_err_type_var_cant_be_deref
+^[^\n]*cannot select from a type variable\n
+=========================compiler_misc_kindname_type_variable
+^[^\n]*type variable\n
+=========================compiler_misc_kindname_variable
+^[^\n]*variable\n
+=========================compiler_err_type_doesnt_take_params
+^[^\n]*type [^\n]* does not take parameters\n
+=========================compiler_err_try_without_catch_finally_or_resource_decls
+^[^\n]*''try'' without ''catch'', ''finally'' or resource declarations\n
+=========================compiler_err_try_without_catch_or_finally
+^[^\n]*''try'' without ''catch'' or ''finally''\n
+=========================compiler_err_throws_not_allowed_in_intf_annotation
+^[^\n]*throws clause not allowed in @interface members\n
+=========================compiler_err_synthetic_name_conflict
+^[^\n]*the symbol [^\n]* conflicts with a compiler-synthesized symbol in [^\n]*\n
+=========================compiler_err_string_const_req
+^[^\n]*constant string expression required\n
+=========================compiler_err_static_imp_only_classes_and_interfaces
+^[^\n]*static import only from classes and interfaces\n
+=========================compiler_err_stack_sim_error
+^[^\n]*Internal error: stack sim error on [^\n]*\n
+=========================compiler_err_source_cant_overwrite_input_file
+^[^\n]*error writing source; cannot overwrite input file [^\n]*\n
+=========================compiler_err_does_not_override_abstract
+^[^\n]*[^\n]* is not abstract and does not override abstract method [^\n]* in [^\n]*\n
+=========================compiler_err_method_invoked_with_incorrect_number_arguments
+^[^\n]*method invoked with incorrect number of arguments; expected [^\n]*, found [^\n]*\n
+=========================compiler_err_signature_doesnt_match_intf
+^[^\n]*signature does not match [^\n]*; incompatible interfaces\n
+=========================compiler_err_signature_doesnt_match_supertype
+^[^\n]*signature does not match [^\n]*; incompatible supertype\n
+=========================compiler_err_ret_outside_meth
+^[^\n]*return outside method\n
+=========================compiler_misc_kindname_method
+^[^\n]*method\n
+=========================compiler_err_report_access
+^[^\n]*[^\n]* has [^\n]* access in [^\n]*\n
+=========================compiler_err_repeated_modifier
+^[^\n]*repeated modifier\n
+=========================compiler_err_repeated_interface
+^[^\n]*repeated interface\n
+=========================compiler_err_repeated_annotation_target
+^[^\n]*repeated annotation target\n
+=========================compiler_err_ref_ambiguous
+^[^\n]*reference to [^\n]* is ambiguous[^\n]*\n[^\n]*both [^\n]* [^\n]* in [^\n]* and [^\n]* [^\n]* in [^\n]* match\n
+=========================compiler_err_recursive_ctor_invocation
+^[^\n]*recursive constructor invocation\n
+=========================compiler_err_qualified_new_of_static_class
+^[^\n]*qualified new of static class\n
+=========================compiler_err_proc_cant_create_loader
+^[^\n]*Could not create class loader for annotation processors: [^\n]*\n
+=========================compiler_err_proc_bad_config_file
+^[^\n]*Bad service configuration file, or exception thrown while constructing Processor object: [^\n]*\n
+=========================compiler_err_proc_service_problem
+^[^\n]*Error creating a service loader to load Processors\.\n
+=========================compiler_err_proc_processor_wrong_type
+^[^\n]*Annotation processor ''[^\n]*'' does not implement javax\.annotation\.processing\.Processor\n
+=========================compiler_err_proc_processor_not_found
+^[^\n]*Annotation processor ''[^\n]*'' not found\n
+=========================compiler_err_proc_processor_cant_instantiate
+^[^\n]*Could not instantiate an instance of processor ''[^\n]*''\n
+=========================compiler_err_proc_processor_bad_option_name
+^[^\n]*Bad option name ''[^\n]*'' provided by processor ''[^\n]*''\n
+=========================compiler_err_proc_no_service
+^[^\n]*A ServiceLoader was not usable and is required for annotation processing\.\n
+=========================compiler_err_proc_no_explicit_annotation_processing_requested
+^[^\n]*Class names, ''[^\n]*'', are only accepted if annotation processing is explicitly requested\n
+=========================compiler_err_proc_cant_find_class
+^[^\n]*Could not find class file for ''[^\n]*''\.\n
+=========================compiler_err_proc_cant_access_1
+^[^\n]*cannot access [^\n]*[^\n]*\n[^\n]*[^\n]*\n
+=========================compiler_err_proc_cant_access
+^[^\n]*cannot access [^\n]*[^\n]*\n[^\n]*[^\n]*[^\n]*\n[^\n]*Consult the following stack trace for details\.[^\n]*\n[^\n]*[^\n]*\n
+=========================compiler_err_warnings_and_werror
+^[^\n]*warnings found and -Werror specified\n
+=========================compiler_err_pkg_clashes_with_class_of_same_name
+^[^\n]*package [^\n]* clashes with class of same name\n
+=========================compiler_err_pkg_annotations_sb_in_package
+^[^\n]*package annotations should be in file package-info\.java\n
+=========================compiler_err_operator_cant_be_applied_1
+^[^\n]*bad operand types for binary operator ''[^\n]*''[^\n]*\n[^\n]*first type:  [^\n]*[^\n]*\n[^\n]*second type: [^\n]*\n
+=========================compiler_err_operator_cant_be_applied
+^[^\n]*bad operand type [^\n]* for unary operator ''[^\n]*''\n
+=========================compiler_err_not_encl_class
+^[^\n]*not an enclosing class: [^\n]*\n
+=========================compiler_err_not_stmt
+^[^\n]*not a statement\n
+=========================compiler_err_not_loop_label
+^[^\n]*not a loop label: [^\n]*\n
+=========================compiler_err_not_def_public_cant_access
+^[^\n]*[^\n]* is not public in [^\n]*; cannot be accessed from outside package\n
+=========================compiler_misc_kindname_package
+^[^\n]*package\n
+=========================compiler_misc_cant_access_inner_cls_constr
+^[^\n]*cannot access constructor [^\n]*\([^\n]*\)[^\n]*\n[^\n]*an enclosing instance of type [^\n]* is not in scope\n
+=========================compiler_err_not_def_access_class_intf_cant_access
+^[^\n]*[^\n]* in [^\n]* is defined in an inaccessible class or interface\n
+=========================compiler_err_not_annotation_type
+^[^\n]*[^\n]* is not an annotation type\n
+=========================compiler_err_no_match_entry
+^[^\n]*[^\n]* has no match in entry in [^\n]*; required [^\n]*\n
+=========================compiler_err_no_intf_expected_here
+^[^\n]*no interface expected here\n
+=========================compiler_err_intf_expected_here
+^[^\n]*interface expected here\n
+=========================compiler_err_no_encl_instance_of_type_in_scope
+^[^\n]*no enclosing instance of type [^\n]* is in scope\n
+=========================compiler_err_no_annotation_member
+^[^\n]*no annotation member [^\n]* in [^\n]*\n
+=========================compiler_err_new_not_allowed_in_annotation
+^[^\n]*''new'' not allowed in an annotation\n
+=========================compiler_misc_incompatible_arg_types_in_mref
+^[^\n]*incompatible parameter types in method reference\n
+=========================compiler_misc_incompatible_arg_types_in_lambda
+^[^\n]*incompatible parameter types in lambda expression\n
+=========================compiler_err_incompatible_thrown_types_in_mref
+^[^\n]*incompatible thrown types [^\n]* in method reference\n
+=========================compiler_err_lambda_body_neither_value_nor_void_compatible
+^[^\n]*lambda body is neither value nor void compatible\n
+=========================compiler_misc_incompatible_ret_type_in_mref
+^[^\n]*bad return type in method reference[^\n]*\n[^\n]*[^\n]*\n
+=========================compiler_misc_incompatible_ret_type_in_lambda
+^[^\n]*bad return type in lambda expression[^\n]*\n[^\n]*[^\n]*\n
+=========================compiler_misc_conditional_target_cant_be_void
+^[^\n]*target-type for conditional expression cannot be void\n
+=========================compiler_misc_incompatible_type_in_conditional
+^[^\n]*bad type in conditional expression[^\n]*\n[^\n]*[^\n]*\n
+=========================compiler_err_neither_conditional_subtype
+^[^\n]*incompatible types for ?: neither is a subtype of the other[^\n]*\n[^\n]*second operand: [^\n]*[^\n]*\n[^\n]*third operand : [^\n]*\n
+=========================compiler_err_native_meth_cant_have_body
+^[^\n]*native methods cannot have a body\n
+=========================compiler_err_name_reserved_for_internal_use
+^[^\n]*[^\n]* is reserved for internal use\n
+=========================compiler_err_name_clash_same_erasure_no_hide
+^[^\n]*name clash: [^\n]* in [^\n]* and [^\n]* in [^\n]* have the same erasure, yet neither hides the other\n
+=========================compiler_err_name_clash_same_erasure_no_override_1
+^[^\n]*name clash: [^\n]* in [^\n]* overrides a method whose erasure is the same as another method, yet neither overrides the other[^\n]*\n[^\n]*first method:  [^\n]* in [^\n]*[^\n]*\n[^\n]*second method: [^\n]* in [^\n]*\n
+=========================compiler_misc_unchecked_override
+^[^\n]*[^\n]* in [^\n]* overrides [^\n]* in [^\n]*\n
+=========================compiler_err_name_clash_same_erasure_no_override
+^[^\n]*name clash: [^\n]* in [^\n]* and [^\n]* in [^\n]* have the same erasure, yet neither overrides the other\n
+=========================compiler_err_name_clash_same_erasure
+^[^\n]*name clash: [^\n]* and [^\n]* have the same erasure\n
+=========================compiler_err_enums_must_be_static
+^[^\n]*enum declarations allowed only in static contexts\n
+=========================compiler_err_intf_not_allowed_here
+^[^\n]*interface not allowed here\n
+=========================compiler_err_mod_not_allowed_here
+^[^\n]*modifier [^\n]* not allowed here\n
+=========================compiler_misc_unexpected_ret_val
+^[^\n]*unexpected return value\n
+=========================compiler_misc_missing_ret_val
+^[^\n]*missing return value\n
+=========================compiler_misc_kindname_value
+^[^\n]*value\n
+=========================compiler_err_missing_ret_stmt
+^[^\n]*missing return statement\n
+=========================compiler_err_missing_meth_body_or_decl_abstract
+^[^\n]*missing method body, or declare abstract\n
+=========================compiler_err_method_does_not_override_superclass
+^[^\n]*method does not override or implement a method from a supertype\n
+=========================compiler_err_malformed_fp_lit
+^[^\n]*malformed floating point literal\n
+=========================compiler_err_limit_string_overflow
+^[^\n]*UTF8 representation for string \"[^\n]*\.\.\.\" is too long for the constant pool\n
+=========================compiler_err_limit_string
+^[^\n]*constant string too long\n
+=========================compiler_err_limit_stack
+^[^\n]*code requires too much stack\n
+=========================compiler_err_limit_pool_in_class
+^[^\n]*too many constants in class [^\n]*\n
+=========================compiler_err_limit_pool
+^[^\n]*too many constants\n
+=========================compiler_err_limit_parameters
+^[^\n]*too many parameters\n
+=========================compiler_err_limit_locals
+^[^\n]*too many local variables\n
+=========================compiler_err_limit_dimensions
+^[^\n]*array type has too many dimensions\n
+=========================compiler_err_limit_code_too_large_for_try_stmt
+^[^\n]*code too large for try statement\n
+=========================compiler_err_limit_code
+^[^\n]*code too large\n
+=========================compiler_err_cannot_create_array_with_diamond
+^[^\n]*cannot create array with ''<>''\n
+=========================compiler_err_cannot_create_array_with_type_arguments
+^[^\n]*cannot create array with type arguments\n
+=========================compiler_err_local_enum
+^[^\n]*enum types must not be local\n
+=========================compiler_err_local_var_accessed_from_icls_needs_final
+^[^\n]*local variable [^\n]* is accessed from within inner class; needs to be declared final\n
+=========================compiler_err_label_already_in_use
+^[^\n]*label [^\n]* already in use\n
+=========================compiler_err_variable_not_allowed
+^[^\n]*variable declaration not allowed here\n
+=========================compiler_err_array_and_receiver
+^[^\n]*legacy array notation not allowed on receiver parameter\n
+=========================compiler_err_varargs_and_receiver
+^[^\n]*varargs notation not allowed on receiver parameter\n
+=========================compiler_err_varargs_and_old_array_syntax
+^[^\n]*legacy array notation not allowed on variable-arity parameter\n
+=========================compiler_err_invalid_meth_decl_ret_type_req
+^[^\n]*invalid method declaration; return type required\n
+=========================compiler_err_invalid_hex_number
+^[^\n]*hexadecimal numbers must contain at least one hexadecimal digit\n
+=========================compiler_err_invalid_binary_number
+^[^\n]*binary numbers must contain at least one binary digit\n
+=========================compiler_err_invalid_annotation_member_type
+^[^\n]*invalid type for element [^\n]* of annotation type\n
+=========================compiler_err_intf_meth_cant_have_body
+^[^\n]*interface abstract methods cannot have body\n
+=========================compiler_err_intf_annotation_member_clash
+^[^\n]*annotation type [^\n]* declares an element with the same name as method [^\n]*\n
+=========================compiler_err_intf_annotation_members_cant_have_type_params
+^[^\n]*elements in annotation type declarations cannot be generic methods\n
+=========================compiler_err_intf_annotation_cant_have_type_params
+^[^\n]*annotation type [^\n]* cannot be generic\n
+=========================compiler_err_intf_annotation_members_cant_have_params
+^[^\n]*elements in annotation type declarations cannot declare formal parameters\n
+=========================compiler_err_int_number_too_large
+^[^\n]*integer number too large: [^\n]*\n
+=========================compiler_err_incomparable_types
+^[^\n]*incomparable types: [^\n]* and [^\n]*\n
+=========================compiler_err_improperly_formed_type_inner_raw_param
+^[^\n]*improperly formed type, type arguments given on a raw type\n
+=========================compiler_err_improperly_formed_type_param_missing
+^[^\n]*improperly formed type, some parameters are missing\n
+=========================compiler_err_import_requires_canonical
+^[^\n]*import requires canonical name for [^\n]*\n
+=========================compiler_err_illegal_unicode_esc
+^[^\n]*illegal unicode escape\n
+=========================compiler_err_illegal_start_of_type
+^[^\n]*illegal start of type\n
+=========================compiler_err_illegal_start_of_stmt
+^[^\n]*illegal start of statement\n
+=========================compiler_err_illegal_start_of_expr
+^[^\n]*illegal start of expression\n
+=========================compiler_err_illegal_qual_not_icls
+^[^\n]*illegal qualifier; [^\n]* is not an inner class\n
+=========================compiler_misc_inner_cls
+^[^\n]*an inner class\n
+=========================compiler_err_illegal_dot
+^[^\n]*illegal ''\.''\n
+=========================compiler_err_illegal_underscore
+^[^\n]*illegal underscore\n
+=========================compiler_err_illegal_nonascii_digit
+^[^\n]*illegal non-ASCII digit\n
+=========================compiler_err_illegal_line_end_in_char_lit
+^[^\n]*illegal line end in character literal\n
+=========================compiler_err_illegal_initializer_for_type
+^[^\n]*illegal initializer for [^\n]*\n
+=========================compiler_err_illegal_generic_type_for_instof
+^[^\n]*illegal generic type for instanceof\n
+=========================compiler_warn_self_ref
+^[^\n]*self-reference in initializer of variable ''[^\n]*''\n
+=========================compiler_err_illegal_self_ref
+^[^\n]*self-reference in initializer\n
+=========================compiler_warn_forward_ref
+^[^\n]*reference to variable ''[^\n]*'' before it has been initialized\n
+=========================compiler_err_not_in_profile
+^[^\n]*[^\n]* is not available in profile ''[^\n]*''\n
+=========================compiler_err_illegal_forward_ref
+^[^\n]*illegal forward reference\n
+=========================compiler_err_illegal_esc_char
+^[^\n]*illegal escape character\n
+=========================compiler_err_illegal_enum_static_ref
+^[^\n]*illegal reference to static field from initializer\n
+=========================compiler_err_illegal_combination_of_modifiers
+^[^\n]*illegal combination of modifiers: [^\n]* and [^\n]*\n
+=========================compiler_err_illegal_char_for_encoding
+^[^\n]*unmappable character for encoding [^\n]*\n
+=========================compiler_err_illegal_char
+^[^\n]*illegal character: ''[^\n]*''\n
+=========================compiler_err_icls_cant_have_static_decl
+^[^\n]*Illegal static declaration in inner class [^\n]*[^\n]*\n[^\n]*modifier \''static\'' is only allowed in constant variable declarations\n
+=========================compiler_err_generic_throwable
+^[^\n]*a generic class may not extend java\.lang\.Throwable\n
+=========================compiler_err_generic_array_creation
+^[^\n]*generic array creation\n
+=========================compiler_err_fp_number_too_small
+^[^\n]*floating point number too small\n
+=========================compiler_err_fp_number_too_large
+^[^\n]*floating point number too large\n
+=========================compiler_err_foreach_not_applicable_to_type
+^[^\n]*for-each not applicable to expression type[^\n]*\n[^\n]*required: [^\n]*[^\n]*\n[^\n]*found:    [^\n]*\n
+=========================compiler_err_finally_without_try
+^[^\n]*''finally'' without ''try''\n
+=========================compiler_err_multicatch_types_must_be_disjoint
+^[^\n]*Alternatives in a multi-catch statement cannot be related by subclassing[^\n]*\n[^\n]*Alternative [^\n]* is a subclass of alternative [^\n]*\n
+=========================compiler_err_multicatch_parameter_may_not_be_assigned
+^[^\n]*multi-catch parameter [^\n]* may not be assigned\n
+=========================compiler_err_try_resource_may_not_be_assigned
+^[^\n]*auto-closeable resource [^\n]* may not be assigned\n
+=========================compiler_err_final_parameter_may_not_be_assigned
+^[^\n]*final parameter [^\n]* may not be assigned\n
+=========================compiler_err_except_never_thrown_in_try
+^[^\n]*exception [^\n]* is never thrown in body of corresponding try statement\n
+=========================compiler_err_except_already_caught
+^[^\n]*exception [^\n]* has already been caught\n
+=========================compiler_err_error_reading_file
+^[^\n]*error reading [^\n]*; [^\n]*\n
+=========================compiler_err_enum_no_finalize
+^[^\n]*enums cannot have finalize methods\n
+=========================compiler_err_enum_types_not_extensible
+^[^\n]*enum types are not extensible\n
+=========================compiler_err_enum_no_subclassing
+^[^\n]*classes cannot directly extend java\.lang\.Enum\n
+=========================compiler_err_enum_label_must_be_unqualified_enum
+^[^\n]*an enum switch case label must be the unqualified name of an enumeration constant\n
+=========================compiler_err_enum_cant_be_instantiated
+^[^\n]*enum types may not be instantiated\n
+=========================compiler_err_enum_annotation_must_be_enum_constant
+^[^\n]*an enum annotation value must be an enum constant\n
+=========================compiler_err_encl_class_required
+^[^\n]*an enclosing instance that contains [^\n]* is required\n
+=========================compiler_err_empty_char_lit
+^[^\n]*empty character literal\n
+=========================compiler_err_else_without_if
+^[^\n]*''else'' without ''if''\n
+=========================compiler_err_duplicate_default_label
+^[^\n]*duplicate default label\n
+=========================compiler_err_duplicate_case_label
+^[^\n]*duplicate case label\n
+=========================compiler_err_duplicate_class
+^[^\n]*duplicate class: [^\n]*\n
+=========================compiler_err_invalid_repeatable_annotation_repeated_and_container_present
+^[^\n]*container [^\n]* must not be present at the same time as the element it contains\n
+=========================compiler_err_invalid_repeatable_annotation_incompatible_target
+^[^\n]*containing annotation type \([^\n]*\) is applicable to more targets than repeatable annotation type \([^\n]*\)\n
+=========================compiler_err_invalid_repeatable_annotation_not_inherited
+^[^\n]*repeatable annotation type \([^\n]*\) is @Inherited while containing annotation type \([^\n]*\) is not\n
+=========================compiler_err_invalid_repeatable_annotation_not_documented
+^[^\n]*repeatable annotation type \([^\n]*\) is @Documented while containing annotation type \([^\n]*\) is not\n
+=========================compiler_err_invalid_repeatable_annotation_retention
+^[^\n]*retention of containing annotation type \([^\n]*\) is shorter than the retention of repeatable annotation type \([^\n]*\)\n
+=========================compiler_err_invalid_repeatable_annotation_elem_nondefault
+^[^\n]*containing annotation type \([^\n]*\) does not have a default value for element [^\n]*\n
+=========================compiler_err_invalid_repeatable_annotation_value_return
+^[^\n]*containing annotation type \([^\n]*\) must declare an element named ''value'' of type [^\n]*\n
+=========================compiler_err_invalid_repeatable_annotation_invalid_value
+^[^\n]*[^\n]* is not a valid @Repeatable: invalid value element\n
+=========================compiler_err_invalid_repeatable_annotation_multiple_values
+^[^\n]*[^\n]* is not a valid @Repeatable, [^\n]* element methods named ''value'' declared\n
+=========================compiler_err_invalid_repeatable_annotation_no_value
+^[^\n]*[^\n]* is not a valid @Repeatable, no value element method declared\n
+=========================compiler_err_invalid_repeatable_annotation
+^[^\n]*duplicate annotation: [^\n]* is annotated with an invalid @Repeatable annotation\n
+=========================compiler_err_duplicate_annotation_missing_container
+^[^\n]*[^\n]* is not a repeatable annotation type\n
+=========================compiler_err_duplicate_annotation_member_value
+^[^\n]*duplicate element ''[^\n]*'' in annotation @[^\n]*\.\n
+=========================compiler_err_duplicate_annotation_invalid_repeated
+^[^\n]*annotation [^\n]* is not a valid repeatable annotation\n
+=========================compiler_err_doesnt_exist
+^[^\n]*package [^\n]* does not exist\n
+=========================compiler_err_default_allowed_in_intf_annotation_member
+^[^\n]*default value only allowed in an annotation type declaration\n
+=========================compiler_err_concrete_inheritance_conflict
+^[^\n]*methods [^\n]* from [^\n]* and [^\n]* from [^\n]* are inherited with the same signature\n
+=========================compiler_err_no_superclass
+^[^\n]*[^\n]* has no superclass\.\n
+=========================compiler_err_call_to_super_not_allowed_in_enum_ctor
+^[^\n]*call to super not allowed in enum constructor\n
+=========================compiler_err_cyclic_annotation_element
+^[^\n]*type of element [^\n]* is cyclic\n
+=========================compiler_err_cyclic_inheritance
+^[^\n]*cyclic inheritance involving [^\n]*\n
+=========================compiler_err_cont_outside_loop
+^[^\n]*continue outside of loop\n
+=========================compiler_err_const_expr_req
+^[^\n]*constant expression required\n
+=========================compiler_err_class_not_allowed
+^[^\n]*class, interface or enum declaration not allowed here\n
+=========================compiler_err_clash_with_pkg_of_same_name
+^[^\n]*[^\n]* [^\n]* clashes with package of same name\n
+=========================compiler_err_catch_without_try
+^[^\n]*''catch'' without ''try''\n
+=========================compiler_err_cant_inherit_diff_arg
+^[^\n]*[^\n]* cannot be inherited with different arguments: <[^\n]*> and <[^\n]*>\n
+=========================compiler_err_cant_select_static_class_from_param_type
+^[^\n]*cannot select a static class from a parameterized type\n
+=========================compiler_err_cant_ref_before_ctor_called
+^[^\n]*cannot reference [^\n]* before supertype constructor has been called\n
+=========================compiler_err_cant_inherit_from_final
+^[^\n]*cannot inherit from final [^\n]*\n
+=========================compiler_err_cant_extend_intf_annotation
+^[^\n]*''extends'' not allowed for @interfaces\n
+=========================compiler_err_cant_deref
+^[^\n]*[^\n]* cannot be dereferenced\n
+=========================compiler_misc_lambda
+^[^\n]*a lambda expression\n
+=========================compiler_err_cant_ref_non_effectively_final_var
+^[^\n]*local variables referenced from [^\n]* must be final or effectively final\n
+=========================compiler_err_cant_assign_val_to_final_var
+^[^\n]*cannot assign a value to final variable [^\n]*\n
+=========================compiler_misc_static_bound_mref
+^[^\n]*static bound method reference\n
+=========================compiler_misc_static_mref_with_targs
+^[^\n]*parameterized qualifier on static method reference\n
+=========================compiler_misc_type_req_ref
+^[^\n]*reference\n
+=========================compiler_err_invalid_mref
+^[^\n]*invalid [^\n]* reference[^\n]*\n[^\n]*[^\n]*\n
+=========================compiler_misc_not_an_intf_component
+^[^\n]*component type [^\n]* is not an interface\n
+=========================compiler_misc_bad_intersection_target_for_functional_expr
+^[^\n]*bad intersection type target for lambda or method reference[^\n]*\n[^\n]*[^\n]*\n
+=========================compiler_misc_no_suitable_functional_intf_inst
+^[^\n]*cannot infer functional interface descriptor for [^\n]*\n
+=========================compiler_misc_descriptor_throws
+^[^\n]*descriptor: [^\n]* [^\n]*\([^\n]*\) throws [^\n]*\n
+=========================compiler_misc_descriptor
+^[^\n]*descriptor: [^\n]* [^\n]*\([^\n]*\)\n
+=========================compiler_misc_incompatible_descs_in_functional_intf
+^[^\n]*incompatible function descriptors found in [^\n]* [^\n]*\n
+=========================compiler_misc_invalid_generic_lambda_target
+^[^\n]*invalid functional descriptor for lambda expression[^\n]*\n[^\n]*method [^\n]* in [^\n]* [^\n]* is generic\n
+=========================compiler_misc_not_a_functional_intf_1
+^[^\n]*[^\n]* is not a functional interface[^\n]*\n[^\n]*[^\n]*\n
+=========================compiler_misc_not_a_functional_intf
+^[^\n]*[^\n]* is not a functional interface\n
+=========================compiler_misc_kindname_interface
+^[^\n]*interface\n
+=========================compiler_err_bad_functional_intf_anno_1
+^[^\n]*Unexpected @FunctionalInterface annotation[^\n]*\n[^\n]*[^\n]*\n
+=========================compiler_err_bad_functional_intf_anno
+^[^\n]*Unexpected @FunctionalInterface annotation\n
+=========================compiler_misc_incompatible_abstracts
+^[^\n]*multiple non-overriding abstract methods found in [^\n]* [^\n]*\n
+=========================compiler_misc_no_abstracts
+^[^\n]*no abstract method found in [^\n]* [^\n]*\n
+=========================compiler_misc_cant_apply_symbol
+^[^\n]*[^\n]* [^\n]* in [^\n]* [^\n]* cannot be applied to given types[^\n]*\n[^\n]*required: [^\n]*[^\n]*\n[^\n]*found: [^\n]*[^\n]*\n[^\n]*reason: [^\n]*\n
+=========================compiler_err_cant_apply_symbols
+^[^\n]*no suitable [^\n]* found for [^\n]*\([^\n]*\)\n
+=========================compiler_err_cant_apply_symbol
+^[^\n]*[^\n]* [^\n]* in [^\n]* [^\n]* cannot be applied to given types;[^\n]*\n[^\n]*required: [^\n]*[^\n]*\n[^\n]*found: [^\n]*[^\n]*\n[^\n]*reason: [^\n]*\n
+=========================compiler_err_call_must_be_first_stmt_in_ctor
+^[^\n]*call to [^\n]* must be first statement in constructor\n
+=========================compiler_misc_kindname_constructor
+^[^\n]*constructor\n
+=========================compiler_err_break_outside_switch_loop
+^[^\n]*break outside switch or loop\n
+=========================compiler_err_bad_initializer
+^[^\n]*bad initializer for [^\n]*\n
+=========================compiler_err_attribute_value_must_be_constant
+^[^\n]*element value must be a constant expression\n
+=========================compiler_err_array_req_but_found
+^[^\n]*array required, but [^\n]* found\n
+=========================compiler_err_array_dimension_missing
+^[^\n]*array dimension missing\n
+=========================compiler_err_array_and_varargs
+^[^\n]*cannot declare both [^\n]* and [^\n]* in [^\n]*\n
+=========================compiler_err_cant_inherit_from_anon
+^[^\n]*cannot inherit from anonymous class\n
+=========================compiler_misc_type_req_class
+^[^\n]*class\n
+=========================compiler_err_anon_class_impl_intf_no_qual_for_new
+^[^\n]*anonymous class implements interface; cannot have qualifier for new\n
+=========================compiler_err_anon_class_impl_intf_no_typeargs
+^[^\n]*anonymous class implements interface; cannot have type arguments\n
+=========================compiler_err_anon_class_impl_intf_no_args
+^[^\n]*anonymous class implements interface; cannot have arguments\n
+=========================compiler_err_annotation_value_not_allowable_type
+^[^\n]*annotation value not of an allowable type\n
+=========================compiler_err_annotation_value_must_be_name_value
+^[^\n]*annotation values must be of the form ''name=value''\n
+=========================compiler_err_annotation_value_must_be_class_literal
+^[^\n]*annotation value must be a class literal\n
+=========================compiler_err_annotation_value_must_be_annotation
+^[^\n]*annotation value must be an annotation\n
+=========================compiler_err_annotation_type_not_applicable
+^[^\n]*annotation type not applicable to this kind of declaration\n
+=========================compiler_err_annotation_not_valid_for_type
+^[^\n]*annotation not valid for an element of type [^\n]*\n
+=========================compiler_misc_location_1
+^[^\n]*[^\n]* [^\n]* of type [^\n]*\n
+=========================compiler_err_annotation_missing_default_value_1
+^[^\n]*annotation @[^\n]* is missing default values for elements [^\n]*\n
+=========================compiler_err_annotation_missing_default_value
+^[^\n]*annotation @[^\n]* is missing a default value for the element ''[^\n]*''\n
+=========================compiler_err_already_defined_this_unit
+^[^\n]*[^\n]* is already defined in this compilation unit\n
+=========================compiler_err_already_defined_static_single_import
+^[^\n]*a type with the same simple name is already defined by the static single-type-import of [^\n]*\n
+=========================compiler_err_already_defined_single_import
+^[^\n]*a type with the same simple name is already defined by the single-type-import of [^\n]*\n
+=========================compiler_err_already_defined_in_clinit
+^[^\n]*[^\n]* [^\n]* is already defined in [^\n]* of [^\n]* [^\n]*\n
+=========================compiler_err_already_defined
+^[^\n]*[^\n]* [^\n]* is already defined in [^\n]* [^\n]*\n
+=========================compiler_err_already_annotated
+^[^\n]*[^\n]* [^\n]* has already been annotated\n
+=========================compiler_err_abstract_meth_cant_have_body
+^[^\n]*abstract methods cannot have a body\n
+=========================compiler_err_abstract_cant_be_instantiated
+^[^\n]*[^\n]* is abstract; cannot be instantiated\n
+=========================compiler_misc_location
+^[^\n]*[^\n]* [^\n]*\n
+=========================compiler_err_proc_messager
+^[^\n]*[^\n]*\n
