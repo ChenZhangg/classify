@@ -50,7 +50,7 @@ def calculateWordNumberSimilarity(segment,regex)
   similarity_b=count_b.to_f/word_array_b.length
 
   similarity_div=similarity_a*0.8+similarity_b*0.2
-  similarity=similarity_div*0.6+word_array_b.length/30*0.4
+  similarity=similarity_div*0.8+word_array_b.length.to_f/30*0.2
 end
 
 def getLargestSimilarity(hash)
