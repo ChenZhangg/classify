@@ -66,6 +66,10 @@ class Property
     @temp_sym_array<<symbol
     @temp_regex_hash[symbol]=/^[^\n]*in[^\n]*cannot be applied to given types;\n/m
 
+    symbol=:cannot_apply_zc2#../../bodyLog2/build_logs/sk89q@WorldEdit/226@2.log
+    @temp_sym_array<<symbol
+    @temp_regex_hash[symbol]=/^[^\n]*in[^\n]*cannot be applied to[^\n]*\n/m
+
     symbol=:ref_ambiguous_zc0#../../bodyLog2/build_logs/sk89q@WorldEdit/876@1.log
     @temp_sym_array<<symbol
     @temp_regex_hash[symbol]=/^[^\n]*reference to[^\n]*is ambiguous[^\n]*both[^\n]*in[^\n]*and[^\n]*in[^\n]*match\n/m

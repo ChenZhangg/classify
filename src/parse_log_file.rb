@@ -63,6 +63,7 @@ end
 
 def map(output_file,segment_lines)
   segment=segment_lines.join
+  
   match_length_similarity=Hash.new(0)
   word_number_similarity=Hash.new(0)
   @regex_hash.each do |key,regex|
@@ -126,9 +127,8 @@ def cutSegment(output_file,segment)
   cut_point=[]
   segment_lines.each_with_index do |line,index|
     next unless line.include? @segment_cut
-    cut_point<<index
+    cut_point<<index if index!=0
   end
-
   line_begin=0
   cut_point.each do |point|
     line_end=point
@@ -167,7 +167,7 @@ def gradleCutSegment(log_file_path)
   segment=''
   array=set.to_a.sort!
   array.each do |k|
-    segment+=file_lines[k] if file_lines[k]!~/Download/s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i
+    segment+=file_lines[k] if file_lines[k]!~/Download\s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i
   end
   File.open('gradleSegment','a') do |output|
     output.puts
@@ -175,6 +175,7 @@ def gradleCutSegment(log_file_path)
     output.puts segment
     output.puts
   end
+
   cutSegment('gradleSegment',segment)
 end
 
