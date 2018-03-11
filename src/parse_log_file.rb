@@ -1,11 +1,12 @@
 require 'set'
 require_relative 'property'
-
+require 'csv'
 @maven_error_message='COMPILATION ERROR'
 @gradle_error_message='Compilation failed'
 @segment_cut="/home/travis"
 @regex_hash=Property.new.getRegexpHash
 
+@error_type_number=Hash.new(0)
 def match(file,segment)
 
   @regex_hash.each do |key,regex|
@@ -80,6 +81,7 @@ def map(output_file,segment_lines)
         output.puts segment
         output.puts
       end
+      @error_type_number[key]+=1
       return
     end
     match_length_similarity[key]=match[0].length.to_f/segment.length
@@ -112,12 +114,21 @@ def map(output_file,segment_lines)
   end
 
   match=@regex_hash[key_word_number_similarity].match(segment)
+  @error_type_number[key_word_number_similarity]+=1
   File.open(output_file,'a') do |output|
     output.puts
     output.puts "According to the word_number_similarity, matching regexp is: key=#{key_word_number_similarity}  regexp=#{@regex_hash[key_word_number_similarity]}   similarity=#{word_number_similarity[key_word_number_similarity]}"
     output.puts "The matched part is:"
     output.puts match[0] if match
     output.puts 'NULL'   unless match
+    output.puts
+  end
+
+  return if word_number_similarity[key_word_number_similarity]>0.3
+
+  File.open('similarityTooLow','a') do |output|
+    output.puts 'zhangchen>>>>>>>>>>>>>>>>>>>>>>>>>'
+    output.puts segment
     output.puts
   end
 end
@@ -206,6 +217,8 @@ def mavenCutSegment(log_file_path)
 end
 
 def mavenOrGradle(log_file_path)
+  @error_type_number.clear
+
   puts "--Scanning file: #{log_file_path}"
   file=IO.read(log_file_path).gsub(/\r\n?/, "\n")
   if file.scan(/gradle/i).size >= 2
@@ -218,6 +231,17 @@ def mavenOrGradle(log_file_path)
     print '>>>>>>>>>>>>>>>>>>>>>>>>>',' USE Maven'
     puts
     mavenCutSegment(log_file_path)
+  end
+
+  File.open('statistics.csv','a') do |output|
+    CSV(output) do |csv|
+      array=[]
+      array<<log_file_path
+      @error_type_number.each do |key,value|
+        array<<"#{key}:#{value}"
+      end
+      csv<< array
+    end
   end
 end
 
