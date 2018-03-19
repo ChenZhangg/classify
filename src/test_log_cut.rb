@@ -19,8 +19,9 @@ def gradleCutSegment(log_file_path)
           k-=1
         end
       else
-        /.*'(.+)'/=~file_lines[index-1]
-        while k>0 && file_lines[k]!~/:compileTestJava|:compileJava|\.\/gradle/ && [k]!~/^#{$1}/
+        match=/.*'(.+)'/.match file_lines[index-1]
+
+        while k>0 && file_lines[k]!~/:compileTestJava|:compileJava|\.\/gradle|travis_time/ && file_lines[k]!~/^#{match[1]}/
           k-=1
         end
       end
@@ -28,9 +29,10 @@ def gradleCutSegment(log_file_path)
 
     segment=''
     (k..index).each do |k|
-      segment+=file_lines[k] if file_lines[k]!~/Download\s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i
+      segment+=file_lines[k] if file_lines[k]!~/Download\s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i && file_lines[k]!~/at [.$\w\d]+\([.$\w\d]+:[0-9]+\)/i
     end
-
+    puts segment
+=begin
     File.open('gradleCutSegment','a') do |output|
       output.puts
       output.puts "Segment #{count} in #{log_file_path} is:"
@@ -38,6 +40,7 @@ def gradleCutSegment(log_file_path)
       output.puts '===============End================='
       output.puts
     end
+=end
   end
 end
 
@@ -66,4 +69,5 @@ def traverseDir(build_logs_path)
 end
 
 @build_logs_path='../../bodyLog2/build_logs/'
-traverseDir(@build_logs_path)
+#traverseDir(@build_logs_path)
+gradleCutSegment('923@1.log')

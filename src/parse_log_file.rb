@@ -166,8 +166,8 @@ def gradleCutSegment(log_file_path)
           k-=1
         end
       else
-        /.*'(.+)'/=~file_lines[index-1]
-        while k>0 && file_lines[k]!~/:compileTestJava|:compileJava|\.\/gradle/ && [k]!~/^#{$1}/
+        match=/.*'(.+)'/.match file_lines[index-1]
+        while k>0 && file_lines[k]!~/:compileTestJava|:compileJava|\.\/gradle/ && file_lines[k]!~/^#{match[1]}/
           k-=1
         end
       end
@@ -178,7 +178,7 @@ def gradleCutSegment(log_file_path)
   segment=''
   array=set.to_a.sort!
   array.each do |k|
-    segment+=file_lines[k] if file_lines[k]!~/Download\s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i
+    segment+=file_lines[k] if file_lines[k]!~/Download\s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i && file_lines[k]!~/at [.$\w\d]+\([.$\w\d]+:[0-9]+\)/i
   end
   File.open('gradleSegment','a') do |output|
     output.puts
