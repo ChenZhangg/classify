@@ -3,3 +3,7 @@
 /.idea
 /src/output
 *~
+*.log
+*Segment
+/src/similarityTooLow
+/src/statistics.csv
