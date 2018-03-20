@@ -73,7 +73,13 @@ class Property
     symbol=:ref_ambiguous_zc0#../../bodyLog2/build_logs/sk89q@WorldEdit/876@1.log
     @temp_sym_array<<symbol
     @temp_regex_hash[symbol]=/^[^\n]*reference to[^\n]*is ambiguous[^\n]*both[^\n]*in[^\n]*and[^\n]*in[^\n]*match\n/m
+
+    symbol=:without_call_zc0#../../bodyLog2/build_logs/sk89q@WorldEdit/226@2.log
+    @temp_sym_array<<symbol
+    @temp_regex_hash[symbol]=/^[^\n]*equals\/hashCode implementation but without a call to superclass[^\n]*\n/m
+
   end
+
 
   def detectDuplication
     @duplication_hash=Hash.new
@@ -92,6 +98,26 @@ class Property
       @temp_regex_hash.delete(sym)
       @sym_array.delete(sym)
     end
+  end
+
+  def sortByLength
+    temp_sym_array=[]
+    temp_regex_hash=Hash.new
+    temp_regex_hash_length=Hash.new(0)
+    @temp_regex_hash.each do |key,hash|
+      count=hash.source.scan(/\w{2,}/).length
+      temp_regex_hash_length[key]=count
+    end
+
+    temp_regex_hash_length.sort{|a,b| a[1]<=>b[1]}.each do |e|
+      temp_sym_array<<e[0]
+    end
+
+    @sym_array=temp_sym_array
+    @sym_array.each do |e|
+      temp_regex_hash[e]=@temp_regex_hash[e]
+    end
+    @temp_regex_hash=temp_regex_hash
   end
 
   def similarityMatrixInitialize
@@ -157,6 +183,8 @@ class Property
     insertHashWithHand
 
     removeDuplication
+
+    sortByLength
     similarityMatrixInitialize
     calculateSimilarityMatrix
     sortRegexHash
@@ -166,21 +194,10 @@ class Property
 end
 
 def test
-  max=0
-  m=0
-  r=0
-  Property.new.getRegexpHash.each do |key,regex|
-    puts "=========================#{key}"
-    length=regex.source.scan(/\w{2,}/).length
-    if length>max
-      max=length
-      m=key
-      r=regex
-    end
+  Property.new.getRegexpHash.each do |key,value|
+    puts "#{key}"
+    puts "#{value}"
   end
-  p max
-  p m
-  p r
 end
 #test
 #Property.new.parseProperty('compiler.properties')

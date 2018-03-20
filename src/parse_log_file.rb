@@ -4,6 +4,9 @@ require 'csv'
 @maven_error_message='COMPILATION ERROR'
 @gradle_error_message='Compilation failed'
 @segment_cut="/home/travis"
+@segment_cut_regexp=/(\/[^\n]+){2,}\/\w+[\w\d]*\.java/
+
+
 @regex_hash=Property.new.getRegexpHash
 
 @error_type_number=Hash.new(0)
@@ -137,7 +140,7 @@ def cutSegment(output_file,segment)
   segment_lines=segment.lines
   cut_point=[]
   segment_lines.each_with_index do |line,index|
-    next unless line.include? @segment_cut
+    next unless @segment_cut_regexp=~line
     cut_point<<index if index!=0
   end
   line_begin=0
@@ -178,7 +181,7 @@ def gradleCutSegment(log_file_path)
   segment=''
   array=set.to_a.sort!
   array.each do |k|
-    segment+=file_lines[k] if file_lines[k]!~/Download\s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i && file_lines[k]!~/at [.$\w\d]+\([.$\w\d]+:[0-9]+\)/i
+    segment+=file_lines[k] if file_lines[k]!~/Download\s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i && file_lines[k]!~/at [.$\w\d]+\([.$\w\d]+:[0-9]+\)/i && file_lines[k]!~/^$/
   end
   File.open('gradleSegment','a') do |output|
     output.puts
@@ -205,7 +208,7 @@ def mavenCutSegment(log_file_path)
   segment=''
   array=set.to_a.sort!
   array.each do |k|
-    segment+=file_lines[k] if file_lines[k]!~/Download\s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i
+    segment+=file_lines[k] if file_lines[k]!~/Download\s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i && file_lines[k]!~/at [.$\w\d]+\([.$\w\d]+:[0-9]+\)/i && file_lines[k]!~/^$/
   end
   File.open('mavenSegment','a') do |output|
     output.puts
