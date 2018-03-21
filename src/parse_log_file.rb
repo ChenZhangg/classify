@@ -246,10 +246,10 @@ def mavenOrGradle(log_file_path)
 end
 
 def traverseDir(build_logs_path)
-  #count=0
+  count=0
   (Dir.entries(build_logs_path)).delete_if {|repo_name| /.+@.+/!~repo_name}.each do |repo_name|
-    #count+=1
-    #next if count<5
+    count+=1
+    next if count<7
     repo_path=File.join(build_logs_path,repo_name)
     puts "Scanning projects: #{repo_path}"
     Dir.entries(repo_path).delete_if {|log_file_name| /.+@.+/!~log_file_name}.sort_by!{|e| e.sub(/\.log/,'').sub(/@/,'.').to_f}.each do |log_file_name|
