@@ -1,6 +1,6 @@
 class Property
   def stringToRegex(line)
-    line.chomp.strip.sub(/\\n\\/,'').gsub(/{[0-9]}|:|;|,|\\u\d+|'|"/,' ').gsub(/(?=[().\[\]])/,"\\").gsub(/\s{2,}/,'[^\n]*').gsub(/\d/,"\d+")
+    line.chomp.strip.sub(/\\n\\/,'').sub(/\\$/,'').gsub(/{[0-9]}|:|;|,|\[|\]|\\u\d+|'|"/,' ').gsub(/(?=[().\[\]])/,"\\").gsub(/\s{2,}/,'[^\n]*').gsub(/\d/,"\d+")
   end
 
   def stringToValidCharacter(s)
@@ -16,7 +16,7 @@ class Property
       next unless line.start_with?('compiler')
 
       match=/[\w.]+/.match(line)
-      sym=match[0].gsub(/\./,'_').to_sym
+      sym=(propertyFile+'_'+match[0]).gsub(/\./,'_').to_sym
       @temp_sym_array<<sym
 
       regex_string='^[^\n]*'+stringToRegex(cpf[index+1])
@@ -74,10 +74,13 @@ class Property
     @temp_sym_array<<symbol
     @temp_regex_hash[symbol]=/^[^\n]*reference to[^\n]*is ambiguous[^\n]*both[^\n]*in[^\n]*and[^\n]*in[^\n]*match\n/m
 
-    symbol=:without_call_zc0#../../bodyLog2/build_logs/sk89q@WorldEdit/226@2.log
+    symbol=:without_call_zc0#
     @temp_sym_array<<symbol
     @temp_regex_hash[symbol]=/^[^\n]*equals\/hashCode implementation but without a call to superclass[^\n]*\n/m
 
+    symbol=:unexpected_type_zc0#
+    @temp_sym_array<<symbol
+    @temp_regex_hash[symbol]=/^[^\n]*unexpected type[^\n]*\n/m
   end
 
 
@@ -178,7 +181,9 @@ class Property
   end
 
   def getRegexpHash
-    parseProperty('compiler.properties')
+    parseProperty('openjdk7')
+    parseProperty('openjdk8')
+    parseProperty('openjdk9')
 
     insertHashWithHand
 
@@ -197,6 +202,7 @@ def test
   Property.new.getRegexpHash.each do |key,value|
     puts "#{key}"
     puts "#{value}"
+    puts
   end
 end
 #test

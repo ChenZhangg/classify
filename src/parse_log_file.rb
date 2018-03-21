@@ -4,37 +4,12 @@ require 'csv'
 @maven_error_message='COMPILATION ERROR'
 @gradle_error_message='Compilation failed'
 @segment_cut="/home/travis"
-@segment_cut_regexp=/(\/[^\n]+){2,}\/\w+[\w\d]*\.java/
-
+@segment_cut_regexp_file=/(\/[^\n]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt)/
+@segment_cut_regexp_jar=/(\/[^\n]+){2,}\/\w+[-\w\d.]*\.jar/
 
 @regex_hash=Property.new.getRegexpHash
 
 @error_type_number=Hash.new(0)
-def match(file,segment)
-
-  @regex_hash.each do |key,regex|
-    word_array=regex.source.scan(/\w{2,}/)
-    flag=true
-    word_array.each do |word|
-      unless segment.include?(word)
-        flag=false
-      end
-    end
-    next unless flag
-    segment.scan(regex) do |w|
-      puts "=========================#{key}"
-      p regex.source
-      File.open(file,'a') do |output|
-        output.puts
-        output.puts "=========================#{key}"
-        output.puts regex.source
-        output.puts $&
-        output.puts
-      end
-    end
-
-  end
-end
 
 def calculateWordNumberSimilarity(segment,regex)
   word_array_a=regex.source.lines[0].scan(/\w{2,}/)
@@ -140,7 +115,7 @@ def cutSegment(output_file,segment)
   segment_lines=segment.lines
   cut_point=[]
   segment_lines.each_with_index do |line,index|
-    next unless @segment_cut_regexp=~line
+    next unless @segment_cut_regexp_file=~line
     cut_point<<index if index!=0
   end
   line_begin=0
@@ -151,6 +126,28 @@ def cutSegment(output_file,segment)
   end
   line_end=segment_lines.length-1
   map(output_file,segment_lines[line_begin..line_end])
+end
+
+def addLine?(line)
+  flag=true
+  flag=false if line=~/Download\s*http/i
+  flag=false if line=~/downloaded.*KB\/.*KB/i
+  flag=false if line=~/at [.$\w\d]+\([.$\w\d]+:[0-9]+\)/i
+  flag=false if line=~/^$/
+  flag=false if line=~/-{10,}/
+  flag=false if line=~/COMPILATION ERROR/
+  flag=false if line=~/^[0-9]+ (error|errors)$/
+  flag=false if line=~/^[0-9]+ (warning|warnings)$/
+  flag=false if line=~/^Note:/
+  flag=false if line=~/What went wrong/
+  flag=false if line=~/Build failed with an exception/
+  flag=false if line=~/Execution failed for task/
+  flag=false if line=~/Compilation failed/
+  flag=false if line=~/FAILED$/
+  flag=false if line=~/^\[info\]/
+  flag=false if line=~/Failed to execute goal/
+
+  flag
 end
 
 def gradleCutSegment(log_file_path)
@@ -165,12 +162,12 @@ def gradleCutSegment(log_file_path)
       end
     else
       if file_lines[index-1]!~/Execution failed for task/
-        while k>0 && file_lines[k]!~/:compileTestJava|:compileJava|\.\/gradle/
+        while k>0 && file_lines[k]!~/:compileTestJava|:compileJava|\.\/gradle|travis_time/
           k-=1
         end
       else
         match=/.*'(.+)'/.match file_lines[index-1]
-        while k>0 && file_lines[k]!~/:compileTestJava|:compileJava|\.\/gradle/ && file_lines[k]!~/^#{match[1]}/
+        while k>0 && file_lines[k]!~/:compileTestJava|:compileJava|\.\/gradle|travis_time/ && file_lines[k]!~/^#{match[1]}/
           k-=1
         end
       end
@@ -181,7 +178,7 @@ def gradleCutSegment(log_file_path)
   segment=''
   array=set.to_a.sort!
   array.each do |k|
-    segment+=file_lines[k] if file_lines[k]!~/Download\s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i && file_lines[k]!~/at [.$\w\d]+\([.$\w\d]+:[0-9]+\)/i && file_lines[k]!~/^$/
+    segment+=file_lines[k] if addLine?(file_lines[k])
   end
   File.open('gradleSegment','a') do |output|
     output.puts
@@ -208,7 +205,7 @@ def mavenCutSegment(log_file_path)
   segment=''
   array=set.to_a.sort!
   array.each do |k|
-    segment+=file_lines[k] if file_lines[k]!~/Download\s*http/i && file_lines[k]!~/downloaded.*KB\/.*KB/i && file_lines[k]!~/at [.$\w\d]+\([.$\w\d]+:[0-9]+\)/i && file_lines[k]!~/^$/
+    segment+=file_lines[k] if addLine?(file_lines[k])
   end
   File.open('mavenSegment','a') do |output|
     output.puts
@@ -249,10 +246,10 @@ def mavenOrGradle(log_file_path)
 end
 
 def traverseDir(build_logs_path)
-  count=0
+  #count=0
   (Dir.entries(build_logs_path)).delete_if {|repo_name| /.+@.+/!~repo_name}.each do |repo_name|
-    count+=1
-    next if count<5
+    #count+=1
+    #next if count<5
     repo_path=File.join(build_logs_path,repo_name)
     puts "Scanning projects: #{repo_path}"
     Dir.entries(repo_path).delete_if {|log_file_name| /.+@.+/!~log_file_name}.sort_by!{|e| e.sub(/\.log/,'').sub(/@/,'.').to_f}.each do |log_file_name|
