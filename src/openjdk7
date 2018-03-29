@@ -840,19 +840,19 @@ compiler.err.varargs.invalid.trustme.anno=\
     Invalid {0} annotation. {1}
 
 # 0: type
-compiler.misc.varargs.trustme.on.reifiable.varargs=\
+#compiler.misc.varargs.trustme.on.reifiable.varargs=\
     Varargs element type {0} is reifiable.
 
 # 0: symbol
-compiler.misc.varargs.trustme.on.non.varargs.meth=\
+#compiler.misc.varargs.trustme.on.non.varargs.meth=\
     Method {0} is not a varargs method.
 
 # 0: symbol
-compiler.misc.varargs.trustme.on.virtual.varargs=\
+#compiler.misc.varargs.trustme.on.virtual.varargs=\
     Instance method {0} is not final.
 
 # 0: type, 1: kind, 2: symbol
-compiler.misc.inaccessible.varargs.type=\
+#compiler.misc.inaccessible.varargs.type=\
     formal varargs element type {0} is not accessible from {1} {2}
 
 # In the following string, {1} will always be the detail message from
@@ -880,19 +880,19 @@ compiler.err.cant.read.file=\
 
 # Fatal Errors
 
-compiler.misc.fatal.err.no.java.lang=\
+#compiler.misc.fatal.err.no.java.lang=\
     Fatal Error: Unable to find package java.lang in classpath or bootclasspath
 
-compiler.misc.fatal.err.cant.locate.meth=\
+#compiler.misc.fatal.err.cant.locate.meth=\
     Fatal Error: Unable to find method {0}
 
-compiler.misc.fatal.err.cant.locate.field=\
+#compiler.misc.fatal.err.cant.locate.field=\
     Fatal Error: Unable to find field {0}
 
-compiler.misc.fatal.err.cant.locate.ctor=\
+#compiler.misc.fatal.err.cant.locate.ctor=\
     Fatal Error: Unable to find constructor for {0}
 
-compiler.misc.fatal.err.cant.close.loader=\
+#compiler.misc.fatal.err.cant.close.loader=\
     Fatal Error: Cannot close class loader for annotation processors
 
 #####
@@ -904,15 +904,15 @@ compiler.misc.fatal.err.cant.close.loader=\
 #compiler.misc.source.unavailable=\
     (source unavailable)
 
-compiler.misc.base.membership=\
+#compiler.misc.base.membership=\
     all your base class are belong to us
 
 # 0: string, 1: string, 2: boolean
-compiler.misc.x.print.processor.info=\
+#compiler.misc.x.print.processor.info=\
     Processor {0} matches {1} and returns {2}.
 
 # 0: number, 1: string, 2: set of symbol, 3: boolean
-compiler.misc.x.print.rounds=\
+#compiler.misc.x.print.rounds=\
     Round {0}:\n\tinput files: {1}\n\tannotations: {2}\n\tlast round: {3}
 
 #####
@@ -923,10 +923,10 @@ compiler.misc.x.print.rounds=\
     Note:\u0020
 
 # 0: file name
-compiler.note.deprecated.filename=\
+#compiler.note.deprecated.filename=\
     {0} uses or overrides a deprecated API.
 
-compiler.note.deprecated.plural=\
+#compiler.note.deprecated.plural=\
     Some input files use or override a deprecated API.
 
 # The following string may appear after one of the above deprecation
@@ -935,17 +935,17 @@ compiler.note.deprecated.plural=\
     Recompile with -Xlint:deprecation for details.
 
 # 0: file name
-compiler.note.deprecated.filename.additional=\
+#compiler.note.deprecated.filename.additional=\
     {0} has additional uses or overrides of a deprecated API.
 
-compiler.note.deprecated.plural.additional=\
+#compiler.note.deprecated.plural.additional=\
     Some input files additionally use or override a deprecated API.
 
 # 0: file name
-compiler.note.unchecked.filename=\
+#compiler.note.unchecked.filename=\
     {0} uses unchecked or unsafe operations.
 
-compiler.note.unchecked.plural=\
+#compiler.note.unchecked.plural=\
     Some input files use unchecked or unsafe operations.
 
 # The following string may appear after one of the above deprecation
@@ -954,17 +954,17 @@ compiler.note.unchecked.plural=\
     Recompile with -Xlint:unchecked for details.
 
 # 0: file name
-compiler.note.unchecked.filename.additional=\
+#compiler.note.unchecked.filename.additional=\
     {0} has additional unchecked or unsafe operations.
 
-compiler.note.unchecked.plural.additional=\
+#compiler.note.unchecked.plural.additional=\
     Some input files additionally use unchecked or unsafe operations.
 
 # 0: file name
-compiler.note.sunapi.filename=\
+#compiler.note.sunapi.filename=\
     {0} uses internal proprietary API that may be removed in a future release.
 
-compiler.note.sunapi.plural=\
+#compiler.note.sunapi.plural=\
     Some input files use internal proprietary API that may be removed in a future release.
 
 # The following string may appear after one of the above sunapi messages.
@@ -972,10 +972,10 @@ compiler.note.sunapi.plural=\
     Recompile with -Xlint:sunapi for details.
 
 # 0: file name
-compiler.note.sunapi.filename.additional=\
+#compiler.note.sunapi.filename.additional=\
     {0} uses additional internal proprietary API that may be removed in a future release.
 
-compiler.note.sunapi.plural.additional=\
+#compiler.note.sunapi.plural.additional=\
     Some input files additionally use internal proprietary API that may be removed in a future release.
 
 # Notes related to annotation processing
@@ -1420,68 +1420,68 @@ compiler.err.cant.access=\
     cannot access {0}\n\
     {1}
 
-compiler.misc.bad.class.file.header=\
+#compiler.misc.bad.class.file.header=\
     bad class file: {0}\n\
     {1}\n\
     Please remove or make sure it appears in the correct subdirectory of the classpath.
 
 # 0: file name, 1: message segment
-compiler.misc.bad.source.file.header=\
+#compiler.misc.bad.source.file.header=\
     bad source file: {0}\n\
     {1}\n\
     Please remove or make sure it appears in the correct subdirectory of the sourcepath.
 
 ## The following are all possible strings for the second argument ({1}) of the
 ## above strings.
-compiler.misc.bad.class.signature=\
+#compiler.misc.bad.class.signature=\
     bad class signature: {0}
 
 #0: symbol, 1: symbol
-compiler.misc.bad.enclosing.class=\
+#compiler.misc.bad.enclosing.class=\
     bad enclosing class for {0}: {1}
 
 # 0: symbol
-compiler.misc.bad.enclosing.method=\
+#compiler.misc.bad.enclosing.method=\
     bad enclosing method attribute for class {0}
 
-compiler.misc.bad.runtime.invisible.param.annotations=\
+#compiler.misc.bad.runtime.invisible.param.annotations=\
     bad RuntimeInvisibleParameterAnnotations attribute: {0}
 
-compiler.misc.bad.const.pool.tag=\
+#compiler.misc.bad.const.pool.tag=\
     bad constant pool tag: {0}
 
-compiler.misc.bad.const.pool.tag.at=\
+#compiler.misc.bad.const.pool.tag.at=\
     bad constant pool tag: {0} at {1}
 
-compiler.misc.bad.signature=\
+#compiler.misc.bad.signature=\
     bad signature: {0}
 
-compiler.misc.class.file.wrong.class=\
+#compiler.misc.class.file.wrong.class=\
     class file contains wrong class: {0}
 
-compiler.misc.class.file.not.found=\
+#compiler.misc.class.file.not.found=\
     class file for {0} not found
 
 # 0: name
-compiler.misc.file.doesnt.contain.class=\
+#compiler.misc.file.doesnt.contain.class=\
     file does not contain class {0}
 
-compiler.misc.file.does.not.contain.package=\
+#compiler.misc.file.does.not.contain.package=\
     file does not contain package {0}
 
-compiler.misc.illegal.start.of.class.file=\
+#compiler.misc.illegal.start.of.class.file=\
     illegal start of class file
 
-compiler.misc.unable.to.access.file=\
+#compiler.misc.unable.to.access.file=\
     unable to access file: {0}
 
-compiler.misc.unicode.str.not.supported=\
+#compiler.misc.unicode.str.not.supported=\
     unicode string in class file not supported
 
-compiler.misc.undecl.type.var=\
+#compiler.misc.undecl.type.var=\
     undeclared type variable: {0}
 
-compiler.misc.wrong.version=\
+#compiler.misc.wrong.version=\
     class file has wrong version {0}.{1}, should be {2}.{3}
 
 #####
@@ -1539,10 +1539,10 @@ compiler.misc.unchecked.assign=\
 compiler.misc.unchecked.cast.to.type=\
     unchecked cast
 
-compiler.misc.assignment.from.super-bound=\
+#compiler.misc.assignment.from.super-bound=\
     assignment from super-bound type {0}
 
-compiler.misc.assignment.to.extends-bound=\
+#compiler.misc.assignment.to.extends-bound=\
     assignment to extends-bound type {0}
 
 # compiler.err.star.expected=\
@@ -1550,7 +1550,7 @@ compiler.misc.assignment.to.extends-bound=\
 # compiler.err.no.elem.type=\
 #     \[\*\] cannot have a type
 
-compiler.misc.try.not.applicable.to.type=\
+#compiler.misc.try.not.applicable.to.type=\
     try-with-resources not applicable to variable type
 
 #####
@@ -1586,32 +1586,32 @@ compiler.err.type.found.req=\
 
 ## The following are all possible strings for the last argument of all those
 ## diagnostics whose key ends in ".1"
-compiler.misc.undetermined.type=\
+#compiler.misc.undetermined.type=\
     undetermined type
 
-compiler.misc.type.variable.has.undetermined.type=\
+#compiler.misc.type.variable.has.undetermined.type=\
     type variable {0} has undetermined type
 
 # 0: type, 1: list of type
-compiler.misc.no.unique.maximal.instance.exists=\
+#compiler.misc.no.unique.maximal.instance.exists=\
     no unique maximal instance exists for type variable {0} with upper bounds {1}
 
-compiler.misc.no.unique.minimal.instance.exists=\
+#compiler.misc.no.unique.minimal.instance.exists=\
     no unique minimal instance exists for type variable {0} with lower bounds {1}
 
 # 0: list of type, 1: type, 2: type
-compiler.misc.infer.no.conforming.instance.exists=\
+#compiler.misc.infer.no.conforming.instance.exists=\
     no instance(s) of type variable(s) {0} exist so that {1} conforms to {2}
 
 # 0: list of type, 1: type, 2: type
-compiler.misc.infer.no.conforming.assignment.exists=\
+#compiler.misc.infer.no.conforming.assignment.exists=\
     no instance(s) of type variable(s) {0} exist so that argument type {1} conforms to formal parameter type {2}
 
-compiler.misc.infer.arg.length.mismatch=\
+#compiler.misc.infer.arg.length.mismatch=\
     cannot instantiate from arguments because actual and formal argument lists differ in length
 
 # 0: type, 1: list of type
-compiler.misc.inferred.do.not.conform.to.bounds=\
+#compiler.misc.inferred.do.not.conform.to.bounds=\
     inferred type does not conform to declared bound(s)\n\
     inferred: {0}\n\
     bound(s): {1}
@@ -1621,7 +1621,7 @@ compiler.misc.inferred.do.not.conform.to.bounds=\
     {0}<>
 
 # 0: type
-compiler.misc.diamond.non.generic=\
+#compiler.misc.diamond.non.generic=\
     cannot use ''<>'' with non-generic class {0}
 
 compiler.misc.diamond.and.explicit.params=\
@@ -1760,39 +1760,39 @@ compiler.err.cant.resolve.location.args.params=\
     no arguments
 
 # 0: message segment
-compiler.err.override.static=\
+#compiler.err.override.static=\
     {0}\n\
     overriding method is static
 
 # 0: message segment, 1: set of modifier
-compiler.err.override.meth=\
+#compiler.err.override.meth=\
     {0}\n\
     overridden method is {1}
 
 # 0: message segment, 1: type
-compiler.err.override.meth.doesnt.throw=\
+#compiler.err.override.meth.doesnt.throw=\
     {0}\n\
     overridden method does not throw {1}
 
 # In the following string {1} is a space separated list of Java Keywords, as
 # they would have been declared in the source code
 # 0: message segment, 1: set of modifier
-compiler.err.override.weaker.access=\
+#compiler.err.override.weaker.access=\
     {0}\n\
     attempting to assign weaker access privileges; was {1}
 
 # 0: message segment, 1: type, 2: type
-compiler.err.override.incompatible.ret=\
+#compiler.err.override.incompatible.ret=\
     {0}\n\
     return type {1} is not compatible with {2}
 
 # 0: message segment, 1: type, 2: type
-compiler.warn.override.unchecked.ret=\
+#compiler.warn.override.unchecked.ret=\
     {0}\n\
     return type requires unchecked conversion from {1} to {2}
 
 # 0: message segment, 1: type
-compiler.warn.override.unchecked.thrown=\
+#compiler.warn.override.unchecked.thrown=\
     {0}\n\
     overridden method does not throw {1}
 
@@ -1956,53 +1956,53 @@ compiler.err.string.switch.not.supported.in.source=\
 # where clause for captured type: contains upper ('extends {1}') and lower
 # ('super {2}') bound along with the wildcard that generated this captured type ({3})
 # 0: type, 1: type, 2: type, 3: type
-compiler.misc.where.captured=\
+#compiler.misc.where.captured=\
     {0} extends {1} super: {2} from capture of {3}
 
 # compact where clause for captured type: contains upper ('extends {1}') along
 # with the wildcard that generated this captured type ({3})
 # 0: type, 1: type, 2: unused, 3: type
-compiler.misc.where.captured.1=\
+#compiler.misc.where.captured.1=\
     {0} extends {1} from capture of {3}
 
 # where clause for type variable: contains upper bound(s) ('extends {1}') along with
 # the kindname ({2}) and location ({3}) in which the typevar has been declared
 # 0: type, 1: list of type, 2: symbol kind, 3: symbol
-compiler.misc.where.typevar=\
+#compiler.misc.where.typevar=\
     {0} extends {1} declared in {2} {3}
 
 # compact where clause for type variable: contains the kindname ({2}) and location ({3})
 # in which the typevar has been declared
-compiler.misc.where.typevar.1=\
+#compiler.misc.where.typevar.1=\
     {0} declared in {2} {3}
 
 # where clause for type variable: contains all the upper bound(s) ('extends {1}')
 # of this intersection type
 # 0: type, 1: list of type
-compiler.misc.where.intersection=\
+#compiler.misc.where.intersection=\
     {0} extends {1}
 
 ### Where clause headers ###
-compiler.misc.where.description.captured=\
+#compiler.misc.where.description.captured=\
     where {0} is a fresh type-variable:
 
 # 0: set of type
-compiler.misc.where.description.typevar=\
+#compiler.misc.where.description.typevar=\
     where {0} is a type-variable:
 
 # 0: set of type
-compiler.misc.where.description.intersection=\
+#compiler.misc.where.description.intersection=\
     where {0} is an intersection type:
 
 # 0: set of type
-compiler.misc.where.description.captured.1=\
+#compiler.misc.where.description.captured.1=\
     where {0} are fresh type-variables:
 
 # 0: set of type
-compiler.misc.where.description.typevar.1=\
+#compiler.misc.where.description.typevar.1=\
     where {0} are type-variables:
 
-compiler.misc.where.description.intersection.1=\
+#compiler.misc.where.description.intersection.1=\
     where {0} are intersection types:
 
 

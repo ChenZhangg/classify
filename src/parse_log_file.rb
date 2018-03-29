@@ -4,8 +4,8 @@ require 'csv'
 @maven_error_message='COMPILATION ERROR'
 @gradle_error_message='Compilation failed'
 @segment_cut="/home/travis"
-@segment_cut_regexp_file=/(\/[^\n]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt)/
-@segment_cut_regexp_jar=/(\/[^\n]+){2,}\/\w+[-\w\d.]*\.jar/
+@segment_cut_regexp_file=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt)/
+@segment_cut_regexp_jar=/(\/[^\n\/]+){2,}\/\w+[-\w\d.]*\.jar/
 
 @regex_hash=Property.new.getRegexpHash
 
@@ -136,8 +136,8 @@ def addLine?(line)
   flag=false if line=~/^$/
   flag=false if line=~/-{10,}/
   flag=false if line=~/COMPILATION ERROR/
-  flag=false if line=~/^[0-9]+ (error|errors)$/
-  flag=false if line=~/^[0-9]+ (warning|warnings)$/
+  flag=false if line=~/[0-9]+ (error|errors)[\s&&[^\n]]*$/
+  flag=false if line=~/[0-9]+ (warning|warnings)[\s&&[^\n]]*$/
   flag=false if line=~/^Note:/
   flag=false if line=~/What went wrong/
   flag=false if line=~/Build failed with an exception/
@@ -249,7 +249,7 @@ def traverseDir(build_logs_path)
   count=0
   (Dir.entries(build_logs_path)).delete_if {|repo_name| /.+@.+/!~repo_name}.each do |repo_name|
     count+=1
-    next if count<7
+    next if count<15
     repo_path=File.join(build_logs_path,repo_name)
     puts "Scanning projects: #{repo_path}"
     Dir.entries(repo_path).delete_if {|log_file_name| /.+@.+/!~log_file_name}.sort_by!{|e| e.sub(/\.log/,'').sub(/@/,'.').to_f}.each do |log_file_name|

@@ -160,22 +160,22 @@ compiler.err.cant.apply.symbols=\
     no suitable {0} found for {1}({2})
 
 # 0: symbol kind, 1: name, 2: list of type or message segment, 3: list of type or message segment, 4: symbol kind, 5: type, 6: message segment
-compiler.misc.cant.apply.symbol=\
+#compiler.misc.cant.apply.symbol=\
     {0} {1} in {4} {5} cannot be applied to given types\n\
     required: {2}\n\
     found: {3}\n\
     reason: {6}
 
 # 0: symbol kind, 1: name, 2: list of type
-compiler.misc.cant.apply.symbols=\
+#compiler.misc.cant.apply.symbols=\
     no suitable {0} found for {1}({2})
 
 # 0: symbol kind, 1: symbol
-compiler.misc.no.abstracts=\
+#compiler.misc.no.abstracts=\
     no abstract method found in {0} {1}
 
 # 0: symbol kind, 1: symbol
-compiler.misc.incompatible.abstracts=\
+#compiler.misc.incompatible.abstracts=\
     multiple non-overriding abstract methods found in {0} {1}
 
 compiler.err.bad.functional.intf.anno=\
@@ -187,42 +187,42 @@ compiler.err.bad.functional.intf.anno.1=\
     {0}
 
 # 0: symbol
-compiler.misc.not.a.functional.intf=\
+#compiler.misc.not.a.functional.intf=\
     {0} is not a functional interface
 
 # 0: symbol, 1: message segment
-compiler.misc.not.a.functional.intf.1=\
+#compiler.misc.not.a.functional.intf.1=\
     {0} is not a functional interface\n\
     {1}
 
 # 0: symbol, 1: symbol kind, 2: symbol
-compiler.misc.invalid.generic.lambda.target=\
+#compiler.misc.invalid.generic.lambda.target=\
     invalid functional descriptor for lambda expression\n\
     method {0} in {1} {2} is generic
 
 # 0: symbol kind, 1: symbol
-compiler.misc.incompatible.descs.in.functional.intf=\
+#compiler.misc.incompatible.descs.in.functional.intf=\
     incompatible function descriptors found in {0} {1}
 
 # 0: name, 1: list of type, 2: type, 3: list of type
-compiler.misc.descriptor=\
+#compiler.misc.descriptor=\
     descriptor: {2} {0}({1})
 
 # 0: name, 1: list of type, 2: type, 3: list of type
-compiler.misc.descriptor.throws=\
+#compiler.misc.descriptor.throws=\
     descriptor: {2} {0}({1}) throws {3}
 
 # 0: type
-compiler.misc.no.suitable.functional.intf.inst=\
+#compiler.misc.no.suitable.functional.intf.inst=\
     cannot infer functional interface descriptor for {0}
 
 # 0: message segment
-compiler.misc.bad.intersection.target.for.functional.expr=\
+#compiler.misc.bad.intersection.target.for.functional.expr=\
     bad intersection type target for lambda or method reference\n\
     {0}
 
 # 0: symbol or type
-compiler.misc.not.an.intf.component=\
+#compiler.misc.not.an.intf.component=\
     component type {0} is not an interface
 
 # 0: symbol kind, 1: message segment
@@ -235,10 +235,10 @@ compiler.err.invalid.mref=\
     invalid {0} reference\n\
     {1}
 
-compiler.misc.static.mref.with.targs=\
+#compiler.misc.static.mref.with.targs=\
     parameterized qualifier on static method reference
 
-compiler.misc.static.bound.mref=\
+#compiler.misc.static.bound.mref=\
     static bound method reference
 
 # 0: symbol
@@ -668,10 +668,10 @@ compiler.err.missing.ret.stmt=\
     missing return statement
 
 # 0: unused
-compiler.misc.missing.ret.val=\
+#compiler.misc.missing.ret.val=\
     missing return value
 
-compiler.misc.unexpected.ret.val=\
+#compiler.misc.unexpected.ret.val=\
     unexpected return value
 
 # 0: set of modifier
@@ -715,20 +715,20 @@ compiler.err.neither.conditional.subtype=\
     third operand : {1}
 
 # 0: message segment
-compiler.misc.incompatible.type.in.conditional=\
+#compiler.misc.incompatible.type.in.conditional=\
     bad type in conditional expression\n\
     {0}
 
-compiler.misc.conditional.target.cant.be.void=\
+#compiler.misc.conditional.target.cant.be.void=\
     target-type for conditional expression cannot be void
 
 # 0: type
-compiler.misc.incompatible.ret.type.in.lambda=\
+#compiler.misc.incompatible.ret.type.in.lambda=\
     bad return type in lambda expression\n\
     {0}
 
 # 0: type
-compiler.misc.incompatible.ret.type.in.mref=\
+#compiler.misc.incompatible.ret.type.in.mref=\
     bad return type in method reference\n\
     {0}
 
@@ -736,10 +736,10 @@ compiler.misc.incompatible.ret.type.in.mref=\
 compiler.err.incompatible.thrown.types.in.mref=\
     incompatible thrown types {0} in method reference
 
-compiler.misc.incompatible.arg.types.in.lambda=\
+#compiler.misc.incompatible.arg.types.in.lambda=\
     incompatible parameter types in lambda expression
 
-compiler.misc.incompatible.arg.types.in.mref=\
+#compiler.misc.incompatible.arg.types.in.mref=\
     incompatible parameter types in method reference
 
 compiler.err.new.not.allowed.in.annotation=\
@@ -765,11 +765,11 @@ compiler.err.not.def.access.class.intf.cant.access=\
     {0} in {1} is defined in an inaccessible class or interface
 
 # 0: symbol, 1: symbol
-compiler.misc.not.def.access.class.intf.cant.access=\
+#compiler.misc.not.def.access.class.intf.cant.access=\
     {0} in {1} is defined in an inaccessible class or interface
 
 # 0: symbol, 1: list of type, 2: type
-compiler.misc.cant.access.inner.cls.constr=\
+#compiler.misc.cant.access.inner.cls.constr=\
     cannot access constructor {0}({1})\n\
     an enclosing instance of type {2} is not in scope
 
@@ -778,7 +778,7 @@ compiler.err.not.def.public.cant.access=\
     {0} is not public in {1}; cannot be accessed from outside package
 
 # 0: symbol, 1: symbol
-compiler.misc.not.def.public.cant.access=\
+#compiler.misc.not.def.public.cant.access=\
     {0} is not public in {1}; cannot be accessed from outside package
 
 # 0: name
@@ -879,7 +879,7 @@ compiler.err.ref.ambiguous=\
     both {1} {2} in {3} and {4} {5} in {6} match
 
 # 0: name, 1: symbol kind, 2: symbol, 3: symbol, 4: symbol kind, 5: symbol, 6: symbol
-compiler.misc.ref.ambiguous=\
+#compiler.misc.ref.ambiguous=\
     reference to {0} is ambiguous\n\
     both {1} {2} in {3} and {4} {5} in {6} match
 
@@ -989,11 +989,11 @@ compiler.err.illegal.default.super.call=\
     {1}
 
 # 0: symbol, 1: type
-compiler.misc.overridden.default=\
+#compiler.misc.overridden.default=\
     method {0} is overridden in {1}
 
 # 0: symbol, 1: type or symbol
-compiler.misc.redundant.supertype=\
+#compiler.misc.redundant.supertype=\
     redundant interface {0} is extended by {1}
 
 compiler.err.unclosed.char.lit=\
@@ -1080,19 +1080,19 @@ compiler.err.varargs.invalid.trustme.anno=\
     Invalid {0} annotation. {1}
 
 # 0: type
-compiler.misc.varargs.trustme.on.reifiable.varargs=\
+#compiler.misc.varargs.trustme.on.reifiable.varargs=\
     Varargs element type {0} is reifiable.
 
 # 0: symbol
-compiler.misc.varargs.trustme.on.non.varargs.meth=\
+#compiler.misc.varargs.trustme.on.non.varargs.meth=\
     Method {0} is not a varargs method.
 
 # 0: symbol
-compiler.misc.varargs.trustme.on.virtual.varargs=\
+#compiler.misc.varargs.trustme.on.virtual.varargs=\
     Instance method {0} is not final.
 
 # 0: type, 1: symbol kind, 2: symbol
-compiler.misc.inaccessible.varargs.type=\
+#compiler.misc.inaccessible.varargs.type=\
     formal varargs element type {0} is not accessible from {1} {2}
 
 # In the following string, {1} will always be the detail message from
@@ -1144,15 +1144,15 @@ compiler.misc.fatal.err.cant.close=\
 #compiler.misc.source.unavailable=\
     (source unavailable)
 
-compiler.misc.base.membership=\
+#compiler.misc.base.membership=\
     all your base class are belong to us
 
 # 0: string, 1: string, 2: boolean
-compiler.misc.x.print.processor.info=\
+#compiler.misc.x.print.processor.info=\
     Processor {0} matches {1} and returns {2}.
 
 # 0: number, 1: string, 2: set of symbol, 3: boolean
-compiler.misc.x.print.rounds=\
+#compiler.misc.x.print.rounds=\
     Round {0}:\n\tinput files: {1}\n\tannotations: {2}\n\tlast round: {3}
 
 #####
@@ -1160,25 +1160,25 @@ compiler.misc.x.print.rounds=\
 ## The following string will appear before all messages keyed as:
 ## "compiler.note".
 
-compiler.note.compressed.diags=\
+#compiler.note.compressed.diags=\
     Some messages have been simplified; recompile with -Xdiags:verbose to get full output
 
-compiler.note.potential.lambda.found=\
+#compiler.note.potential.lambda.found=\
     This anonymous inner class creation can be turned into a lambda expression.
 
 # 0: boolean, 1: symbol
-compiler.note.lambda.stat=\
+#compiler.note.lambda.stat=\
     Translating lambda expression\n\
     alternate metafactory = {0}\n\
     synthetic method = {1}
 
 # 0: boolean, 1: unused
-compiler.note.mref.stat=\
+#compiler.note.mref.stat=\
     Translating method reference\n\
     alternate metafactory = {0}\n\
 
 # 0: boolean, 1: symbol
-compiler.note.mref.stat.1=\
+#compiler.note.mref.stat.1=\
     Translating method reference\n\
     alternate metafactory = {0}\n\
     bridge method = {1}
@@ -1187,10 +1187,10 @@ compiler.note.mref.stat.1=\
     Note:\u0020
 
 # 0: file name
-compiler.note.deprecated.filename=\
+#compiler.note.deprecated.filename=\
     {0} uses or overrides a deprecated API.
 
-compiler.note.deprecated.plural=\
+#compiler.note.deprecated.plural=\
     Some input files use or override a deprecated API.
 
 # The following string may appear after one of the above deprecation
@@ -1199,17 +1199,17 @@ compiler.note.deprecated.plural=\
     Recompile with -Xlint:deprecation for details.
 
 # 0: file name
-compiler.note.deprecated.filename.additional=\
+#compiler.note.deprecated.filename.additional=\
     {0} has additional uses or overrides of a deprecated API.
 
-compiler.note.deprecated.plural.additional=\
+#compiler.note.deprecated.plural.additional=\
     Some input files additionally use or override a deprecated API.
 
 # 0: file name
-compiler.note.unchecked.filename=\
+#compiler.note.unchecked.filename=\
     {0} uses unchecked or unsafe operations.
 
-compiler.note.unchecked.plural=\
+#compiler.note.unchecked.plural=\
     Some input files use unchecked or unsafe operations.
 
 # The following string may appear after one of the above deprecation
@@ -1218,17 +1218,17 @@ compiler.note.unchecked.plural=\
     Recompile with -Xlint:unchecked for details.
 
 # 0: file name
-compiler.note.unchecked.filename.additional=\
+#compiler.note.unchecked.filename.additional=\
     {0} has additional unchecked or unsafe operations.
 
-compiler.note.unchecked.plural.additional=\
+#compiler.note.unchecked.plural.additional=\
     Some input files additionally use unchecked or unsafe operations.
 
 # 0: file name
-compiler.note.sunapi.filename=\
+#compiler.note.sunapi.filename=\
     {0} uses internal proprietary API that may be removed in a future release.
 
-compiler.note.sunapi.plural=\
+#compiler.note.sunapi.plural=\
     Some input files use internal proprietary API that may be removed in a future release.
 
 # The following string may appear after one of the above sunapi messages.
@@ -1236,10 +1236,10 @@ compiler.note.sunapi.plural=\
     Recompile with -Xlint:sunapi for details.
 
 # 0: file name
-compiler.note.sunapi.filename.additional=\
+#compiler.note.sunapi.filename.additional=\
     {0} uses additional internal proprietary API that may be removed in a future release.
 
-compiler.note.sunapi.plural.additional=\
+#compiler.note.sunapi.plural.additional=\
     Some input files additionally use internal proprietary API that may be removed in a future release.
 
 # Notes related to annotation processing
@@ -1316,7 +1316,7 @@ compiler.note.sunapi.plural.additional=\
     [search path for class files: {0}]
 
 ## extra output when using -checkclassfile (code/ClassReader)
-compiler.misc.ccf.found.later.version=\
+#compiler.misc.ccf.found.later.version=\
     class file has later version than expected: {0}
 
 #compiler.misc.ccf.unrecognized.attribute=\
@@ -1508,7 +1508,7 @@ compiler.warn.proc.use.proc.or.implicit=\
 
 # Print a client-generated warning; assumed to be localized, no translation required
 # 0: string
-@compiler.warn.proc.messager=\
+#compiler.warn.proc.messager=\
     {0}
 
 # 0: set of name
@@ -1689,7 +1689,7 @@ compiler.err.dot.class.expected=\
 #compiler.misc.type.none=\
     <none>
 
-compiler.misc.unnamed.package=\
+#compiler.misc.unnamed.package=\
     unnamed package
 
 #####
@@ -1700,79 +1700,79 @@ compiler.err.cant.access=\
     {1}
 
 # 0: file name, 1: message segment
-compiler.misc.bad.class.file.header=\
+#compiler.misc.bad.class.file.header=\
     bad class file: {0}\n\
     {1}\n\
     Please remove or make sure it appears in the correct subdirectory of the classpath.
 
 # 0: file name, 1: message segment
-compiler.misc.bad.source.file.header=\
+#compiler.misc.bad.source.file.header=\
     bad source file: {0}\n\
     {1}\n\
     Please remove or make sure it appears in the correct subdirectory of the sourcepath.
 
 ## The following are all possible strings for the second argument ({1}) of the
 ## above strings.
-compiler.misc.bad.class.signature=\
+#compiler.misc.bad.class.signature=\
     bad class signature: {0}
 
 #0: symbol, 1: symbol
-compiler.misc.bad.enclosing.class=\
+#compiler.misc.bad.enclosing.class=\
     bad enclosing class for {0}: {1}
 
 # 0: symbol
-compiler.misc.bad.enclosing.method=\
+#compiler.misc.bad.enclosing.method=\
     bad enclosing method attribute for class {0}
 
-compiler.misc.bad.runtime.invisible.param.annotations=\
+#compiler.misc.bad.runtime.invisible.param.annotations=\
     bad RuntimeInvisibleParameterAnnotations attribute: {0}
 
-compiler.misc.bad.const.pool.tag=\
+#compiler.misc.bad.const.pool.tag=\
     bad constant pool tag: {0}
 
-compiler.misc.bad.const.pool.tag.at=\
+#compiler.misc.bad.const.pool.tag.at=\
     bad constant pool tag: {0} at {1}
 
-compiler.misc.bad.signature=\
+#compiler.misc.bad.signature=\
     bad signature: {0}
 
-compiler.misc.bad.type.annotation.value=\
+#compiler.misc.bad.type.annotation.value=\
     bad type annotation target type value: {0}
 
-compiler.misc.class.file.wrong.class=\
+#compiler.misc.class.file.wrong.class=\
     class file contains wrong class: {0}
 
-compiler.misc.class.file.not.found=\
+#compiler.misc.class.file.not.found=\
     class file for {0} not found
 
 # 0: classfile major version, 1: classfile minor version
-compiler.misc.invalid.default.interface=\
+#compiler.misc.invalid.default.interface=\
     default method found in version {0}.{1} classfile
 
 # 0: classfile major version, 1: classfile minor version
-compiler.misc.invalid.static.interface=\
+#compiler.misc.invalid.static.interface=\
     static method found in version {0}.{1} classfile
 
 # 0: name
-compiler.misc.file.doesnt.contain.class=\
+#compiler.misc.file.doesnt.contain.class=\
     file does not contain class {0}
 
-compiler.misc.file.does.not.contain.package=\
+#compiler.misc.file.does.not.contain.package=\
     file does not contain package {0}
 
-compiler.misc.illegal.start.of.class.file=\
+#compiler.misc.illegal.start.of.class.file=\
     illegal start of class file
 
-compiler.misc.unable.to.access.file=\
+#compiler.misc.unable.to.access.file=\
     unable to access file: {0}
 
-compiler.misc.unicode.str.not.supported=\
+#compiler.misc.unicode.str.not.supported=\
     unicode string in class file not supported
 
-compiler.misc.undecl.type.var=\
+#compiler.misc.undecl.type.var=\
     undeclared type variable: {0}
 
-compiler.misc.wrong.version=\
+#compiler.misc.wrong.version=\
     class file has wrong version {0}.{1}, should be {2}.{3}
 
 #####
@@ -1826,7 +1826,7 @@ compiler.misc.unchecked.cast.to.type=\
 #     \[\*\] cannot have a type
 
 # 0: type
-compiler.misc.try.not.applicable.to.type=\
+#compiler.misc.try.not.applicable.to.type=\
     try-with-resources not applicable to variable type\n\
     ({0})
 
@@ -1865,61 +1865,61 @@ compiler.err.type.found.req=\
 ## diagnostics whose key ends in ".1"
 
 # 0: type, 1: list of type
-compiler.misc.no.unique.maximal.instance.exists=\
+#compiler.misc.no.unique.maximal.instance.exists=\
     no unique maximal instance exists for type variable {0} with upper bounds {1}
 
-compiler.misc.no.unique.minimal.instance.exists=\
+#compiler.misc.no.unique.minimal.instance.exists=\
     no unique minimal instance exists for type variable {0} with lower bounds {1}
 
 # 0: type, 1: list of type
-compiler.misc.incompatible.upper.bounds=\
+#compiler.misc.incompatible.upper.bounds=\
     inference variable {0} has incompatible upper bounds {1}
 
 # 0: type, 1: list of type, 2: list of type
-compiler.misc.incompatible.eq.upper.bounds=\
+#compiler.misc.incompatible.eq.upper.bounds=\
     inference variable {0} has incompatible bounds\n\
     equality constraints: {1}\n\
     upper bounds: {2}
 
 # 0: type, 1: list of type, 2: list of type
-compiler.misc.incompatible.eq.lower.bounds=\
+#compiler.misc.incompatible.eq.lower.bounds=\
     inference variable {0} has incompatible bounds\n\
     equality constraints: {1}\n\
     lower bounds: {2}
 
 # 0: list of type, 1: type, 2: type
-compiler.misc.infer.no.conforming.instance.exists=\
+#compiler.misc.infer.no.conforming.instance.exists=\
     no instance(s) of type variable(s) {0} exist so that {1} conforms to {2}
 
 # 0: list of type, 1: message segment
-compiler.misc.infer.no.conforming.assignment.exists=\
+#compiler.misc.infer.no.conforming.assignment.exists=\
     cannot infer type-variable(s) {0}\n\
     (argument mismatch; {1})
 
 # 0: list of type
-compiler.misc.infer.arg.length.mismatch=\
+#compiler.misc.infer.arg.length.mismatch=\
     cannot infer type-variable(s) {0}\n\
     (actual and formal argument lists differ in length)
 
 # 0: list of type, 1: message segment
-compiler.misc.infer.varargs.argument.mismatch=\
+#compiler.misc.infer.varargs.argument.mismatch=\
     cannot infer type-variable(s) {0}\n\
     (varargs mismatch; {1})
 
 # 0: type, 1: list of type
-compiler.misc.inferred.do.not.conform.to.upper.bounds=\
+#compiler.misc.inferred.do.not.conform.to.upper.bounds=\
     inferred type does not conform to upper bound(s)\n\
     inferred: {0}\n\
     upper bound(s): {1}
 
 # 0: type, 1: list of type
-compiler.misc.inferred.do.not.conform.to.lower.bounds=\
+#compiler.misc.inferred.do.not.conform.to.lower.bounds=\
     inferred type does not conform to lower bound(s)\n\
     inferred: {0}\n\
     lower bound(s): {1}
 
 # 0: type, 1: list of type
-compiler.misc.inferred.do.not.conform.to.eq.bounds=\
+#compiler.misc.inferred.do.not.conform.to.eq.bounds=\
     inferred type does not conform to equality constraint(s)\n\
     inferred: {0}\n\
     equality constraints(s): {1}
@@ -1929,30 +1929,30 @@ compiler.misc.inferred.do.not.conform.to.eq.bounds=\
     {0}<>
 
 # 0: type
-compiler.misc.diamond.non.generic=\
+#compiler.misc.diamond.non.generic=\
     cannot use ''<>'' with non-generic class {0}
 
 # 0: unused
-compiler.misc.diamond.and.explicit.params=\
+#compiler.misc.diamond.and.explicit.params=\
     cannot use ''<>'' with explicit type parameters for constructor
 
 # 0: unused
-compiler.misc.mref.infer.and.explicit.params=\
+#compiler.misc.mref.infer.and.explicit.params=\
     cannot use raw constructor reference with explicit type parameters for constructor
 
 # 0: type, 1: list of type
-compiler.misc.explicit.param.do.not.conform.to.bounds=\
+#compiler.misc.explicit.param.do.not.conform.to.bounds=\
     explicit type argument {0} does not conform to declared bound(s) {1}
 
-compiler.misc.arg.length.mismatch=\
+#compiler.misc.arg.length.mismatch=\
     actual and formal argument lists differ in length
 
 # 0: message segment
-compiler.misc.no.conforming.assignment.exists=\
+#compiler.misc.no.conforming.assignment.exists=\
     argument mismatch; {0}
 
 # 0: message segment
-compiler.misc.varargs.argument.mismatch=\
+#compiler.misc.varargs.argument.mismatch=\
     varargs mismatch; {0}
 
 #####
@@ -1972,11 +1972,11 @@ compiler.err.non-static.cant.be.ref=\
     non-static {0} {1} cannot be referenced from a static context
 
 # 0: symbol kind, 1: symbol
-compiler.misc.non-static.cant.be.ref=\
+#compiler.misc.non-static.cant.be.ref=\
     non-static {0} {1} cannot be referenced from a static context
 
 # 0: symbol kind, 1: symbol
-compiler.misc.static.method.in.unbound.lookup=\
+#compiler.misc.static.method.in.unbound.lookup=\
     static {0} {1} found in unbound lookup
 
 ## Both arguments ({0}, {1}) are "kindname"s.  {0} is a comma-separated list
@@ -2034,13 +2034,13 @@ compiler.err.cant.resolve.location.args.params=\
 ### Following are replicated/used for method reference diagnostics
 
 # 0: symbol kind, 1: name, 2: unused, 3: list of type, 4: message segment
-compiler.misc.cant.resolve.location.args=\
+#compiler.misc.cant.resolve.location.args=\
     cannot find symbol\n\
     symbol:   {0} {1}({3})\n\
     location: {4}
 
 # 0: symbol kind, 1: name, 2: list of type, 3: list, 4: message segment
-compiler.misc.cant.resolve.location.args.params=\
+#compiler.misc.cant.resolve.location.args.params=\
     cannot find symbol\n\
     symbol:   {0} <{2}>{1}({3})\n\
     location: {4}
@@ -2055,7 +2055,7 @@ compiler.misc.cant.resolve.location.args.params=\
     {0} {1}
 
 # 0: symbol kind, 1: symbol, 2: type
-compiler.misc.location.1=\
+#compiler.misc.location.1=\
     {0} {1} of type {2}
 
 ## The following are all possible string for "kindname".
@@ -2107,43 +2107,43 @@ compiler.misc.location.1=\
 
 #####
 
-compiler.misc.no.args=\
+#compiler.misc.no.args=\
     no arguments
 
 # 0: message segment
-compiler.err.override.static=\
+#compiler.err.override.static=\
     {0}\n\
     overriding method is static
 
 # 0: message segment, 1: set of modifier
-compiler.err.override.meth=\
+#compiler.err.override.meth=\
     {0}\n\
     overridden method is {1}
 
 # 0: message segment, 1: type
-compiler.err.override.meth.doesnt.throw=\
+#compiler.err.override.meth.doesnt.throw=\
     {0}\n\
     overridden method does not throw {1}
 
 # In the following string {1} is a space separated list of Java Keywords, as
 # they would have been declared in the source code
 # 0: message segment, 1: set of modifier
-compiler.err.override.weaker.access=\
+#compiler.err.override.weaker.access=\
     {0}\n\
     attempting to assign weaker access privileges; was {1}
 
 # 0: message segment, 1: type, 2: type
-compiler.err.override.incompatible.ret=\
+#compiler.err.override.incompatible.ret=\
     {0}\n\
     return type {1} is not compatible with {2}
 
 # 0: message segment, 1: type, 2: type
-compiler.warn.override.unchecked.ret=\
+#compiler.warn.override.unchecked.ret=\
     {0}\n\
     return type requires unchecked conversion from {1} to {2}
 
 # 0: message segment, 1: type
-compiler.warn.override.unchecked.thrown=\
+#compiler.warn.override.unchecked.thrown=\
     {0}\n\
     overridden method does not throw {1}
 
@@ -2376,25 +2376,25 @@ compiler.err.static.intf.methods.not.supported.in.source=\
 ########################################
 
 # 0: number, 1: symbol, 2: unused
-compiler.misc.applicable.method.found=\
+#compiler.misc.applicable.method.found=\
     #{0} applicable method found: {1}
 
 # 0: number, 1: symbol, 2: message segment
-compiler.misc.applicable.method.found.1=\
+#compiler.misc.applicable.method.found.1=\
     #{0} applicable method found: {1}\n\
     ({2})
 
 # 0: number, 1: symbol, 2: message segment
-compiler.misc.not.applicable.method.found=\
+#compiler.misc.not.applicable.method.found=\
     #{0} not applicable method found: {1}\n\
     ({2})
 
 # 0: type
-compiler.misc.partial.inst.sig=\
+#compiler.misc.partial.inst.sig=\
     partially instantiated to: {0}
 
 # 0: name, 1: symbol, 2: number, 3: MethodResolutionPhase, 4: list of type or message segment, 5: list of type or message segment
-compiler.note.verbose.resolve.multi=\
+#compiler.note.verbose.resolve.multi=\
     resolving method {0} in type {1} to candidate {2}\n\
     phase: {3}\n\
     with actuals: {4}\n\
@@ -2402,7 +2402,7 @@ compiler.note.verbose.resolve.multi=\
     candidates:
 
 # 0: name, 1: symbol, 2: unused, 3: MethodResolutionPhase, 4: list of type or message segment, 5: list of type or message segment
-compiler.note.verbose.resolve.multi.1=\
+#compiler.note.verbose.resolve.multi.1=\
     erroneous resolution for method {0} in type {1}\n\
     phase: {3}\n\
     with actuals: {4}\n\
@@ -2410,7 +2410,7 @@ compiler.note.verbose.resolve.multi.1=\
     candidates:
 
 # 0: symbol, 1: type, 2: type
-compiler.note.deferred.method.inst=\
+#compiler.note.deferred.method.inst=\
     Deferred instantiation of method {0}\n\
     instantiated signature: {1}\n\
     target-type: {2}
@@ -2441,60 +2441,60 @@ compiler.note.deferred.method.inst=\
 # where clause for captured type: contains upper ('extends {1}') and lower
 # ('super {2}') bound along with the wildcard that generated this captured type ({3})
 # 0: type, 1: type, 2: type, 3: type
-compiler.misc.where.captured=\
+#compiler.misc.where.captured=\
     {0} extends {1} super: {2} from capture of {3}
 
 # compact where clause for captured type: contains upper ('extends {1}') along
 # with the wildcard that generated this captured type ({3})
 # 0: type, 1: type, 2: unused, 3: type
-compiler.misc.where.captured.1=\
+#compiler.misc.where.captured.1=\
     {0} extends {1} from capture of {3}
 
 # where clause for type variable: contains upper bound(s) ('extends {1}') along with
 # the kindname ({2}) and location ({3}) in which the typevar has been declared
 # 0: type, 1: list of type, 2: symbol kind, 3: symbol
-compiler.misc.where.typevar=\
+#compiler.misc.where.typevar=\
     {0} extends {1} declared in {2} {3}
 
 # compact where clause for type variable: contains the kindname ({2}) and location ({3})
 # in which the typevar has been declared
 # 0: type, 1: list of type, 2: symbol kind, 3: symbol
-compiler.misc.where.typevar.1=\
+#compiler.misc.where.typevar.1=\
     {0} declared in {2} {3}
 
 # where clause for fresh type variable: contains upper bound(s) ('extends {1}').
 # Since a fresh type-variable is synthetic - there's no location/kindname here.
 # 0: type, 1: list of type
-compiler.misc.where.fresh.typevar=\
+#compiler.misc.where.fresh.typevar=\
     {0} extends {1}
 
 # where clause for type variable: contains all the upper bound(s) ('extends {1}')
 # of this intersection type
 # 0: type, 1: list of type
-compiler.misc.where.intersection=\
+#compiler.misc.where.intersection=\
     {0} extends {1}
 
 ### Where clause headers ###
-compiler.misc.where.description.captured=\
+#compiler.misc.where.description.captured=\
     where {0} is a fresh type-variable:
 
 # 0: set of type
-compiler.misc.where.description.typevar=\
+#compiler.misc.where.description.typevar=\
     where {0} is a type-variable:
 
 # 0: set of type
-compiler.misc.where.description.intersection=\
+#compiler.misc.where.description.intersection=\
     where {0} is an intersection type:
 
 # 0: set of type
-compiler.misc.where.description.captured.1=\
+#compiler.misc.where.description.captured.1=\
     where {0} are fresh type-variables:
 
 # 0: set of type
-compiler.misc.where.description.typevar.1=\
+#compiler.misc.where.description.typevar.1=\
     where {0} are type-variables:
 
-compiler.misc.where.description.intersection.1=\
+#compiler.misc.where.description.intersection.1=\
     where {0} are intersection types:
 
 ###

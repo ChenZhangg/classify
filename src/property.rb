@@ -205,5 +205,5 @@ def test
     puts
   end
 end
-#test
+test
 #Property.new.parseProperty('compiler.properties')
