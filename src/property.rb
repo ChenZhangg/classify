@@ -197,9 +197,9 @@ class Property
   end
 
 end
-
 def test
   Property.new.getRegexpHash.each do |key,value|
+
     puts "#{key}"
     puts "#{value}"
     puts
