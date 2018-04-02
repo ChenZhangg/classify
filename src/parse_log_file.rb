@@ -8,11 +8,12 @@ GRADLE_ERROR_FLAG='Compilation failed'
 GRADLE_ERROR_UP_BOUNDARY=/:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
 
 SEGMENT_BOUNDARY="/home/travis"
-SEGMENT_BOUNDARY_FILE=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt)/
+SEGMENT_BOUNDARY_FILE=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt|sig)/
 SEGMENT_BOUNDARY_JAVA=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.java/
 SEGMENT_BOUNDARY_GROOVY=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.groovy/
 SEGMENT_BOUNDARY_SCALA=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.scala/
 SEGMENT_BOUNDARY_KOTLIN=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.kt/
+SEGMENT_BOUNDARY_SIG=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.sig/
 SEGMENT_BOUNDARY_JAR=/(\/[^\n\/]+){2,}\/\w+[-\w\d]*\.jar/
 
 
@@ -146,7 +147,8 @@ def addLine?(line)
   flag=true
   flag=false if line=~/Download\s*http/i
   flag=false if line=~/downloaded.*KB\/.*KB/i
-  flag=false if line=~/at [.$\w\d]+\([.$\w\d]+:[0-9]+\)/i
+  flag=false if line=~/at [.$\w\d]+\([-@.$\/\w\d]+:[0-9]+\)/i
+  flag=false if line=~/at [.\w\d]+\/[.\w\d]+\([.: \w\d]+\)/i
   flag=false if line=~/^$/
   flag=false if line=~/-{10,}/
   flag=false if line=~/COMPILATION ERROR/
@@ -161,6 +163,7 @@ def addLine?(line)
   flag=false if line=~/^\[info\]/
   flag=false if line=~/Failed to execute goal/
   flag=false if line=~/(:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala)$/
+  flag=false if line=~/warnings found and -Werror specified/
   flag
 end
 
@@ -170,7 +173,7 @@ def gradleCutSegment(log_file_path)
   file_lines=IO.readlines(log_file_path).collect!{|line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")}
   file_lines.each_with_index do|line,index|
     next unless Regexp.new(GRADLE_ERROR_FLAG)=~line
-    k=index-11
+    k=index-7
 
     if file_lines[index-1]!~/Execution failed for task/
       while k>0 && file_lines[k]!~GRADLE_ERROR_UP_BOUNDARY && file_lines[k]!~/(?<!\d)0%/
@@ -237,7 +240,7 @@ def traverseDir(build_logs_path)
   count=0
   Dir.entries(build_logs_path).delete_if {|repo_name| /.+@.+/!~repo_name}.each do |repo_name|
     count+=1
-    next if count<1
+    next if count<30
 
     repo_path=File.join(build_logs_path,repo_name)
     puts "Scanning projects: #{repo_path}"
