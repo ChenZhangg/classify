@@ -5,6 +5,7 @@
 *~
 *.log
 *Segment
+*Segmentmap
 .DS_Store
 /src/similarityTooLow
 /src/statistics.csv

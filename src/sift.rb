@@ -1,5 +1,5 @@
-@maven_error_message='COMPILATION ERROR'
-@gradle_error_message='Compilation failed'
+MAVEN_ERROR_FLAG='COMPILATION ERROR'
+GRADLE_ERROR_FLAG='Compilation failed'
 puts (Dir.entries('../build_logs/gradle@gradle'))[2..-1].sort_by!{|e| e.sub(/\.log/,'').sub(/@/,'.').to_f}
 def regexMatch(line)
   if line=~/is abstract; cannot be instantiated/

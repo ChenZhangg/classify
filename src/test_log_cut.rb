@@ -1,11 +1,11 @@
 require 'set'
-@maven_error_message='COMPILATION ERROR'
-@gradle_error_message='Compilation failed'
+MAVEN_ERROR_FLAG='COMPILATION ERROR'
+GRADLE_ERROR_FLAG='Compilation failed'
 
 
 
 @error_type_number=Hash.new(0)
-@segment_cut="/home/travis"
+SEGMENT_BOUNDARY="/home/travis"
 @segment_cut_regexp=/(\/[^\n]+){2,}\/\w+[\w\d]*\.java/
 
 def map(output_file,segment_lines)
@@ -37,7 +37,7 @@ def gradleCutSegment(log_file_path)
   set=Set.new
   file_lines=IO.readlines(log_file_path).collect!{|line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")}
   file_lines.each_with_index do|line,index|
-    next unless Regexp.new(@gradle_error_message)=~line
+    next unless Regexp.new(GRADLE_ERROR_FLAG)=~line
     k=index-11
     if line=~/[0-9]+%/
       while k>0 && file_lines[k]!~/(?<!\d)0%/
@@ -70,7 +70,7 @@ def mavenCutSegment(log_file_path)
   set=Set.new
   file_lines=IO.readlines(log_file_path).collect!{|line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")}
   file_lines.each_with_index do|line,index|
-    next unless Regexp.new(@maven_error_message)=~line
+    next unless Regexp.new(MAVEN_ERROR_FLAG)=~line
     k=index
     while k<file_lines.length && file_lines[k]!~/[0-9]+ error/ && file_lines[k]!~/Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin/
       k+=1
