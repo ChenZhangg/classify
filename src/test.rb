@@ -1,18 +1,7 @@
-def test(f)
-  f='nihao'
-end
+require 'set'
 
-f=IO.readlines 'similarityTooLow'
-puts f
-#test f
-f.each do |line|
-  line.delete! 'zh'
-end
-#puts f
-a='ni'
-b='hao'
-c=a+b
-
-p a.object_id
-p b.object_id
-p c.object_id
+set=Set.new
+set<< 2
+set<< 5
+set.merge (1..10)
+p set

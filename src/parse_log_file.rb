@@ -3,65 +3,63 @@ require_relative 'property'
 require 'csv'
 
 
-MAVEN_ERROR_FLAG=/COMPILATION ERROR/
-GRADLE_ERROR_FLAG=/Compilation failed/
-GRADLE_ERROR_UP_BOUNDARY=/:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
+MAVEN_ERROR_FLAG = /COMPILATION ERROR/
+GRADLE_ERROR_FLAG = /Compilation failed/
+GRADLE_ERROR_UP_BOUNDARY = /:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
 
-SEGMENT_BOUNDARY="/home/travis"
-SEGMENT_BOUNDARY_FILE=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt|sig)/
-SEGMENT_BOUNDARY_JAVA=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.java/
-SEGMENT_BOUNDARY_GROOVY=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.groovy/
-SEGMENT_BOUNDARY_SCALA=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.scala/
-SEGMENT_BOUNDARY_KOTLIN=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.kt/
-SEGMENT_BOUNDARY_SIG=/(\/[^\n\/]+){2,}\/\w+[\w\d]*\.sig/
-SEGMENT_BOUNDARY_JAR=/(\/[^\n\/]+){2,}\/\w+[-\w\d]*\.jar/
+SEGMENT_BOUNDARY = "/home/travis"
+SEGMENT_BOUNDARY_FILE = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt|sig)/
+SEGMENT_BOUNDARY_JAVA = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.java/
+SEGMENT_BOUNDARY_GROOVY = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.groovy/
+SEGMENT_BOUNDARY_SCALA = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.scala/
+SEGMENT_BOUNDARY_KOTLIN = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.kt/
+SEGMENT_BOUNDARY_SIG = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.sig/
+SEGMENT_BOUNDARY_JAR = /(\/[^\n\/]+){2,}\/\w+[-\w\d]*\.jar/
 
 
-@regex_hash=Property.new.getRegexpHash
+@regex_hash = Property.new.getRegexpHash
 
 #@error_type_number=Hash.new(0)
 
-def calculateWordNumberSimilarity(segment,regex)
-  word_array_a=regex.source.lines[0].scan(/\w{2,}/)
-  first_line=segment.lines[0]
+def word_number_similarity(segment, regex)
+  word_array_a = regex.source.lines[0].scan(/\w{2,}/)
+  first_line = segment.lines[0]
 
-  count_a=0
+  count_a = 0
   word_array_a.each do |word|
-    count_a+=1 if first_line.include?(word)
+    count_a += 1 if first_line.include?(word)
   end
-  similarity_a=count_a.to_f/word_array_a.length
+  similarity_a = count_a.to_f / word_array_a.length
 
-  word_array_b=regex.source.scan(/\w{2,}/)
-  count_b=0
+  word_array_b = regex.source.scan(/\w{2,}/)
+  count_b = 0
   word_array_b.each do |word|
-    count_b+=1 if segment.include?(word)
+    count_b += 1 if segment.include?(word)
   end
-  similarity_b=count_b.to_f/word_array_b.length
+  similarity_b = count_b.to_f / word_array_b.length
 
-  similarity_div=similarity_a*0.8+similarity_b*0.2
-  similarity=similarity_div*0.8+word_array_b.length.to_f/30*0.2
+  similarity_div = similarity_a * 0.8 + similarity_b * 0.2
+  similarity = similarity_div * 0.8 + word_array_b.length.to_f / 30 * 0.2
 end
 
-def getLargestSimilarity(hash)
-  max=hash.keys[0]
-  hash.each do |key,value|
-    max=key if value>hash[max]
-  end
-  max
-end
+def map(log_file_path, output_file,segment)
+  output_file += 'map'
+  max_value_word_number = 0
+  max_value_match_length = 0
+  key_word_number = nil
+  key_match_length = nil
+  @regex_hash.each do |key, regex|
+    value_word_number = word_number_similarity(segment, regex)
 
-def map(log_file_path,output_file,segment)
-  output_file+='map'
-  #segment=segment_lines.join
-  match_length_similarity=Hash.new(0)
-  word_number_similarity=Hash.new(0)
+    if value_word_number > max_value_word_number
+      max_value_word_number = value_word_number
+      key_word_number = key
+    end
 
-  @regex_hash.each do |key,regex|
-    word_number_similarity[key]=calculateWordNumberSimilarity(segment,regex)
-    match=regex.match(segment)
+    match = regex.match(segment)
     next unless match
-    if match[0]==segment
-      File.open(output_file,'a') do |output|
+    if match[0] == segment
+      File.open(output_file, 'a') do |output|
         output.puts
         output.puts '====================================='
         output.puts "In file #{log_file_path}:"
@@ -73,58 +71,60 @@ def map(log_file_path,output_file,segment)
       #@error_type_number[key]+=1
       return
     end
-    match_length_similarity[key]=match[0].length.to_f/segment.length
+    value_match_length = match[0].length.to_f / segment.length
+    if value_match_length > max_value_match_length
+      max_value_match_length = value_match_length
+      key_match_length = key
+    end
   end
-  key_word_number_similarity=getLargestSimilarity(word_number_similarity)
-  key_match_length_similarity=match_length_similarity.length!=0 ? getLargestSimilarity(match_length_similarity) : nil
 
-  File.open(output_file,'a') do |output|
+  File.open(output_file, 'a') do |output|
     output.puts
     output.puts '====================================='
     output.puts "In file #{log_file_path}:"
     output.puts "The matched segment is:"
     output.puts segment
     output.puts
-    output.puts "According to the match_length_similarity, matching regexp is: key=#{key_match_length_similarity}  regexp=#{@regex_hash[key_match_length_similarity]}   similarity=#{key_match_length_similarity.nil? ? 0 : match_length_similarity[key_match_length_similarity]}"
+    output.puts "According to the match_length_similarity, matching regexp is: key=#{key_match_length}  regexp=#{@regex_hash[key_match_length]}   similarity=#{max_value_match_length}"
     output.puts "The matched part is:"
-    match=key_match_length_similarity.nil? ? nil : @regex_hash[key_match_length_similarity].match(segment)
+    match=key_match_length.nil? ? nil : @regex_hash[key_match_length].match(segment)
     output.puts match[0] if match
     output.puts 'NULL' unless match
-    match=@regex_hash[key_word_number_similarity].match(segment)
+    match=@regex_hash[key_word_number].match(segment)
     output.puts
-    output.puts "According to the word_number_similarity, matching regexp is: key=#{key_word_number_similarity}  regexp=#{@regex_hash[key_word_number_similarity]}   similarity=#{word_number_similarity[key_word_number_similarity]}"
+    output.puts "According to the word_number_similarity, matching regexp is: key=#{key_word_number}  regexp=#{@regex_hash[key_word_number]}   similarity=#{max_value_word_number}"
     output.puts "The matched part is:"
     output.puts match[0] if match
     output.puts 'NULL'   unless match
     output.puts
   end
 
-  return if word_number_similarity[key_word_number_similarity]>0.3
+  return if max_value_word_number > 0.3
 
-  File.open('similarityTooLow','a') do |output|
+  File.open('similarityTooLow', 'a') do |output|
     output.puts 'zhangchen>>>>>>>>>>>>>>>>>>>>>>>>>'
     output.puts segment
     output.puts
   end
 end
 
-def cutSegment(log_file_path,output_file,segment_lines)
-  cut_point=[]
-  segment_lines.each_with_index do |line,index|
-    next unless SEGMENT_BOUNDARY_FILE=~line || SEGMENT_BOUNDARY_JAR=~line
-    cut_point<<index if index!=0
+def cut_segment(log_file_path, output_file, segment_lines)
+  cut_point = []
+  segment_lines.each_with_index do |line, index|
+    next unless SEGMENT_BOUNDARY_FILE =~ line || SEGMENT_BOUNDARY_JAR =~ line
+    cut_point<<index if index != 0
   end
 
   cut_range=[]
-  line_begin=0
+  begin_number=0
   cut_point.each do |point|
-    line_end=point
-    cut_range<<(line_begin...line_end)
-    line_begin=line_end
+    end_number=point
+    cut_range << (begin_number...end_number)
+    begin_number = end_number
   end
-  cut_range<<(line_begin..(segment_lines.length-1))
+  cut_range << (begin_number..(segment_lines.length - 1))
 
-  File.open(output_file,'a') do |output|
+  File.open(output_file, 'a') do |output|
     output.puts
     output.puts "Segment in #{log_file_path} is:"
     output.puts segment_lines
@@ -138,119 +138,122 @@ def cutSegment(log_file_path,output_file,segment_lines)
 
   cut_range.each do |r|
     #map(output_file,segment_lines[r]) if segment_lines[r.begin]=~SEGMENT_BOUNDARY_JAVA || segment_lines[r.begin]=~SEGMENT_BOUNDARY_JAR
-    map(log_file_path,output_file,segment_lines[r].join) if segment_lines[r.begin]!~SEGMENT_BOUNDARY_GROOVY && segment_lines[r.begin]!~SEGMENT_BOUNDARY_SCALA && segment_lines[r.begin]!~SEGMENT_BOUNDARY_KOTLIN
+    map(log_file_path,output_file,segment_lines[r].join) if segment_lines[r.begin] !~ SEGMENT_BOUNDARY_GROOVY && segment_lines[r.begin] !~ SEGMENT_BOUNDARY_SCALA && segment_lines[r.begin] !~ SEGMENT_BOUNDARY_KOTLIN
   end
 end
 
-def addLine?(line)
-  flag=true
-  flag=false if line=~/Download\s*http/i
-  flag=false if line=~/downloaded.*KB\/.*KB/i
-  flag=false if line=~/at [.$\w\d]+\([-@.$\/\w\d]+:[0-9]+\)/i
-  flag=false if line=~/at [.\w\d]+\/[.\w\d]+\([.: \w\d]+\)/i
-  flag=false if line=~/^$/
-  flag=false if line=~/-{10,}/
-  flag=false if line=~/COMPILATION ERROR/
-  flag=false if line=~/[0-9]+ (error|errors)[\s&&[^\n]]*$/
-  flag=false if line=~/[0-9]+ (warning|warnings)[\s&&[^\n]]*$/
-  flag=false if line=~/^Note:/
-  flag=false if line=~/What went wrong/
-  flag=false if line=~/Build failed with an exception/
-  flag=false if line=~/Execution failed for task/
-  flag=false if line=~/Compilation failed/
-  flag=false if line=~/FAILED$/
-  flag=false if line=~/^\[info\]/
-  flag=false if line=~/Failed to execute goal/
-  flag=false if line=~/(:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala)$/
-  flag=false if line=~/warnings found and -Werror specified/
+def add_line?(line)
+  flag = true
+  flag = false if line =~ /Download\s*http/i
+  flag = false if line =~ /downloaded.*KB\/.*KB/i
+  flag = false if line =~ /at [.$\w\d]+\([-@.$\/\w\d]+:[0-9]+\)/i
+  flag = false if line =~ /at [.\w\d]+\/[.\w\d]+\([.: \w\d]+\)/i
+  flag = false if line =~ /^$/
+  flag = false if line =~ /-{10,}/
+  flag = false if line =~ /COMPILATION ERROR/
+  flag = false if line =~ /[0-9]+ (error|errors)[\s&&[^\n]]*$/
+  flag = false if line =~ /[0-9]+ (warning|warnings)[\s&&[^\n]]*$/
+  flag = false if line =~ /^Note:/
+
+  flag = false if line =~ /Failed to execute goal/
+  flag = false if line =~ /What went wrong/
+  flag = false if line =~ /Build failed with an exception/
+  flag = false if line =~ /Execution failed for task/
+  flag = false if line =~ /Compilation failed/
+  flag = false if line =~ /FAILED$/
+  flag = false if line =~ /^\[info\]/
+  flag = false if line =~ /(:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala)$/
+  flag = false if line =~ /warnings found and -Werror specified/
+  flag = false if line =~ /UP-TO-DATE/
+  flag = false if line =~ /FROM-CACHE/
+  flag = false if line =~ /NO-SOURCE/
+  flag = false if line =~ /:[a-zA-Z]+:[a-zA-Z]+$/
   flag
 end
 
-def gradleCutSegment(log_file_path,file_lines)
-  set=Set.new
-  file_lines.each_with_index do|line,index|
+def cut_gradle(log_file_path, file_lines)
+  set = Set.new
+  file_lines.each_with_index do |line,end_number|
     next unless GRADLE_ERROR_FLAG =~ line
-    k=index-7
+    begin_number = end_number - 7
 
-    if file_lines[index-1]!~/Execution failed for task/
-      while k>0 && file_lines[k]!~GRADLE_ERROR_UP_BOUNDARY && file_lines[k]!~/(?<!\d)0%/
-        k-=1
+    if file_lines[end_number-1]!~/Execution failed for task/
+      while begin_number > 0 && file_lines[begin_number] !~ GRADLE_ERROR_UP_BOUNDARY && file_lines[begin_number] !~ /(?<!\d)0%/
+        begin_number -= 1
       end
     else
-      match=/.*'(.+)'/.match file_lines[index-1]
-      while k>0 && file_lines[k]!~GRADLE_ERROR_UP_BOUNDARY && file_lines[k]!~/^#{match[1]}/ && file_lines[k]!~/(?<!\d)0%/
-        k-=1
+      match = /.*'(.+)'/.match file_lines[end_number-1]
+      while begin_number > 0 && file_lines[begin_number] !~ GRADLE_ERROR_UP_BOUNDARY && file_lines[begin_number] !~ /^#{match[1]}/ && file_lines[begin_number] !~ /(?<!\d)0%/
+        begin_number -= 1
       end
     end
 
-    set.merge((k..index))
+    set.merge (begin_number..end_number)
   end
-  return if set.length==0
-  segment_lines=[]
-  array=set.to_a.sort!
+  return if set.length == 0
+  segment_lines = []
+  array = set.to_a.sort!
   array.each do |k|
-    segment_lines << file_lines[k] if addLine?(file_lines[k])
+    segment_lines << file_lines[k] if add_line? file_lines[k]
   end
-  cutSegment(log_file_path,'gradleSegment',segment_lines)
+  cut_segment(log_file_path, 'gradleSegment', segment_lines)
 end
 
 
-def mavenCutSegment(log_file_path,file_lines)
-  set=Set.new
-  file_lines.each_with_index do|line,index|
+def cut_maven(log_file_path, file_lines)
+  set = Set.new
+  file_lines.each_with_index do |line, begin_number|
     next unless MAVEN_ERROR_FLAG =~ line
-    k=index
-    while k<file_lines.length && file_lines[k]!~/[0-9]+ error/ && file_lines[k]!~/Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin/
-      k+=1
+    end_number = begin_number
+    while end_number < file_lines.length && file_lines[end_number] !~ /[0-9]+ error|Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin/
+      end_number += 1
     end
-    set.merge((index..k))
+    set.merge (begin_number..end_number)
   end
-  return if set.length==0
-  segment_lines=[]
-  array=set.to_a.sort!
+  return if set.length == 0
+  segment_lines = []
+  array = set.to_a.sort!
   array.each do |k|
-    segment_lines << file_lines[k] if addLine?(file_lines[k])
+    segment_lines << file_lines[k] if add_line? file_lines[k]
   end
 
-  cutSegment(log_file_path,'mavenSegment',segment_lines)
+  cut_segment(log_file_path, 'mavenSegment', segment_lines)
 end
 
-def mavenOrGradle(log_file_path)
-  file_lines=IO.readlines(log_file_path).collect!{|line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")}
-  #file=IO.read(log_file_path).gsub(/\r\n?/, "\n")
-  count_maven=0
-  count_gradle=0
-  file_lines.each do|line|
-    count_maven+=1 if line.include?('mvn') || line.include?('Reactor Summary')
-    count_gradle+=1 if line.include?('gradle')
+def use_build_tool?(log_file_path)
+  file_lines = IO.readlines(log_file_path).collect!{ |line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")}
+  count_maven = 0
+  count_gradle = 0
+  file_lines.each do |line|
+    count_maven += 1 if line.include?('mvn') || line.include?('Reactor Summary')
+    count_gradle += 1 if line.include?('gradle')
   end
-  mavenCutSegment(log_file_path,file_lines) if count_maven>=2
-  gradleCutSegment(log_file_path,file_lines) if count_gradle>=2
+  cut_maven(log_file_path, file_lines) if count_maven >= 2
+  cut_gradle(log_file_path, file_lines) if count_gradle >= 2
 end
 
-def traverseDir(build_logs_path)
-  threads=[]
-  count=0
-  Dir.entries(build_logs_path).delete_if {|repo_name| /.+@.+/!~repo_name}.each do |repo_name|
-    count+=1
-    next if count<50
-
-    repo_path=File.join(build_logs_path,repo_name)
+def scan_log_directory(build_logs_path)
+  threads = []
+  count = 0
+  Dir.entries(build_logs_path).delete_if { |repo_name| /.+@.+/ !~ repo_name}.each do |repo_name|
+    count += 1
+    next if count < 1
+    repo_path = File.join(build_logs_path, repo_name)
     puts "Scanning projects: #{repo_path}"
-    Dir.entries(repo_path).delete_if {|log_file_name| /.+@.+/!~log_file_name}.sort_by!{|e| e.sub(/\.log/,'').sub(/@/,'.').to_f}.each do |log_file_name|
-      log_file_path=File.join(repo_path,log_file_name)
+
+    Dir.entries(repo_path).delete_if { |log_file_name| /.+@.+/ !~ log_file_name}.sort_by!{ |e| e.sub(/\.log/,'').sub(/@/,'.').to_f}.each do |log_file_name|
+      log_file_path = File.join(repo_path, log_file_name)
       puts "--Scanning file: #{log_file_path}"
 
       thr=Thread.new(log_file_path) do |p|
-        mavenOrGradle(p)
+        use_build_tool? p
       end
-      threads<<thr
-
+      threads << thr
       loop do
-        count=Thread.list.count{|thread| thread.alive? }
+        count = Thread.list.count{ |thread| thread.alive? }
         break if count <= 50
       end
-      threads.delete_if{|thread| !thread.alive?}
+      threads.delete_if { |thread| !thread.alive?}
     end
   end
 
@@ -260,5 +263,5 @@ def traverseDir(build_logs_path)
 end
 
 Thread.abort_on_exception = true
-build_logs_path=ARGV[0]||'../../bodyLog2/build_logs/'
-traverseDir(build_logs_path)
+build_logs_path = ARGV[0]||'../../bodyLog2/build_logs/'
+scan_log_directory build_logs_path

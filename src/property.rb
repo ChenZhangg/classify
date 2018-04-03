@@ -185,7 +185,7 @@ class Property
     parseProperty('openjdk8')
     parseProperty('openjdk9')
 
-    insertHashWithHand
+    #insertHashWithHand
 
     removeDuplication
 
