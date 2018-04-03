@@ -233,7 +233,7 @@ def traverseDir(build_logs_path)
   count=0
   Dir.entries(build_logs_path).delete_if {|repo_name| /.+@.+/!~repo_name}.each do |repo_name|
     count+=1
-    next if count<1
+    next if count<50
 
     repo_path=File.join(build_logs_path,repo_name)
     puts "Scanning projects: #{repo_path}"
@@ -248,7 +248,7 @@ def traverseDir(build_logs_path)
 
       loop do
         count=Thread.list.count{|thread| thread.alive? }
-        break if count <= 20
+        break if count <= 50
       end
       threads.delete_if{|thread| !thread.alive?}
     end
