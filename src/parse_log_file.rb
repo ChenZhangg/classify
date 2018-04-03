@@ -3,8 +3,8 @@ require_relative 'property'
 require 'csv'
 
 
-MAVEN_ERROR_FLAG='COMPILATION ERROR'
-GRADLE_ERROR_FLAG='Compilation failed'
+MAVEN_ERROR_FLAG=/COMPILATION ERROR/
+GRADLE_ERROR_FLAG=/Compilation failed/
 GRADLE_ERROR_UP_BOUNDARY=/:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
 
 SEGMENT_BOUNDARY="/home/travis"
@@ -50,9 +50,9 @@ def getLargestSimilarity(hash)
   max
 end
 
-def map(log_file_path,output_file,segment_lines)
+def map(log_file_path,output_file,segment)
   output_file+='map'
-  segment=segment_lines.join
+  #segment=segment_lines.join
   match_length_similarity=Hash.new(0)
   word_number_similarity=Hash.new(0)
 
@@ -108,8 +108,7 @@ def map(log_file_path,output_file,segment_lines)
   end
 end
 
-def cutSegment(log_file_path,output_file,segment)
-  segment_lines=segment.lines
+def cutSegment(log_file_path,output_file,segment_lines)
   cut_point=[]
   segment_lines.each_with_index do |line,index|
     next unless SEGMENT_BOUNDARY_FILE=~line || SEGMENT_BOUNDARY_JAR=~line
@@ -128,7 +127,7 @@ def cutSegment(log_file_path,output_file,segment)
   File.open(output_file,'a') do |output|
     output.puts
     output.puts "Segment in #{log_file_path} is:"
-    output.puts segment
+    output.puts segment_lines
     output.puts
     cut_range.each_with_index do |r,index|
       output.puts "Part #{index}---->"
@@ -139,7 +138,7 @@ def cutSegment(log_file_path,output_file,segment)
 
   cut_range.each do |r|
     #map(output_file,segment_lines[r]) if segment_lines[r.begin]=~SEGMENT_BOUNDARY_JAVA || segment_lines[r.begin]=~SEGMENT_BOUNDARY_JAR
-    map(log_file_path,output_file,segment_lines[r]) if segment_lines[r.begin]!~SEGMENT_BOUNDARY_GROOVY && segment_lines[r.begin]!~SEGMENT_BOUNDARY_SCALA && segment_lines[r.begin]!~SEGMENT_BOUNDARY_KOTLIN
+    map(log_file_path,output_file,segment_lines[r].join) if segment_lines[r.begin]!~SEGMENT_BOUNDARY_GROOVY && segment_lines[r.begin]!~SEGMENT_BOUNDARY_SCALA && segment_lines[r.begin]!~SEGMENT_BOUNDARY_KOTLIN
   end
 end
 
@@ -167,12 +166,10 @@ def addLine?(line)
   flag
 end
 
-def gradleCutSegment(log_file_path)
-
+def gradleCutSegment(log_file_path,file_lines)
   set=Set.new
-  file_lines=IO.readlines(log_file_path).collect!{|line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")}
   file_lines.each_with_index do|line,index|
-    next unless Regexp.new(GRADLE_ERROR_FLAG)=~line
+    next unless GRADLE_ERROR_FLAG =~ line
     k=index-7
 
     if file_lines[index-1]!~/Execution failed for task/
@@ -189,20 +186,19 @@ def gradleCutSegment(log_file_path)
     set.merge((k..index))
   end
   return if set.length==0
-  segment=''
+  segment_lines=[]
   array=set.to_a.sort!
   array.each do |k|
-    segment+=file_lines[k] if addLine?(file_lines[k])
+    segment_lines << file_lines[k] if addLine?(file_lines[k])
   end
-  cutSegment(log_file_path,'gradleSegment',segment)
+  cutSegment(log_file_path,'gradleSegment',segment_lines)
 end
 
 
-def mavenCutSegment(log_file_path)
+def mavenCutSegment(log_file_path,file_lines)
   set=Set.new
-  file_lines=IO.readlines(log_file_path).collect!{|line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")}
   file_lines.each_with_index do|line,index|
-    next unless Regexp.new(MAVEN_ERROR_FLAG)=~line
+    next unless MAVEN_ERROR_FLAG =~ line
     k=index
     while k<file_lines.length && file_lines[k]!~/[0-9]+ error/ && file_lines[k]!~/Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin/
       k+=1
@@ -210,29 +206,26 @@ def mavenCutSegment(log_file_path)
     set.merge((index..k))
   end
   return if set.length==0
-  segment=''
+  segment_lines=[]
   array=set.to_a.sort!
   array.each do |k|
-    segment+=file_lines[k] if addLine?(file_lines[k])
+    segment_lines << file_lines[k] if addLine?(file_lines[k])
   end
 
-  cutSegment(log_file_path,'mavenSegment',segment)
+  cutSegment(log_file_path,'mavenSegment',segment_lines)
 end
 
 def mavenOrGradle(log_file_path)
-  file=IO.read(log_file_path).gsub(/\r\n?/, "\n")
-  if file.scan(/gradle/i).size >= 2
-    print '>>>>>>>>>>>>>>>>>>>>>>>>>',log_file_path,' USE Gradle'
-    puts
-    gradleCutSegment(log_file_path)
+  file_lines=IO.readlines(log_file_path).collect!{|line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")}
+  #file=IO.read(log_file_path).gsub(/\r\n?/, "\n")
+  count_maven=0
+  count_gradle=0
+  file_lines.each do|line|
+    count_maven+=1 if line.include?('mvn') || line.include?('Reactor Summary')
+    count_gradle+=1 if line.include?('gradle')
   end
-
-  if file.scan(/Reactor Summary|mvn/i).size >= 2
-    print '>>>>>>>>>>>>>>>>>>>>>>>>>',log_file_path,' USE Maven'
-    puts
-    mavenCutSegment(log_file_path)
-  end
-
+  mavenCutSegment(log_file_path,file_lines) if count_maven>=2
+  gradleCutSegment(log_file_path,file_lines) if count_gradle>=2
 end
 
 def traverseDir(build_logs_path)
@@ -240,7 +233,7 @@ def traverseDir(build_logs_path)
   count=0
   Dir.entries(build_logs_path).delete_if {|repo_name| /.+@.+/!~repo_name}.each do |repo_name|
     count+=1
-    next if count<30
+    next if count<1
 
     repo_path=File.join(build_logs_path,repo_name)
     puts "Scanning projects: #{repo_path}"
