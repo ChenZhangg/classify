@@ -255,7 +255,7 @@ def traverseDir(build_logs_path)
 
       loop do
         count=Thread.list.count{|thread| thread.alive? }
-        break if count <= 50
+        break if count <= 20
       end
       threads.delete_if{|thread| !thread.alive?}
     end
@@ -266,6 +266,6 @@ def traverseDir(build_logs_path)
   end
 end
 
-
+Thread.abort_on_exception = true
 build_logs_path=ARGV[0]||'../../bodyLog2/build_logs/'
 traverseDir(build_logs_path)
