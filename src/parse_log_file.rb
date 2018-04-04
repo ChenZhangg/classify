@@ -148,6 +148,7 @@ def add_line?(line)
   flag = false if line =~ /downloaded.*KB\/.*KB/i
   flag = false if line =~ /at [.$\w\d]+\([-@.$\/\w\d]+:[0-9]+\)/i
   flag = false if line =~ /at [.\w\d]+\/[.\w\d]+\([.: \w\d]+\)/i
+  flag = false if line =~ /at [.$\w\d]+\(Native Method\)/i
   flag = false if line =~ /^$/
   flag = false if line =~ /-{10,}/
   flag = false if line =~ /COMPILATION ERROR/
@@ -222,7 +223,11 @@ def cut_maven(log_file_path, file_lines)
 end
 
 def use_build_tool?(log_file_path)
-  file_lines = IO.readlines(log_file_path).collect!{ |line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")}
+  begin
+    file_lines = IO.readlines('913@10.log').collect!{ |line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n") }
+  rescue
+    file_lines = IO.readlines('913@10.log', :encoding => 'ISO-8859-1').collect!{ |line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n") }
+  end
   count_maven = 0
   count_gradle = 0
   file_lines.each do |line|
@@ -240,7 +245,7 @@ def scan_log_directory(build_logs_path)
   Dir.entries(build_logs_path).delete_if { |repo_name| /.+@.+/ !~ repo_name}.each do |repo_name|
     #count += 1
     #next if count < 1
-    flag = false if repo_name.include? 'cucumber'
+    flag = false if repo_name.include? 'selenium'
     next if flag
     repo_path = File.join(build_logs_path, repo_name)
     puts "Scanning projects: #{repo_path}"
