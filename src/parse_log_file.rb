@@ -190,12 +190,13 @@ def cut_gradle(log_file_path, file_lines)
 
     set.merge (begin_number..end_number)
   end
-  return if set.length == 0
   segment_lines = []
   array = set.to_a.sort!
   array.each do |k|
     segment_lines << file_lines[k] if add_line? file_lines[k]
   end
+  return if segment_lines.length == 0
+
   cut_segment(log_file_path, 'gradleSegment', segment_lines)
 end
 
@@ -210,12 +211,12 @@ def cut_maven(log_file_path, file_lines)
     end
     set.merge (begin_number..end_number)
   end
-  return if set.length == 0
   segment_lines = []
   array = set.to_a.sort!
   array.each do |k|
     segment_lines << file_lines[k] if add_line? file_lines[k]
   end
+  return if segment_lines.length == 0
 
   cut_segment(log_file_path, 'mavenSegment', segment_lines)
 end
