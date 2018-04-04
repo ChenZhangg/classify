@@ -235,10 +235,13 @@ end
 
 def scan_log_directory(build_logs_path)
   threads = []
-  count = 0
+  #count = 0
+  flag = true
   Dir.entries(build_logs_path).delete_if { |repo_name| /.+@.+/ !~ repo_name}.each do |repo_name|
-    count += 1
-    next if count < 1
+    #count += 1
+    #next if count < 1
+    flag = false if repo_name.include? 'cucumber'
+    next if flag
     repo_path = File.join(build_logs_path, repo_name)
     puts "Scanning projects: #{repo_path}"
 
