@@ -224,9 +224,9 @@ end
 
 def use_build_tool?(log_file_path)
   begin
-    file_lines = IO.readlines('913@10.log').collect!{ |line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n") }
+    file_lines = IO.readlines(log_file_path).collect!{ |line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n") }
   rescue
-    file_lines = IO.readlines('913@10.log', :encoding => 'ISO-8859-1').collect!{ |line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n") }
+    file_lines = IO.readlines(log_file_path, :encoding => 'ISO-8859-1').collect!{ |line| line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n") }
   end
   count_maven = 0
   count_gradle = 0
