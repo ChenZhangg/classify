@@ -168,6 +168,7 @@ def add_line?(line)
   flag = false if line =~ /UP-TO-DATE/
   flag = false if line =~ /FROM-CACHE/
   flag = false if line =~ /NO-SOURCE/
+  flag = false if line =~ /SKIPPED/
   flag = false if line =~ /:[a-zA-Z]+:[a-zA-Z]+$/
   flag
 end
@@ -239,36 +240,27 @@ def use_build_tool?(log_file_path)
 end
 
 def scan_log_directory(build_logs_path)
-  threads = []
-  #count = 0
-  flag = true
-  Dir.entries(build_logs_path).delete_if { |repo_name| /.+@.+/ !~ repo_name}.each do |repo_name|
-    #count += 1
-    #next if count < 1
-    flag = false if repo_name.include? 'selenium'
-    next if flag
+  #flag = true
+  Dir.foreach(build_logs_path) do |repo_name|
+    next if /.+@.+/ !~ repo_name
+    #flag = false if repo_name.include? 'selenium'
+    #next if flag
     repo_path = File.join(build_logs_path, repo_name)
     puts "Scanning projects: #{repo_path}"
 
-    Dir.entries(repo_path).delete_if { |log_file_name| /.+@.+/ !~ log_file_name}.sort_by!{ |e| e.sub(/\.log/,'').sub(/@/,'.').to_f}.each do |log_file_name|
+    Dir.foreach(repo_path) do |log_file_name|
+      next if /.+@.+/ !~ log_file_name
       log_file_path = File.join(repo_path, log_file_name)
       puts "--Scanning file: #{log_file_path}"
-
-      thr=Thread.new(log_file_path) do |p|
+      Thread.new(log_file_path) do |p|
         use_build_tool? p
       end
-      threads << thr
       loop do
-        count = Thread.list.count{ |thread| thread.alive? }
-        break if count <= 50
+        break if Thread.list.count{ |thread| thread.alive? } <= 50
       end
-      threads.delete_if { |thread| !thread.alive?}
     end
   end
-
-  threads.each do |thread|
-    thread.join if thread.alive?
-  end
+  Thread.list.each{ |thread| thread.join if thread.alive? && thread != Thread.current}
 end
 
 Thread.abort_on_exception = true
