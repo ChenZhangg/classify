@@ -1,0 +1,71 @@
+require 'test/unit'
+require 'property'
+class TestProperty < Test::Unit::TestCase
+
+  def setup
+    @property = Fdse::Property.new
+  end
+
+  def test_get_key
+    assert_equal :openjdk7_compiler_misc_cant_override, @property.get_key('openjdk7', 'compiler.misc.cant.override=\\')
+    assert_equal :openjdk8_compiler_err_proc_cant_access_1, @property.get_key('openjdk8', 'compiler.err.proc.cant.access.1=\\')
+    assert_equal :openjdk9_compiler_warn_underscore_as_identifier, @property.get_key('openjdk9', 'compiler.warn.underscore.as.identifier=\\')
+  end
+
+  def test_regexp_string
+    lines = IO.readlines 'regexp_string'
+    assert_equal 'abstract methods cannot have a body', @property.regexp_string(lines[0])
+    assert_equal '[^\n]*has already been annotated', @property.regexp_string(lines[1])
+    assert_equal '[^\n]*is already defined in[^\n]*', @property.regexp_string(lines[2])
+    assert_equal 'a type with the same simple name is already defined by the single-type-import of[^\n]*', @property.regexp_string(lines[3])
+    assert_equal 'annotation[^\n]*is missing a default value for the element[^\n]*', @property.regexp_string(lines[4])
+    assert_equal '[^\n]*missing in reference', @property.regexp_string(lines[5])
+  end
+
+  def test_regexp_strings
+    lines = IO.readlines 'regexp_strings0'
+    assert_equal '^[^\n]*is abstract[^\n]*cannot be instantiated[^\n]*\n', @property.regexp_strings(lines, 0)
+    lines = IO.readlines 'regexp_strings1'
+    assert_equal '^[^\n]*inference variable[^\n]*has incompatible bounds([^\n]*\n[^\n]*){1,3}?equality constraints[^\n]*\n[^\n]*lower bounds[^\n]*\n', @property.regexp_strings(lines, 0)
+  end
+
+  def test_detect_duplication
+    hash = {a: 'zhang', b: 'zhang', c: 'chen', d: 'zhang', f: 'zhu', g: 'ling', h: 'zhu'}
+    result = @property.detect_duplication hash
+    assert_equal({'zhang' => 3, 'chen' => 1, 'zhu' => 2, 'ling' => 1}, result)
+  end
+
+  def test_remove_duplication
+    hash = {a: 'zhang', b: 'zhang', c: 'chen', d: 'zhang', f: 'zhu', g: 'ling', h: 'zhu'}
+    result = @property.remove_duplication!(hash)
+    assert_equal({a: 'zhang', c: 'chen', f: 'zhu', g: 'ling'}, result)
+    assert_equal(hash, result)
+  end
+
+  def test_sort_by_length
+    hash = {a: /zhang chen/, c: /zhu ling yun/,f: /zhu/}
+    result = @property.sort_by_length(hash)
+    assert_equal({f: /zhu/, a: /zhang chen/, c: /zhu ling yun/,}.flatten, result.flatten)
+  end
+
+  def test_similarity_matrix_initialize
+    hash = {f: /zhu/, a: /zhang chen/, c: /zhu ling yun/}
+    result = @property.similarity_matrix_initialize hash
+    expected = {f: {f: 0, a: 0, c: 0}, a: {f: 0, a: 0, c: 0}, c: {f: 0, a: 0, c: 0}}
+    assert_equal(expected, result)
+  end
+
+  def test_regexp_similarity
+    hash = @property.parse_properties_file('regexp_similarity')
+
+    assert @property.regexp_similarity?(hash[:regexp_similarity_compiler_misc_descriptor], hash[:regexp_similarity_compiler_misc_descriptor_throws])
+    assert_false @property.regexp_similarity?(hash[:regexp_similarity_compiler_misc_descriptor_throws], hash[:regexp_similarity_compiler_misc_descriptor])
+    assert  @property.regexp_similarity?(hash[:regexp_similarity_compiler_err_illegal_dot], hash[:regexp_similarity_compiler_err_illegal_underscore])
+
+    hash = @property.sort_by_length hash
+    similarity_hash = @property.similarity_matrix_initialize hash
+    @property.calculate_similarity_matrix! similarity_hash
+    result = @property.sort_regex_hash(hash, similarity_hash)
+    p result
+  end
+end

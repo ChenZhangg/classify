@@ -1,0 +1,18 @@
+compiler.misc.descriptor=\
+    descriptor: {2} {0}({1})
+
+# 0: name, 1: list of type, 2: type, 3: list of type
+compiler.misc.descriptor.throws=\
+    descriptor: {2} {0}({1}) throws {3}
+
+compiler.err.illegal.line.end.in.char.lit=\
+    illegal line end in character literal
+
+compiler.err.illegal.nonascii.digit=\
+    illegal non-ASCII digit
+
+compiler.err.illegal.underscore=\
+    illegal underscore
+
+compiler.err.illegal.dot=\
+    illegal ''.''

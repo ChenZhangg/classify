@@ -17,7 +17,7 @@ SEGMENT_BOUNDARY_SIG = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.sig/
 SEGMENT_BOUNDARY_JAR = /(\/[^\n\/]+){2,}\/\w+[-\w\d]*\.jar/
 
 
-@regex_hash = Property.new.getRegexpHash
+@regex_hash = Property.new.run
 
 #@error_type_number=Hash.new(0)
 
@@ -144,6 +144,7 @@ end
 
 def add_line?(line)
   flag = true
+  flag = false if line.nil?
   flag = false if line =~ /Download\s*http/i
   flag = false if line =~ /downloaded.*KB\/.*KB/i
   flag = false if line =~ /at [.$\w\d]+\([-@.$\/\w\d]+:[0-9]+\)/i
@@ -215,6 +216,7 @@ def cut_maven(log_file_path, file_lines)
   end
   segment_lines = []
   array = set.to_a.sort!
+
   array.each do |k|
     segment_lines << file_lines[k] if add_line? file_lines[k]
   end

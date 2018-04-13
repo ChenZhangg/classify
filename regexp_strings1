@@ -1,0 +1,3 @@
+    inference variable {0} has incompatible bounds\n\
+    equality constraints: {1}\n\
+    lower bounds: {2}

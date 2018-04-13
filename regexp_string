@@ -1,0 +1,6 @@
+    abstract methods cannot have a body
+    {0} {1} has already been annotated
+    {0} {1} is already defined in {2} {3}
+    a type with the same simple name is already defined by the single-type-import of {0}
+    annotation @{0} is missing a default value for the element ''{1}''
+    '')'' missing in reference
