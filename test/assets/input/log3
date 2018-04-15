@@ -1,0 +1,226 @@
+Using worker: worker-linux-10-2.bb.travis-ci.org:travis-linux-15
+
+travis_fold:start:git.1$ git clone --depth=50 git://github.com/sk89q/worldedit.git sk89q/worldedit
+Cloning into 'sk89q/worldedit'...
+remote: Counting objects: 4208, done.[K
+remote: Compressing objects:   0% (1/1783)   [Kremote: Compressing objects:   1% (18/1783)   [Kremote: Compressing objects:   2% (36/1783)   [Kremote: Compressing objects:   3% (54/1783)   [Kremote: Compressing objects:   4% (72/1783)   [Kremote: Compressing objects:   5% (90/1783)   [Kremote: Compressing objects:   6% (107/1783)   [Kremote: Compressing objects:   7% (125/1783)   [Kremote: Compressing objects:   8% (143/1783)   [Kremote: Compressing objects:   9% (161/1783)   [Kremote: Compressing objects:  10% (179/1783)   [Kremote: Compressing objects:  11% (197/1783)   [Kremote: Compressing objects:  12% (214/1783)   [Kremote: Compressing objects:  13% (232/1783)   [Kremote: Compressing objects:  14% (250/1783)   [Kremote: Compressing objects:  15% (268/1783)   [Kremote: Compressing objects:  16% (286/1783)   [Kremote: Compressing objects:  17% (304/1783)   [Kremote: Compressing objects:  18% (321/1783)   [Kremote: Compressing objects:  19% (339/1783)   [Kremote: Compressing objects:  20% (357/1783)   [Kremote: Compressing objects:  21% (375/1783)   [Kremote: Compressing objects:  22% (393/1783)   [Kremote: Compressing objects:  23% (411/1783)   [Kremote: Compressing objects:  24% (428/1783)   [Kremote: Compressing objects:  25% (446/1783)   [Kremote: Compressing objects:  26% (464/1783)   [Kremote: Compressing objects:  27% (482/1783)   [Kremote: Compressing objects:  28% (500/1783)   [Kremote: Compressing objects:  29% (518/1783)   [Kremote: Compressing objects:  30% (535/1783)   [Kremote: Compressing objects:  31% (553/1783)   [Kremote: Compressing objects:  32% (571/1783)   [Kremote: Compressing objects:  33% (589/1783)   [Kremote: Compressing objects:  34% (607/1783)   [Kremote: Compressing objects:  35% (625/1783)   [Kremote: Compressing objects:  36% (642/1783)   [Kremote: Compressing objects:  37% (660/1783)   [Kremote: Compressing objects:  38% (678/1783)   [Kremote: Compressing objects:  39% (696/1783)   [Kremote: Compressing objects:  40% (714/1783)   [Kremote: Compressing objects:  41% (732/1783)   [Kremote: Compressing objects:  42% (749/1783)   [Kremote: Compressing objects:  43% (767/1783)   [Kremote: Compressing objects:  44% (785/1783)   [Kremote: Compressing objects:  45% (803/1783)   [Kremote: Compressing objects:  46% (821/1783)   [Kremote: Compressing objects:  47% (839/1783)   [Kremote: Compressing objects:  48% (856/1783)   [Kremote: Compressing objects:  49% (874/1783)   [Kremote: Compressing objects:  50% (892/1783)   [Kremote: Compressing objects:  51% (910/1783)   [Kremote: Compressing objects:  52% (928/1783)   [Kremote: Compressing objects:  53% (945/1783)   [Kremote: Compressing objects:  54% (963/1783)   [Kremote: Compressing objects:  55% (981/1783)   [Kremote: Compressing objects:  56% (999/1783)   [Kremote: Compressing objects:  57% (1017/1783)   [Kremote: Compressing objects:  58% (1035/1783)   [Kremote: Compressing objects:  59% (1052/1783)   [Kremote: Compressing objects:  60% (1070/1783)   [Kremote: Compressing objects:  61% (1088/1783)   [Kremote: Compressing objects:  62% (1106/1783)   [Kremote: Compressing objects:  63% (1124/1783)   [Kremote: Compressing objects:  64% (1142/1783)   [Kremote: Compressing objects:  65% (1159/1783)   [Kremote: Compressing objects:  66% (1177/1783)   [Kremote: Compressing objects:  67% (1195/1783)   [Kremote: Compressing objects:  68% (1213/1783)   [Kremote: Compressing objects:  69% (1231/1783)   [Kremote: Compressing objects:  70% (1249/1783)   [Kremote: Compressing objects:  71% (1266/1783)   [Kremote: Compressing objects:  72% (1284/1783)   [Kremote: Compressing objects:  73% (1302/1783)   [Kremote: Compressing objects:  74% (1320/1783)   [Kremote: Compressing objects:  75% (1338/1783)   [Kremote: Compressing objects:  76% (1356/1783)   [Kremote: Compressing objects:  77% (1373/1783)   [Kremote: Compressing objects:  78% (1391/1783)   [Kremote: Compressing objects:  79% (1409/1783)   [Kremote: Compressing objects:  80% (1427/1783)   [Kremote: Compressing objects:  81% (1445/1783)   [Kremote: Compressing objects:  82% (1463/1783)   [Kremote: Compressing objects:  83% (1480/1783)   [Kremote: Compressing objects:  84% (1498/1783)   [Kremote: Compressing objects:  85% (1516/1783)   [Kremote: Compressing objects:  86% (1534/1783)   [Kremote: Compressing objects:  87% (1552/1783)   [Kremote: Compressing objects:  88% (1570/1783)   [Kremote: Compressing objects:  89% (1587/1783)   [Kremote: Compressing objects:  90% (1605/1783)   [Kremote: Compressing objects:  91% (1623/1783)   [Kremote: Compressing objects:  92% (1641/1783)   [Kremote: Compressing objects:  93% (1659/1783)   [Kremote: Compressing objects:  94% (1677/1783)   [Kremote: Compressing objects:  95% (1694/1783)   [Kremote: Compressing objects:  96% (1712/1783)   [Kremote: Compressing objects:  97% (1730/1783)   [Kremote: Compressing objects:  98% (1748/1783)   [Kremote: Compressing objects:  99% (1766/1783)   [Kremote: Compressing objects: 100% (1783/1783)   [Kremote: Compressing objects: 100% (1783/1783), done.[K
+Receiving objects:   0% (1/4208)   Receiving objects:   1% (43/4208)   Receiving objects:   2% (85/4208)   Receiving objects:   3% (127/4208)   Receiving objects:   4% (169/4208)   Receiving objects:   5% (211/4208)   Receiving objects:   6% (253/4208)   Receiving objects:   7% (295/4208)   Receiving objects:   8% (337/4208)   Receiving objects:   9% (379/4208)   Receiving objects:  10% (421/4208)   Receiving objects:  11% (463/4208)   Receiving objects:  12% (505/4208)   Receiving objects:  13% (548/4208)   Receiving objects:  14% (590/4208)   Receiving objects:  15% (632/4208)   Receiving objects:  16% (674/4208)   Receiving objects:  17% (716/4208)   Receiving objects:  18% (758/4208)   Receiving objects:  19% (800/4208)   Receiving objects:  20% (842/4208)   Receiving objects:  21% (884/4208)   Receiving objects:  22% (926/4208)   Receiving objects:  23% (968/4208)   Receiving objects:  24% (1010/4208)   Receiving objects:  25% (1052/4208)   Receiving objects:  26% (1095/4208)   Receiving objects:  27% (1137/4208)   Receiving objects:  28% (1179/4208)   Receiving objects:  29% (1221/4208)   Receiving objects:  30% (1263/4208)   Receiving objects:  31% (1305/4208)   Receiving objects:  32% (1347/4208)   Receiving objects:  33% (1389/4208)   Receiving objects:  34% (1431/4208)   Receiving objects:  35% (1473/4208)   Receiving objects:  36% (1515/4208)   Receiving objects:  37% (1557/4208)   Receiving objects:  38% (1600/4208)   Receiving objects:  39% (1642/4208)   Receiving objects:  40% (1684/4208)   Receiving objects:  41% (1726/4208)   Receiving objects:  42% (1768/4208)   Receiving objects:  43% (1810/4208)   Receiving objects:  44% (1852/4208)   Receiving objects:  45% (1894/4208)   Receiving objects:  46% (1936/4208)   Receiving objects:  47% (1978/4208)   Receiving objects:  48% (2020/4208)   Receiving objects:  49% (2062/4208)   Receiving objects:  50% (2104/4208)   Receiving objects:  51% (2147/4208)   Receiving objects:  52% (2189/4208)   Receiving objects:  53% (2231/4208)   Receiving objects:  54% (2273/4208)   Receiving objects:  55% (2315/4208)   Receiving objects:  56% (2357/4208)   Receiving objects:  57% (2399/4208)   Receiving objects:  58% (2441/4208)   Receiving objects:  59% (2483/4208)   Receiving objects:  60% (2525/4208)   Receiving objects:  61% (2567/4208)   Receiving objects:  62% (2609/4208)   Receiving objects:  63% (2652/4208)   Receiving objects:  64% (2694/4208)   Receiving objects:  65% (2736/4208)   Receiving objects:  66% (2778/4208)   Receiving objects:  67% (2820/4208)   Receiving objects:  68% (2862/4208)   Receiving objects:  69% (2904/4208)   Receiving objects:  70% (2946/4208)   Receiving objects:  71% (2988/4208)   Receiving objects:  72% (3030/4208)   Receiving objects:  73% (3072/4208)   Receiving objects:  74% (3114/4208)   Receiving objects:  75% (3156/4208)   Receiving objects:  76% (3199/4208)   Receiving objects:  77% (3241/4208)   Receiving objects:  78% (3283/4208)   Receiving objects:  79% (3325/4208)   Receiving objects:  80% (3367/4208)   Receiving objects:  81% (3409/4208)   Receiving objects:  82% (3451/4208)   Receiving objects:  83% (3493/4208)   Receiving objects:  84% (3535/4208)   Receiving objects:  85% (3577/4208)   Receiving objects:  86% (3619/4208)   Receiving objects:  87% (3661/4208)   Receiving objects:  88% (3704/4208)   Receiving objects:  89% (3746/4208)   Receiving objects:  90% (3788/4208)   Receiving objects:  91% (3830/4208)   Receiving objects:  92% (3872/4208)   Receiving objects:  93% (3914/4208)   Receiving objects:  94% (3956/4208)   remote: Total 4208 (delta 2528), reused 3319 (delta 1837)[K
+Receiving objects:  95% (3998/4208)   Receiving objects:  96% (4040/4208)   Receiving objects:  97% (4082/4208)   Receiving objects:  98% (4124/4208)   Receiving objects:  99% (4166/4208)   Receiving objects: 100% (4208/4208)   Receiving objects: 100% (4208/4208), 1.43 MiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/2528)   Resolving deltas:   1% (28/2528)   Resolving deltas:   3% (91/2528)   Resolving deltas:   4% (103/2528)   Resolving deltas:   5% (134/2528)   Resolving deltas:   6% (158/2528)   Resolving deltas:   7% (181/2528)   Resolving deltas:   8% (207/2528)   Resolving deltas:   9% (232/2528)   Resolving deltas:  10% (261/2528)   Resolving deltas:  11% (303/2528)   Resolving deltas:  12% (318/2528)   Resolving deltas:  13% (333/2528)   Resolving deltas:  14% (361/2528)   Resolving deltas:  15% (389/2528)   Resolving deltas:  16% (419/2528)   Resolving deltas:  17% (431/2528)   Resolving deltas:  18% (460/2528)   Resolving deltas:  19% (497/2528)   Resolving deltas:  20% (512/2528)   Resolving deltas:  21% (534/2528)   Resolving deltas:  22% (567/2528)   Resolving deltas:  23% (582/2528)   Resolving deltas:  24% (625/2528)   Resolving deltas:  26% (665/2528)   Resolving deltas:  27% (689/2528)   Resolving deltas:  28% (709/2528)   Resolving deltas:  29% (735/2528)   Resolving deltas:  30% (765/2528)   Resolving deltas:  31% (804/2528)   Resolving deltas:  32% (815/2528)   Resolving deltas:  33% (843/2528)   Resolving deltas:  34% (864/2528)   Resolving deltas:  35% (886/2528)   Resolving deltas:  36% (918/2528)   Resolving deltas:  37% (938/2528)   Resolving deltas:  38% (970/2528)   Resolving deltas:  39% (1002/2528)   Resolving deltas:  40% (1019/2528)   Resolving deltas:  41% (1042/2528)   Resolving deltas:  42% (1067/2528)   Resolving deltas:  43% (1088/2528)   Resolving deltas:  44% (1127/2528)   Resolving deltas:  45% (1138/2528)   Resolving deltas:  46% (1164/2528)   Resolving deltas:  47% (1192/2528)   Resolving deltas:  48% (1220/2528)   Resolving deltas:  49% (1240/2528)   Resolving deltas:  50% (1266/2528)   Resolving deltas:  51% (1290/2528)   Resolving deltas:  52% (1323/2528)   Resolving deltas:  53% (1340/2528)   Resolving deltas:  54% (1370/2528)   Resolving deltas:  55% (1393/2528)   Resolving deltas:  56% (1417/2528)   Resolving deltas:  57% (1444/2528)   Resolving deltas:  58% (1475/2528)   Resolving deltas:  59% (1509/2528)   Resolving deltas:  60% (1520/2528)   Resolving deltas:  61% (1545/2528)   Resolving deltas:  62% (1575/2528)   Resolving deltas:  63% (1596/2528)   Resolving deltas:  64% (1620/2528)   Resolving deltas:  65% (1644/2528)   Resolving deltas:  66% (1671/2528)   Resolving deltas:  67% (1704/2528)   Resolving deltas:  69% (1767/2528)   Resolving deltas:  70% (1776/2528)   Resolving deltas:  71% (1797/2528)   Resolving deltas:  72% (1826/2528)   Resolving deltas:  73% (1846/2528)   Resolving deltas:  74% (1873/2528)   Resolving deltas:  75% (1900/2528)   Resolving deltas:  76% (1925/2528)   Resolving deltas:  77% (1948/2528)   Resolving deltas:  78% (1994/2528)   Resolving deltas:  80% (2038/2528)   Resolving deltas:  81% (2065/2528)   Resolving deltas:  82% (2074/2528)   Resolving deltas:  83% (2110/2528)   Resolving deltas:  84% (2127/2528)   Resolving deltas:  85% (2155/2528)   Resolving deltas:  86% (2181/2528)   Resolving deltas:  87% (2202/2528)   Resolving deltas:  88% (2225/2528)   Resolving deltas:  89% (2266/2528)   Resolving deltas:  90% (2278/2528)   Resolving deltas:  93% (2368/2528)   Resolving deltas:  94% (2379/2528)   Resolving deltas:  95% (2402/2528)   Resolving deltas:  96% (2437/2528)   Resolving deltas:  97% (2457/2528)   Resolving deltas:  98% (2497/2528)   Resolving deltas:  99% (2503/2528)   Resolving deltas: 100% (2528/2528)   Resolving deltas: 100% (2528/2528), done.
+Checking connectivity... done.
+travis_fold:end:git.1$ cd sk89q/worldedit
+travis_fold:start:git.3$ git fetch origin +refs/pull/296/merge: 
+remote: Counting objects: 599, done.[K
+remote: Compressing objects:   0% (1/200)   [Kremote: Compressing objects:   1% (2/200)   [Kremote: Compressing objects:   2% (4/200)   [Kremote: Compressing objects:   3% (6/200)   [Kremote: Compressing objects:   4% (8/200)   [Kremote: Compressing objects:   5% (10/200)   [Kremote: Compressing objects:   6% (12/200)   [Kremote: Compressing objects:   7% (14/200)   [Kremote: Compressing objects:   8% (16/200)   [Kremote: Compressing objects:   9% (18/200)   [Kremote: Compressing objects:  10% (20/200)   [Kremote: Compressing objects:  11% (22/200)   [Kremote: Compressing objects:  12% (24/200)   [Kremote: Compressing objects:  13% (26/200)   [Kremote: Compressing objects:  14% (28/200)   [Kremote: Compressing objects:  15% (30/200)   [Kremote: Compressing objects:  16% (32/200)   [Kremote: Compressing objects:  17% (34/200)   [Kremote: Compressing objects:  18% (36/200)   [Kremote: Compressing objects:  19% (38/200)   [Kremote: Compressing objects:  20% (40/200)   [Kremote: Compressing objects:  21% (42/200)   [Kremote: Compressing objects:  22% (44/200)   [Kremote: Compressing objects:  23% (46/200)   [Kremote: Compressing objects:  24% (48/200)   [Kremote: Compressing objects:  25% (50/200)   [Kremote: Compressing objects:  26% (52/200)   [Kremote: Compressing objects:  27% (54/200)   [Kremote: Compressing objects:  28% (56/200)   [Kremote: Compressing objects:  29% (58/200)   [Kremote: Compressing objects:  30% (60/200)   [Kremote: Compressing objects:  31% (62/200)   [Kremote: Compressing objects:  32% (64/200)   [Kremote: Compressing objects:  33% (66/200)   [Kremote: Compressing objects:  34% (68/200)   [Kremote: Compressing objects:  35% (70/200)   [Kremote: Compressing objects:  36% (72/200)   [Kremote: Compressing objects:  37% (74/200)   [Kremote: Compressing objects:  38% (76/200)   [Kremote: Compressing objects:  39% (78/200)   [Kremote: Compressing objects:  40% (80/200)   [Kremote: Compressing objects:  41% (82/200)   [Kremote: Compressing objects:  42% (84/200)   [Kremote: Compressing objects:  43% (86/200)   [Kremote: Compressing objects:  44% (88/200)   [Kremote: Compressing objects:  45% (90/200)   [Kremote: Compressing objects:  46% (92/200)   [Kremote: Compressing objects:  47% (94/200)   [Kremote: Compressing objects:  48% (96/200)   [Kremote: Compressing objects:  49% (98/200)   [Kremote: Compressing objects:  50% (100/200)   [Kremote: Compressing objects:  51% (102/200)   [Kremote: Compressing objects:  52% (104/200)   [Kremote: Compressing objects:  53% (106/200)   [Kremote: Compressing objects:  54% (108/200)   [Kremote: Compressing objects:  55% (110/200)   [Kremote: Compressing objects:  56% (112/200)   [Kremote: Compressing objects:  57% (114/200)   [Kremote: Compressing objects:  58% (116/200)   [Kremote: Compressing objects:  59% (118/200)   [Kremote: Compressing objects:  60% (120/200)   [Kremote: Compressing objects:  61% (122/200)   [Kremote: Compressing objects:  62% (124/200)   [Kremote: Compressing objects:  63% (126/200)   [Kremote: Compressing objects:  64% (128/200)   [Kremote: Compressing objects:  65% (130/200)   [Kremote: Compressing objects:  66% (132/200)   [Kremote: Compressing objects:  67% (134/200)   [Kremote: Compressing objects:  68% (136/200)   [Kremote: Compressing objects:  69% (138/200)   [Kremote: Compressing objects:  70% (140/200)   [Kremote: Compressing objects:  71% (142/200)   [Kremote: Compressing objects:  72% (144/200)   [Kremote: Compressing objects:  73% (146/200)   [Kremote: Compressing objects:  74% (148/200)   [Kremote: Compressing objects:  75% (150/200)   [Kremote: Compressing objects:  76% (152/200)   [Kremote: Compressing objects:  77% (154/200)   [Kremote: Compressing objects:  78% (156/200)   [Kremote: Compressing objects:  79% (158/200)   [Kremote: Compressing objects:  80% (160/200)   [Kremote: Compressing objects:  81% (162/200)   [Kremote: Compressing objects:  82% (164/200)   [Kremote: Compressing objects:  83% (166/200)   [Kremote: Compressing objects:  84% (168/200)   [Kremote: Compressing objects:  85% (170/200)   [Kremote: Compressing objects:  86% (172/200)   [Kremote: Compressing objects:  87% (174/200)   [Kremote: Compressing objects:  88% (176/200)   [Kremote: Compressing objects:  89% (178/200)   [Kremote: Compressing objects:  90% (180/200)   [Kremote: Compressing objects:  91% (182/200)   [Kremote: Compressing objects:  92% (184/200)   [Kremote: Compressing objects:  93% (186/200)   [Kremote: Compressing objects:  94% (188/200)   [Kremote: Compressing objects:  95% (190/200)   [Kremote: Compressing objects:  96% (192/200)   [Kremote: Compressing objects:  97% (194/200)   [Kremote: Compressing objects:  98% (196/200)   [Kremote: Compressing objects:  99% (198/200)   [Kremote: Compressing objects: 100% (200/200)   [Kremote: Compressing objects: 100% (200/200), done.[K
+Receiving objects:   0% (1/483)   Receiving objects:   1% (5/483)   Receiving objects:   2% (10/483)   Receiving objects:   3% (15/483)   Receiving objects:   4% (20/483)   Receiving objects:   5% (25/483)   Receiving objects:   6% (29/483)   Receiving objects:   7% (34/483)   Receiving objects:   8% (39/483)   Receiving objects:   9% (44/483)   Receiving objects:  10% (49/483)   Receiving objects:  11% (54/483)   Receiving objects:  12% (58/483)   Receiving objects:  13% (63/483)   Receiving objects:  14% (68/483)   Receiving objects:  15% (73/483)   Receiving objects:  16% (78/483)   Receiving objects:  17% (83/483)   Receiving objects:  18% (87/483)   Receiving objects:  19% (92/483)   Receiving objects:  20% (97/483)   Receiving objects:  21% (102/483)   Receiving objects:  22% (107/483)   Receiving objects:  23% (112/483)   Receiving objects:  24% (116/483)   Receiving objects:  25% (121/483)   Receiving objects:  26% (126/483)   Receiving objects:  27% (131/483)   Receiving objects:  28% (136/483)   Receiving objects:  29% (141/483)   remote: Total 483 (delta 317), reused 355 (delta 190)[K
+Receiving objects:  30% (145/483)   Receiving objects:  31% (150/483)   Receiving objects:  32% (155/483)   Receiving objects:  33% (160/483)   Receiving objects:  34% (165/483)   Receiving objects:  35% (170/483)   Receiving objects:  36% (174/483)   Receiving objects:  37% (179/483)   Receiving objects:  38% (184/483)   Receiving objects:  39% (189/483)   Receiving objects:  40% (194/483)   Receiving objects:  41% (199/483)   Receiving objects:  42% (203/483)   Receiving objects:  43% (208/483)   Receiving objects:  44% (213/483)   Receiving objects:  45% (218/483)   Receiving objects:  46% (223/483)   Receiving objects:  47% (228/483)   Receiving objects:  48% (232/483)   Receiving objects:  49% (237/483)   Receiving objects:  50% (242/483)   Receiving objects:  51% (247/483)   Receiving objects:  52% (252/483)   Receiving objects:  53% (256/483)   Receiving objects:  54% (261/483)   Receiving objects:  55% (266/483)   Receiving objects:  56% (271/483)   Receiving objects:  57% (276/483)   Receiving objects:  58% (281/483)   Receiving objects:  59% (285/483)   Receiving objects:  60% (290/483)   Receiving objects:  61% (295/483)   Receiving objects:  62% (300/483)   Receiving objects:  63% (305/483)   Receiving objects:  64% (310/483)   Receiving objects:  65% (314/483)   Receiving objects:  66% (319/483)   Receiving objects:  67% (324/483)   Receiving objects:  68% (329/483)   Receiving objects:  69% (334/483)   Receiving objects:  70% (339/483)   Receiving objects:  71% (343/483)   Receiving objects:  72% (348/483)   Receiving objects:  73% (353/483)   Receiving objects:  74% (358/483)   Receiving objects:  75% (363/483)   Receiving objects:  76% (368/483)   Receiving objects:  77% (372/483)   Receiving objects:  78% (377/483)   Receiving objects:  79% (382/483)   Receiving objects:  80% (387/483)   Receiving objects:  81% (392/483)   Receiving objects:  82% (397/483)   Receiving objects:  83% (401/483)   Receiving objects:  84% (406/483)   Receiving objects:  85% (411/483)   Receiving objects:  86% (416/483)   Receiving objects:  87% (421/483)   Receiving objects:  88% (426/483)   Receiving objects:  89% (430/483)   Receiving objects:  90% (435/483)   Receiving objects:  91% (440/483)   Receiving objects:  92% (445/483)   Receiving objects:  93% (450/483)   Receiving objects:  94% (455/483)   Receiving objects:  95% (459/483)   Receiving objects:  96% (464/483)   Receiving objects:  97% (469/483)   Receiving objects:  98% (474/483)   Receiving objects:  99% (479/483)   Receiving objects: 100% (483/483)   Receiving objects: 100% (483/483), 76.15 KiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/317)   Resolving deltas:   2% (8/317)   Resolving deltas:  16% (51/317)   Resolving deltas:  19% (62/317)   Resolving deltas:  20% (66/317)   Resolving deltas:  21% (69/317)   Resolving deltas:  22% (72/317)   Resolving deltas:  25% (80/317)   Resolving deltas:  28% (90/317)   Resolving deltas:  33% (105/317)   Resolving deltas:  34% (109/317)   Resolving deltas:  35% (111/317)   Resolving deltas:  36% (116/317)   Resolving deltas:  37% (118/317)   Resolving deltas:  38% (121/317)   Resolving deltas:  40% (128/317)   Resolving deltas:  41% (133/317)   Resolving deltas:  43% (137/317)   Resolving deltas:  44% (141/317)   Resolving deltas:  45% (144/317)   Resolving deltas:  47% (151/317)   Resolving deltas:  48% (154/317)   Resolving deltas:  56% (179/317)   Resolving deltas:  58% (185/317)   Resolving deltas:  62% (198/317)   Resolving deltas:  63% (202/317)   Resolving deltas:  64% (203/317)   Resolving deltas:  65% (209/317)   Resolving deltas:  66% (210/317)   Resolving deltas:  67% (214/317)   Resolving deltas:  68% (218/317)   Resolving deltas:  69% (220/317)   Resolving deltas:  70% (223/317)   Resolving deltas:  71% (226/317)   Resolving deltas:  72% (229/317)   Resolving deltas:  78% (248/317)   Resolving deltas:  79% (251/317)   Resolving deltas:  81% (258/317)   Resolving deltas:  82% (260/317)   Resolving deltas:  83% (265/317)   Resolving deltas:  84% (269/317)   Resolving deltas:  85% (272/317)   Resolving deltas:  86% (275/317)   Resolving deltas:  88% (279/317)   Resolving deltas:  89% (283/317)   Resolving deltas:  95% (304/317)   Resolving deltas:  96% (305/317)   Resolving deltas:  97% (310/317)   Resolving deltas:  99% (315/317)   Resolving deltas: 100% (317/317)   Resolving deltas: 100% (317/317), completed with 45 local objects.
+From git://github.com/sk89q/worldedit
+ * branch            refs/pull/296/merge -> FETCH_HEAD
+travis_fold:end:git.3travis_fold:start:git.4$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.4
+$ jdk_switcher use oraclejdk7
+Switching to Oracle JDK7 (java-7-oracle), JAVA_HOME will be set to /usr/lib/jvm/java-7-oracle
+update-alternatives: error: no alternatives for apt.
+update-alternatives: error: no alternatives for apt.
+$ java -version
+java version "1.7.0_51"
+Java(TM) SE Runtime Environment (build 1.7.0_51-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 24.51-b03, mixed mode)
+$ javac -version
+javac 1.7.0_51
+travis_fold:start:before_install$ chmod +x gradlew
+travis_fold:end:before_installtravis_fold:start:install$ true
+travis_fold:end:install$ gradle build
+Download http://files.minecraftforge.net/maven/net/minecraftforge/gradle/ForgeGradle/1.0-SNAPSHOT/ForgeGradle-1.0-20140614.165131-199.pom
+Download http://jcenter.bintray.com/com/github/jengelman/gradle/plugins/shadow/0.8/shadow-0.8.pom
+Download http://repo1.maven.org/maven2/com/github/tony19/named-regexp/0.2.3/named-regexp-0.2.3.pom
+Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/RetroGuard/3.6.6/RetroGuard-3.6.6.pom
+Download http://repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3.pom
+Download http://repo1.maven.org/maven2/com/github/jponge/lzma-java/1.3/lzma-java-1.3.pom
+Download http://repo1.maven.org/maven2/com/nothome/javaxdelta/2.0.1/javaxdelta-2.0.1.pom
+Download http://repo1.maven.org/maven2/net/sourceforge/argo/argo/3.4/argo-3.4.pom
+Download http://repo1.maven.org/maven2/com/github/abrarsyed/jastyle/jAstyle/1.2/jAstyle-1.2.pom
+Download http://repo1.maven.org/maven2/com/google/code/gson/gson/2.2.4/gson-2.2.4.pom
+Download http://repo1.maven.org/maven2/net/md-5/SpecialSource/1.6.1/SpecialSource-1.6.1.pom
+Download http://repo1.maven.org/maven2/com/cloudbees/diff4j/1.1/diff4j-1.1.pom
+Download http://repo1.maven.org/maven2/com/cloudbees/cloudbees-oss-parent/1/cloudbees-oss-parent-1.pom
+Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcinjector/3.1/mcinjector-3.1.pom
+Download http://repo1.maven.org/maven2/org/ow2/asm/asm-debug-all/4.1/asm-debug-all-4.1.pom
+Download http://repo1.maven.org/maven2/org/ow2/asm/asm-parent/4.1/asm-parent-4.1.pom
+Download http://repo1.maven.org/maven2/org/ow2/ow2/1.3/ow2-1.3.pom
+Download http://repo1.maven.org/maven2/jdom/jdom/1.1/jdom-1.1.pom
+Download http://repo1.maven.org/maven2/asm/asm/3.3.1/asm-3.3.1.pom
+Download http://repo1.maven.org/maven2/asm/asm-parent/3.3.1/asm-parent-3.3.1.pom
+Download http://repo1.maven.org/maven2/asm/asm-commons/3.3.1/asm-commons-3.3.1.pom
+Download http://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.5/jopt-simple-4.5.pom
+Download http://repo1.maven.org/maven2/trove/trove/1.0.2/trove-1.0.2.pom
+Download http://repo1.maven.org/maven2/com/google/guava/guava/14.0.1/guava-14.0.1.pom
+Download http://repo1.maven.org/maven2/com/google/guava/guava-parent/14.0.1/guava-parent-14.0.1.pom
+Download http://repo1.maven.org/maven2/org/jvnet/localizer/localizer/1.12/localizer-1.12.pom
+Download http://repo1.maven.org/maven2/org/jvnet/localizer/localizer-parent/1.12/localizer-parent-1.12.pom
+Download http://repo1.maven.org/maven2/commons-io/commons-io/1.4/commons-io-1.4.pom
+Download http://repo1.maven.org/maven2/org/apache/commons/commons-parent/7/commons-parent-7.pom
+Download http://repo1.maven.org/maven2/org/apache/apache/4/apache-4.pom
+Download http://repo1.maven.org/maven2/org/jdom/jdom/1.1/jdom-1.1.pom
+Download http://repo1.maven.org/maven2/asm/asm-tree/3.3.1/asm-tree-3.3.1.pom
+Download http://files.minecraftforge.net/maven/net/minecraftforge/gradle/ForgeGradle/1.0-SNAPSHOT/ForgeGradle-1.0-20140614.165131-199.jar
+Download http://jcenter.bintray.com/com/github/jengelman/gradle/plugins/shadow/0.8/shadow-0.8.jar
+Download http://repo1.maven.org/maven2/com/github/tony19/named-regexp/0.2.3/named-regexp-0.2.3.jar
+Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/RetroGuard/3.6.6/RetroGuard-3.6.6.jar
+Download http://repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3.jar
+Download http://repo1.maven.org/maven2/com/github/jponge/lzma-java/1.3/lzma-java-1.3.jar
+Download http://repo1.maven.org/maven2/com/nothome/javaxdelta/2.0.1/javaxdelta-2.0.1.jar
+Download http://repo1.maven.org/maven2/net/sourceforge/argo/argo/3.4/argo-3.4.jar
+Download http://repo1.maven.org/maven2/com/github/abrarsyed/jastyle/jAstyle/1.2/jAstyle-1.2.jar
+Download http://repo1.maven.org/maven2/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar
+Download http://repo1.maven.org/maven2/net/md-5/SpecialSource/1.6.1/SpecialSource-1.6.1.jar
+Download http://repo1.maven.org/maven2/com/cloudbees/diff4j/1.1/diff4j-1.1.jar
+Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcinjector/3.1/mcinjector-3.1.jar
+Download http://repo1.maven.org/maven2/org/ow2/asm/asm-debug-all/4.1/asm-debug-all-4.1.jar
+Download http://repo1.maven.org/maven2/asm/asm/3.3.1/asm-3.3.1.jar
+Download http://repo1.maven.org/maven2/asm/asm-commons/3.3.1/asm-commons-3.3.1.jar
+Download http://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.5/jopt-simple-4.5.jar
+Download http://repo1.maven.org/maven2/trove/trove/1.0.2/trove-1.0.2.jar
+Download http://repo1.maven.org/maven2/com/google/guava/guava/14.0.1/guava-14.0.1.jar
+Download http://repo1.maven.org/maven2/org/jvnet/localizer/localizer/1.12/localizer-1.12.jar
+Download http://repo1.maven.org/maven2/commons-io/commons-io/1.4/commons-io-1.4.jar
+Download http://repo1.maven.org/maven2/org/jdom/jdom/1.1/jdom-1.1.jar
+Download http://repo1.maven.org/maven2/asm/asm-tree/3.3.1/asm-tree-3.3.1.jar
+Creating properties on demand (a.k.a. dynamic properties) has been deprecated and is scheduled to be removed in Gradle 2.0. Please read http://gradle.org/docs/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html for information on the replacement for dynamic properties.
+Deprecated dynamic property: "forgeVersion" on "net.minecraftforge.gradle.user.UserExtension_Decorated@6c413f9b", value: "9.11.1.964".
+****************************
+ Powered By MCP:            
+ http://mcp.ocean-labs.de/  
+ Searge, ProfMobius, Fesh0r,
+ R4wk, ZeuX, IngisKahn      
+ MCP Data version : unknown
+****************************
+Download http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.6.4-9.11.1.964/forge-1.6.4-9.11.1.964-userdev.jar
+Download http://repo1.maven.org/maven2/de/schlichtherle/truezip/6.8.3/truezip-6.8.3.pom
+Download http://repo1.maven.org/maven2/de/schlichtherle/asl20-oss-parent/13/asl20-oss-parent-13.pom
+Download http://repo1.maven.org/maven2/rhino/js/1.7R2/js-1.7R2.pom
+Download http://repo1.maven.org/maven2/org/yaml/snakeyaml/1.9/snakeyaml-1.9.pom
+Download http://repo1.maven.org/maven2/com/google/guava/guava/10.0.1/guava-10.0.1.pom
+Download http://repo1.maven.org/maven2/com/google/guava/guava-parent/10.0.1/guava-parent-10.0.1.pom
+Download http://maven.sk89q.com/repo/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.pom
+Download http://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.pom
+Download http://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6.pom
+Download http://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer-parent/2.6/paranamer-parent-2.6.pom
+Download http://repo1.maven.org/maven2/org/codehaus/codehaus-parent/4/codehaus-parent-4.pom
+Download http://repo1.maven.org/maven2/junit/junit/4.8.1/junit-4.8.1.pom
+Download http://maven.sk89q.com/repo/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.jar
+Download http://repo1.maven.org/maven2/com/thoughtworks/paranamer/paranamer/2.6/paranamer-2.6.jar
+:downloadClient
+:downloadServer
+:extractUserDev
+Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.0/lwjgl-platform-2.9.0.pom
+Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/parent/2.9.0/parent-2.9.0.pom
+Download http://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5.pom
+Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.0/lwjgl-platform-2.9.0-natives-linux.jar
+Download http://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-linux.jar
+:mergeJars
+Adding cpw/mods/fml/relauncher/SideOnly.class
+Adding cpw/mods/fml/relauncher/Side.class
+:applyBinPatches
+:downloadMcpTools
+:genSrgs
+:deobfBinJar
+Applying SpecialSource...
+Applying Exceptor...
+Injecting source info...
+:compileApiJava UP-TO-DATE
+:processApiResources UP-TO-DATE
+:apiClasses UP-TO-DATE
+:sourceMainJava
+:compileJava
+Download https://libraries.minecraft.net/net/minecraft/launchwrapper/1.8/launchwrapper-1.8.pom
+Download http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.2/scala-library-2.10.2.pom
+Download http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.10.2/scala-compiler-2.10.2.pom
+Download https://libraries.minecraft.net/lzma/lzma/0.0.1/lzma-0.0.1.pom
+Download https://libraries.minecraft.net/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.pom
+Download https://libraries.minecraft.net/com/paulscode/codecwav/20101023/codecwav-20101023.pom
+Download https://libraries.minecraft.net/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.pom
+Download https://libraries.minecraft.net/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.pom
+Download https://libraries.minecraft.net/com/paulscode/soundsystem/20120107/soundsystem-20120107.pom
+Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl/2.9.0/lwjgl-2.9.0.pom
+Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl_util/2.9.0/lwjgl_util-2.9.0.pom
+Download https://libraries.minecraft.net/argo/argo/2.25_fixed/argo-2.25_fixed.pom
+Download http://files.minecraftforge.net/maven/net/sourceforge/argo/argo/2.25/argo-2.25.pom
+Download http://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/1.47/bcprov-jdk15on-1.47.pom
+Download http://repo1.maven.org/maven2/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1.pom
+Download http://repo1.maven.org/maven2/org/apache/commons/commons-parent/22/commons-parent-22.pom
+Download http://repo1.maven.org/maven2/org/apache/apache/9/apache-9.pom
+Download http://repo1.maven.org/maven2/commons-io/commons-io/2.4/commons-io-2.4.pom
+Download http://repo1.maven.org/maven2/org/apache/commons/commons-parent/25/commons-parent-25.pom
+Download http://repo1.maven.org/maven2/net/java/jinput/jinput/2.0.5/jinput-2.0.5.pom
+Download http://repo1.maven.org/maven2/net/java/jutils/jutils/1.0.0/jutils-1.0.0.pom
+Download http://repo1.maven.org/maven2/com/google/code/gson/gson/2.2.2/gson-2.2.2.pom
+Download http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.2/scala-reflect-2.10.2.pom
+Download http://repo1.maven.org/maven2/com/google/guava/guava/14.0/guava-14.0.pom
+Download http://repo1.maven.org/maven2/com/google/guava/guava-parent/14.0/guava-parent-14.0.pom
+Download http://repo1.maven.org/maven2/de/schlichtherle/truezip/6.8.3/truezip-6.8.3.jar
+Download http://repo1.maven.org/maven2/rhino/js/1.7R2/js-1.7R2.jar
+Download http://repo1.maven.org/maven2/org/yaml/snakeyaml/1.9/snakeyaml-1.9.jar
+Download http://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar
+Download https://libraries.minecraft.net/net/minecraft/launchwrapper/1.8/launchwrapper-1.8.jar
+Download http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.2/scala-library-2.10.2.jar
+Download http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.10.2/scala-compiler-2.10.2.jar
+Download https://libraries.minecraft.net/lzma/lzma/0.0.1/lzma-0.0.1.jar
+Download https://libraries.minecraft.net/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar
+Download https://libraries.minecraft.net/com/paulscode/codecwav/20101023/codecwav-20101023.jar
+Download https://libraries.minecraft.net/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar
+Download https://libraries.minecraft.net/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar
+Download https://libraries.minecraft.net/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar
+Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl/2.9.0/lwjgl-2.9.0.jar
+Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl_util/2.9.0/lwjgl_util-2.9.0.jar
+Download https://libraries.minecraft.net/argo/argo/2.25_fixed/argo-2.25_fixed.jar
+Download http://files.minecraftforge.net/maven/net/sourceforge/argo/argo/2.25/argo-2.25.jar
+Download http://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/1.47/bcprov-jdk15on-1.47.jar
+Download http://repo1.maven.org/maven2/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1.jar
+Download http://repo1.maven.org/maven2/commons-io/commons-io/2.4/commons-io-2.4.jar
+Download http://repo1.maven.org/maven2/net/java/jinput/jinput/2.0.5/jinput-2.0.5.jar
+Download http://repo1.maven.org/maven2/net/java/jutils/jutils/1.0.0/jutils-1.0.0.jar
+Download http://repo1.maven.org/maven2/com/google/code/gson/gson/2.2.2/gson-2.2.2.jar
+Download http://repo1.maven.org/maven2/junit/junit/4.8.1/junit-4.8.1.jar
+Download http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.10.2/scala-reflect-2.10.2.jar
+Download http://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-windows.jar
+Download http://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-osx.jar
+Download http://repo1.maven.org/maven2/com/google/guava/guava/14.0/guava-14.0.jar
+Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.0/lwjgl-platform-2.9.0-natives-windows.jar
+Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.0/lwjgl-platform-2.9.0-natives-osx.jar
+warning: [options] bootstrap class path not set in conjunction with -source 1.6
+/home/travis/build/sk89q/worldedit/build/sources/java/com/sk89q/worldedit/command/GeneralCommands.java:238: error: cannot find symbol
+        List<OperationFuture> queue = Operations.getQueueSnapshot();
+                                                ^
+  symbol:   method getQueueSnapshot()
+  location: class Operations
+/home/travis/build/sk89q/worldedit/build/sources/java/com/sk89q/worldedit/command/GeneralCommands.java:267: error: cannot find symbol
+        List<OperationFuture> queue = Operations.getQueueSnapshot();
+                                                ^
+  symbol:   method getQueueSnapshot()
+  location: class Operations
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: /home/travis/build/sk89q/worldedit/build/sources/java/com/sk89q/worldedit/forge/ForgeMiniScheduler.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+2 errors
+1 warning
+:compileJava FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 2 mins 40.995 secs
+
+[31;1mThe command "gradle build" exited with 1.
+
+Done. Your build exited with 1.

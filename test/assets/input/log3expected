@@ -1,0 +1,11 @@
+warning: [options] bootstrap class path not set in conjunction with -source 1.6
+/home/travis/build/sk89q/worldedit/build/sources/java/com/sk89q/worldedit/command/GeneralCommands.java:238: error: cannot find symbol
+        List<OperationFuture> queue = Operations.getQueueSnapshot();
+                                                ^
+  symbol:   method getQueueSnapshot()
+  location: class Operations
+/home/travis/build/sk89q/worldedit/build/sources/java/com/sk89q/worldedit/command/GeneralCommands.java:267: error: cannot find symbol
+        List<OperationFuture> queue = Operations.getQueueSnapshot();
+                                                ^
+  symbol:   method getQueueSnapshot()
+  location: class Operations

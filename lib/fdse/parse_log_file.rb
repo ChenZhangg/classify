@@ -16,12 +16,9 @@ module Fdse
     SEGMENT_BOUNDARY_KOTLIN = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.kt/
     SEGMENT_BOUNDARY_SIG = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.sig/
     SEGMENT_BOUNDARY_JAR = /(\/[^\n\/]+){2,}\/\w+[-\w\d]*\.jar/
+    @regex_hash = Fdse::Property.new.run
 
-    def initialize
-      @regex_hash = Fdse::Property.new.run
-    end
-
-    def word_number_similarity(segment, regex)
+    def self.word_number_similarity(segment, regex)
       word_array_a = regex.source.lines[0].scan(/\w{2,}/)
       first_line = segment.lines[0]
 
@@ -42,104 +39,45 @@ module Fdse
       similarity = similarity_div * 0.8 + word_array_b.length.to_f / 30 * 0.2
     end
 
-    def map(log_file_path, output_file,segment)
-      output_file += 'map'
+    def self.map(segment)
+      match_key = nil
       max_value_word_number = 0
-      max_value_match_length = 0
-      key_word_number = nil
-      key_match_length = nil
       @regex_hash.each do |key, regex|
         value_word_number = word_number_similarity(segment, regex)
-
         if value_word_number > max_value_word_number
           max_value_word_number = value_word_number
-          key_word_number = key
+          match_key = key
         end
-
         match = regex.match(segment)
-        next unless match
-        if match[0] == segment
-          File.open(output_file, 'a') do |output|
-            output.puts
-            output.puts '====================================='
-            output.puts "In file #{log_file_path}:"
-            output.puts "The matching regexp is: key=#{key}  regexp=#{regex.source}"
-            output.puts "The matched segment is:"
-            output.puts segment
-            output.puts
-          end
-          #@error_type_number[key]+=1
-          return
-        end
-        value_match_length = match[0].length.to_f / segment.length
-        if value_match_length > max_value_match_length
-          max_value_match_length = value_match_length
-          key_match_length = key
+        if match && match[0] == segment
+          match_key = key
+          break
         end
       end
-
-      File.open(output_file, 'a') do |output|
-        output.puts
-        output.puts '====================================='
-        output.puts "In file #{log_file_path}:"
-        output.puts "The matched segment is:"
-        output.puts segment
-        output.puts
-        output.puts "According to the match_length_similarity, matching regexp is: key=#{key_match_length}  regexp=#{@regex_hash[key_match_length]}   similarity=#{max_value_match_length}"
-        output.puts "The matched part is:"
-        match=key_match_length.nil? ? nil : @regex_hash[key_match_length].match(segment)
-        output.puts match[0] if match
-        output.puts 'NULL' unless match
-        match=@regex_hash[key_word_number].match(segment)
-        output.puts
-        output.puts "According to the word_number_similarity, matching regexp is: key=#{key_word_number}  regexp=#{@regex_hash[key_word_number]}   similarity=#{max_value_word_number}"
-        output.puts "The matched part is:"
-        output.puts match[0] if match
-        output.puts 'NULL'   unless match
-        output.puts
-      end
-
-      return if max_value_word_number > 0.3
-
-      File.open('similarityTooLow', 'a') do |output|
-        output.puts 'zhangchen>>>>>>>>>>>>>>>>>>>>>>>>>'
-        output.puts segment
-        output.puts
-      end
+      match_key
     end
 
-    def cut_segment(log_file_path, output_file, segment_lines)
-      cut_point = []
+    def self.segment_slice(segment_lines)
+      slice_point = []
       segment_lines.each_with_index do |line, index|
         next unless SEGMENT_BOUNDARY_FILE =~ line || SEGMENT_BOUNDARY_JAR =~ line
-        cut_point<<index if index != 0
+        slice_point << index if index != 0
       end
 
-      cut_range=[]
+      slice_range=[]
       begin_number=0
-      cut_point.each do |point|
+      slice_point.each do |point|
         end_number=point
-        cut_range << (begin_number...end_number)
+        slice_range << (begin_number...end_number)
         begin_number = end_number
       end
-      cut_range << (begin_number..(segment_lines.length - 1))
+      slice_range << (begin_number..(segment_lines.length - 1))
 
-      File.open(output_file, 'a') do |output|
-        output.puts
-        output.puts "Segment in #{log_file_path} is:"
-        output.puts segment_lines
-        output.puts
-        cut_range.each_with_index do |r,index|
-          output.puts "Part #{index}---->"
-          output.puts segment_lines[r]
-          output.puts
-        end
+      segment_array = []
+      slice_range.each do |range|
+        segment_array << segment_lines[range].join if segment_lines[range.begin] !~ SEGMENT_BOUNDARY_GROOVY && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_SCALA && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_KOTLIN
       end
-
-      cut_range.each do |r|
-        #map(output_file,segment_lines[r]) if segment_lines[r.begin]=~SEGMENT_BOUNDARY_JAVA || segment_lines[r.begin]=~SEGMENT_BOUNDARY_JAR
-        map(log_file_path,output_file,segment_lines[r].join) if segment_lines[r.begin] !~ SEGMENT_BOUNDARY_GROOVY && segment_lines[r.begin] !~ SEGMENT_BOUNDARY_SCALA && segment_lines[r.begin] !~ SEGMENT_BOUNDARY_KOTLIN
-      end
+      segment_array
     end
 
     def self.line_validate?(line)
@@ -210,12 +148,6 @@ module Fdse
       array
     end
 
-    def self.compiler_error_message_slice(log_file_path)
-      hash = use_build_tool(log_file_path)
-      maven_slice(log_file_path) if hash[:maven]
-      gradle_slice(log_file_path) if hash[:gradle]
-    end
-
     def self.use_build_tool(log_file_path)
       count_maven = 0
       count_gradle = 0
@@ -229,7 +161,24 @@ module Fdse
       hash
     end
 
-    def scan_log_directory(build_logs_path)
+    def self.compiler_error_message_slice(log_file_path)
+      hash = use_build_tool(log_file_path)
+      mslice = nil
+      gslice = nil
+      mslice = maven_slice(log_file_path) if hash[:maven]
+      gslice = gradle_slice(log_file_path) if hash[:gradle]
+      segment_array = []
+      segment_array += segment_slice(mslice) if mslice && mslice.length > 0
+      segment_array += segment_slice(gslice) if gslice && gslice.length > 0
+      segment_array.each do |e|
+        e.lines.each{ |line| p line}
+        match_key = map(e)
+        puts "#{match_key}: #{@regex_hash[match_key]}"
+        puts
+      end
+    end
+
+    def self.scan_log_directory(build_logs_path)
       #flag = true
       Dir.foreach(build_logs_path) do |repo_name|
         next if /.+@.+/ !~ repo_name
@@ -243,7 +192,7 @@ module Fdse
           log_file_path = File.join(repo_path, log_file_name)
           puts "--Scanning file: #{log_file_path}"
           Thread.new(log_file_path) do |p|
-            use_build_tool p
+            compiler_error_message_slice p
           end
           loop do
             break if Thread.list.count{ |thread| thread.alive? } <= 50
