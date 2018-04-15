@@ -1,0 +1,601 @@
+Using worker: bluebox-jvm-otp.worker.travis-ci.org:travis-jvm-1
+
+$ git clone --depth=100 --quiet git://github.com/square/okhttp.git square/okhttp
+$ cd square/okhttp
+$ git fetch origin +refs/pull/98/merge: 
+remote: Counting objects: 1, done.[K
+remote: Total 1 (delta 0), reused 1 (delta 0)[K
+Unpacking objects: 100% (1/1)   Unpacking objects: 100% (1/1), done.
+From git://github.com/square/okhttp
+ * branch            refs/pull/98/merge -> FETCH_HEAD
+$ git checkout -qf e86fe8a7fea20442f1bd39f864fcf7f2fb425e3e
+$ jdk_switcher use oraclejdk7
+Switching to Oracle JDK7 (java-7-oracle), JAVA_HOME will be set to /usr/lib/jvm/java-7-oracle
+update-alternatives: error: no alternatives for apt.
+update-alternatives: error: no alternatives for mozilla-javaplugin.so.
+update-alternatives: error: no alternatives for apt.
+$ java -version
+java version "1.7.0_11"
+Java(TM) SE Runtime Environment (build 1.7.0_11-b21)
+Java HotSpot(TM) 64-Bit Server VM (build 23.6-b04, mixed mode)
+$ javac -version
+javac 1.7.0_11
+$ mvn install --quiet -DskipTests=true
+$ mvn test
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building okhttp 0.9-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0:enforce (enforce-maven) @ okhttp ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.3:resources (default-resources) @ okhttp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/travis/build/square/okhttp/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5:compile (default-compile) @ okhttp ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.3:testResources (default-testResources) @ okhttp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/travis/build/square/okhttp/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5:testCompile (default-testCompile) @ okhttp ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.9:test (default-test) @ okhttp ---
+[INFO] Surefire report directory: /home/travis/build/square/okhttp/target/surefire-reports
+Downloading: http://maven.mirrors.travis-ci.org/nexus/content/repositories/central/org/apache/maven/surefire/surefire-junit4/2.9/surefire-junit4-2.9.pom
+3/3 KB            Downloaded: http://maven.mirrors.travis-ci.org/nexus/content/repositories/central/org/apache/maven/surefire/surefire-junit4/2.9/surefire-junit4-2.9.pom (3 KB at 4.0 KB/sec)
+Downloading: http://maven.mirrors.travis-ci.org/nexus/content/repositories/central/org/apache/maven/surefire/surefire-providers/2.9/surefire-providers-2.9.pom
+3/3 KB            Downloaded: http://maven.mirrors.travis-ci.org/nexus/content/repositories/central/org/apache/maven/surefire/surefire-providers/2.9/surefire-providers-2.9.pom (3 KB at 7.0 KB/sec)
+Downloading: http://maven.mirrors.travis-ci.org/nexus/content/repositories/central/org/apache/maven/surefire/surefire-junit4/2.9/surefire-junit4-2.9.jar
+4/33 KB   8/33 KB   9/33 KB   11/33 KB   15/33 KB   19/33 KB   23/33 KB   26/33 KB   30/33 KB   33/33 KB              Downloaded: http://maven.mirrors.travis-ci.org/nexus/content/repositories/central/org/apache/maven/surefire/surefire-junit4/2.9/surefire-junit4-2.9.jar (33 KB at 62.6 KB/sec)
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.squareup.okhttp.internal.spdy.SettingsTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.084 sec
+Running com.squareup.okhttp.internal.spdy.SpdyConnectionTest
+Tests run: 34, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.405 sec
+Running com.squareup.okhttp.internal.spdy.HttpOverSpdyTest
+Feb 01, 2013 12:57:18 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:18 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:18 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: POST /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:19 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET /r1 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:19 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET /r2 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:19 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET /r1 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:19 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:19 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:19 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:19 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.squareup.okhttp.internal.mockspdyserver.MockSpdyServer$SocketHandler receive
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.194 sec
+Running com.squareup.okhttp.internal.http.URLConnectionTest
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Ignoring HTTP header field 'NullValue' because its value is null
+Ignoring HTTP header field 'AnotherNullValue' because its value is null
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.0 200 Fantastic
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 2147483648 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 00a OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded:  HTTP/1.1 2147483648 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST /def HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST /def HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST /def HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 404 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:20 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /bar?baz=quux HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /z HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /bar?baz=quux HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /z HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /a HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /b HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /a HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /b HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:21 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:22 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:22 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:22 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:22 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:22 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processConnection
+WARNING: MockWebServer connection didn't make a request
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processConnection
+WARNING: MockWebServer connection didn't make a request
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET http://android.com/foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET http://android.com/foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET http://android.com/foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: CONNECT android.com:443 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:23 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: CONNECT android.com:443 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: CONNECT android.com:443 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: CONNECT android.com:443 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: CONNECT android.com:443 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: CONNECT android.com:443 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: CONNECT android.com:443 HTTP/1.1 and responded: HTTP/1.1 407 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: CONNECT android.com:443 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: CONNECT android.com:443 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: CONNECT android.com:443 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:24 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET http://android.com HTTP/1.1 and responded: HTTP/1.1 407 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:25 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 401 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST /page1 HTTP/1.1 and responded: HTTP/1.1 300 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /page2 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST /page1 HTTP/1.1 and responded: HTTP/1.1 301 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /page2 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST /page1 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /page2 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST /page1 HTTP/1.1 and responded: HTTP/1.1 303 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /page2 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 305 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /0 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /1 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /2 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /3 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /4 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /5 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /6 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /7 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /8 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /9 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /10 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /11 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /12 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /13 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /14 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:26 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /15 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /16 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /17 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /18 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /19 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /20 HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /0 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /1 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /2 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /3 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /4 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /5 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /6 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /7 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /8 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /9 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /10 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /11 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /12 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /13 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /14 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /15 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /16 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /17 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /18 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /19 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /20 HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:27 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 204 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 run
+WARNING: MockWebServer connection failed
+java.net.SocketException: Socket is closed
+	at java.net.Socket.getInputStream(Socket.java:864)
+	at com.google.mockwebserver.MockWebServer$2.processConnection(MockWebServer.java:285)
+	at com.google.mockwebserver.MockWebServer$2.run(MockWebServer.java:259)
+	at com.google.mockwebserver.MockWebServer$4.run(MockWebServer.java:551)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:722)
+
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 run
+WARNING: MockWebServer connection failed
+java.net.SocketException: Socket is closed
+	at java.net.Socket.getInputStream(Socket.java:864)
+	at com.google.mockwebserver.MockWebServer$2.processConnection(MockWebServer.java:285)
+	at com.google.mockwebserver.MockWebServer$2.run(MockWebServer.java:259)
+	at com.google.mockwebserver.MockWebServer$4.run(MockWebServer.java:551)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603)
+	at java.lang.Thread.run(Thread.java:722)
+
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: POST / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:28 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /?query HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Tests run: 141, Failures: 1, Errors: 0, Skipped: 11, Time elapsed: 8.25 sec <<< FAILURE!
+Running com.squareup.okhttp.internal.http.HttpResponseCacheTest
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 Fantastic
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 301 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /bar HTTP/1.1 and responded: HTTP/1.1 301 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /baz HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 301 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET /foo HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 101 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 102 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 200 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 201 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 202 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 203 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 204 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 205 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 206 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 207 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 300 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 301 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 302 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 303 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 304 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 305 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 306 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 307 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 308 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 400 OK
+Feb 01, 2013 12:57:29 AM com.google.mockwebserver.MockWebServer$2 processOneRequest
+INFO: Received request: GET / HTTP/1.1 and responded: HTTP/1.1 401 OK
+
+
+No output has been received in the last 10 minutes, this potentially indicates a stalled build or something wrong with the build itself.
+
+The build has been terminated
+

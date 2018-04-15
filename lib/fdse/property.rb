@@ -3,7 +3,7 @@ module Fdse
 
     def get_key(path, line)
       match = /[\w.]+/.match(line)
-      sym = (path + '_' + match[0]).gsub(/\./, '_').to_sym
+      sym = (File.basename(path) + '_' + match[0]).gsub(/\./, '_').to_sym
     end
 
     def regexp_string(line)
@@ -82,11 +82,11 @@ module Fdse
       flag
     end
 
-    def calculate_similarity_matrix!(similarity_hash)
-      similarity_hash.each do |key_a,hash|
-        hash.each_key do |key_b|
+    def calculate_similarity_matrix!(hash, similarity_hash)
+      similarity_hash.each do |key_a,value|
+        value.each_key do |key_b|
           next if key_a == key_b
-          similarity_hash[key_a][key_b]=1 if regexp_similarity(@temp_regex_hash[key_a], @temp_regex_hash[key_b])
+          similarity_hash[key_a][key_b] = 1 if regexp_similarity?(hash[key_a], hash[key_b])
         end
       end
     end
@@ -103,17 +103,19 @@ module Fdse
       keys = hash.keys
       temp_hash = Hash.new
       stack = []
-      similarity_hash.each do |key,hash|
-        sum = sum_similarity hash
-        stack.push(key) if sum==0
+      similarity_hash.each do |key,value|
+        sum = sum_similarity(value)
+        stack.push(key) if sum == 0
       end
 
       while !stack.empty?
         top = stack.pop
         temp_hash[top] = hash[top]
         keys.each do |key|
-          similarity_hash[key][top] = 0 if similarity_hash[key][top] != 0
-          stack.push(key) if sum_similarity(similarity_hash[key]) == 0
+          if similarity_hash[key][top] != 0
+            similarity_hash[key][top] = 0
+            stack.push(key) if sum_similarity(similarity_hash[key]) == 0
+          end
         end
       end
       temp_hash
@@ -122,18 +124,15 @@ module Fdse
     def run
       hash = Hash.new
       properties_files=[]
-      properties_files << 'openjdk7'
-      properties_files << 'openjdk8'
-      properties_files << 'openjdk9'
+      (7..9).each { |number| properties_files << File.expand_path(File.join('..', 'assets', 'properties', "openjdk#{number}"), File.dirname(__FILE__))}
       properties_files.each { |file| hash.merge! parse_properties_file(file)}
 
       remove_duplication! hash
 
       hash = sort_by_length hash
       similarity_hash = similarity_matrix_initialize hash
-      calculate_similarity_matrix! similarity_hash
+      calculate_similarity_matrix!(hash, similarity_hash)
       sort_regex_hash(hash, similarity_hash)
-      @regex_hash
     end
   end
 

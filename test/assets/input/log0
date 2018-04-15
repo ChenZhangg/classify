@@ -1,0 +1,1709 @@
+Using worker: worker-linux-docker-8d9e1a75.prod.travis-ci.org:travis-linux-9
+
+travis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: java
+Build group: stable
+Build dist: precise
+Build id: 146804015
+Job id: 146804017
+travis-build version: 15dcdbe9b
+[34m[1mBuild image provisioning date and time[0m
+Thu Feb  5 15:09:33 UTC 2015
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-29-generic
+[34m[1mCookbooks Version[0m
+a68419e https://github.com/travis-ci/travis-cookbooks/tree/a68419e
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-1.9.3-p551
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.4.1
+[34m[1mRedis version[0m
+redis-server 2.8.19
+[34m[1mriak version[0m
+2.0.2
+[34m[1mMongoDB version[0m
+MongoDB 2.4.12
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mNeo4j version[0m
+1.9.4
+[34m[1mRabbitMQ Version[0m
+3.4.3
+[34m[1mElasticSearch version[0m
+1.4.0
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 31.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_76, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "3.13.0-29-generic", arch: "amd64", family: "unix"
+travis_fold:end:system_info[0K
+travis_fold:start:fix.CVE-2015-7547[0K$ export DEBIAN_FRONTEND=noninteractive
+W: Size of file /var/lib/apt/lists/us.archive.ubuntu.com_ubuntu_dists_precise-backports_multiverse_source_Sources.gz is not what the server reported 5886 5888
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_ubuntugis_ppa_ubuntu_dists_precise_main_binary-amd64_Packages.gz is not what the server reported 36669 36677
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_ubuntugis_ppa_ubuntu_dists_precise_main_binary-i386_Packages.gz is not what the server reported 36729 36733
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libc-bin libc-dev-bin libc6-dev
+Suggested packages:
+  glibc-doc
+The following packages will be upgraded:
+  libc-bin libc-dev-bin libc6 libc6-dev
+4 upgraded, 0 newly installed, 0 to remove and 252 not upgraded.
+Need to get 8,840 kB of archives.
+After this operation, 14.3 kB disk space will be freed.
+Get:1 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6-dev amd64 2.15-0ubuntu10.15 [2,943 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-dev-bin amd64 2.15-0ubuntu10.15 [84.7 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-bin amd64 2.15-0ubuntu10.15 [1,177 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6 amd64 2.15-0ubuntu10.15 [4,636 kB]
+Fetched 8,840 kB in 0s (37.3 MB/s)
+Preconfiguring packages ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72019 files and directories currently installed.)
+Preparing to replace libc6-dev 2.15-0ubuntu10.10 (using .../libc6-dev_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc6-dev ...
+Preparing to replace libc-dev-bin 2.15-0ubuntu10.10 (using .../libc-dev-bin_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc-dev-bin ...
+Preparing to replace libc-bin 2.15-0ubuntu10.10 (using .../libc-bin_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc-bin ...
+Processing triggers for man-db ...
+Setting up libc-bin (2.15-0ubuntu10.15) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72018 files and directories currently installed.)
+Preparing to replace libc6 2.15-0ubuntu10.10 (using .../libc6_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc6 ...
+Setting up libc6 (2.15-0ubuntu10.15) ...
+Setting up libc-dev-bin (2.15-0ubuntu10.15) ...
+Setting up libc6-dev (2.15-0ubuntu10.15) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+travis_fold:end:fix.CVE-2015-7547[0Ktravis_fold:start:git.checkout[0Ktravis_time:start:14a68760[0K$ git clone --depth=50 https://github.com/junit-team/junit5.git junit-team/junit5
+Cloning into 'junit-team/junit5'...
+remote: Counting objects: 1342, done.[K
+remote: Compressing objects:   0% (1/788)   [Kremote: Compressing objects:   1% (8/788)   [Kremote: Compressing objects:   2% (16/788)   [Kremote: Compressing objects:   3% (24/788)   [Kremote: Compressing objects:   4% (32/788)   [Kremote: Compressing objects:   5% (40/788)   [Kremote: Compressing objects:   6% (48/788)   [Kremote: Compressing objects:   7% (56/788)   [Kremote: Compressing objects:   8% (64/788)   [Kremote: Compressing objects:   9% (71/788)   [Kremote: Compressing objects:  10% (79/788)   [Kremote: Compressing objects:  11% (87/788)   [Kremote: Compressing objects:  12% (95/788)   [Kremote: Compressing objects:  13% (103/788)   [Kremote: Compressing objects:  14% (111/788)   [Kremote: Compressing objects:  15% (119/788)   [Kremote: Compressing objects:  16% (127/788)   [Kremote: Compressing objects:  17% (134/788)   [Kremote: Compressing objects:  18% (142/788)   [Kremote: Compressing objects:  19% (150/788)   [Kremote: Compressing objects:  20% (158/788)   [Kremote: Compressing objects:  21% (166/788)   [Kremote: Compressing objects:  22% (174/788)   [Kremote: Compressing objects:  23% (182/788)   [Kremote: Compressing objects:  24% (190/788)   [Kremote: Compressing objects:  25% (197/788)   [Kremote: Compressing objects:  26% (205/788)   [Kremote: Compressing objects:  27% (213/788)   [Kremote: Compressing objects:  28% (221/788)   [Kremote: Compressing objects:  29% (229/788)   [Kremote: Compressing objects:  30% (237/788)   [Kremote: Compressing objects:  31% (245/788)   [Kremote: Compressing objects:  32% (253/788)   [Kremote: Compressing objects:  33% (261/788)   [Kremote: Compressing objects:  34% (268/788)   [Kremote: Compressing objects:  35% (276/788)   [Kremote: Compressing objects:  36% (284/788)   [Kremote: Compressing objects:  37% (292/788)   [Kremote: Compressing objects:  38% (300/788)   [Kremote: Compressing objects:  39% (308/788)   [Kremote: Compressing objects:  40% (316/788)   [Kremote: Compressing objects:  41% (324/788)   [Kremote: Compressing objects:  42% (331/788)   [Kremote: Compressing objects:  43% (339/788)   [Kremote: Compressing objects:  44% (347/788)   [Kremote: Compressing objects:  45% (355/788)   [Kremote: Compressing objects:  46% (363/788)   [Kremote: Compressing objects:  47% (371/788)   [Kremote: Compressing objects:  48% (379/788)   [Kremote: Compressing objects:  49% (387/788)   [Kremote: Compressing objects:  50% (394/788)   [Kremote: Compressing objects:  51% (402/788)   [Kremote: Compressing objects:  52% (410/788)   [Kremote: Compressing objects:  53% (418/788)   [Kremote: Compressing objects:  54% (426/788)   [Kremote: Compressing objects:  55% (434/788)   [Kremote: Compressing objects:  56% (442/788)   [Kremote: Compressing objects:  57% (450/788)   [Kremote: Compressing objects:  58% (458/788)   [Kremote: Compressing objects:  59% (465/788)   [Kremote: Compressing objects:  60% (473/788)   [Kremote: Compressing objects:  61% (481/788)   [Kremote: Compressing objects:  62% (489/788)   [Kremote: Compressing objects:  63% (497/788)   [Kremote: Compressing objects:  64% (505/788)   [Kremote: Compressing objects:  65% (513/788)   [Kremote: Compressing objects:  66% (521/788)   [Kremote: Compressing objects:  67% (528/788)   [Kremote: Compressing objects:  68% (536/788)   [Kremote: Compressing objects:  69% (544/788)   [Kremote: Compressing objects:  70% (552/788)   [Kremote: Compressing objects:  71% (560/788)   [Kremote: Compressing objects:  72% (568/788)   [Kremote: Compressing objects:  73% (576/788)   [Kremote: Compressing objects:  74% (584/788)   [Kremote: Compressing objects:  75% (591/788)   [Kremote: Compressing objects:  76% (599/788)   [Kremote: Compressing objects:  77% (607/788)   [Kremote: Compressing objects:  78% (615/788)   [Kremote: Compressing objects:  79% (623/788)   [Kremote: Compressing objects:  80% (631/788)   [Kremote: Compressing objects:  81% (639/788)   [Kremote: Compressing objects:  82% (647/788)   [Kremote: Compressing objects:  83% (655/788)   [Kremote: Compressing objects:  84% (662/788)   [Kremote: Compressing objects:  85% (670/788)   [Kremote: Compressing objects:  86% (678/788)   [Kremote: Compressing objects:  87% (686/788)   [Kremote: Compressing objects:  88% (694/788)   [Kremote: Compressing objects:  89% (702/788)   [Kremote: Compressing objects:  90% (710/788)   [Kremote: Compressing objects:  91% (718/788)   [Kremote: Compressing objects:  92% (725/788)   [Kremote: Compressing objects:  93% (733/788)   [Kremote: Compressing objects:  94% (741/788)   [Kremote: Compressing objects:  95% (749/788)   [Kremote: Compressing objects:  96% (757/788)   [Kremote: Compressing objects:  97% (765/788)   [Kremote: Compressing objects:  98% (773/788)   [Kremote: Compressing objects:  99% (781/788)   [Kremote: Compressing objects: 100% (788/788)   [Kremote: Compressing objects: 100% (788/788), done.[K
+Receiving objects:   0% (1/1342)   Receiving objects:   1% (14/1342)   Receiving objects:   2% (27/1342)   Receiving objects:   3% (41/1342)   Receiving objects:   4% (54/1342)   Receiving objects:   5% (68/1342)   Receiving objects:   6% (81/1342)   Receiving objects:   7% (94/1342)   Receiving objects:   8% (108/1342)   Receiving objects:   9% (121/1342)   Receiving objects:  10% (135/1342)   Receiving objects:  11% (148/1342)   Receiving objects:  12% (162/1342)   Receiving objects:  13% (175/1342)   Receiving objects:  14% (188/1342)   Receiving objects:  15% (202/1342)   Receiving objects:  16% (215/1342)   Receiving objects:  17% (229/1342)   Receiving objects:  18% (242/1342)   Receiving objects:  19% (255/1342)   Receiving objects:  20% (269/1342)   Receiving objects:  21% (282/1342)   Receiving objects:  22% (296/1342)   Receiving objects:  23% (309/1342)   Receiving objects:  24% (323/1342)   Receiving objects:  25% (336/1342)   Receiving objects:  26% (349/1342)   Receiving objects:  27% (363/1342)   Receiving objects:  28% (376/1342)   Receiving objects:  29% (390/1342)   Receiving objects:  30% (403/1342)   Receiving objects:  31% (417/1342)   Receiving objects:  32% (430/1342)   Receiving objects:  33% (443/1342)   Receiving objects:  34% (457/1342)   Receiving objects:  35% (470/1342)   Receiving objects:  36% (484/1342)   Receiving objects:  37% (497/1342)   Receiving objects:  38% (510/1342)   Receiving objects:  39% (524/1342)   Receiving objects:  40% (537/1342)   Receiving objects:  41% (551/1342)   Receiving objects:  42% (564/1342)   Receiving objects:  43% (578/1342)   Receiving objects:  44% (591/1342)   Receiving objects:  45% (604/1342)   Receiving objects:  46% (618/1342)   Receiving objects:  47% (631/1342)   Receiving objects:  48% (645/1342)   Receiving objects:  49% (658/1342)   Receiving objects:  50% (671/1342)   Receiving objects:  51% (685/1342)   Receiving objects:  52% (698/1342)   Receiving objects:  53% (712/1342)   Receiving objects:  54% (725/1342)   Receiving objects:  55% (739/1342)   Receiving objects:  56% (752/1342)   Receiving objects:  57% (765/1342)   Receiving objects:  58% (779/1342)   Receiving objects:  59% (792/1342)   Receiving objects:  60% (806/1342)   Receiving objects:  61% (819/1342)   Receiving objects:  62% (833/1342)   Receiving objects:  63% (846/1342)   Receiving objects:  64% (859/1342)   Receiving objects:  65% (873/1342)   Receiving objects:  66% (886/1342)   Receiving objects:  67% (900/1342)   Receiving objects:  68% (913/1342)   Receiving objects:  69% (926/1342)   Receiving objects:  70% (940/1342)   Receiving objects:  71% (953/1342)   Receiving objects:  72% (967/1342)   Receiving objects:  73% (980/1342)   remote: Total 1342 (delta 402), reused 901 (delta 235), pack-reused 0[K
+Receiving objects:  74% (994/1342)   Receiving objects:  75% (1007/1342)   Receiving objects:  76% (1020/1342)   Receiving objects:  77% (1034/1342)   Receiving objects:  78% (1047/1342)   Receiving objects:  79% (1061/1342)   Receiving objects:  80% (1074/1342)   Receiving objects:  81% (1088/1342)   Receiving objects:  82% (1101/1342)   Receiving objects:  83% (1114/1342)   Receiving objects:  84% (1128/1342)   Receiving objects:  85% (1141/1342)   Receiving objects:  86% (1155/1342)   Receiving objects:  87% (1168/1342)   Receiving objects:  88% (1181/1342)   Receiving objects:  89% (1195/1342)   Receiving objects:  90% (1208/1342)   Receiving objects:  91% (1222/1342)   Receiving objects:  92% (1235/1342)   Receiving objects:  93% (1249/1342)   Receiving objects:  94% (1262/1342)   Receiving objects:  95% (1275/1342)   Receiving objects:  96% (1289/1342)   Receiving objects:  97% (1302/1342)   Receiving objects:  98% (1316/1342)   Receiving objects:  99% (1329/1342)   Receiving objects: 100% (1342/1342)   Receiving objects: 100% (1342/1342), 512.63 KiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/402)   Resolving deltas:   6% (27/402)   Resolving deltas:  12% (51/402)   Resolving deltas:  16% (67/402)   Resolving deltas:  18% (73/402)   Resolving deltas:  20% (81/402)   Resolving deltas:  21% (86/402)   Resolving deltas:  22% (92/402)   Resolving deltas:  23% (94/402)   Resolving deltas:  24% (97/402)   Resolving deltas:  26% (106/402)   Resolving deltas:  27% (111/402)   Resolving deltas:  28% (114/402)   Resolving deltas:  29% (120/402)   Resolving deltas:  30% (122/402)   Resolving deltas:  32% (132/402)   Resolving deltas:  33% (133/402)   Resolving deltas:  34% (137/402)   Resolving deltas:  35% (142/402)   Resolving deltas:  36% (147/402)   Resolving deltas:  37% (149/402)   Resolving deltas:  38% (155/402)   Resolving deltas:  40% (161/402)   Resolving deltas:  41% (165/402)   Resolving deltas:  42% (169/402)   Resolving deltas:  43% (173/402)   Resolving deltas:  44% (177/402)   Resolving deltas:  45% (183/402)   Resolving deltas:  46% (185/402)   Resolving deltas:  47% (190/402)   Resolving deltas:  48% (196/402)   Resolving deltas:  49% (197/402)   Resolving deltas:  50% (202/402)   Resolving deltas:  51% (206/402)   Resolving deltas:  52% (210/402)   Resolving deltas:  53% (214/402)   Resolving deltas:  54% (219/402)   Resolving deltas:  56% (226/402)   Resolving deltas:  58% (235/402)   Resolving deltas:  59% (241/402)   Resolving deltas:  60% (242/402)   Resolving deltas:  61% (247/402)   Resolving deltas:  62% (250/402)   Resolving deltas:  63% (254/402)   Resolving deltas:  64% (258/402)   Resolving deltas:  65% (262/402)   Resolving deltas:  66% (267/402)   Resolving deltas:  67% (270/402)   Resolving deltas:  68% (276/402)   Resolving deltas:  69% (278/402)   Resolving deltas:  70% (284/402)   Resolving deltas:  71% (288/402)   Resolving deltas:  72% (290/402)   Resolving deltas:  73% (294/402)   Resolving deltas:  74% (298/402)   Resolving deltas:  75% (302/402)   Resolving deltas:  76% (306/402)   Resolving deltas:  77% (310/402)   Resolving deltas:  78% (315/402)   Resolving deltas:  79% (318/402)   Resolving deltas:  81% (329/402)   Resolving deltas:  82% (330/402)   Resolving deltas:  83% (336/402)   Resolving deltas:  84% (338/402)   Resolving deltas:  85% (342/402)   Resolving deltas:  86% (346/402)   Resolving deltas:  87% (350/402)   Resolving deltas:  88% (354/402)   Resolving deltas:  89% (358/402)   Resolving deltas:  91% (366/402)   Resolving deltas:  92% (372/402)   Resolving deltas:  93% (374/402)   Resolving deltas:  94% (378/402)   Resolving deltas:  95% (383/402)   Resolving deltas:  96% (389/402)   Resolving deltas:  97% (393/402)   Resolving deltas:  98% (394/402)   Resolving deltas:  99% (398/402)   Resolving deltas: 100% (402/402)   Resolving deltas: 100% (402/402), done.
+Checking connectivity... done.
+
+travis_time:end:14a68760:start=1469243629648155120,finish=1469243630302596474,duration=654441354[0K$ cd junit-team/junit5
+travis_time:start:09fab920[0K$ git fetch origin +refs/pull/421/merge:
+remote: Counting objects: 23820, done.[K
+remote: Compressing objects:   0% (1/8072)   [Kremote: Compressing objects:   1% (81/8072)   [Kremote: Compressing objects:   2% (162/8072)   [Kremote: Compressing objects:   3% (243/8072)   [Kremote: Compressing objects:   4% (323/8072)   [Kremote: Compressing objects:   5% (404/8072)   [Kremote: Compressing objects:   6% (485/8072)   [Kremote: Compressing objects:   7% (566/8072)   [Kremote: Compressing objects:   8% (646/8072)   [Kremote: Compressing objects:   9% (727/8072)   [Kremote: Compressing objects:  10% (808/8072)   [Kremote: Compressing objects:  11% (888/8072)   [Kremote: Compressing objects:  12% (969/8072)   [Kremote: Compressing objects:  13% (1050/8072)   [Kremote: Compressing objects:  14% (1131/8072)   [Kremote: Compressing objects:  15% (1211/8072)   [Kremote: Compressing objects:  16% (1292/8072)   [Kremote: Compressing objects:  17% (1373/8072)   [Kremote: Compressing objects:  18% (1453/8072)   [Kremote: Compressing objects:  19% (1534/8072)   [Kremote: Compressing objects:  20% (1615/8072)   [Kremote: Compressing objects:  21% (1696/8072)   [Kremote: Compressing objects:  22% (1776/8072)   [Kremote: Compressing objects:  23% (1857/8072)   [Kremote: Compressing objects:  24% (1938/8072)   [Kremote: Compressing objects:  25% (2018/8072)   [Kremote: Compressing objects:  26% (2099/8072)   [Kremote: Compressing objects:  27% (2180/8072)   [Kremote: Compressing objects:  28% (2261/8072)   [Kremote: Compressing objects:  29% (2341/8072)   [Kremote: Compressing objects:  30% (2422/8072)   [Kremote: Compressing objects:  31% (2503/8072)   [Kremote: Compressing objects:  32% (2584/8072)   [Kremote: Compressing objects:  33% (2664/8072)   [Kremote: Compressing objects:  34% (2745/8072)   [Kremote: Compressing objects:  35% (2826/8072)   [Kremote: Compressing objects:  36% (2906/8072)   [Kremote: Compressing objects:  37% (2987/8072)   [Kremote: Compressing objects:  38% (3068/8072)   [Kremote: Compressing objects:  39% (3149/8072)   [Kremote: Compressing objects:  40% (3229/8072)   [Kremote: Compressing objects:  41% (3310/8072)   [Kremote: Compressing objects:  42% (3391/8072)   [Kremote: Compressing objects:  43% (3471/8072)   [Kremote: Compressing objects:  44% (3552/8072)   [Kremote: Compressing objects:  45% (3633/8072)   [Kremote: Compressing objects:  46% (3714/8072)   [Kremote: Compressing objects:  47% (3794/8072)   [Kremote: Compressing objects:  48% (3875/8072)   [Kremote: Compressing objects:  49% (3956/8072)   [Kremote: Compressing objects:  50% (4036/8072)   [Kremote: Compressing objects:  51% (4117/8072)   [Kremote: Compressing objects:  52% (4198/8072)   [Kremote: Compressing objects:  53% (4279/8072)   [Kremote: Compressing objects:  54% (4359/8072)   [Kremote: Compressing objects:  55% (4440/8072)   [Kremote: Compressing objects:  56% (4521/8072)   [Kremote: Compressing objects:  57% (4602/8072)   [Kremote: Compressing objects:  58% (4682/8072)   [Kremote: Compressing objects:  59% (4763/8072)   [Kremote: Compressing objects:  60% (4844/8072)   [Kremote: Compressing objects:  61% (4924/8072)   [Kremote: Compressing objects:  62% (5005/8072)   [Kremote: Compressing objects:  63% (5086/8072)   [Kremote: Compressing objects:  64% (5167/8072)   [Kremote: Compressing objects:  65% (5247/8072)   [Kremote: Compressing objects:  66% (5328/8072)   [Kremote: Compressing objects:  67% (5409/8072)   [Kremote: Compressing objects:  68% (5489/8072)   [Kremote: Compressing objects:  69% (5570/8072)   [Kremote: Compressing objects:  70% (5651/8072)   [Kremote: Compressing objects:  71% (5732/8072)   [Kremote: Compressing objects:  72% (5812/8072)   [Kremote: Compressing objects:  73% (5893/8072)   [Kremote: Compressing objects:  74% (5974/8072)   [Kremote: Compressing objects:  75% (6054/8072)   [Kremote: Compressing objects:  76% (6135/8072)   [Kremote: Compressing objects:  77% (6216/8072)   [Kremote: Compressing objects:  78% (6297/8072)   [Kremote: Compressing objects:  79% (6377/8072)   [Kremote: Compressing objects:  80% (6458/8072)   [Kremote: Compressing objects:  81% (6539/8072)   [Kremote: Compressing objects:  82% (6620/8072)   [Kremote: Compressing objects:  83% (6700/8072)   [Kremote: Compressing objects:  84% (6781/8072)   [Kremote: Compressing objects:  85% (6862/8072)   [Kremote: Compressing objects:  86% (6942/8072)   [Kremote: Compressing objects:  87% (7023/8072)   [Kremote: Compressing objects:  88% (7104/8072)   [Kremote: Compressing objects:  89% (7185/8072)   [Kremote: Compressing objects:  90% (7265/8072)   [Kremote: Compressing objects:  91% (7346/8072)   [Kremote: Compressing objects:  92% (7427/8072)   [Kremote: Compressing objects:  93% (7507/8072)   [Kremote: Compressing objects:  94% (7588/8072)   [Kremote: Compressing objects:  95% (7669/8072)   [Kremote: Compressing objects:  96% (7750/8072)   [Kremote: Compressing objects:  97% (7830/8072)   [Kremote: Compressing objects:  98% (7911/8072)   [Kremote: Compressing objects:  99% (7992/8072)   [Kremote: Compressing objects: 100% (8072/8072)   [Kremote: Compressing objects: 100% (8072/8072), done.[K
+Receiving objects:   0% (1/23820)   Receiving objects:   1% (239/23820)   Receiving objects:   2% (477/23820)   Receiving objects:   3% (715/23820)   Receiving objects:   4% (953/23820)   Receiving objects:   5% (1191/23820)   Receiving objects:   6% (1430/23820)   Receiving objects:   7% (1668/23820)   Receiving objects:   8% (1906/23820)   Receiving objects:   9% (2144/23820)   Receiving objects:  10% (2382/23820)   Receiving objects:  11% (2621/23820)   Receiving objects:  12% (2859/23820)   Receiving objects:  13% (3097/23820)   Receiving objects:  14% (3335/23820)   Receiving objects:  15% (3573/23820)   Receiving objects:  16% (3812/23820)   Receiving objects:  17% (4050/23820)   Receiving objects:  18% (4288/23820)   Receiving objects:  19% (4526/23820)   Receiving objects:  20% (4764/23820)   Receiving objects:  21% (5003/23820)   Receiving objects:  22% (5241/23820)   Receiving objects:  23% (5479/23820)   Receiving objects:  24% (5717/23820)   Receiving objects:  25% (5955/23820)   Receiving objects:  26% (6194/23820)   Receiving objects:  27% (6432/23820)   Receiving objects:  28% (6670/23820)   Receiving objects:  29% (6908/23820)   Receiving objects:  30% (7146/23820)   Receiving objects:  31% (7385/23820)   Receiving objects:  32% (7623/23820)   Receiving objects:  33% (7861/23820)   Receiving objects:  34% (8099/23820)   Receiving objects:  35% (8337/23820)   Receiving objects:  36% (8576/23820)   Receiving objects:  37% (8814/23820)   Receiving objects:  38% (9052/23820)   Receiving objects:  39% (9290/23820)   Receiving objects:  40% (9528/23820)   Receiving objects:  41% (9767/23820)   Receiving objects:  42% (10005/23820)   Receiving objects:  43% (10243/23820)   Receiving objects:  44% (10481/23820)   Receiving objects:  45% (10719/23820)   Receiving objects:  46% (10958/23820)   Receiving objects:  47% (11196/23820)   Receiving objects:  48% (11434/23820)   Receiving objects:  49% (11672/23820)   Receiving objects:  50% (11910/23820)   Receiving objects:  51% (12149/23820)   Receiving objects:  52% (12387/23820)   Receiving objects:  53% (12625/23820)   Receiving objects:  54% (12863/23820)   Receiving objects:  55% (13101/23820)   Receiving objects:  56% (13340/23820)   Receiving objects:  57% (13578/23820)   Receiving objects:  58% (13816/23820)   Receiving objects:  59% (14054/23820)   Receiving objects:  60% (14292/23820)   Receiving objects:  61% (14531/23820)   Receiving objects:  62% (14769/23820)   Receiving objects:  63% (15007/23820)   Receiving objects:  64% (15245/23820)   Receiving objects:  65% (15483/23820)   Receiving objects:  66% (15722/23820)   Receiving objects:  67% (15960/23820)   Receiving objects:  68% (16198/23820)   Receiving objects:  69% (16436/23820)   Receiving objects:  70% (16674/23820)   Receiving objects:  71% (16913/23820)   Receiving objects:  72% (17151/23820)   Receiving objects:  73% (17389/23820)   Receiving objects:  74% (17627/23820)   Receiving objects:  75% (17865/23820)   Receiving objects:  76% (18104/23820)   Receiving objects:  77% (18342/23820)   Receiving objects:  78% (18580/23820)   Receiving objects:  79% (18818/23820)   Receiving objects:  80% (19056/23820)   Receiving objects:  81% (19295/23820)   Receiving objects:  82% (19533/23820)   Receiving objects:  83% (19771/23820)   Receiving objects:  84% (20009/23820)   Receiving objects:  85% (20247/23820)   Receiving objects:  86% (20486/23820)   Receiving objects:  87% (20724/23820)   Receiving objects:  88% (20962/23820)   Receiving objects:  89% (21200/23820)   Receiving objects:  90% (21438/23820)   Receiving objects:  91% (21677/23820)   Receiving objects:  92% (21915/23820)   Receiving objects:  93% (22153/23820)   Receiving objects:  94% (22391/23820)   Receiving objects:  95% (22629/23820)   Receiving objects:  96% (22868/23820)   Receiving objects:  97% (23106/23820)   Receiving objects:  98% (23344/23820)   Receiving objects:  99% (23582/23820)   remote: Total 23820 (delta 12521), reused 23818 (delta 12519), pack-reused 0[K
+Receiving objects: 100% (23820/23820)   Receiving objects: 100% (23820/23820), 7.84 MiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/12521)   Resolving deltas:   1% (137/12521)   Resolving deltas:   2% (251/12521)   Resolving deltas:   3% (376/12521)   Resolving deltas:   4% (535/12521)   Resolving deltas:   5% (641/12521)   Resolving deltas:   6% (753/12521)   Resolving deltas:   7% (884/12521)   Resolving deltas:   8% (1002/12521)   Resolving deltas:   9% (1128/12521)   Resolving deltas:  10% (1269/12521)   Resolving deltas:  11% (1380/12521)   Resolving deltas:  12% (1509/12521)   Resolving deltas:  13% (1637/12521)   Resolving deltas:  14% (1755/12521)   Resolving deltas:  15% (1880/12521)   Resolving deltas:  16% (2010/12521)   Resolving deltas:  17% (2136/12521)   Resolving deltas:  18% (2278/12521)   Resolving deltas:  19% (2383/12521)   Resolving deltas:  20% (2583/12521)   Resolving deltas:  21% (2630/12521)   Resolving deltas:  22% (2809/12521)   Resolving deltas:  23% (2880/12521)   Resolving deltas:  24% (3006/12521)   Resolving deltas:  25% (3139/12521)   Resolving deltas:  26% (3278/12521)   Resolving deltas:  27% (3443/12521)   Resolving deltas:  28% (3519/12521)   Resolving deltas:  29% (3634/12521)   Resolving deltas:  30% (3759/12521)   Resolving deltas:  31% (3912/12521)   Resolving deltas:  32% (4033/12521)   Resolving deltas:  33% (4150/12521)   Resolving deltas:  34% (4277/12521)   Resolving deltas:  35% (4410/12521)   Resolving deltas:  36% (4512/12521)   Resolving deltas:  37% (4659/12521)   Resolving deltas:  38% (4793/12521)   Resolving deltas:  39% (4897/12521)   Resolving deltas:  40% (5056/12521)   Resolving deltas:  41% (5170/12521)   Resolving deltas:  42% (5261/12521)   Resolving deltas:  43% (5409/12521)   Resolving deltas:  44% (5513/12521)   Resolving deltas:  45% (5644/12521)   Resolving deltas:  46% (5809/12521)   Resolving deltas:  47% (5885/12521)   Resolving deltas:  48% (6011/12521)   Resolving deltas:  49% (6150/12521)   Resolving deltas:  50% (6273/12521)   Resolving deltas:  51% (6387/12521)   Resolving deltas:  52% (6529/12521)   Resolving deltas:  53% (6660/12521)   Resolving deltas:  54% (6809/12521)   Resolving deltas:  55% (6907/12521)   Resolving deltas:  56% (7016/12521)   Resolving deltas:  57% (7140/12521)   Resolving deltas:  58% (7274/12521)   Resolving deltas:  59% (7401/12521)   Resolving deltas:  60% (7560/12521)   Resolving deltas:  61% (7660/12521)   Resolving deltas:  62% (7766/12521)   Resolving deltas:  63% (7890/12521)   Resolving deltas:  64% (8018/12521)   Resolving deltas:  66% (8286/12521)   Resolving deltas:  67% (8397/12521)   Resolving deltas:  68% (8524/12521)   Resolving deltas:  69% (8656/12521)   Resolving deltas:  70% (8769/12521)   Resolving deltas:  71% (8890/12521)   Resolving deltas:  72% (9126/12521)   Resolving deltas:  73% (9143/12521)   Resolving deltas:  74% (9323/12521)   Resolving deltas:  75% (9415/12521)   Resolving deltas:  76% (9576/12521)   Resolving deltas:  77% (9643/12521)   Resolving deltas:  78% (9795/12521)   Resolving deltas:  79% (9909/12521)   Resolving deltas:  80% (10035/12521)   Resolving deltas:  81% (10149/12521)   Resolving deltas:  82% (10275/12521)   Resolving deltas:  83% (10514/12521)   Resolving deltas:  84% (10542/12521)   Resolving deltas:  85% (10644/12521)   Resolving deltas:  86% (10770/12521)   Resolving deltas:  87% (10920/12521)   Resolving deltas:  88% (11022/12521)   Resolving deltas:  89% (11147/12521)   Resolving deltas:  90% (11311/12521)   Resolving deltas:  91% (11399/12521)   Resolving deltas:  92% (11521/12521)   Resolving deltas:  93% (11648/12521)   Resolving deltas:  94% (11771/12521)   Resolving deltas:  95% (11895/12521)   Resolving deltas:  96% (12028/12521)   Resolving deltas:  97% (12158/12521)   Resolving deltas:  98% (12274/12521)   Resolving deltas:  99% (12429/12521)   Resolving deltas: 100% (12521/12521)   Resolving deltas: 100% (12521/12521), completed with 4 local objects.
+From https://github.com/junit-team/junit5
+ * branch            refs/pull/421/merge -> FETCH_HEAD
+
+travis_time:end:09fab920:start=1469243630306325245,finish=1469243631287203086,duration=980877841[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0K
+[33;1mThis job is running on container-based infrastructure, which does not allow use of 'sudo', setuid and setguid executables.[0m
+[33;1mIf you require sudo, add 'sudo: required' to your .travis.yml[0m
+[33;1mSee https://docs.travis-ci.com/user/workers/container-based-infrastructure/ for details.[0m
+$ jdk_switcher use oraclejdk8
+Switching to Oracle JDK8 (java-8-oracle), JAVA_HOME will be set to /usr/lib/jvm/java-8-oracle
+$ export TERM=dumb
+$ java -Xmx32m -version
+java version "1.8.0_31"
+Java(TM) SE Runtime Environment (build 1.8.0_31-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.31-b07, mixed mode)
+$ javac -J-Xmx32m -version
+javac 1.8.0_31
+travis_fold:start:install[0Ktravis_time:start:0746af40[0K$ ./gradlew assemble
+Downloading https://services.gradle.org/distributions/gradle-2.14.1-bin.zip
+...........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Unzipping /home/travis/.gradle/wrapper/dists/gradle-2.14.1-bin/2r579t5wehc7ew5kc8vfqezww/gradle-2.14.1-bin.zip to /home/travis/.gradle/wrapper/dists/gradle-2.14.1-bin/2r579t5wehc7ew5kc8vfqezww
+Set executable permissions for: /home/travis/.gradle/wrapper/dists/gradle-2.14.1-bin/2r579t5wehc7ew5kc8vfqezww/gradle-2.14.1/bin/gradle
+Download https://plugins.gradle.org/m2/com/diffplug/gradle/spotless/spotless/1.3.3/spotless-1.3.3.pom
+Download https://plugins.gradle.org/m2/org/asciidoctor/asciidoctor-gradle-plugin/1.5.3/asciidoctor-gradle-plugin-1.5.3.pom
+Download https://plugins.gradle.org/m2/org/ajoberstar/gradle-git/1.5.0/gradle-git-1.5.0.pom
+Download https://oss.sonatype.org/content/repositories/snapshots/org/junit/platform/junit-platform-gradle-plugin/1.0.0-SNAPSHOT/junit-platform-gradle-plugin-1.0.0-20160722.193628-122.pom
+Download https://plugins.gradle.org/m2/net/nemerosa/versioning/2.2.1/versioning-2.2.1.pom
+Download https://plugins.gradle.org/m2/com/github/ben-manes/gradle-versions-plugin/0.12.0/gradle-versions-plugin-0.12.0.pom
+Download https://plugins.gradle.org/m2/com/diffplug/durian/durian/3.2.0/durian-3.2.0.pom
+Download https://plugins.gradle.org/m2/com/diffplug/freshmark/freshmark/1.3.0/freshmark-1.3.0.pom
+Download https://plugins.gradle.org/m2/org/ajoberstar/grgit/1.7.0/grgit-1.7.0.pom
+Download https://plugins.gradle.org/m2/com/github/zafarkhaja/java-semver/0.9.0/java-semver-0.9.0.pom
+Download https://plugins.gradle.org/m2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+Download https://oss.sonatype.org/content/repositories/snapshots/org/junit/platform/junit-platform-console/1.0.0-SNAPSHOT/junit-platform-console-1.0.0-20160722.193548-122.pom
+Download https://plugins.gradle.org/m2/org/tmatesoft/svnkit/svnkit/1.8.12/svnkit-1.8.12.pom
+Download https://plugins.gradle.org/m2/com/thoughtworks/xstream/xstream/1.4.7/xstream-1.4.7.pom
+Download https://plugins.gradle.org/m2/com/thoughtworks/xstream/xstream-parent/1.4.7/xstream-parent-1.4.7.pom
+Download https://plugins.gradle.org/m2/org/codehaus/codehaus-parent/3/codehaus-parent-3.pom
+Download https://plugins.gradle.org/m2/com/diffplug/jscriptbox/jscriptbox/3.0.0/jscriptbox-3.0.0.pom
+Download https://plugins.gradle.org/m2/args4j/args4j/2.32/args4j-2.32.pom
+Download https://plugins.gradle.org/m2/args4j/args4j-site/2.32/args4j-site-2.32.pom
+Download https://plugins.gradle.org/m2/org/kohsuke/pom/14/pom-14.pom
+Download https://oss.sonatype.org/content/repositories/snapshots/org/junit/platform/junit-platform-launcher/1.0.0-SNAPSHOT/junit-platform-launcher-1.0.0-20160722.193629-121.pom
+Download https://plugins.gradle.org/m2/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.pom
+Download https://plugins.gradle.org/m2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.svnkit-trilead-ssh2/0.0.7/jsch.agentproxy.svnkit-trilead-ssh2-0.0.7.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy/0.0.7/jsch.agentproxy-0.0.7.pom
+Download https://plugins.gradle.org/m2/org/sonatype/oss/oss-parent/6/oss-parent-6.pom
+Download https://plugins.gradle.org/m2/com/trilead/trilead-ssh2/1.0.0-build220/trilead-ssh2-1.0.0-build220.pom
+Download https://plugins.gradle.org/m2/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.pom
+Download https://plugins.gradle.org/m2/net/java/dev/jna/jna/4.1.0/jna-4.1.0.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.connector-factory/0.0.7/jsch.agentproxy.connector-factory-0.0.7.pom
+Download https://plugins.gradle.org/m2/de/regnis/q/sequence/sequence-library/1.0.3/sequence-library-1.0.3.pom
+Download https://plugins.gradle.org/m2/org/tmatesoft/sqljet/sqljet/1.1.10/sqljet-1.1.10.pom
+Download https://plugins.gradle.org/m2/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.pom
+Download https://plugins.gradle.org/m2/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.pom
+Download https://oss.sonatype.org/content/repositories/snapshots/org/junit/platform/junit-platform-engine/1.0.0-SNAPSHOT/junit-platform-engine-1.0.0-20160722.193551-121.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.core/0.0.7/jsch.agentproxy.core-0.0.7.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.usocket-jna/0.0.7/jsch.agentproxy.usocket-jna-0.0.7.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.usocket-nc/0.0.7/jsch.agentproxy.usocket-nc-0.0.7.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.sshagent/0.0.7/jsch.agentproxy.sshagent-0.0.7.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.pageant/0.0.7/jsch.agentproxy.pageant-0.0.7.pom
+Download https://plugins.gradle.org/m2/org/antlr/antlr-runtime/3.4/antlr-runtime-3.4.pom
+Download https://plugins.gradle.org/m2/org/antlr/antlr-master/3.4/antlr-master-3.4.pom
+Download https://oss.sonatype.org/content/repositories/snapshots/org/junit/platform/junit-platform-commons/1.0.0-SNAPSHOT/junit-platform-commons-1.0.0-20160722.193529-121.pom
+Download https://plugins.gradle.org/m2/org/opentest4j/opentest4j/1.0.0-M1/opentest4j-1.0.0-M1.pom
+Download https://plugins.gradle.org/m2/net/java/dev/jna/platform/3.4.0/platform-3.4.0.pom
+Download https://plugins.gradle.org/m2/org/eclipse/jgit/org.eclipse.jgit/4.3.1.201605051710-r/org.eclipse.jgit-4.3.1.201605051710-r.pom
+Download https://plugins.gradle.org/m2/org/eclipse/jgit/org.eclipse.jgit-parent/4.3.1.201605051710-r/org.eclipse.jgit-parent-4.3.1.201605051710-r.pom
+Download https://plugins.gradle.org/m2/org/eclipse/jgit/org.eclipse.jgit.ui/4.3.1.201605051710-r/org.eclipse.jgit.ui-4.3.1.201605051710-r.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.jsch/0.0.9/jsch.agentproxy.jsch-0.0.9.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy/0.0.9/jsch.agentproxy-0.0.9.pom
+Download https://plugins.gradle.org/m2/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.pom
+Download https://plugins.gradle.org/m2/org/slf4j/slf4j-parent/1.7.21/slf4j-parent-1.7.21.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch/0.1.53/jsch-0.1.53.pom
+Download https://plugins.gradle.org/m2/com/googlecode/javaewah/JavaEWAH/0.7.9/JavaEWAH-0.7.9.pom
+Download https://plugins.gradle.org/m2/org/sonatype/oss/oss-parent/5/oss-parent-5.pom
+Download https://plugins.gradle.org/m2/org/apache/httpcomponents/httpclient/4.3.6/httpclient-4.3.6.pom
+Download https://plugins.gradle.org/m2/org/apache/httpcomponents/httpcomponents-client/4.3.6/httpcomponents-client-4.3.6.pom
+Download https://plugins.gradle.org/m2/org/apache/httpcomponents/project/7/project-7.pom
+Download https://plugins.gradle.org/m2/org/apache/apache/13/apache-13.pom
+Download https://plugins.gradle.org/m2/org/apache/httpcomponents/httpcore/4.3.3/httpcore-4.3.3.pom
+Download https://plugins.gradle.org/m2/org/apache/httpcomponents/httpcomponents-core/4.3.3/httpcomponents-core-4.3.3.pom
+Download https://plugins.gradle.org/m2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.pom
+Download https://plugins.gradle.org/m2/org/apache/commons/commons-parent/28/commons-parent-28.pom
+Download https://plugins.gradle.org/m2/commons-codec/commons-codec/1.6/commons-codec-1.6.pom
+Download https://plugins.gradle.org/m2/org/apache/commons/commons-parent/22/commons-parent-22.pom
+Download https://plugins.gradle.org/m2/org/apache/apache/9/apache-9.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.pageant/0.0.9/jsch.agentproxy.pageant-0.0.9.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.sshagent/0.0.9/jsch.agentproxy.sshagent-0.0.9.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.usocket-jna/0.0.9/jsch.agentproxy.usocket-jna-0.0.9.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.usocket-nc/0.0.9/jsch.agentproxy.usocket-nc-0.0.9.pom
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.core/0.0.9/jsch.agentproxy.core-0.0.9.pom
+Download https://plugins.gradle.org/m2/com/diffplug/gradle/spotless/spotless/1.3.3/spotless-1.3.3.jar
+Download https://plugins.gradle.org/m2/org/asciidoctor/asciidoctor-gradle-plugin/1.5.3/asciidoctor-gradle-plugin-1.5.3.jar
+Download https://plugins.gradle.org/m2/org/ajoberstar/gradle-git/1.5.0/gradle-git-1.5.0.jar
+Download https://oss.sonatype.org/content/repositories/snapshots/org/junit/platform/junit-platform-gradle-plugin/1.0.0-SNAPSHOT/junit-platform-gradle-plugin-1.0.0-20160722.193628-122.jar
+Download https://plugins.gradle.org/m2/net/nemerosa/versioning/2.2.1/versioning-2.2.1.jar
+Download https://plugins.gradle.org/m2/com/github/ben-manes/gradle-versions-plugin/0.12.0/gradle-versions-plugin-0.12.0.jar
+Download https://plugins.gradle.org/m2/com/diffplug/durian/durian/3.2.0/durian-3.2.0.jar
+Download https://plugins.gradle.org/m2/com/diffplug/freshmark/freshmark/1.3.0/freshmark-1.3.0.jar
+Download https://plugins.gradle.org/m2/org/ajoberstar/grgit/1.7.0/grgit-1.7.0.jar
+Download https://plugins.gradle.org/m2/com/github/zafarkhaja/java-semver/0.9.0/java-semver-0.9.0.jar
+Download https://oss.sonatype.org/content/repositories/snapshots/org/junit/platform/junit-platform-console/1.0.0-SNAPSHOT/junit-platform-console-1.0.0-20160722.193548-122.jar
+Download https://plugins.gradle.org/m2/org/tmatesoft/svnkit/svnkit/1.8.12/svnkit-1.8.12.jar
+Download https://plugins.gradle.org/m2/com/thoughtworks/xstream/xstream/1.4.7/xstream-1.4.7.jar
+Download https://plugins.gradle.org/m2/com/diffplug/jscriptbox/jscriptbox/3.0.0/jscriptbox-3.0.0.jar
+Download https://plugins.gradle.org/m2/args4j/args4j/2.32/args4j-2.32.jar
+Download https://oss.sonatype.org/content/repositories/snapshots/org/junit/platform/junit-platform-launcher/1.0.0-SNAPSHOT/junit-platform-launcher-1.0.0-20160722.193629-121.jar
+Download https://plugins.gradle.org/m2/net/sf/jopt-simple/jopt-simple/5.0.2/jopt-simple-5.0.2.jar
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.svnkit-trilead-ssh2/0.0.7/jsch.agentproxy.svnkit-trilead-ssh2-0.0.7.jar
+Download https://plugins.gradle.org/m2/com/trilead/trilead-ssh2/1.0.0-build220/trilead-ssh2-1.0.0-build220.jar
+Download https://plugins.gradle.org/m2/net/java/dev/jna/jna-platform/4.1.0/jna-platform-4.1.0.jar
+Download https://plugins.gradle.org/m2/net/java/dev/jna/jna/4.1.0/jna-4.1.0.jar
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.connector-factory/0.0.7/jsch.agentproxy.connector-factory-0.0.7.jar
+Download https://plugins.gradle.org/m2/de/regnis/q/sequence/sequence-library/1.0.3/sequence-library-1.0.3.jar
+Download https://plugins.gradle.org/m2/org/tmatesoft/sqljet/sqljet/1.1.10/sqljet-1.1.10.jar
+Download https://plugins.gradle.org/m2/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar
+Download https://plugins.gradle.org/m2/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar
+Download https://oss.sonatype.org/content/repositories/snapshots/org/junit/platform/junit-platform-engine/1.0.0-SNAPSHOT/junit-platform-engine-1.0.0-20160722.193551-121.jar
+Download https://plugins.gradle.org/m2/org/antlr/antlr-runtime/3.4/antlr-runtime-3.4.jar
+Download https://oss.sonatype.org/content/repositories/snapshots/org/junit/platform/junit-platform-commons/1.0.0-SNAPSHOT/junit-platform-commons-1.0.0-20160722.193529-121.jar
+Download https://plugins.gradle.org/m2/org/opentest4j/opentest4j/1.0.0-M1/opentest4j-1.0.0-M1.jar
+Download https://plugins.gradle.org/m2/org/eclipse/jgit/org.eclipse.jgit/4.3.1.201605051710-r/org.eclipse.jgit-4.3.1.201605051710-r.jar
+Download https://plugins.gradle.org/m2/org/eclipse/jgit/org.eclipse.jgit.ui/4.3.1.201605051710-r/org.eclipse.jgit.ui-4.3.1.201605051710-r.jar
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.jsch/0.0.9/jsch.agentproxy.jsch-0.0.9.jar
+Download https://plugins.gradle.org/m2/org/slf4j/slf4j-api/1.7.21/slf4j-api-1.7.21.jar
+Download https://plugins.gradle.org/m2/com/jcraft/jsch/0.1.53/jsch-0.1.53.jar
+Download https://plugins.gradle.org/m2/com/googlecode/javaewah/JavaEWAH/0.7.9/JavaEWAH-0.7.9.jar
+Download https://plugins.gradle.org/m2/org/apache/httpcomponents/httpclient/4.3.6/httpclient-4.3.6.jar
+Download https://plugins.gradle.org/m2/org/apache/httpcomponents/httpcore/4.3.3/httpcore-4.3.3.jar
+Download https://plugins.gradle.org/m2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar
+Download https://plugins.gradle.org/m2/commons-codec/commons-codec/1.6/commons-codec-1.6.jar
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.pageant/0.0.9/jsch.agentproxy.pageant-0.0.9.jar
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.sshagent/0.0.9/jsch.agentproxy.sshagent-0.0.9.jar
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.usocket-jna/0.0.9/jsch.agentproxy.usocket-jna-0.0.9.jar
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.usocket-nc/0.0.9/jsch.agentproxy.usocket-nc-0.0.9.jar
+Download https://plugins.gradle.org/m2/com/jcraft/jsch.agentproxy.core/0.0.9/jsch.agentproxy.core-0.0.9.jar
+Generating JAR file 'gradle-api-2.14.1.jar'
+:compileJava/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.MatcherAssert;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:925: error: cannot find symbol
+    public static <T> void assertThat(T actual, Matcher<? super T> matcher) {
+                                                ^
+  symbol:   class Matcher
+  location: class Assert
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:960: error: cannot find symbol
+            Matcher<? super T> matcher) {
+            ^
+  symbol:   class Matcher
+  location: class Assert
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:4: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.everyItem;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:4: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.everyItem;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:5: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.is;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:5: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.is;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:6: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.notNullValue;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:6: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.notNullValue;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:7: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.nullValue;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:7: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.nullValue;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:9: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:104: error: cannot find symbol
+    public static <T> void assumeThat(T actual, Matcher<T> matcher) {
+                                                ^
+  symbol:   class Matcher
+  location: class Assume
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:129: error: cannot find symbol
+    public static <T> void assumeThat(String message, T actual, Matcher<T> matcher) {
+                                                                ^
+  symbol:   class Matcher
+  location: class Assume
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/AssumptionViolatedException.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.SelfDescribing;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.StringDescription;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:15: error: cannot find symbol
+public class AssumptionViolatedException extends RuntimeException implements SelfDescribing {
+                                                                             ^
+  symbol: class SelfDescribing
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/AssumptionViolatedException.java:22: error: cannot find symbol
+    public <T> AssumptionViolatedException(T actual, Matcher<T> matcher) {
+                                                     ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/AssumptionViolatedException.java:31: error: cannot find symbol
+    public <T> AssumptionViolatedException(String message, T actual, Matcher<T> matcher) {
+                                                                     ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:26: error: cannot find symbol
+    private final Matcher<?> fMatcher;
+                  ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:32: error: cannot find symbol
+    public AssumptionViolatedException(String assumption, boolean hasValue, Object value, Matcher<?> matcher) {
+                                                                                          ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:50: error: cannot find symbol
+    public AssumptionViolatedException(Object value, Matcher<?> matcher) {
+                                                     ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:61: error: cannot find symbol
+    public AssumptionViolatedException(String assumption, Object value, Matcher<?> matcher) {
+                                                                        ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:91: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.BaseMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.TypeSafeMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:29: error: cannot find symbol
+    public static Matcher<PrintableResult> isSuccessful() {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:36: error: cannot find symbol
+    public static Matcher<PrintableResult> failureCountIs(final int count) {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:52: error: cannot find symbol
+    public static Matcher<Object> hasSingleFailureContaining(final String string) {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:68: error: cannot find symbol
+    public static Matcher<PrintableResult> hasFailureContaining(final String string) {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Factory;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:18: error: package org.hamcrest does not exist
+        org.hamcrest.TypeSafeMatcher<T> {
+                    ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:20: error: cannot find symbol
+    private final Matcher<T> throwableMatcher;
+                  ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:22: error: cannot find symbol
+    public StacktracePrintingMatcher(Matcher<T> throwableMatcher) {
+                                     ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:26: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:36: error: cannot find symbol
+    protected void describeMismatchSafely(T item, Description description) {
+                                                  ^
+  symbol:   class Description
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:48: error: cannot find symbol
+            Matcher<T> throwableMatcher) {
+            ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:47: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> isThrowable(
+                                        ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:54: error: cannot find symbol
+            Matcher<T> exceptionMatcher) {
+            ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:53: error: cannot find symbol
+    public static <T extends Exception> Matcher<T> isException(
+                                        ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Factory;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.TypeSafeMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/TypeSafeMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.BaseMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/TypeSafeMatcher.java:16: error: cannot find symbol
+public abstract class TypeSafeMatcher<T> extends BaseMatcher<T> {
+                                                 ^
+  symbol: class BaseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:19: error: cannot find symbol
+    private final Matcher<? extends Throwable> causeMatcher;
+                  ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:21: error: cannot find symbol
+    public ThrowableCauseMatcher(Matcher<? extends Throwable> causeMatcher) {
+                                 ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:25: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:36: error: cannot find symbol
+    protected void describeMismatchSafely(T item, Description description) {
+                                                  ^
+  symbol:   class Description
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:49: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasCause(final Matcher<? extends Throwable> matcher) {
+                                                                  ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:49: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasCause(final Matcher<? extends Throwable> matcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Factory;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.TypeSafeMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:11: error: cannot find symbol
+    private final Matcher<String> matcher;
+                  ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:13: error: cannot find symbol
+    public ThrowableMessageMatcher(Matcher<String> matcher) {
+                                   ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:17: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:28: error: cannot find symbol
+    protected void describeMismatchSafely(T item, Description description) {
+                                                  ^
+  symbol:   class Description
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:34: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasMessage(final Matcher<String> matcher) {
+                                                                    ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:34: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasMessage(final Matcher<String> matcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.CoreMatchers;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:5: error: package org.hamcrest.core.CombinableMatcher does not exist
+import org.hamcrest.core.CombinableMatcher.CombinableBothMatcher;
+                                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:6: error: package org.hamcrest.core.CombinableMatcher does not exist
+import org.hamcrest.core.CombinableMatcher.CombinableEitherMatcher;
+                                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:23: error: cannot find symbol
+    public static <T> Matcher<Iterable<? super T>> hasItem(T element) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:32: error: cannot find symbol
+    public static <T> Matcher<Iterable<? super T>> hasItem(Matcher<? super T> elementMatcher) {
+                                                           ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:32: error: cannot find symbol
+    public static <T> Matcher<Iterable<? super T>> hasItem(Matcher<? super T> elementMatcher) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:41: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> hasItems(T... elements) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:52: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> hasItems(Matcher<? super T>... elementMatchers) {
+                                                    ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:52: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> hasItems(Matcher<? super T>... elementMatchers) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:61: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> everyItem(final Matcher<T> elementMatcher) {
+                                                           ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:61: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> everyItem(final Matcher<T> elementMatcher) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:70: error: cannot find symbol
+    public static Matcher<java.lang.String> containsString(java.lang.String substring) {
+                  ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:83: error: cannot find symbol
+    public static <T> CombinableBothMatcher<T> both(Matcher<? super T> matcher) {
+                                                    ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:83: error: cannot find symbol
+    public static <T> CombinableBothMatcher<T> both(Matcher<? super T> matcher) {
+                      ^
+  symbol:   class CombinableBothMatcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:96: error: cannot find symbol
+    public static <T> CombinableEitherMatcher<T> either(Matcher<? super T> matcher) {
+                                                        ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:96: error: cannot find symbol
+    public static <T> CombinableEitherMatcher<T> either(Matcher<? super T> matcher) {
+                      ^
+  symbol:   class CombinableEitherMatcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:104: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> isThrowable(Matcher<T> throwableMatcher) {
+                                                               ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:104: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> isThrowable(Matcher<T> throwableMatcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:112: error: cannot find symbol
+    public static <T extends Exception> Matcher<T> isException(Matcher<T> exceptionMatcher) {
+                                                               ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:112: error: cannot find symbol
+    public static <T extends Exception> Matcher<T> isException(Matcher<T> exceptionMatcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ErrorCollector.java:11: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ErrorCollector.java:58: error: cannot find symbol
+    public <T> void checkThat(final T value, final Matcher<T> matcher) {
+                                                   ^
+  symbol:   class Matcher
+  location: class ErrorCollector
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ErrorCollector.java:70: error: cannot find symbol
+    public <T> void checkThat(final String reason, final T value, final Matcher<T> matcher) {
+                                                                        ^
+  symbol:   class Matcher
+  location: class ErrorCollector
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:4: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.containsString;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:4: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.containsString;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:5: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.instanceOf;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:5: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.instanceOf;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:10: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:11: error: package org.hamcrest does not exist
+import org.hamcrest.StringDescription;
+                   ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: /home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+100 errors
+ FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 1 mins 29.94 secs
+
+[31;1mThe command "eval ./gradlew assemble" failed. Retrying, 2 of 3.[0m
+
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+:compileJava/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.MatcherAssert;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:925: error: cannot find symbol
+    public static <T> void assertThat(T actual, Matcher<? super T> matcher) {
+                                                ^
+  symbol:   class Matcher
+  location: class Assert
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:960: error: cannot find symbol
+            Matcher<? super T> matcher) {
+            ^
+  symbol:   class Matcher
+  location: class Assert
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:4: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.everyItem;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:4: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.everyItem;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:5: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.is;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:5: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.is;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:6: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.notNullValue;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:6: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.notNullValue;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:7: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.nullValue;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:7: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.nullValue;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:9: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:104: error: cannot find symbol
+    public static <T> void assumeThat(T actual, Matcher<T> matcher) {
+                                                ^
+  symbol:   class Matcher
+  location: class Assume
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:129: error: cannot find symbol
+    public static <T> void assumeThat(String message, T actual, Matcher<T> matcher) {
+                                                                ^
+  symbol:   class Matcher
+  location: class Assume
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/AssumptionViolatedException.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.SelfDescribing;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.StringDescription;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:15: error: cannot find symbol
+public class AssumptionViolatedException extends RuntimeException implements SelfDescribing {
+                                                                             ^
+  symbol: class SelfDescribing
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/AssumptionViolatedException.java:22: error: cannot find symbol
+    public <T> AssumptionViolatedException(T actual, Matcher<T> matcher) {
+                                                     ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/AssumptionViolatedException.java:31: error: cannot find symbol
+    public <T> AssumptionViolatedException(String message, T actual, Matcher<T> matcher) {
+                                                                     ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:26: error: cannot find symbol
+    private final Matcher<?> fMatcher;
+                  ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:32: error: cannot find symbol
+    public AssumptionViolatedException(String assumption, boolean hasValue, Object value, Matcher<?> matcher) {
+                                                                                          ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:50: error: cannot find symbol
+    public AssumptionViolatedException(Object value, Matcher<?> matcher) {
+                                                     ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:61: error: cannot find symbol
+    public AssumptionViolatedException(String assumption, Object value, Matcher<?> matcher) {
+                                                                        ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:91: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.BaseMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.TypeSafeMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:29: error: cannot find symbol
+    public static Matcher<PrintableResult> isSuccessful() {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:36: error: cannot find symbol
+    public static Matcher<PrintableResult> failureCountIs(final int count) {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:52: error: cannot find symbol
+    public static Matcher<Object> hasSingleFailureContaining(final String string) {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:68: error: cannot find symbol
+    public static Matcher<PrintableResult> hasFailureContaining(final String string) {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Factory;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:18: error: package org.hamcrest does not exist
+        org.hamcrest.TypeSafeMatcher<T> {
+                    ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:20: error: cannot find symbol
+    private final Matcher<T> throwableMatcher;
+                  ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:22: error: cannot find symbol
+    public StacktracePrintingMatcher(Matcher<T> throwableMatcher) {
+                                     ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:26: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:36: error: cannot find symbol
+    protected void describeMismatchSafely(T item, Description description) {
+                                                  ^
+  symbol:   class Description
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:48: error: cannot find symbol
+            Matcher<T> throwableMatcher) {
+            ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:47: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> isThrowable(
+                                        ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:54: error: cannot find symbol
+            Matcher<T> exceptionMatcher) {
+            ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:53: error: cannot find symbol
+    public static <T extends Exception> Matcher<T> isException(
+                                        ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Factory;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.TypeSafeMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/TypeSafeMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.BaseMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/TypeSafeMatcher.java:16: error: cannot find symbol
+public abstract class TypeSafeMatcher<T> extends BaseMatcher<T> {
+                                                 ^
+  symbol: class BaseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:19: error: cannot find symbol
+    private final Matcher<? extends Throwable> causeMatcher;
+                  ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:21: error: cannot find symbol
+    public ThrowableCauseMatcher(Matcher<? extends Throwable> causeMatcher) {
+                                 ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:25: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:36: error: cannot find symbol
+    protected void describeMismatchSafely(T item, Description description) {
+                                                  ^
+  symbol:   class Description
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:49: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasCause(final Matcher<? extends Throwable> matcher) {
+                                                                  ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:49: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasCause(final Matcher<? extends Throwable> matcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Factory;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.TypeSafeMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:11: error: cannot find symbol
+    private final Matcher<String> matcher;
+                  ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:13: error: cannot find symbol
+    public ThrowableMessageMatcher(Matcher<String> matcher) {
+                                   ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:17: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:28: error: cannot find symbol
+    protected void describeMismatchSafely(T item, Description description) {
+                                                  ^
+  symbol:   class Description
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:34: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasMessage(final Matcher<String> matcher) {
+                                                                    ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:34: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasMessage(final Matcher<String> matcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.CoreMatchers;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:5: error: package org.hamcrest.core.CombinableMatcher does not exist
+import org.hamcrest.core.CombinableMatcher.CombinableBothMatcher;
+                                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:6: error: package org.hamcrest.core.CombinableMatcher does not exist
+import org.hamcrest.core.CombinableMatcher.CombinableEitherMatcher;
+                                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:23: error: cannot find symbol
+    public static <T> Matcher<Iterable<? super T>> hasItem(T element) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:32: error: cannot find symbol
+    public static <T> Matcher<Iterable<? super T>> hasItem(Matcher<? super T> elementMatcher) {
+                                                           ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:32: error: cannot find symbol
+    public static <T> Matcher<Iterable<? super T>> hasItem(Matcher<? super T> elementMatcher) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:41: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> hasItems(T... elements) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:52: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> hasItems(Matcher<? super T>... elementMatchers) {
+                                                    ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:52: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> hasItems(Matcher<? super T>... elementMatchers) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:61: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> everyItem(final Matcher<T> elementMatcher) {
+                                                           ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:61: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> everyItem(final Matcher<T> elementMatcher) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:70: error: cannot find symbol
+    public static Matcher<java.lang.String> containsString(java.lang.String substring) {
+                  ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:83: error: cannot find symbol
+    public static <T> CombinableBothMatcher<T> both(Matcher<? super T> matcher) {
+                                                    ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:83: error: cannot find symbol
+    public static <T> CombinableBothMatcher<T> both(Matcher<? super T> matcher) {
+                      ^
+  symbol:   class CombinableBothMatcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:96: error: cannot find symbol
+    public static <T> CombinableEitherMatcher<T> either(Matcher<? super T> matcher) {
+                                                        ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:96: error: cannot find symbol
+    public static <T> CombinableEitherMatcher<T> either(Matcher<? super T> matcher) {
+                      ^
+  symbol:   class CombinableEitherMatcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:104: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> isThrowable(Matcher<T> throwableMatcher) {
+                                                               ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:104: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> isThrowable(Matcher<T> throwableMatcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:112: error: cannot find symbol
+    public static <T extends Exception> Matcher<T> isException(Matcher<T> exceptionMatcher) {
+                                                               ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:112: error: cannot find symbol
+    public static <T extends Exception> Matcher<T> isException(Matcher<T> exceptionMatcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ErrorCollector.java:11: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ErrorCollector.java:58: error: cannot find symbol
+    public <T> void checkThat(final T value, final Matcher<T> matcher) {
+                                                   ^
+  symbol:   class Matcher
+  location: class ErrorCollector
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ErrorCollector.java:70: error: cannot find symbol
+    public <T> void checkThat(final String reason, final T value, final Matcher<T> matcher) {
+                                                                        ^
+  symbol:   class Matcher
+  location: class ErrorCollector
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:4: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.containsString;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:4: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.containsString;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:5: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.instanceOf;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:5: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.instanceOf;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:10: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:11: error: package org.hamcrest does not exist
+import org.hamcrest.StringDescription;
+                   ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: /home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+100 errors
+ FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 30.771 secs
+
+[31;1mThe command "eval ./gradlew assemble" failed. Retrying, 3 of 3.[0m
+
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+[versioning] WARNING - the working copy has unstaged or uncommitted changes.
+:compileJava/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.MatcherAssert;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:925: error: cannot find symbol
+    public static <T> void assertThat(T actual, Matcher<? super T> matcher) {
+                                                ^
+  symbol:   class Matcher
+  location: class Assert
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assert.java:960: error: cannot find symbol
+            Matcher<? super T> matcher) {
+            ^
+  symbol:   class Matcher
+  location: class Assert
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:4: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.everyItem;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:4: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.everyItem;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:5: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.is;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:5: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.is;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:6: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.notNullValue;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:6: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.notNullValue;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:7: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.nullValue;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:7: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.nullValue;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:9: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:104: error: cannot find symbol
+    public static <T> void assumeThat(T actual, Matcher<T> matcher) {
+                                                ^
+  symbol:   class Matcher
+  location: class Assume
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/Assume.java:129: error: cannot find symbol
+    public static <T> void assumeThat(String message, T actual, Matcher<T> matcher) {
+                                                                ^
+  symbol:   class Matcher
+  location: class Assume
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/AssumptionViolatedException.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.SelfDescribing;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.StringDescription;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:15: error: cannot find symbol
+public class AssumptionViolatedException extends RuntimeException implements SelfDescribing {
+                                                                             ^
+  symbol: class SelfDescribing
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/AssumptionViolatedException.java:22: error: cannot find symbol
+    public <T> AssumptionViolatedException(T actual, Matcher<T> matcher) {
+                                                     ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/AssumptionViolatedException.java:31: error: cannot find symbol
+    public <T> AssumptionViolatedException(String message, T actual, Matcher<T> matcher) {
+                                                                     ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:26: error: cannot find symbol
+    private final Matcher<?> fMatcher;
+                  ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:32: error: cannot find symbol
+    public AssumptionViolatedException(String assumption, boolean hasValue, Object value, Matcher<?> matcher) {
+                                                                                          ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:50: error: cannot find symbol
+    public AssumptionViolatedException(Object value, Matcher<?> matcher) {
+                                                     ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:61: error: cannot find symbol
+    public AssumptionViolatedException(String assumption, Object value, Matcher<?> matcher) {
+                                                                        ^
+  symbol:   class Matcher
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/AssumptionViolatedException.java:91: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class AssumptionViolatedException
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.BaseMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.TypeSafeMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:29: error: cannot find symbol
+    public static Matcher<PrintableResult> isSuccessful() {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:36: error: cannot find symbol
+    public static Matcher<PrintableResult> failureCountIs(final int count) {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:52: error: cannot find symbol
+    public static Matcher<Object> hasSingleFailureContaining(final String string) {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/experimental/results/ResultMatchers.java:68: error: cannot find symbol
+    public static Matcher<PrintableResult> hasFailureContaining(final String string) {
+                  ^
+  symbol:   class Matcher
+  location: class ResultMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Factory;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:18: error: package org.hamcrest does not exist
+        org.hamcrest.TypeSafeMatcher<T> {
+                    ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:20: error: cannot find symbol
+    private final Matcher<T> throwableMatcher;
+                  ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:22: error: cannot find symbol
+    public StacktracePrintingMatcher(Matcher<T> throwableMatcher) {
+                                     ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:26: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:36: error: cannot find symbol
+    protected void describeMismatchSafely(T item, Description description) {
+                                                  ^
+  symbol:   class Description
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:48: error: cannot find symbol
+            Matcher<T> throwableMatcher) {
+            ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:47: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> isThrowable(
+                                        ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:54: error: cannot find symbol
+            Matcher<T> exceptionMatcher) {
+            ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/StacktracePrintingMatcher.java:53: error: cannot find symbol
+    public static <T extends Exception> Matcher<T> isException(
+                                        ^
+  symbol:   class Matcher
+  location: class StacktracePrintingMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class StacktracePrintingMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Factory;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.TypeSafeMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/TypeSafeMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.BaseMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/TypeSafeMatcher.java:16: error: cannot find symbol
+public abstract class TypeSafeMatcher<T> extends BaseMatcher<T> {
+                                                 ^
+  symbol: class BaseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:19: error: cannot find symbol
+    private final Matcher<? extends Throwable> causeMatcher;
+                  ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:21: error: cannot find symbol
+    public ThrowableCauseMatcher(Matcher<? extends Throwable> causeMatcher) {
+                                 ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:25: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:36: error: cannot find symbol
+    protected void describeMismatchSafely(T item, Description description) {
+                                                  ^
+  symbol:   class Description
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:49: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasCause(final Matcher<? extends Throwable> matcher) {
+                                                                  ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableCauseMatcher.java:49: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasCause(final Matcher<? extends Throwable> matcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class ThrowableCauseMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableCauseMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.Description;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Factory;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:5: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:6: error: package org.hamcrest does not exist
+import org.hamcrest.TypeSafeMatcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:11: error: cannot find symbol
+    private final Matcher<String> matcher;
+                  ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:13: error: cannot find symbol
+    public ThrowableMessageMatcher(Matcher<String> matcher) {
+                                   ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:17: error: cannot find symbol
+    public void describeTo(Description description) {
+                           ^
+  symbol:   class Description
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:28: error: cannot find symbol
+    protected void describeMismatchSafely(T item, Description description) {
+                                                  ^
+  symbol:   class Description
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:34: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasMessage(final Matcher<String> matcher) {
+                                                                    ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/internal/matchers/ThrowableMessageMatcher.java:34: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> hasMessage(final Matcher<String> matcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class ThrowableMessageMatcher<T>
+  where T is a type-variable:
+    T extends Throwable declared in class ThrowableMessageMatcher
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:3: error: package org.hamcrest does not exist
+import org.hamcrest.CoreMatchers;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:4: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:5: error: package org.hamcrest.core.CombinableMatcher does not exist
+import org.hamcrest.core.CombinableMatcher.CombinableBothMatcher;
+                                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:6: error: package org.hamcrest.core.CombinableMatcher does not exist
+import org.hamcrest.core.CombinableMatcher.CombinableEitherMatcher;
+                                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:23: error: cannot find symbol
+    public static <T> Matcher<Iterable<? super T>> hasItem(T element) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:32: error: cannot find symbol
+    public static <T> Matcher<Iterable<? super T>> hasItem(Matcher<? super T> elementMatcher) {
+                                                           ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:32: error: cannot find symbol
+    public static <T> Matcher<Iterable<? super T>> hasItem(Matcher<? super T> elementMatcher) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:41: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> hasItems(T... elements) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:52: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> hasItems(Matcher<? super T>... elementMatchers) {
+                                                    ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:52: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> hasItems(Matcher<? super T>... elementMatchers) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:61: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> everyItem(final Matcher<T> elementMatcher) {
+                                                           ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:61: error: cannot find symbol
+    public static <T> Matcher<Iterable<T>> everyItem(final Matcher<T> elementMatcher) {
+                      ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:70: error: cannot find symbol
+    public static Matcher<java.lang.String> containsString(java.lang.String substring) {
+                  ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:83: error: cannot find symbol
+    public static <T> CombinableBothMatcher<T> both(Matcher<? super T> matcher) {
+                                                    ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:83: error: cannot find symbol
+    public static <T> CombinableBothMatcher<T> both(Matcher<? super T> matcher) {
+                      ^
+  symbol:   class CombinableBothMatcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:96: error: cannot find symbol
+    public static <T> CombinableEitherMatcher<T> either(Matcher<? super T> matcher) {
+                                                        ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:96: error: cannot find symbol
+    public static <T> CombinableEitherMatcher<T> either(Matcher<? super T> matcher) {
+                      ^
+  symbol:   class CombinableEitherMatcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:104: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> isThrowable(Matcher<T> throwableMatcher) {
+                                                               ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:104: error: cannot find symbol
+    public static <T extends Throwable> Matcher<T> isThrowable(Matcher<T> throwableMatcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:112: error: cannot find symbol
+    public static <T extends Exception> Matcher<T> isException(Matcher<T> exceptionMatcher) {
+                                                               ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java:112: error: cannot find symbol
+    public static <T extends Exception> Matcher<T> isException(Matcher<T> exceptionMatcher) {
+                                        ^
+  symbol:   class Matcher
+  location: class JUnitMatchers
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ErrorCollector.java:11: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ErrorCollector.java:58: error: cannot find symbol
+    public <T> void checkThat(final T value, final Matcher<T> matcher) {
+                                                   ^
+  symbol:   class Matcher
+  location: class ErrorCollector
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ErrorCollector.java:70: error: cannot find symbol
+    public <T> void checkThat(final String reason, final T value, final Matcher<T> matcher) {
+                                                                        ^
+  symbol:   class Matcher
+  location: class ErrorCollector
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:4: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.containsString;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:4: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.containsString;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:5: error: package org.hamcrest does not exist
+import static org.hamcrest.CoreMatchers.instanceOf;
+                          ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:5: error: static import only from classes and interfaces
+import static org.hamcrest.CoreMatchers.instanceOf;
+^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:10: error: package org.hamcrest does not exist
+import org.hamcrest.Matcher;
+                   ^
+/home/travis/build/junit-team/junit5/src/main/java/org/junit/rules/ExpectedException.java:11: error: package org.hamcrest does not exist
+import org.hamcrest.StringDescription;
+                   ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: /home/travis/build/junit-team/junit5/src/main/java/org/junit/matchers/JUnitMatchers.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+100 errors
+ FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+
+BUILD FAILED
+
+Total time: 32.693 secs
+
+[31;1mThe command "eval ./gradlew assemble" failed 3 times.[0m
+
+
+travis_time:end:0746af40:start=1469243633446615595,finish=1469243799029438381,duration=165582822786[0K
+[31;1mThe command "./gradlew assemble" failed and exited with 1 during .[0m
+
+Your build has been stopped.

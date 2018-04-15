@@ -1,9 +1,13 @@
 require 'test/unit'
-require 'property'
+require 'fdse/property'
 class TestProperty < Test::Unit::TestCase
 
   def setup
     @property = Fdse::Property.new
+  end
+
+  def get_path(filename)
+    File.expand_path(File.join('assets', 'input', filename), File.dirname(__FILE__))
   end
 
   def test_get_key
@@ -13,7 +17,7 @@ class TestProperty < Test::Unit::TestCase
   end
 
   def test_regexp_string
-    lines = IO.readlines 'regexp_string'
+    lines = IO.readlines(get_path('regexp_string'))
     assert_equal 'abstract methods cannot have a body', @property.regexp_string(lines[0])
     assert_equal '[^\n]*has already been annotated', @property.regexp_string(lines[1])
     assert_equal '[^\n]*is already defined in[^\n]*', @property.regexp_string(lines[2])
@@ -23,9 +27,9 @@ class TestProperty < Test::Unit::TestCase
   end
 
   def test_regexp_strings
-    lines = IO.readlines 'regexp_strings0'
+    lines = IO.readlines(get_path('regexp_strings0'))
     assert_equal '^[^\n]*is abstract[^\n]*cannot be instantiated[^\n]*\n', @property.regexp_strings(lines, 0)
-    lines = IO.readlines 'regexp_strings1'
+    lines = IO.readlines(get_path('regexp_strings1'))
     assert_equal '^[^\n]*inference variable[^\n]*has incompatible bounds([^\n]*\n[^\n]*){1,3}?equality constraints[^\n]*\n[^\n]*lower bounds[^\n]*\n', @property.regexp_strings(lines, 0)
   end
 
@@ -56,16 +60,29 @@ class TestProperty < Test::Unit::TestCase
   end
 
   def test_regexp_similarity
-    hash = @property.parse_properties_file('regexp_similarity')
+    hash = @property.parse_properties_file(get_path('regexp_similarity'))
 
     assert @property.regexp_similarity?(hash[:regexp_similarity_compiler_misc_descriptor], hash[:regexp_similarity_compiler_misc_descriptor_throws])
     assert_false @property.regexp_similarity?(hash[:regexp_similarity_compiler_misc_descriptor_throws], hash[:regexp_similarity_compiler_misc_descriptor])
     assert  @property.regexp_similarity?(hash[:regexp_similarity_compiler_err_illegal_dot], hash[:regexp_similarity_compiler_err_illegal_underscore])
+  end
 
+  def test_sum_similarity
+    hash = {a: 2, b: 6, c: 10}
+    assert_equal(18, @property.sum_similarity(hash))
+  end
+
+  def test_calculate_similarity_matrix
+    hash = @property.parse_properties_file(get_path('regexp_similarity'))
     hash = @property.sort_by_length hash
     similarity_hash = @property.similarity_matrix_initialize hash
-    @property.calculate_similarity_matrix! similarity_hash
+    @property.calculate_similarity_matrix!(hash, similarity_hash)
     result = @property.sort_regex_hash(hash, similarity_hash)
-    p result
+    #p result
+  end
+
+  def test_run
+    refute_nil Fdse::Property.new.run
+    #puts Fdse::Property.new.run
   end
 end
