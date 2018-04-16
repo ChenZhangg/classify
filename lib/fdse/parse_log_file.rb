@@ -185,6 +185,7 @@ module Fdse
       gslice = nil
       output = File.expand_path(File.join('..', 'assets', 'output', 'output'), File.dirname(__FILE__))
       index = 0
+      hash = Hash.new
       while segment = segment_array.shift
         hash[:output] = output
         hash[:index] = index
