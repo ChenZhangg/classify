@@ -1,0 +1,2114 @@
+Using worker: worker-linux-docker-89aa6010.prod.travis-ci.org:travis-linux-1
+
+travis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: java
+Build group: stable
+Build dist: precise
+Build id: 151198941
+Job id: 151198943
+travis-build version: 0692ebec4
+[34m[1mBuild image provisioning date and time[0m
+Thu Feb  5 15:09:33 UTC 2015
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-29-generic
+[34m[1mCookbooks Version[0m
+a68419e https://github.com/travis-ci/travis-cookbooks/tree/a68419e
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-1.9.3-p551
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.4.1
+[34m[1mRedis version[0m
+redis-server 2.8.19
+[34m[1mriak version[0m
+2.0.2
+[34m[1mMongoDB version[0m
+MongoDB 2.4.12
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mNeo4j version[0m
+1.9.4
+[34m[1mRabbitMQ Version[0m
+3.4.3
+[34m[1mElasticSearch version[0m
+1.4.0
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 31.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_76, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "3.13.0-29-generic", arch: "amd64", family: "unix"
+travis_fold:end:system_info[0K
+travis_fold:start:fix.CVE-2015-7547[0K$ export DEBIAN_FRONTEND=noninteractive
+W: Size of file /var/lib/apt/lists/us.archive.ubuntu.com_ubuntu_dists_precise-backports_multiverse_source_Sources.gz is not what the server reported 5886 5888
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_ubuntugis_ppa_ubuntu_dists_precise_main_binary-amd64_Packages.gz is not what the server reported 33653 36677
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_ubuntugis_ppa_ubuntu_dists_precise_main_binary-i386_Packages.gz is not what the server reported 33699 36733
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libc-bin libc-dev-bin libc6-dev
+Suggested packages:
+  glibc-doc
+The following packages will be upgraded:
+  libc-bin libc-dev-bin libc6 libc6-dev
+4 upgraded, 0 newly installed, 0 to remove and 252 not upgraded.
+Need to get 8,840 kB of archives.
+After this operation, 14.3 kB disk space will be freed.
+Get:1 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6-dev amd64 2.15-0ubuntu10.15 [2,943 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-dev-bin amd64 2.15-0ubuntu10.15 [84.7 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-bin amd64 2.15-0ubuntu10.15 [1,177 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6 amd64 2.15-0ubuntu10.15 [4,636 kB]
+Fetched 8,840 kB in 0s (34.2 MB/s)
+Preconfiguring packages ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72019 files and directories currently installed.)
+Preparing to replace libc6-dev 2.15-0ubuntu10.10 (using .../libc6-dev_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc6-dev ...
+Preparing to replace libc-dev-bin 2.15-0ubuntu10.10 (using .../libc-dev-bin_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc-dev-bin ...
+Preparing to replace libc-bin 2.15-0ubuntu10.10 (using .../libc-bin_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc-bin ...
+Processing triggers for man-db ...
+Setting up libc-bin (2.15-0ubuntu10.15) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72018 files and directories currently installed.)
+Preparing to replace libc6 2.15-0ubuntu10.10 (using .../libc6_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc6 ...
+Setting up libc6 (2.15-0ubuntu10.15) ...
+Setting up libc-dev-bin (2.15-0ubuntu10.15) ...
+Setting up libc6-dev (2.15-0ubuntu10.15) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+travis_fold:end:fix.CVE-2015-7547[0Kdepth=3 C = US, O = "Entrust, Inc.", OU = www.entrust.net/CPS is incorporated by reference, OU = "(c) 2006 Entrust, Inc.", CN = Entrust Root Certification Authority
+verify error:num=19:self signed certificate in certificate chain
+verify return:0
+DONE
+travis_fold:start:git.checkout[0Ktravis_time:start:0073798f[0K$ git clone --depth=50 https://github.com/crate/crate.git crate/crate
+Cloning into 'crate/crate'...
+remote: Counting objects: 4108, done.[K
+remote: Compressing objects:   0% (1/2698)   [Kremote: Compressing objects:   1% (27/2698)   [Kremote: Compressing objects:   2% (54/2698)   [Kremote: Compressing objects:   3% (81/2698)   [Kremote: Compressing objects:   4% (108/2698)   [Kremote: Compressing objects:   5% (135/2698)   [Kremote: Compressing objects:   6% (162/2698)   [Kremote: Compressing objects:   7% (189/2698)   [Kremote: Compressing objects:   8% (216/2698)   [Kremote: Compressing objects:   9% (243/2698)   [Kremote: Compressing objects:  10% (270/2698)   [Kremote: Compressing objects:  11% (297/2698)   [Kremote: Compressing objects:  12% (324/2698)   [Kremote: Compressing objects:  13% (351/2698)   [Kremote: Compressing objects:  14% (378/2698)   [Kremote: Compressing objects:  15% (405/2698)   [Kremote: Compressing objects:  16% (432/2698)   [Kremote: Compressing objects:  17% (459/2698)   [Kremote: Compressing objects:  18% (486/2698)   [Kremote: Compressing objects:  19% (513/2698)   [Kremote: Compressing objects:  20% (540/2698)   [Kremote: Compressing objects:  21% (567/2698)   [Kremote: Compressing objects:  22% (594/2698)   [Kremote: Compressing objects:  23% (621/2698)   [Kremote: Compressing objects:  24% (648/2698)   [Kremote: Compressing objects:  25% (675/2698)   [Kremote: Compressing objects:  26% (702/2698)   [Kremote: Compressing objects:  27% (729/2698)   [Kremote: Compressing objects:  28% (756/2698)   [Kremote: Compressing objects:  29% (783/2698)   [Kremote: Compressing objects:  30% (810/2698)   [Kremote: Compressing objects:  31% (837/2698)   [Kremote: Compressing objects:  32% (864/2698)   [Kremote: Compressing objects:  33% (891/2698)   [Kremote: Compressing objects:  34% (918/2698)   [Kremote: Compressing objects:  35% (945/2698)   [Kremote: Compressing objects:  36% (972/2698)   [Kremote: Compressing objects:  37% (999/2698)   [Kremote: Compressing objects:  38% (1026/2698)   [Kremote: Compressing objects:  39% (1053/2698)   [Kremote: Compressing objects:  40% (1080/2698)   [Kremote: Compressing objects:  41% (1107/2698)   [Kremote: Compressing objects:  42% (1134/2698)   [Kremote: Compressing objects:  43% (1161/2698)   [Kremote: Compressing objects:  44% (1188/2698)   [Kremote: Compressing objects:  45% (1215/2698)   [Kremote: Compressing objects:  46% (1242/2698)   [Kremote: Compressing objects:  47% (1269/2698)   [Kremote: Compressing objects:  48% (1296/2698)   [Kremote: Compressing objects:  49% (1323/2698)   [Kremote: Compressing objects:  50% (1349/2698)   [Kremote: Compressing objects:  51% (1376/2698)   [Kremote: Compressing objects:  52% (1403/2698)   [Kremote: Compressing objects:  53% (1430/2698)   [Kremote: Compressing objects:  54% (1457/2698)   [Kremote: Compressing objects:  55% (1484/2698)   [Kremote: Compressing objects:  56% (1511/2698)   [Kremote: Compressing objects:  57% (1538/2698)   [Kremote: Compressing objects:  58% (1565/2698)   [Kremote: Compressing objects:  59% (1592/2698)   [Kremote: Compressing objects:  60% (1619/2698)   [Kremote: Compressing objects:  61% (1646/2698)   [Kremote: Compressing objects:  62% (1673/2698)   [Kremote: Compressing objects:  63% (1700/2698)   [Kremote: Compressing objects:  64% (1727/2698)   [Kremote: Compressing objects:  65% (1754/2698)   [Kremote: Compressing objects:  66% (1781/2698)   [Kremote: Compressing objects:  67% (1808/2698)   [Kremote: Compressing objects:  68% (1835/2698)   [Kremote: Compressing objects:  69% (1862/2698)   [Kremote: Compressing objects:  70% (1889/2698)   [Kremote: Compressing objects:  71% (1916/2698)   [Kremote: Compressing objects:  72% (1943/2698)   [Kremote: Compressing objects:  73% (1970/2698)   [Kremote: Compressing objects:  74% (1997/2698)   [Kremote: Compressing objects:  75% (2024/2698)   [Kremote: Compressing objects:  76% (2051/2698)   [Kremote: Compressing objects:  77% (2078/2698)   [Kremote: Compressing objects:  78% (2105/2698)   [Kremote: Compressing objects:  79% (2132/2698)   [Kremote: Compressing objects:  80% (2159/2698)   [Kremote: Compressing objects:  81% (2186/2698)   [Kremote: Compressing objects:  82% (2213/2698)   [Kremote: Compressing objects:  83% (2240/2698)   [Kremote: Compressing objects:  84% (2267/2698)   [Kremote: Compressing objects:  85% (2294/2698)   [Kremote: Compressing objects:  86% (2321/2698)   [Kremote: Compressing objects:  87% (2348/2698)   [Kremote: Compressing objects:  88% (2375/2698)   [Kremote: Compressing objects:  89% (2402/2698)   [Kremote: Compressing objects:  90% (2429/2698)   [Kremote: Compressing objects:  91% (2456/2698)   [Kremote: Compressing objects:  92% (2483/2698)   [Kremote: Compressing objects:  93% (2510/2698)   [Kremote: Compressing objects:  94% (2537/2698)   [Kremote: Compressing objects:  95% (2564/2698)   [Kremote: Compressing objects:  96% (2591/2698)   [Kremote: Compressing objects:  97% (2618/2698)   [Kremote: Compressing objects:  98% (2645/2698)   [Kremote: Compressing objects:  99% (2672/2698)   [Kremote: Compressing objects: 100% (2698/2698)   [Kremote: Compressing objects: 100% (2698/2698), done.[K
+Receiving objects:   0% (1/4108)   Receiving objects:   1% (42/4108)   Receiving objects:   2% (83/4108)   Receiving objects:   3% (124/4108)   Receiving objects:   4% (165/4108)   Receiving objects:   5% (206/4108)   Receiving objects:   6% (247/4108)   Receiving objects:   7% (288/4108)   Receiving objects:   8% (329/4108)   Receiving objects:   9% (370/4108)   Receiving objects:  10% (411/4108)   Receiving objects:  11% (452/4108)   Receiving objects:  12% (493/4108)   Receiving objects:  13% (535/4108)   Receiving objects:  14% (576/4108)   Receiving objects:  15% (617/4108)   Receiving objects:  16% (658/4108)   Receiving objects:  17% (699/4108)   Receiving objects:  18% (740/4108)   Receiving objects:  19% (781/4108)   Receiving objects:  20% (822/4108)   Receiving objects:  21% (863/4108)   Receiving objects:  22% (904/4108)   Receiving objects:  23% (945/4108)   Receiving objects:  24% (986/4108)   Receiving objects:  25% (1027/4108)   Receiving objects:  26% (1069/4108)   Receiving objects:  27% (1110/4108)   Receiving objects:  28% (1151/4108)   Receiving objects:  29% (1192/4108)   Receiving objects:  30% (1233/4108)   Receiving objects:  31% (1274/4108)   Receiving objects:  32% (1315/4108)   Receiving objects:  33% (1356/4108)   Receiving objects:  34% (1397/4108)   Receiving objects:  35% (1438/4108)   Receiving objects:  36% (1479/4108)   Receiving objects:  37% (1520/4108)   Receiving objects:  38% (1562/4108)   Receiving objects:  39% (1603/4108)   Receiving objects:  40% (1644/4108)   Receiving objects:  41% (1685/4108)   Receiving objects:  42% (1726/4108)   Receiving objects:  43% (1767/4108)   Receiving objects:  44% (1808/4108)   Receiving objects:  45% (1849/4108)   Receiving objects:  46% (1890/4108)   Receiving objects:  47% (1931/4108)   Receiving objects:  48% (1972/4108)   Receiving objects:  49% (2013/4108)   Receiving objects:  50% (2054/4108)   Receiving objects:  51% (2096/4108)   Receiving objects:  52% (2137/4108)   Receiving objects:  53% (2178/4108)   Receiving objects:  54% (2219/4108)   Receiving objects:  55% (2260/4108)   Receiving objects:  56% (2301/4108)   Receiving objects:  57% (2342/4108)   Receiving objects:  58% (2383/4108)   Receiving objects:  59% (2424/4108)   Receiving objects:  60% (2465/4108)   Receiving objects:  61% (2506/4108)   Receiving objects:  62% (2547/4108)   Receiving objects:  63% (2589/4108)   Receiving objects:  64% (2630/4108)   Receiving objects:  65% (2671/4108)   Receiving objects:  66% (2712/4108)   Receiving objects:  67% (2753/4108)   Receiving objects:  68% (2794/4108)   Receiving objects:  69% (2835/4108)   Receiving objects:  70% (2876/4108)   Receiving objects:  71% (2917/4108)   Receiving objects:  72% (2958/4108)   Receiving objects:  73% (2999/4108)   Receiving objects:  74% (3040/4108)   Receiving objects:  75% (3081/4108)   Receiving objects:  76% (3123/4108)   Receiving objects:  77% (3164/4108)   Receiving objects:  78% (3205/4108)   Receiving objects:  79% (3246/4108)   Receiving objects:  80% (3287/4108)   Receiving objects:  81% (3328/4108)   Receiving objects:  82% (3369/4108)   Receiving objects:  83% (3410/4108)   Receiving objects:  84% (3451/4108)   Receiving objects:  85% (3492/4108)   Receiving objects:  86% (3533/4108)   Receiving objects:  87% (3574/4108)   Receiving objects:  88% (3616/4108)   Receiving objects:  89% (3657/4108)   Receiving objects:  90% (3698/4108)   Receiving objects:  91% (3739/4108)   Receiving objects:  92% (3780/4108)   Receiving objects:  93% (3821/4108)   Receiving objects:  94% (3862/4108)   Receiving objects:  95% (3903/4108)   Receiving objects:  96% (3944/4108)   Receiving objects:  97% (3985/4108)   Receiving objects:  98% (4026/4108)   Receiving objects:  99% (4067/4108)   remote: Total 4108 (delta 2186), reused 2200 (delta 1111), pack-reused 0[K
+Receiving objects: 100% (4108/4108)   Receiving objects: 100% (4108/4108), 4.85 MiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/2186)   Resolving deltas:   2% (49/2186)   Resolving deltas:   3% (70/2186)   Resolving deltas:   4% (90/2186)   Resolving deltas:   6% (141/2186)   Resolving deltas:   7% (162/2186)   Resolving deltas:   8% (182/2186)   Resolving deltas:   9% (201/2186)   Resolving deltas:  10% (222/2186)   Resolving deltas:  11% (242/2186)   Resolving deltas:  12% (265/2186)   Resolving deltas:  13% (285/2186)   Resolving deltas:  14% (318/2186)   Resolving deltas:  15% (328/2186)   Resolving deltas:  16% (361/2186)   Resolving deltas:  17% (373/2186)   Resolving deltas:  18% (397/2186)   Resolving deltas:  19% (416/2186)   Resolving deltas:  20% (447/2186)   Resolving deltas:  21% (469/2186)   Resolving deltas:  22% (485/2186)   Resolving deltas:  23% (513/2186)   Resolving deltas:  24% (527/2186)   Resolving deltas:  25% (547/2186)   Resolving deltas:  26% (569/2186)   Resolving deltas:  27% (591/2186)   Resolving deltas:  28% (615/2186)   Resolving deltas:  29% (635/2186)   Resolving deltas:  30% (658/2186)   Resolving deltas:  31% (678/2186)   Resolving deltas:  32% (705/2186)   Resolving deltas:  33% (722/2186)   Resolving deltas:  34% (748/2186)   Resolving deltas:  35% (766/2186)   Resolving deltas:  36% (789/2186)   Resolving deltas:  37% (809/2186)   Resolving deltas:  38% (832/2186)   Resolving deltas:  39% (853/2186)   Resolving deltas:  40% (875/2186)   Resolving deltas:  41% (897/2186)   Resolving deltas:  42% (920/2186)   Resolving deltas:  43% (941/2186)   Resolving deltas:  44% (963/2186)   Resolving deltas:  45% (987/2186)   Resolving deltas:  46% (1010/2186)   Resolving deltas:  47% (1032/2186)   Resolving deltas:  48% (1053/2186)   Resolving deltas:  50% (1101/2186)   Resolving deltas:  51% (1115/2186)   Resolving deltas:  52% (1147/2186)   Resolving deltas:  53% (1171/2186)   Resolving deltas:  54% (1183/2186)   Resolving deltas:  55% (1204/2186)   Resolving deltas:  56% (1226/2186)   Resolving deltas:  57% (1248/2186)   Resolving deltas:  58% (1269/2186)   Resolving deltas:  61% (1336/2186)   Resolving deltas:  62% (1358/2186)   Resolving deltas:  63% (1385/2186)   Resolving deltas:  64% (1400/2186)   Resolving deltas:  65% (1423/2186)   Resolving deltas:  66% (1444/2186)   Resolving deltas:  67% (1466/2186)   Resolving deltas:  68% (1490/2186)   Resolving deltas:  69% (1515/2186)   Resolving deltas:  70% (1532/2186)   Resolving deltas:  71% (1554/2186)   Resolving deltas:  72% (1577/2186)   Resolving deltas:  73% (1597/2186)   Resolving deltas:  74% (1620/2186)   Resolving deltas:  75% (1641/2186)   Resolving deltas:  76% (1676/2186)   Resolving deltas:  77% (1704/2186)   Resolving deltas:  78% (1712/2186)   Resolving deltas:  79% (1741/2186)   Resolving deltas:  80% (1751/2186)   Resolving deltas:  81% (1774/2186)   Resolving deltas:  82% (1801/2186)   Resolving deltas:  83% (1815/2186)   Resolving deltas:  84% (1837/2186)   Resolving deltas:  85% (1859/2186)   Resolving deltas:  86% (1881/2186)   Resolving deltas:  87% (1903/2186)   Resolving deltas:  88% (1924/2186)   Resolving deltas:  89% (1947/2186)   Resolving deltas:  90% (1979/2186)   Resolving deltas:  91% (1992/2186)   Resolving deltas:  92% (2016/2186)   Resolving deltas:  93% (2035/2186)   Resolving deltas:  94% (2056/2186)   Resolving deltas:  95% (2078/2186)   Resolving deltas:  96% (2114/2186)   Resolving deltas:  97% (2126/2186)   Resolving deltas:  98% (2153/2186)   Resolving deltas:  99% (2165/2186)   Resolving deltas: 100% (2186/2186)   Resolving deltas: 100% (2186/2186), done.
+Checking connectivity... done.
+
+travis_time:end:0073798f:start=1470832080697889564,finish=1470832082735311585,duration=2037422021[0K$ cd crate/crate
+travis_time:start:03ced558[0K$ git fetch origin +refs/pull/3963/merge:
+remote: Counting objects: 7, done.[K
+remote: Compressing objects:  50% (1/2)   [Kremote: Compressing objects: 100% (2/2)   [Kremote: Compressing objects: 100% (2/2), done.[K
+remote: Total 7 (delta 6), reused 5 (delta 5), pack-reused 0[K
+Unpacking objects:  14% (1/7)   Unpacking objects:  28% (2/7)   Unpacking objects:  42% (3/7)   Unpacking objects:  57% (4/7)   Unpacking objects:  71% (5/7)   Unpacking objects:  85% (6/7)   Unpacking objects: 100% (7/7)   Unpacking objects: 100% (7/7), done.
+From https://github.com/crate/crate
+ * branch            refs/pull/3963/merge -> FETCH_HEAD
+
+travis_time:end:03ced558:start=1470832082739145443,finish=1470832085376412345,duration=2637266902[0K$ git checkout -qf FETCH_HEAD
+travis_fold:end:git.checkout[0Ktravis_fold:start:git.submodule[0Ktravis_time:start:0107b033[0K$ git submodule update --init --recursive
+Submodule 'es/upstream' (https://github.com/crate/elasticsearch.git) registered for path 'es/upstream'
+Cloning into 'es/upstream'...
+remote: Counting objects: 617850, done.[K
+remote: Compressing objects:  25% (1/4)   [Kremote: Compressing objects:  50% (2/4)   [Kremote: Compressing objects:  75% (3/4)   [Kremote: Compressing objects: 100% (4/4)   [Kremote: Compressing objects: 100% (4/4), done.[K
+Receiving objects:   0% (1/617850)   Receiving objects:   1% (6179/617850)   Receiving objects:   2% (12357/617850)   Receiving objects:   3% (18536/617850)   Receiving objects:   4% (24714/617850)   Receiving objects:   5% (30893/617850), 7.00 MiB | 13.96 MiB/s   Receiving objects:   6% (37071/617850), 7.00 MiB | 13.96 MiB/s   Receiving objects:   7% (43250/617850), 7.00 MiB | 13.96 MiB/s   Receiving objects:   7% (44010/617850), 19.30 MiB | 19.26 MiB/s   Receiving objects:   8% (49428/617850), 33.53 MiB | 22.30 MiB/s   Receiving objects:   9% (55607/617850), 33.53 MiB | 22.30 MiB/s   Receiving objects:   9% (58111/617850), 33.53 MiB | 22.30 MiB/s   Receiving objects:  10% (61785/617850), 48.29 MiB | 24.09 MiB/s   Receiving objects:  11% (67964/617850), 48.29 MiB | 24.09 MiB/s   Receiving objects:  12% (74142/617850), 48.29 MiB | 24.09 MiB/s   Receiving objects:  13% (80321/617850), 48.29 MiB | 24.09 MiB/s   Receiving objects:  14% (86499/617850), 63.07 MiB | 25.18 MiB/s   Receiving objects:  15% (92678/617850), 63.07 MiB | 25.18 MiB/s   Receiving objects:  16% (98856/617850), 63.07 MiB | 25.18 MiB/s   Receiving objects:  16% (99526/617850), 63.07 MiB | 25.18 MiB/s   Receiving objects:  17% (105035/617850), 78.04 MiB | 25.96 MiB/s   Receiving objects:  18% (111213/617850), 78.04 MiB | 25.96 MiB/s   Receiving objects:  19% (117392/617850), 78.04 MiB | 25.96 MiB/s   Receiving objects:  20% (123570/617850), 92.14 MiB | 26.27 MiB/s   Receiving objects:  21% (129749/617850), 92.14 MiB | 26.27 MiB/s   Receiving objects:  22% (135927/617850), 92.14 MiB | 26.27 MiB/s   Receiving objects:  23% (142106/617850), 92.14 MiB | 26.27 MiB/s   Receiving objects:  23% (142772/617850), 92.14 MiB | 26.27 MiB/s   Receiving objects:  24% (148284/617850), 107.42 MiB | 26.80 MiB/s   Receiving objects:  25% (154463/617850), 107.42 MiB | 26.80 MiB/s   Receiving objects:  26% (160641/617850), 107.42 MiB | 26.80 MiB/s   Receiving objects:  27% (166820/617850), 107.42 MiB | 26.80 MiB/s   Receiving objects:  28% (172998/617850), 107.42 MiB | 26.80 MiB/s   Receiving objects:  29% (179177/617850), 121.98 MiB | 27.05 MiB/s   Receiving objects:  30% (185355/617850), 121.98 MiB | 27.05 MiB/s   Receiving objects:  31% (191534/617850), 121.98 MiB | 27.05 MiB/s   Receiving objects:  32% (197712/617850), 121.98 MiB | 27.05 MiB/s   Receiving objects:  33% (203891/617850), 121.98 MiB | 27.05 MiB/s   Receiving objects:  34% (210069/617850), 121.98 MiB | 27.05 MiB/s   Receiving objects:  35% (216248/617850), 121.98 MiB | 27.05 MiB/s   Receiving objects:  36% (222426/617850), 121.98 MiB | 27.05 MiB/s   Receiving objects:  36% (223746/617850), 121.98 MiB | 27.05 MiB/s   Receiving objects:  37% (228605/617850), 133.80 MiB | 28.12 MiB/s   Receiving objects:  38% (234783/617850), 133.80 MiB | 28.12 MiB/s   Receiving objects:  39% (240962/617850), 133.80 MiB | 28.12 MiB/s   Receiving objects:  40% (247140/617850), 133.80 MiB | 28.12 MiB/s   Receiving objects:  41% (253319/617850), 133.80 MiB | 28.12 MiB/s   Receiving objects:  42% (259497/617850), 133.80 MiB | 28.12 MiB/s   Receiving objects:  43% (265676/617850), 133.80 MiB | 28.12 MiB/s   Receiving objects:  44% (271854/617850), 133.80 MiB | 28.12 MiB/s   Receiving objects:  45% (278033/617850), 146.45 MiB | 28.20 MiB/s   Receiving objects:  46% (284211/617850), 146.45 MiB | 28.20 MiB/s   Receiving objects:  47% (290390/617850), 146.45 MiB | 28.20 MiB/s   Receiving objects:  48% (296568/617850), 146.45 MiB | 28.20 MiB/s   Receiving objects:  49% (302747/617850), 146.45 MiB | 28.20 MiB/s   Receiving objects:  50% (308925/617850), 146.45 MiB | 28.20 MiB/s   Receiving objects:  51% (315104/617850), 146.45 MiB | 28.20 MiB/s   Receiving objects:  52% (321282/617850), 146.45 MiB | 28.20 MiB/s   Receiving objects:  53% (327461/617850), 146.45 MiB | 28.20 MiB/s   Receiving objects:  53% (328076/617850), 146.45 MiB | 28.20 MiB/s   Receiving objects:  54% (333639/617850), 158.16 MiB | 27.64 MiB/s   Receiving objects:  55% (339818/617850), 158.16 MiB | 27.64 MiB/s   Receiving objects:  56% (345996/617850), 158.16 MiB | 27.64 MiB/s   Receiving objects:  57% (352175/617850), 158.16 MiB | 27.64 MiB/s   Receiving objects:  58% (358353/617850), 158.16 MiB | 27.64 MiB/s   Receiving objects:  59% (364532/617850), 158.16 MiB | 27.64 MiB/s   Receiving objects:  60% (370710/617850), 158.16 MiB | 27.64 MiB/s   Receiving objects:  61% (376889/617850), 158.16 MiB | 27.64 MiB/s   Receiving objects:  62% (383067/617850), 172.05 MiB | 27.45 MiB/s   Receiving objects:  62% (383784/617850), 172.05 MiB | 27.45 MiB/s   Receiving objects:  63% (389246/617850), 186.18 MiB | 27.30 MiB/s   Receiving objects:  64% (395424/617850), 186.18 MiB | 27.30 MiB/s   Receiving objects:  65% (401603/617850), 186.18 MiB | 27.30 MiB/s   Receiving objects:  66% (407781/617850), 186.18 MiB | 27.30 MiB/s   Receiving objects:  67% (413960/617850), 186.18 MiB | 27.30 MiB/s   Receiving objects:  68% (420138/617850), 186.18 MiB | 27.30 MiB/s   Receiving objects:  69% (426317/617850), 186.18 MiB | 27.30 MiB/s   Receiving objects:  70% (432495/617850), 186.18 MiB | 27.30 MiB/s   Receiving objects:  71% (438674/617850), 186.18 MiB | 27.30 MiB/s   Receiving objects:  72% (444852/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  73% (451031/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  74% (457209/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  75% (463388/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  76% (469566/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  77% (475745/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  78% (481923/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  79% (488102/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  80% (494280/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  81% (500459/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  82% (506637/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  83% (512816/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  83% (516705/617850), 199.25 MiB | 26.88 MiB/s   Receiving objects:  84% (518994/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  85% (525173/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  86% (531351/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  87% (537530/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  88% (543708/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  89% (549887/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  90% (556065/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  91% (562244/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  92% (568422/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  93% (574601/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  94% (580779/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  95% (586958/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  96% (593136/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  97% (599315/617850), 210.87 MiB | 26.33 MiB/s   Receiving objects:  98% (605493/617850), 220.46 MiB | 25.07 MiB/s   Receiving objects:  99% (611672/617850), 220.46 MiB | 25.07 MiB/s   remote: Total 617850 (delta 0), reused 0 (delta 0), pack-reused 617846[K
+Receiving objects: 100% (617850/617850), 220.46 MiB | 25.07 MiB/s   Receiving objects: 100% (617850/617850), 223.47 MiB | 24.57 MiB/s, done.
+Resolving deltas:   0% (0/348855)   Resolving deltas:   1% (3489/348855)   Resolving deltas:   2% (6985/348855)   Resolving deltas:   3% (10480/348855)   Resolving deltas:   4% (13955/348855)   Resolving deltas:   5% (17523/348855)   Resolving deltas:   6% (20979/348855)   Resolving deltas:   7% (24432/348855)   Resolving deltas:   8% (27916/348855)   Resolving deltas:   8% (29225/348855)   Resolving deltas:   9% (31409/348855)   Resolving deltas:  10% (34888/348855)   Resolving deltas:  11% (38379/348855)   Resolving deltas:  12% (41876/348855)   Resolving deltas:  13% (45364/348855)   Resolving deltas:  14% (48858/348855)   Resolving deltas:  15% (52334/348855)   Resolving deltas:  16% (55821/348855)   Resolving deltas:  16% (58057/348855)   Resolving deltas:  17% (59344/348855)   Resolving deltas:  18% (62805/348855)   Resolving deltas:  19% (66338/348855)   Resolving deltas:  20% (69804/348855)   Resolving deltas:  21% (73264/348855)   Resolving deltas:  22% (76752/348855)   Resolving deltas:  23% (80239/348855)   Resolving deltas:  24% (83748/348855)   Resolving deltas:  24% (85505/348855)   Resolving deltas:  25% (87468/348855)   Resolving deltas:  26% (90724/348855)   Resolving deltas:  27% (94245/348855)   Resolving deltas:  28% (97703/348855)   Resolving deltas:  29% (101170/348855)   Resolving deltas:  30% (104660/348855)   Resolving deltas:  31% (108151/348855)   Resolving deltas:  32% (111640/348855)   Resolving deltas:  33% (115382/348855)   Resolving deltas:  34% (118612/348855)   Resolving deltas:  34% (121500/348855)   Resolving deltas:  35% (122107/348855)   Resolving deltas:  36% (125640/348855)   Resolving deltas:  37% (129108/348855)   Resolving deltas:  38% (132568/348855)   Resolving deltas:  39% (136055/348855)   Resolving deltas:  40% (139550/348855)   Resolving deltas:  41% (143036/348855)   Resolving deltas:  42% (146534/348855)   Resolving deltas:  43% (150013/348855)   Resolving deltas:  43% (152074/348855)   Resolving deltas:  44% (153578/348855)   Resolving deltas:  45% (156985/348855)   Resolving deltas:  46% (160474/348855)   Resolving deltas:  47% (163968/348855)   Resolving deltas:  48% (167507/348855)   Resolving deltas:  49% (170943/348855)   Resolving deltas:  50% (174452/348855)   Resolving deltas:  51% (177921/348855)   Resolving deltas:  52% (181427/348855)   Resolving deltas:  53% (184894/348855)   Resolving deltas:  54% (188395/348855)   Resolving deltas:  54% (189292/348855)   Resolving deltas:  55% (192839/348855)   Resolving deltas:  56% (195719/348855)   Resolving deltas:  57% (198906/348855)   Resolving deltas:  58% (202336/348855)   Resolving deltas:  59% (205829/348855)   Resolving deltas:  60% (209313/348855)   Resolving deltas:  61% (212802/348855)   Resolving deltas:  62% (216598/348855)   Resolving deltas:  63% (219802/348855)   Resolving deltas:  64% (223281/348855)   Resolving deltas:  65% (226756/348855)   Resolving deltas:  66% (230246/348855)   Resolving deltas:  67% (233751/348855)   Resolving deltas:  68% (237223/348855)   Resolving deltas:  68% (240256/348855)   Resolving deltas:  69% (240714/348855)   Resolving deltas:  70% (244207/348855)   Resolving deltas:  71% (247696/348855)   Resolving deltas:  72% (251176/348855)   Resolving deltas:  73% (254679/348855)   Resolving deltas:  74% (258163/348855)   Resolving deltas:  75% (261688/348855)   Resolving deltas:  76% (265188/348855)   Resolving deltas:  77% (268620/348855)   Resolving deltas:  78% (272109/348855)   Resolving deltas:  79% (275596/348855)   Resolving deltas:  80% (279087/348855)   Resolving deltas:  81% (282614/348855)   Resolving deltas:  82% (286453/348855)   Resolving deltas:  83% (289570/348855)   Resolving deltas:  83% (289631/348855)   Resolving deltas:  84% (293047/348855)   Resolving deltas:  85% (296671/348855)   Resolving deltas:  86% (300019/348855)   Resolving deltas:  87% (303555/348855)   Resolving deltas:  88% (307010/348855)   Resolving deltas:  89% (310485/348855)   Resolving deltas:  90% (313997/348855)   Resolving deltas:  91% (317568/348855)   Resolving deltas:  92% (320968/348855)   Resolving deltas:  93% (324842/348855)   Resolving deltas:  94% (327980/348855)   Resolving deltas:  95% (331425/348855)   Resolving deltas:  96% (334904/348855)   Resolving deltas:  97% (338838/348855)   Resolving deltas:  98% (341892/348855)   Resolving deltas:  99% (345461/348855)   Resolving deltas:  99% (346084/348855)   Resolving deltas: 100% (348855/348855)   Resolving deltas: 100% (348855/348855), done.
+Checking connectivity... done.
+Submodule path 'es/upstream': checked out '4e547cb7fa176eeb9710d021fbbc13321f8d0b72'
+
+travis_time:end:0107b033:start=1470832087346773899,finish=1470832107805941068,duration=20459167169[0Ktravis_fold:end:git.submodule[0Ktravis_fold:start:apt[0K[33;1mAdding APT Sources (BETA)[0m
+$ export DEBIAN_FRONTEND=noninteractive
+travis_time:start:0f1dcccb[0K$ sudo -E apt-add-repository -y "ppa:fkrull/deadsnakes"
+gpg: keyring `/tmp/tmpCHuqoX/secring.gpg' created
+gpg: keyring `/tmp/tmpCHuqoX/pubring.gpg' created
+gpg: requesting key DB82666C from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmpCHuqoX/trustdb.gpg: trustdb created
+gpg: key DB82666C: public key "Launchpad Old Python Versions" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+OK
+
+travis_time:end:0f1dcccb:start=1470832107810740801,finish=1470832110890330596,duration=3079589795[0K[33;1mInstalling APT Packages (BETA)[0m
+$ export DEBIAN_FRONTEND=noninteractive
+travis_time:start:11669d0c[0K$ sudo -E apt-get -yq update &>> ~/apt-get-update.log
+
+travis_time:end:11669d0c:start=1470832110896825593,finish=1470832117335383623,duration=6438558030[0Ktravis_time:start:03c02108[0K$ sudo -E apt-get -yq --no-install-suggests --no-install-recommends --force-yes install python3.4
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libpython3.4-minimal libpython3.4-stdlib python3.4-minimal
+Suggested packages:
+  python3.4-venv python3.4-doc binfmt-support
+The following NEW packages will be installed:
+  libpython3.4-minimal libpython3.4-stdlib python3.4 python3.4-minimal
+0 upgraded, 4 newly installed, 0 to remove and 252 not upgraded.
+Need to get 5,184 kB of archives.
+After this operation, 17.3 MB of additional disk space will be used.
+Get:1 http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu/ precise/main libpython3.4-minimal amd64 3.4.5-1~precise1 [735 kB]
+Get:2 http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu/ precise/main python3.4-minimal amd64 3.4.5-1~precise1 [1,462 kB]
+Get:3 http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu/ precise/main libpython3.4-stdlib amd64 3.4.5-1~precise1 [2,763 kB]
+Get:4 http://ppa.launchpad.net/fkrull/deadsnakes/ubuntu/ precise/main python3.4 amd64 3.4.5-1~precise1 [224 kB]
+Fetched 5,184 kB in 1s (4,319 kB/s)
+Selecting previously unselected package libpython3.4-minimal.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72018 files and directories currently installed.)
+Unpacking libpython3.4-minimal (from .../libpython3.4-minimal_3.4.5-1~precise1_amd64.deb) ...
+Selecting previously unselected package python3.4-minimal.
+Unpacking python3.4-minimal (from .../python3.4-minimal_3.4.5-1~precise1_amd64.deb) ...
+Selecting previously unselected package libpython3.4-stdlib.
+Unpacking libpython3.4-stdlib (from .../libpython3.4-stdlib_3.4.5-1~precise1_amd64.deb) ...
+Selecting previously unselected package python3.4.
+Unpacking python3.4 (from .../python3.4_3.4.5-1~precise1_amd64.deb) ...
+Processing triggers for man-db ...
+Setting up libpython3.4-minimal (3.4.5-1~precise1) ...
+Setting up python3.4-minimal (3.4.5-1~precise1) ...
+Setting up libpython3.4-stdlib (3.4.5-1~precise1) ...
+Setting up python3.4 (3.4.5-1~precise1) ...
+
+travis_time:end:03c02108:start=1470832117339224332,finish=1470832130342854001,duration=13003629669[0Ktravis_fold:end:apt[0K
+[33;1mThis job is running on container-based infrastructure, which does not allow use of 'sudo', setuid and setguid executables.[0m
+[33;1mIf you require sudo, add 'sudo: required' to your .travis.yml[0m
+[33;1mSee https://docs.travis-ci.com/user/workers/container-based-infrastructure/ for details.[0m
+
+[33;1mSetting environment variables from .travis.yml[0m
+$ export COVERITY_SCAN_TOKEN=[secure]
+$ export CRATE_TESTS_SQL_REQUEST_TIMEOUT="10"
+$ export JAVA7_HOME="/usr/lib/jvm/java-7-oracle"
+$ export _JAVA_OPTIONS="-Xmx1g -XX:MaxPermSize=256m"
+
+$ jdk_switcher use oraclejdk8
+Switching to Oracle JDK8 (java-8-oracle), JAVA_HOME will be set to /usr/lib/jvm/java-8-oracle
+$ export TERM=dumb
+travis_fold:start:cache.1[0KSetting up build cache
+$ export CASHER_DIR=$HOME/.casher
+travis_time:start:0e69116e[0K$ Installing caching utilities
+
+travis_time:end:0e69116e:start=1470832133800835719,finish=1470832133860701436,duration=59865717[0Ktravis_time:start:01687d40[0K
+travis_time:end:01687d40:start=1470832133867132695,finish=1470832133871846786,duration=4714091[0Ktravis_time:start:0e0bdca0[0K[32;1mattempting to download cache archive[0m
+[32;1mfetching PR.3963/cache-linux-precise-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--jdk-oraclejdk8.tgz[0m
+[32;1mfetching PR.3963/cache--jdk-oraclejdk8.tgz[0m
+[32;1mfetching master/cache-linux-precise-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--jdk-oraclejdk8.tgz[0m
+[32;1mfound cache[0m
+
+travis_time:end:0e0bdca0:start=1470832133877017588,finish=1470832137481891723,duration=3604874135[0Ktravis_time:start:0facaabc[0K
+travis_time:end:0facaabc:start=1470832137486583692,finish=1470832137490547579,duration=3963887[0Ktravis_time:start:02e7bf16[0K[32;1madding /home/travis/.m2 to cache[0m
+[32;1madding /home/travis/.gradle/caches to cache[0m
+[32;1madding /home/travis/.gradle/wrapper to cache[0m
+
+travis_time:end:02e7bf16:start=1470832137495069215,finish=1470832141836932679,duration=4341863464[0Ktravis_fold:end:cache.1[0K$ java -Xmx32m -version
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+java version "1.8.0_31"
+Java(TM) SE Runtime Environment (build 1.8.0_31-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.31-b07, mixed mode)
+$ javac -J-Xmx32m -version
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+javac 1.8.0_31
+travis_fold:start:before_install[0Ktravis_time:start:1ad93efa[0K$ ulimit -u 65535
+
+travis_time:end:1ad93efa:start=1470832142323949120,finish=1470832142328332587,duration=4383467[0Ktravis_fold:end:before_install[0Ktravis_fold:start:install[0Ktravis_time:start:28c60121[0K$ ./gradlew assemble
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Defining custom 'clean' task when using the standard Gradle lifecycle plugins has been deprecated and is scheduled to be removed in Gradle 3.0
+:compileJava UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:jar
+:assemble
+:es:compileJavaPicked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+/home/travis/build/crate/crate/es/upstream/core/src/main/java/org/elasticsearch/action/admin/indices/close/TransportCloseIndexAction.java:103: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+                logger.debug("failed to close indices [{}]", t, concreteIndices);
+                                                                ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/main/java/org/elasticsearch/action/admin/indices/open/TransportOpenIndexAction.java:96: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+                logger.debug("failed to open indices [{}]", t, concreteIndices);
+                                                               ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/main/java/org/elasticsearch/action/admin/indices/settings/put/TransportUpdateSettingsAction.java:93: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+                logger.debug("failed to update settings on indices [{}]", t, concreteIndices);
+                                                                             ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/main/java/org/elasticsearch/gateway/Gateway.java:174: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+            logger.trace("removing node data paths: [{}]", dataPaths);
+                                                           ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/main/java/org/elasticsearch/index/query/IndicesQueryParser.java:80: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+                    innerQuery = new XContentStructure.InnerQuery(parseContext, null);
+                                                                                ^
+  cast to String for a varargs call
+  cast to String[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/main/java/org/elasticsearch/index/query/IndicesQueryParser.java:83: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+                    innerNoMatchQuery = new XContentStructure.InnerQuery(parseContext, null);
+                                                                                       ^
+  cast to String for a varargs call
+  cast to String[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/main/java/org/elasticsearch/index/query/functionscore/ScoreFunctionParserMapper.java:62: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+            throw new QueryParsingException(parseContext, "No function with the name [" + parserName + "] is registered.", null);
+                                                                                                                           ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/main/java/org/elasticsearch/search/aggregations/pipeline/bucketmetrics/percentile/PercentilesBucketBuilder.java:43: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+            builder.field(PercentilesBucketParser.PERCENTS.getPreferredName(), percents);
+                                                                               ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/main/java/org/elasticsearch/transport/netty/NettyTransport.java:433: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+            logger.debug("binding server bootstrap to: {}", addresses);
+                                                            ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+9 warnings
+
+:es:processResources
+:es:classes
+:es:jar
+:core:compileJavaPicked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+/home/travis/build/crate/crate/core/src/main/java/io/crate/geo/GeoJSONUtils.java:99: warning: [deprecation] readShapeFromWkt(String) in SpatialContext has been deprecated
+            return JtsSpatialContext.GEO.readShapeFromWkt(wkt);
+                                        ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/plugin/AbstractPlugin.java:97: warning: [deprecation] shardModules() in Plugin has been deprecated
+    public Collection<Class<? extends Module>> shardModules() {
+                                               ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/plugin/AbstractPlugin.java:73: warning: [deprecation] indexModules() in Plugin has been deprecated
+    public Collection<Class<? extends Module>> indexModules() {
+                                               ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/plugin/AbstractPlugin.java:65: warning: [deprecation] services() in Plugin has been deprecated
+    public Collection<Class<? extends LifecycleComponent>> services() {
+                                                           ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/plugin/AbstractPlugin.java:52: warning: [deprecation] modules(Settings) in Plugin has been deprecated
+    public Collection<Class<? extends Module>> modules(Settings settings) {
+                                               ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/plugin/AbstractPlugin.java:47: warning: [deprecation] modules() in Plugin has been deprecated
+    public Collection<Class<? extends Module>> modules() {
+                                               ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/types/GeoPointType.java:114: warning: [deprecation] readShapeFromWkt(String) in SpatialContext has been deprecated
+            Point point = (Point)SPATIAL_CONTEXT.readShapeFromWkt(value);
+                                                ^
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+7 warnings
+
+:core:processResources
+:core:classes
+:core:jar
+:admin-ui:compileJava
+:admin-ui:processResources UP-TO-DATE
+:admin-ui:classes
+:admin-ui:jar
+:admin-ui:assemble
+:blob:compileJava/home/travis/build/crate/crate/blob/src/main/java/org/elasticsearch/indices/recovery/BlobRecoverySourceHandler.java:325: warning: [deprecation] isCompressed(IndexInput) in CompressorFactory has been deprecated
+                                if (CompressorFactory.isCompressed(indexInput)) {
+                                                     ^
+1 warning
+
+:blob:processResources UP-TO-DATE
+:blob:classes
+:blob:jar
+:dns-discovery:compileJava
+:dns-discovery:processResources UP-TO-DATE
+:dns-discovery:classes
+:dns-discovery:jar
+:es-cloud-aws:compileJava/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/blobstore/S3BlobContainer.java:28: warning: [deprecation] AbstractLegacyBlobContainer in org.elasticsearch.common.blobstore.support has been deprecated
+import org.elasticsearch.common.blobstore.support.AbstractLegacyBlobContainer;
+                                                 ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/AwsEc2ServiceImpl.java:61: warning: [deprecation] CLOUD in AwsService has been deprecated
+        settingsFilter.addFilter(CLOUD.KEY);
+                                 ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/AwsEc2ServiceImpl.java:62: warning: [deprecation] CLOUD in AwsService has been deprecated
+        settingsFilter.addFilter(CLOUD.ACCOUNT);
+                                 ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/AwsEc2ServiceImpl.java:98: warning: [deprecation] CLOUD in AwsService has been deprecated
+        String account = settings.get(CLOUD_AWS.KEY, settings.get(CLOUD.ACCOUNT));
+                                                                  ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/AwsEc2ServiceImpl.java:99: warning: [deprecation] CLOUD in AwsService has been deprecated
+        String key = settings.get(CLOUD_AWS.SECRET, settings.get(CLOUD.KEY));
+                                                                 ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/AwsEc2ServiceImpl.java:101: warning: [deprecation] DEPRECATED_PROXY_HOST in CLOUD_AWS has been deprecated
+        String proxyHost = settings.get(CLOUD_AWS.PROXY_HOST, settings.get(CLOUD_AWS.DEPRECATED_PROXY_HOST));
+                                                                                    ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/AwsEc2ServiceImpl.java:102: warning: [deprecation] DEPRECATED_PROXY_HOST in CLOUD_EC2 has been deprecated
+        proxyHost = settings.get(CLOUD_EC2.PROXY_HOST, settings.get(CLOUD_EC2.DEPRECATED_PROXY_HOST, proxyHost));
+                                                                             ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/AwsEc2ServiceImpl.java:104: warning: [deprecation] DEPRECATED_PROXY_PORT in CLOUD_AWS has been deprecated
+            String portString = settings.get(CLOUD_AWS.PROXY_PORT, settings.get(CLOUD_AWS.DEPRECATED_PROXY_PORT, "80"));
+                                                                                         ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/AwsEc2ServiceImpl.java:105: warning: [deprecation] DEPRECATED_PROXY_PORT in CLOUD_EC2 has been deprecated
+            portString = settings.get(CLOUD_EC2.PROXY_PORT, settings.get(CLOUD_EC2.DEPRECATED_PROXY_PORT, portString));
+                                                                                  ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/InternalAwsS3Service.java:109: warning: [deprecation] DEPRECATED_PROXY_HOST in CLOUD_AWS has been deprecated
+        String proxyHost = settings.get(CLOUD_AWS.PROXY_HOST, settings.get(CLOUD_AWS.DEPRECATED_PROXY_HOST));
+                                                                                    ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/InternalAwsS3Service.java:110: warning: [deprecation] DEPRECATED_PROXY_HOST in CLOUD_S3 has been deprecated
+        proxyHost = settings.get(CLOUD_S3.PROXY_HOST, settings.get(CLOUD_S3.DEPRECATED_PROXY_HOST, proxyHost));
+                                                                           ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/InternalAwsS3Service.java:112: warning: [deprecation] DEPRECATED_PROXY_PORT in CLOUD_AWS has been deprecated
+            String portString = settings.get(CLOUD_AWS.PROXY_PORT, settings.get(CLOUD_AWS.DEPRECATED_PROXY_PORT, "80"));
+                                                                                         ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/InternalAwsS3Service.java:113: warning: [deprecation] DEPRECATED_PROXY_PORT in CLOUD_S3 has been deprecated
+            portString = settings.get(CLOUD_S3.PROXY_PORT, settings.get(CLOUD_S3.DEPRECATED_PROXY_PORT, portString));
+                                                                                ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/blobstore/S3BlobContainer.java:41: warning: [deprecation] AbstractLegacyBlobContainer in org.elasticsearch.common.blobstore.support has been deprecated
+public class S3BlobContainer extends AbstractLegacyBlobContainer {
+                                     ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/blobstore/S3BlobContainer.java:102: warning: [deprecation] createOutput(String) in AbstractLegacyBlobContainer has been deprecated
+    public OutputStream createOutput(final String blobName) throws IOException {
+                        ^
+/home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/cloud/aws/blobstore/S3BlobContainer.java:79: warning: [deprecation] openInput(String) in AbstractLegacyBlobContainer has been deprecated
+    public InputStream openInput(String blobName) throws IOException {
+                       ^
+Note: /home/travis/build/crate/crate/es/upstream/plugins/cloud-aws/src/main/java/org/elasticsearch/discovery/ec2/AwsEc2UnicastHostsProvider.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+16 warnings
+
+:es-cloud-aws:processResources UP-TO-DATE
+:es-cloud-aws:classes
+:es-cloud-aws:jar
+:es-discovery-multicast:compileJava/home/travis/build/crate/crate/es/upstream/plugins/discovery-multicast/src/main/java/org/elasticsearch/plugin/discovery/multicast/MulticastZenPing.java:145: warning: [deprecation] sortAddresses(List<InetAddress>) in NetworkUtils has been deprecated
+            NetworkUtils.sortAddresses(addresses);
+                        ^
+1 warning
+
+:es-discovery-multicast:processResources UP-TO-DATE
+:es-discovery-multicast:classes
+:es-discovery-multicast:jar
+:sql-parser:generateWithANTLR3Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+
+:sql-parser:compileJavaNote: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+:sql-parser:processResources UP-TO-DATE
+:sql-parser:classes
+:sql-parser:jar
+:sql:compileJava/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:67: warning: [deprecation] JavaUtilRegexCapabilities in org.apache.lucene.sandbox.queries.regex has been deprecated
+import org.apache.lucene.sandbox.queries.regex.JavaUtilRegexCapabilities;
+                                              ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:68: warning: [deprecation] RegexQuery in org.apache.lucene.sandbox.queries.regex has been deprecated
+import org.apache.lucene.sandbox.queries.regex.RegexQuery;
+                                              ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:744: warning: [deprecation] RegexQuery in org.apache.lucene.sandbox.queries.regex has been deprecated
+                        return new RegexQuery(new Term(fieldName, pattern));
+                                   ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:763: warning: [deprecation] RegexQuery in org.apache.lucene.sandbox.queries.regex has been deprecated
+                    RegexQuery query = new RegexQuery(new Term(fieldName, BytesRefs.toBytesRef(value)));
+                    ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:763: warning: [deprecation] RegexQuery in org.apache.lucene.sandbox.queries.regex has been deprecated
+                    RegexQuery query = new RegexQuery(new Term(fieldName, BytesRefs.toBytesRef(value)));
+                                           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:764: warning: [deprecation] JavaUtilRegexCapabilities in org.apache.lucene.sandbox.queries.regex has been deprecated
+                    query.setRegexImplementation(new JavaUtilRegexCapabilities(
+                                                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:765: warning: [deprecation] JavaUtilRegexCapabilities in org.apache.lucene.sandbox.queries.regex has been deprecated
+                            JavaUtilRegexCapabilities.FLAG_CASE_INSENSITIVE |
+                            ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:766: warning: [deprecation] JavaUtilRegexCapabilities in org.apache.lucene.sandbox.queries.regex has been deprecated
+                            JavaUtilRegexCapabilities.FLAG_UNICODE_CASE));
+                            ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:1168: warning: [deprecation] Filter in org.apache.lucene.search has been deprecated
+        public static class FunctionFilter extends Filter {
+                                                   ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:1202: warning: [deprecation] BitsFilteredDocIdSet in org.apache.lucene.search has been deprecated
+                return BitsFilteredDocIdSet.wrap(
+                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:1220: warning: [deprecation] getBoost() in Query has been deprecated
+                if (getBoost() != that.getBoost()) return false;
+                    ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:1220: warning: [deprecation] getBoost() in Query has been deprecated
+                if (getBoost() != that.getBoost()) return false;
+                                      ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:1226: warning: [deprecation] getBoost() in Query has been deprecated
+                return Float.floatToIntBits(getBoost()) ^ function.hashCode();
+                                            ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/LuceneQueryBuilder.java:1235: warning: [deprecation] FilteredDocIdSet in org.apache.lucene.search has been deprecated
+        static class FunctionDocSet extends FilteredDocIdSet {
+                                            ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/match/MatchQueryBuilder.java:88: warning: [deprecation] setBoost(float) in Query has been deprecated
+            query.setBoost(boost);
+                 ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/match/MatchQueryBuilder.java:182: warning: [deprecation] setBoost(float) in Query has been deprecated
+            query.setBoost(boost);
+                 ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/lucene/match/MultiMatchQueryBuilder.java:74: warning: [deprecation] setBoost(float) in Query has been deprecated
+            query.setBoost(boost);
+                 ^
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+17 warnings
+
+:sql:compileGroovy UP-TO-DATE
+:sql:processResources UP-TO-DATE
+:sql:classes
+:sql:jar
+:udc:compileJava
+:udc:processResources UP-TO-DATE
+:udc:classes
+:udc:jar
+:app:compileJava/home/travis/build/crate/crate/app/src/main/java/io/crate/plugin/PluginLoader.java:286: warning: [deprecation] modules() in Plugin has been deprecated
+            modulesClasses.addAll(plugin.modules());
+                                        ^
+/home/travis/build/crate/crate/app/src/main/java/io/crate/plugin/PluginLoader.java:287: warning: [deprecation] modules(Settings) in Plugin has been deprecated
+            modulesClasses.addAll(plugin.modules(settings));
+                                        ^
+/home/travis/build/crate/crate/app/src/main/java/io/crate/plugin/PluginLoader.java:299: warning: [deprecation] services() in Plugin has been deprecated
+            services.addAll(plugin.services());
+                                  ^
+/home/travis/build/crate/crate/app/src/main/java/io/crate/plugin/PluginLoader.java:310: warning: [deprecation] indexModules() in Plugin has been deprecated
+            for (Class<? extends Module> moduleClass : plugin.indexModules()) {
+                                                             ^
+/home/travis/build/crate/crate/app/src/main/java/io/crate/plugin/PluginLoader.java:331: warning: [deprecation] shardModules() in Plugin has been deprecated
+            for (Class<? extends Module> moduleClass : plugin.shardModules()) {
+                                                             ^
+Note: /home/travis/build/crate/crate/app/src/main/java/io/crate/plugin/PluginLoader.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+5 warnings
+
+:app:downloadCrash
+:admin-ui:writePropertiesFile
+:admin-ui:downloadPlugin
+:es-repository-hdfs:downloadUpstreamSourcesUnable to get progress logger. Download progress will not be displayed.
+
+:es-repository-hdfs:extractUpstreamSources
+:es-repository-hdfs:compileJava
+:es-repository-hdfs:processResources UP-TO-DATE
+:es-repository-hdfs:classes
+:es-repository-hdfs:jar
+:es-repository-hdfs:hadoopLinkedJar
+:es-repository-hdfs:distZip
+:sigar:compileJava
+:sigar:processResources
+:sigar:classes
+:core:getVersionPicked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+
+gitTag: 
+version: 0.56.0-SNAPSHOT-2baf5c4
+:sigar:getVersion
+:sigar:jar
+:app:downloadPlugins
+:app:writeBuildInfo
+:app:processResources
+:app:classes
+:app:jar
+:app:distTar
+:app:distZip
+:app:myJavadocsPicked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/analyze/relations/PlannedAnalyzedRelation.java:43: warning: no @return
+    Plan plan();
+         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/join/NestedLoop.java:52: error: element not closed: ul
+ * <ul>
+   ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/join/NestedLoop.java:97: warning: no @param for nestedLoopPhase
+    public NestedLoop(NestedLoopPhase nestedLoopPhase,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/join/NestedLoop.java:97: warning: no @param for left
+    public NestedLoop(NestedLoopPhase nestedLoopPhase,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/join/NestedLoop.java:97: warning: no @param for right
+    public NestedLoop(NestedLoopPhase nestedLoopPhase,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/join/NestedLoop.java:97: warning: no @param for localMerge
+    public NestedLoop(NestedLoopPhase nestedLoopPhase,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/join/NestedLoop.java:97: warning: no @param for handlerNodes
+    public NestedLoop(NestedLoopPhase nestedLoopPhase,
+           ^
+/home/travis/build/crate/crate/app/src/main/java/org/elasticsearch/bootstrap/BootstrapProxy.java:92: warning: no @param for tmpFile
+    public static void initializeNatives(Path tmpFile, boolean mlockAll, boolean seccomp, boolean ctrlHandler) {
+                       ^
+/home/travis/build/crate/crate/app/src/main/java/org/elasticsearch/bootstrap/BootstrapProxy.java:92: warning: no @param for mlockAll
+    public static void initializeNatives(Path tmpFile, boolean mlockAll, boolean seccomp, boolean ctrlHandler) {
+                       ^
+/home/travis/build/crate/crate/app/src/main/java/org/elasticsearch/bootstrap/BootstrapProxy.java:92: warning: no @param for seccomp
+    public static void initializeNatives(Path tmpFile, boolean mlockAll, boolean seccomp, boolean ctrlHandler) {
+                       ^
+/home/travis/build/crate/crate/app/src/main/java/org/elasticsearch/bootstrap/BootstrapProxy.java:92: warning: no @param for ctrlHandler
+    public static void initializeNatives(Path tmpFile, boolean mlockAll, boolean seccomp, boolean ctrlHandler) {
+                       ^
+/home/travis/build/crate/crate/app/src/main/java/org/elasticsearch/bootstrap/BootstrapProxy.java:248: warning: no @param for args
+    public static void init(String[] args) throws Throwable {
+                       ^
+/home/travis/build/crate/crate/app/src/main/java/org/elasticsearch/bootstrap/BootstrapProxy.java:248: warning: no @throws for java.lang.Throwable
+    public static void init(String[] args) throws Throwable {
+                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/analyze/repositories/TypeSettings.java:61: warning: no @param for genericProperties
+    public Optional<GenericProperties> dynamicProperties(Optional<GenericProperties> genericProperties) {
+                                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/analyze/repositories/TypeSettings.java:61: warning: no @return
+    public Optional<GenericProperties> dynamicProperties(Optional<GenericProperties> genericProperties) {
+                                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/executor/transport/distributed/MultiBucketBuilder.java:35: warning: no @param for row
+    void add(Row row);
+         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/executor/transport/distributed/MultiBucketBuilder.java:41: warning: no @return
+    int size();
+        ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/executor/transport/distributed/MultiBucketBuilder.java:49: warning: no @param for buckets
+    void build(Bucket[] buckets);
+         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/RowReceiver.java:64: warning: no @param for repeatable
+    void finish(RepeatHandle repeatable);
+         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/RowReceiver.java:83: warning: no @param for throwable
+    void kill(Throwable throwable);
+         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/RowReceiver.java:95: warning: no @return
+    Set<Requirement> requirements();
+                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/FlatProjectorChain.java:94: warning: no @param for rowReceivers
+    public static FlatProjectorChain withReceivers(List<? extends RowReceiver> rowReceivers) {
+                                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/FlatProjectorChain.java:94: warning: no @return
+    public static FlatProjectorChain withReceivers(List<? extends RowReceiver> rowReceivers) {
+                                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/ShardProjectorChain.java:171: warning: no @param for projectorFactory
+    public RowReceiver newShardDownstreamProjector(ProjectorFactory projectorFactory) {
+                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/WriterProjector.java:72: error: self-closing element not allowed
+     *               <p/>
+                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/WriterProjector.java:75: warning: no @param for executorService
+    public WriterProjector(ExecutorService executorService,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/WriterProjector.java:75: warning: no @param for uri
+    public WriterProjector(ExecutorService executorService,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/WriterProjector.java:75: warning: no @param for compressionType
+    public WriterProjector(ExecutorService executorService,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/WriterProjector.java:75: warning: no @param for collectExpressions
+    public WriterProjector(ExecutorService executorService,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/WriterProjector.java:75: warning: no @param for overwrites
+    public WriterProjector(ExecutorService executorService,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/WriterProjector.java:75: warning: no @param for outputNames
+    public WriterProjector(ExecutorService executorService,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/WriterProjector.java:75: warning: no @param for outputFormat
+    public WriterProjector(ExecutorService executorService,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/executor/Task.java:44: warning: no @param for rowReceiver
+    void execute(RowReceiver rowReceiver);
+         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/executor/Task.java:51: warning: no @return
+    List<? extends ListenableFuture<TaskResult>> executeBulk();
+                                                 ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/executor/Task.java:31: error: reference not found
+ * {@linkplain io.crate.executor.Job} and returns a result asynchronously
+               ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/executor/Task.java:37: error: reference not found
+ * @see io.crate.executor.Job
+        ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/ColumnPolicy.java:49: warning: no @param for name
+    public static ColumnPolicy byName(String name) {
+                               ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/ColumnPolicy.java:49: warning: no @return
+    public static ColumnPolicy byName(String name) {
+                               ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/ColumnPolicy.java:56: warning: no @param for dynamic
+    public static ColumnPolicy of(@Nullable Object dynamic) {
+                               ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/ColumnPolicy.java:56: warning: no @return
+    public static ColumnPolicy of(@Nullable Object dynamic) {
+                               ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/ColumnPolicy.java:77: warning: no @return
+    public Object mappingValue() {
+                  ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/TableInfo.java:40: warning: no @param for columnIdent
+    Reference getReference(ColumnIdent columnIdent);
+              ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/TableInfo.java:40: warning: no @return
+    Reference getReference(ColumnIdent columnIdent);
+              ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/TableInfo.java:45: warning: no @return
+    Collection<Reference> columns();
+                          ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/TableInfo.java:61: warning: no @param for whereClause
+    Routing getRouting(WhereClause whereClause, @Nullable String preference);
+            ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/TableInfo.java:61: warning: no @param for preference
+    Routing getRouting(WhereClause whereClause, @Nullable String preference);
+            ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/TableInfo.java:61: warning: no @return
+    Routing getRouting(WhereClause whereClause, @Nullable String preference);
+            ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/StaticTableInfo.java:43: warning: no @param for ident
+    public StaticTableInfo(TableIdent ident,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/StaticTableInfo.java:43: warning: no @param for columnMap
+    public StaticTableInfo(TableIdent ident,
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/table/StaticTableInfo.java:43: warning: no @param for primaryKey
+    public StaticTableInfo(TableIdent ident,
+           ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:43: warning: no @return
+    String name();
+           ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:48: warning: no @return
+    String description();
+           ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:53: warning: no @return
+    Collection<Module> nodeModules();
+                       ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:61: warning: no @return
+    Collection<Class<? extends Module>> modules();
+                                        ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:71: warning: no @return
+    Collection<Class<? extends Module>> modules(Settings settings);
+                                        ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:76: warning: no @return
+    Collection<Class<? extends LifecycleComponent>> nodeServices();
+                                                    ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:82: warning: no @return
+    Collection<Class<? extends LifecycleComponent>> services();
+                                                    ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:88: warning: no @return
+    Collection<Class<? extends Module>> indexModules();
+                                        ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:93: warning: no @param for settings
+    Collection<? extends Module> indexModules(Settings settings);
+                                 ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:93: warning: no @return
+    Collection<? extends Module> indexModules(Settings settings);
+                                 ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:98: warning: no @return
+    Collection<Class<? extends Closeable>> indexServices();
+                                           ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:104: warning: no @return
+    Collection<Class<? extends Module>> shardModules();
+                                        ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:109: warning: no @param for settings
+    Collection<? extends Module> shardModules(Settings settings);
+                                 ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:109: warning: no @return
+    Collection<? extends Module> shardModules(Settings settings);
+                                 ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:114: warning: no @return
+    Collection<Class<? extends Closeable>> shardServices();
+                                           ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:120: warning: no @param for module
+    void processModule(Module module);
+         ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/Plugin.java:125: warning: no @return
+    Settings additionalSettings();
+             ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Scalar.java:54: warning: no @param for arguments
+    public Scalar<ReturnType, InputType> compile(List<Symbol> arguments) {
+                                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Scalar.java:54: warning: no @return
+    public Scalar<ReturnType, InputType> compile(List<Symbol> arguments) {
+                                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionImplementation.java:40: warning: no @param for symbol
+    Symbol normalizeSymbol(SymbolType symbol, @Nullable StmtCtx stmtCtx);
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionImplementation.java:40: warning: no @return
+    Symbol normalizeSymbol(SymbolType symbol, @Nullable StmtCtx stmtCtx);
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/analyze/symbol/format/OperatorFormatSpec.java:35: warning: no @param for function
+    String operator(Function function);
+           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/analyze/symbol/format/OperatorFormatSpec.java:35: warning: no @return
+    String operator(Function function);
+           ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/core/collections/Row.java:74: warning: no @return
+    Object[] materialize();
+             ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/ColumnIdent.java:129: warning: no @return
+    public ColumnIdent getParent() {
+                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/ColumnIdent.java:151: warning: no @return
+    public ColumnIdent shiftRight() {
+                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/ColumnIdent.java:167: warning: no @return
+    public boolean isSystemColumn(){
+                   ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/ColumnIdent.java:176: warning: no @return
+    public ColumnIdent getRoot() {
+                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/ColumnIdent.java:291: warning: no @param for name
+    public ColumnIdent prepend(String name) {
+                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/ColumnIdent.java:291: warning: no @return
+    public ColumnIdent prepend(String name) {
+                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/DocReferenceConverter.java:53: warning: no @param for symbol
+    public static Symbol convertIf(Symbol symbol) {
+                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/DocReferenceConverter.java:53: warning: no @return
+    public static Symbol convertIf(Symbol symbol) {
+                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/DocReferenceConverter.java:32: error: self-closing element not allowed
+ * <p/>
+   ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/DynamicFunctionResolver.java:39: warning: no @param for dataTypes
+    FunctionImplementation<Function> getForTypes(List<DataType> dataTypes) throws IllegalArgumentException;
+                                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/DynamicFunctionResolver.java:39: warning: no @return
+    FunctionImplementation<Function> getForTypes(List<DataType> dataTypes) throws IllegalArgumentException;
+                                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:95: error: bad use of '>'
+     *  col > 10.5
+            ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:100: error: bad use of '>'
+     *  f(col) > f(10.5)
+               ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:102: error: bad use of '>'
+     *  for all col for which col > 10.5 is true. Maybe > needs to be mapped to another
+                                  ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:102: error: bad use of '>'
+     *  for all col for which col > 10.5 is true. Maybe > needs to be mapped to another
+                                                        ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:112: error: bad use of '>'
+     *          col > 10.5
+                    ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:116: error: bad use of '>'
+     *          f(col) > f(10.5)
+                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:123: error: bad use of '>'
+     *      then col + 1 > 11.5 must be true for all col > 10.5.
+                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:123: error: bad use of '>'
+     *      then col + 1 > 11.5 must be true for all col > 10.5.
+                                                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:126: error: bad use of '>'
+     *      So f is replaceable for >.
+                                    ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:128: error: bad use of '>'
+     *      Fun fact: for f all comparison operators =, >, <, >=,<= are replaceable
+                                                        ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:128: error: malformed HTML
+     *      Fun fact: for f all comparison operators =, >, <, >=,<= are replaceable
+                                                           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:128: error: bad use of '>'
+     *      Fun fact: for f all comparison operators =, >, <, >=,<= are replaceable
+                                                              ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:128: error: malformed HTML
+     *      Fun fact: for f all comparison operators =, >, <, >=,<= are replaceable
+                                                                 ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:133: error: bad use of '>'
+     *      then ceil(col) > 11 for all col > 10.5.
+                           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:133: error: bad use of '>'
+     *      then ceil(col) > 11 for all col > 10.5.
+                                            ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:135: error: bad use of '>'
+     *      11 > 11 is false.
+               ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:139: error: bad use of '>'
+     *          > -> >=
+                ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:139: error: bad use of '>'
+     *          > -> >=
+                   ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:139: error: bad use of '>'
+     *          > -> >=
+                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:140: error: malformed HTML
+     *          < -> <=
+                ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:140: error: bad use of '>'
+     *          < -> <=
+                   ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:140: error: malformed HTML
+     *          < -> <=
+                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:147: error: bad use of '>'
+     *      then col % 5 > 0.5 for all col > 10.5
+                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:147: error: bad use of '>'
+     *      then col % 5 > 0.5 for all col > 10.5
+                                           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:150: error: bad use of '>'
+     *      0 > 0.5 is false.
+              ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/FunctionInfo.java:155: warning: no @return
+    public boolean comparisonReplacementPossible() {
+                   ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Functions.java:55: warning: no @param for ident
+    public FunctionImplementation getSafe(FunctionIdent ident)
+                                  ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Functions.java:55: warning: no @return
+    public FunctionImplementation getSafe(FunctionIdent ident)
+                                  ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Functions.java:81: warning: no @param for ident
+    public FunctionImplementation get(FunctionIdent ident) throws IllegalArgumentException {
+                                  ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Functions.java:81: warning: no @return
+    public FunctionImplementation get(FunctionIdent ident) throws IllegalArgumentException {
+                                  ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Functions.java:97: warning: no @param for name
+    public TableFunctionImplementation getTableFunctionSafe(String name) {
+                                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Functions.java:97: warning: no @return
+    public TableFunctionImplementation getTableFunctionSafe(String name) {
+                                       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Reference.java:118: warning: no @param for newIdent
+    public Reference getRelocated(ReferenceIdent newIdent){
+                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Reference.java:118: warning: no @return
+    public Reference getRelocated(ReferenceIdent newIdent){
+                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/PartitionName.java:79: warning: no @param for ident
+    public static List<BytesRef> decodeIdent(@Nullable String ident) {
+                                 ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/PartitionName.java:79: warning: no @return
+    public static List<BytesRef> decodeIdent(@Nullable String ident) {
+                                 ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/PartitionName.java:192: warning: no @param for indexOrTemplate
+    public static PartitionName fromIndexOrTemplate(String indexOrTemplate) {
+                                ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/PartitionName.java:192: warning: no @return
+    public static PartitionName fromIndexOrTemplate(String indexOrTemplate) {
+                                ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/PartitionName.java:236: warning: no @param for schemaName
+    public static String templateName(@Nullable String schemaName, String tableName) {
+                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/PartitionName.java:236: warning: no @param for tableName
+    public static String templateName(@Nullable String schemaName, String tableName) {
+                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/PartitionName.java:236: warning: no @return
+    public static String templateName(@Nullable String schemaName, String tableName) {
+                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/ReferenceInfos.java:211: warning: no @return
+    public static boolean isDefaultOrCustomSchema(@Nullable String schemaName) {
+                          ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Routing.java:99: warning: no @param for nodeId
+    public int numShards(String nodeId) {
+               ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Routing.java:117: warning: no @param for nodeId
+    public boolean containsShards(String nodeId) {
+                   ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/metadata/Routing.java:117: warning: no @return
+    public boolean containsShards(String nodeId) {
+                   ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/operator/any/AnyOperator.java:47: error: reference not found
+     * called inside {@link #normalizeSymbol(io.crate.analyze.symbol.Function)}
+                            ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/RoutedCollectPhase.java:123: error: unexpected end tag: </p>
+     * </p>
+       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/RoutedCollectPhase.java:126: error: unexpected end tag: </p>
+     * </p>
+       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/RoutedCollectPhase.java:133: error: malformed HTML
+     * <p><
+          ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/RoutedCollectPhase.java:156: error: self-closing element not allowed
+     * returns the shardQueueSize for a given node. <br />
+                                                    ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/RoutedCollectPhase.java:160: error: self-closing element not allowed
+     * E.g. Given 10 shards in total in an uneven distribution (8 and 2) and a nodePageSize of 10000 <br />
+                                                                                                     ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/RoutedCollectPhase.java:161: error: self-closing element not allowed
+     * The shardQueueSize on the node with 2 shards is ~5000 (+ overhead). <br />
+                                                                           ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/node/dql/RoutedCollectPhase.java:165: error: bad use of '>'
+     * This is because numShardsOnNode * shardQueueSize should be >= nodePageSizeHint
+                                                                  ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/planner/Planner.java:375: error: bad use of '>'
+     *                If > 0 this overrides the limit that might be part of a query.
+                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/collect/collectors/LuceneOrderedDocCollector.java:104: error: unexpected end tag: </p>
+     * </p>
+       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/collect/collectors/LuceneOrderedDocCollector.java:107: error: self-closing element not allowed
+     * <p/>
+       ^
+/home/travis/build/crate/crate/blob/src/main/java/org/elasticsearch/indices/recovery/BlobRecoverySourceHandler.java:178: error: self-closing element not allowed
+     * <p/>
+       ^
+/home/travis/build/crate/crate/blob/src/main/java/org/elasticsearch/indices/recovery/BlobRecoverySourceHandler.java:510: error: self-closing element not allowed
+     * <p/>
+       ^
+/home/travis/build/crate/crate/blob/src/main/java/org/elasticsearch/indices/recovery/BlobRecoverySourceHandler.java:578: error: self-closing element not allowed
+     * <p/>
+       ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/operator/CmpOperator.java:16: error: reference not found
+     * called inside {@link #normalizeSymbol(io.crate.analyze.symbol.Function)}
+                            ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/collect/CollectionPauseException.java:27: error: reference not found
+ * Throw this exception inside a {@link org.apache.lucene.search.Collector#collect} in order to
+                                        ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/collect/ValueAndInputRow.java:39: error: reference not found
+ * It will keep a reference to the original TValue to be used by {@link io.crate.operation.projectors.SysUpdateProjector}
+                                                                        ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/operation/projectors/writer/Output.java:33: error: bad HTML entity
+     * calling this method creates & acquires an OutputStream which must be closed by the caller if it is no longer needed
+                                   ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/analyze/relations/QuerySplitter.java:54: error: bad use of '>'
+     *     t1.x = t2.x  ->  t1, t2
+                         ^
+/home/travis/build/crate/crate/sql/src/main/java/io/crate/analyze/relations/QuerySplitter.java:55: error: bad use of '>'
+     *     t2.x = t3.x  ->  t2, t3
+                         ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/monitor/ExtendedProcessCpuStats.java:58: error: self-closing element not allowed
+     * <p/>
+       ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/monitor/ExtendedProcessCpuStats.java:71: error: self-closing element not allowed
+     * <p/>
+       ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/monitor/ExtendedProcessCpuStats.java:84: error: self-closing element not allowed
+     * <p/>
+       ^
+/home/travis/build/crate/crate/core/src/main/java/io/crate/monitor/ExtendedProcessCpuStats.java:97: error: self-closing element not allowed
+     * <p/>
+       ^
+
+54 errors
+100 warnings
+:app:javadocJar
+:app:sourceJar
+:app:assemble
+:blackbox:assemble UP-TO-DATE
+:blob:assemble
+:client:depClasses
+:client:compileJava
+:client:processResources UP-TO-DATE
+:client:classes
+:client:jar
+:client:myJavadocsPicked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+
+:client:javadocJar
+:client:shadowJar
+:client:sourceJar
+:client:assemble
+:core:assemble
+:dns-discovery:assemble
+:es:assemble
+:es-cloud-aws:assemble
+:es-discovery-multicast:assemble
+:es-repository-hdfs:assemble
+:sigar:assemble
+:sql:assemble
+:sql-parser:assemble
+:es:compileTestJavaPicked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/env/NodeEnvironmentTests.java:211: warning: '_' used as an identifier
+                    try (ShardLock _ = env.shardLock(new ShardId("foo", 0))) {
+                                   ^
+  (use of '_' as an identifier might not be supported in releases after Java SE 8)
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/env/NodeEnvironmentTests.java:270: warning: '_' used as an identifier
+                            try (ShardLock _ = env.shardLock(new ShardId("foo", shard), scaledRandomIntBetween(0, 10))) {
+                                           ^
+  (use of '_' as an identifier might not be supported in releases after Java SE 8)
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/cluster/metadata/IndexNameExpressionResolverTests.java:117: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+        results = indexNameExpressionResolver.concreteIndices(context, null);
+                                                                       ^
+  cast to String for a varargs call
+  cast to String[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/cluster/metadata/IndexNameExpressionResolverTests.java:124: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+        results = indexNameExpressionResolver.concreteIndices(context, null);
+                                                                       ^
+  cast to String for a varargs call
+  cast to String[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/cluster/metadata/IndexNameExpressionResolverTests.java:351: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+            results = indexNameExpressionResolver.concreteIndices(context, null);
+                                                                           ^
+  cast to String for a varargs call
+  cast to String[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/common/util/MultiDataPathUpgraderTests.java:181: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+            logger.info("{}", FileSystemUtils.files(shardPath.resolveIndex()));
+                                                   ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/index/shard/IndexShardTests.java:161: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+        logger.info("--> paths: [{}]", shardPaths);
+                                       ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/indices/state/OpenCloseIndexIT.java:199: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+        client.admin().indices().prepareClose(null).execute().actionGet();
+                                              ^
+  cast to String for a varargs call
+  cast to String[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/indices/state/OpenCloseIndexIT.java:211: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+        client.admin().indices().prepareOpen(null).execute().actionGet();
+                                             ^
+  cast to String for a varargs call
+  cast to String[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/indices/template/SimpleIndexTemplateIT.java:266: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+        testExpectActionRequestValidationException(null);
+                                                   ^
+  cast to String for a varargs call
+  cast to String[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/search/query/SearchQueryIT.java:1346: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+        searchResponse = client().prepareSearch().setQuery(constantScoreQuery(idsQuery(null).ids("1"))).get();
+                                                                                       ^
+  cast to String for a varargs call
+  cast to String[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/search/query/SearchQueryIT.java:1384: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+        searchResponse = client().prepareSearch().setQuery(idsQuery(null).ids("1")).get();
+                                                                    ^
+  cast to String for a varargs call
+  cast to String[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/search/suggest/ContextSuggestSearchIT.java:173: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+                .array("precision", precisions.toArray(new Integer[precisions.size()]))
+                                                      ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+/home/travis/build/crate/crate/es/upstream/core/src/test/java/org/elasticsearch/search/suggest/ContextSuggestSearchIT.java:188: warning: non-varargs call of varargs method with inexact argument type for last parameter;
+                .array("precision", precisions.toArray(new Integer[precisions.size()]))
+                                                      ^
+  cast to Object for a varargs call
+  cast to Object[] for a non-varargs call and to suppress this warning
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+14 warnings
+
+:es:processTestResources
+:es:testClasses
+:testing:compileJavaNote: /home/travis/build/crate/crate/testing/src/main/java/io/crate/test/GroovyTestSanitizer.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+:testing:processResources UP-TO-DATE
+:testing:classes
+:testing:jar
+:testing:assemble
+:udc:assemble
+
+BUILD SUCCESSFUL
+
+Total time: 6 mins 4.659 secs
+
+travis_time:end:28c60121:start=1470832142332957136,finish=1470832507455468738,duration=365122511602[0Ktravis_fold:end:install[0Kcoverity_scan:start$ export PROJECT_NAME=crate/crate
+coverity_scan:endtravis_time:start:1d8ff434[0K$ ./gradlew -PtestForks=2 -s test
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Defining custom 'clean' task when using the standard Gradle lifecycle plugins has been deprecated and is scheduled to be removed in Gradle 3.0
+:compileJava UP-TO-DATE
+:processResources UP-TO-DATE
+:classes UP-TO-DATE
+:compileTestJava UP-TO-DATE
+:processTestResources UP-TO-DATE
+:testClasses UP-TO-DATE
+:test UP-TO-DATE
+:es:compileJava UP-TO-DATE
+:es:processResources UP-TO-DATE
+:es:classes UP-TO-DATE
+:es:jar UP-TO-DATE
+:core:compileJava UP-TO-DATE
+:core:processResources UP-TO-DATE
+:core:classes UP-TO-DATE
+:core:jar UP-TO-DATE
+:admin-ui:compileJava UP-TO-DATE
+:admin-ui:processResources UP-TO-DATE
+:admin-ui:classes UP-TO-DATE
+:admin-ui:compileTestJava UP-TO-DATE
+:admin-ui:processTestResources UP-TO-DATE
+:admin-ui:testClasses UP-TO-DATE
+:admin-ui:test UP-TO-DATE
+:admin-ui:jar UP-TO-DATE
+:blob:compileJava UP-TO-DATE
+:blob:processResources UP-TO-DATE
+:blob:classes UP-TO-DATE
+:blob:jar UP-TO-DATE
+:dns-discovery:compileJava UP-TO-DATE
+:dns-discovery:processResources UP-TO-DATE
+:dns-discovery:classes UP-TO-DATE
+:dns-discovery:jar UP-TO-DATE
+:es-cloud-aws:compileJava UP-TO-DATE
+:es-cloud-aws:processResources UP-TO-DATE
+:es-cloud-aws:classes UP-TO-DATE
+:es-cloud-aws:jar UP-TO-DATE
+:es-discovery-multicast:compileJava UP-TO-DATE
+:es-discovery-multicast:processResources UP-TO-DATE
+:es-discovery-multicast:classes UP-TO-DATE
+:es-discovery-multicast:jar UP-TO-DATE
+:sql-parser:generateWithANTLR3 UP-TO-DATE
+:sql-parser:compileJava UP-TO-DATE
+:sql-parser:processResources UP-TO-DATE
+:sql-parser:classes UP-TO-DATE
+:sql-parser:jar UP-TO-DATE
+:sql:compileJava UP-TO-DATE
+:sql:compileGroovy UP-TO-DATE
+:sql:processResources UP-TO-DATE
+:sql:classes UP-TO-DATE
+:sql:jar UP-TO-DATE
+:udc:compileJava UP-TO-DATE
+:udc:processResources UP-TO-DATE
+:udc:classes UP-TO-DATE
+:udc:jar UP-TO-DATE
+:app:compileJava UP-TO-DATE
+:app:downloadCrash
+:admin-ui:writePropertiesFile
+:admin-ui:downloadPlugin
+:es-repository-hdfs:downloadUpstreamSources UP-TO-DATE
+:es-repository-hdfs:extractUpstreamSources UP-TO-DATE
+:es-repository-hdfs:compileJava UP-TO-DATE
+:es-repository-hdfs:processResources UP-TO-DATE
+:es-repository-hdfs:classes UP-TO-DATE
+:es-repository-hdfs:jar UP-TO-DATE
+:es-repository-hdfs:hadoopLinkedJar UP-TO-DATE
+:es-repository-hdfs:distZip UP-TO-DATE
+:sigar:compileJava UP-TO-DATE
+:sigar:processResources UP-TO-DATE
+:sigar:classes UP-TO-DATE
+:core:getVersionPicked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+
+gitTag: 
+version: 0.56.0-SNAPSHOT-2baf5c4
+:sigar:getVersion
+:sigar:jar UP-TO-DATE
+:app:downloadPlugins UP-TO-DATE
+:app:writeBuildInfo
+:app:processResources
+:app:classes
+:es:compileTestJava UP-TO-DATE
+:es:processTestResources UP-TO-DATE
+:es:testClasses UP-TO-DATE
+:testing:compileJava UP-TO-DATE
+:testing:processResources UP-TO-DATE
+:testing:classes UP-TO-DATE
+:testing:jar UP-TO-DATE
+:app:compileTestJavaPicked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Note: /home/travis/build/crate/crate/app/src/test/java/io/crate/plugin/PluginLoaderTest.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+:app:processTestResources
+:app:testClasses
+:app:test
+Running: Gradle Test Run :app:test
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Running: Gradle Test Executor 2
+Running: Test class io.crate.AppJarHellTest
+Running: Gradle Test Executor 3
+Running: Test class io.crate.node.NodeSettingsTest
+Running: Test class io.crate.plugin.PluginLoaderTest
+:blob:compileTestJava
+:blob:processTestResources
+:blob:testClasses
+:blob:test
+Running: Gradle Test Run :blob:test
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Running: Gradle Test Executor 5
+Running: Test class io.crate.BlobHandlerTest
+Running: Gradle Test Executor 4
+Running: Test class io.crate.BlobEnvironmentTest
+Running: Test class io.crate.BlobHeadRequestHandlerTests
+Running: Test class io.crate.DigestBlobTests
+Running: Test class io.crate.blob.BlobContainerTest
+Running: Test class io.crate.blob.DeleteBlobResponseTest
+Running: Test class io.crate.integrationtests.BlobSslEnabledITest
+Running: Test class io.crate.integrationtests.RecoveryTests
+Running: Test class io.crate.SerializationTests
+Running: Test class io.crate.blob.DeleteBlobRequestTest
+Running: Test class io.crate.integrationtests.BlobIntegrationTest
+Running: Test class io.crate.integrationtests.CustomBlobPathTest
+:app:jar
+:app:distTar
+:client:depClasses UP-TO-DATE
+:client:compileJava UP-TO-DATE
+:client:processResources UP-TO-DATE
+:client:classes UP-TO-DATE
+:client:compileTestJava
+:client:processTestResources UP-TO-DATE
+:client:testClasses
+:client:test
+Running: Gradle Test Run :client:test
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Running: Gradle Test Executor 6
+Running: Test class io.crate.client.CrateClientCreationTest
+Running: Gradle Test Executor 7
+Running: Test class io.crate.client.CrateClientUsageTest
+:core:compileTestJavaNote: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+:core:processTestResources UP-TO-DATE
+:core:testClasses
+:core:test
+Running: Gradle Test Run :core:test
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Running: Gradle Test Executor 8
+Running: Test class io.crate.ClusterIdServiceTest
+Running: Gradle Test Executor 9
+Running: Test class io.crate.CoreJarHellTest
+Running: Test class io.crate.action.LimitedBackoffPolicyTest
+Running: Test class io.crate.core.collections.BlockingEvictingQueueTest
+Running: Test class io.crate.core.collections.StringObjectMapsTest
+Running: Test class io.crate.geo.GeoJSONUtilsTest
+Running: Test class io.crate.types.ArrayTypeTest
+Running: Test class io.crate.types.GeoPointTypeTest
+Running: Test class io.crate.types.IpTypeTest
+Running: Test class io.crate.types.TypeConversionTest
+Running: Test class io.crate.DataTypeTest
+Running: Test class io.crate.core.StringUtilsTest
+Running: Test class io.crate.core.collections.ForEachTest
+Running: Test class io.crate.core.collections.TreeMapBuilderTest
+Running: Test class io.crate.monitor.ExtendedStatsTest
+Running: Test class io.crate.types.DataTypesTest
+Running: Test class io.crate.types.GeoShapeTypeTest
+Running: Test class io.crate.types.LongTypeTest
+:dns-discovery:compileTestJava
+:dns-discovery:processTestResources
+:dns-discovery:testClasses
+:dns-discovery:test
+Running: Gradle Test Run :dns-discovery:test
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Running: Gradle Test Executor 10
+Running: Test class io.crate.discovery.SrvDiscoveryIntegrationTest
+Running: Gradle Test Executor 11
+Running: Test class io.crate.discovery.SrvUnicastHostsProviderTest
+:es:test SKIPPED
+:es-cloud-aws:compileTestJava UP-TO-DATE
+:es-cloud-aws:processTestResources UP-TO-DATE
+:es-cloud-aws:testClasses UP-TO-DATE
+:es-cloud-aws:test SKIPPED
+:es-discovery-multicast:compileTestJava UP-TO-DATE
+:es-discovery-multicast:processTestResources UP-TO-DATE
+:es-discovery-multicast:testClasses UP-TO-DATE
+:es-discovery-multicast:test SKIPPED
+:es-repository-hdfs:compileTestJava UP-TO-DATE
+:es-repository-hdfs:processTestResources UP-TO-DATE
+:es-repository-hdfs:testClasses UP-TO-DATE
+:es-repository-hdfs:test SKIPPED
+:sigar:compileTestJava
+:sigar:processTestResources UP-TO-DATE
+:sigar:testClasses
+:sigar:test
+Running: Gradle Test Run :sigar:test
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Running: Gradle Test Executor 12
+Running: Test class io.crate.monitor.SigarExtendedNodeInfoTest
+:sql:compileTestJava/home/travis/build/crate/crate/sql/src/test/java/io/crate/lucene/LuceneQueryBuilderTest.java:41: warning: [deprecation] RegexQuery in org.apache.lucene.sandbox.queries.regex has been deprecated
+import org.apache.lucene.sandbox.queries.regex.RegexQuery;
+                                              ^
+/home/travis/build/crate/crate/sql/src/test/java/io/crate/lucene/LuceneQueryBuilderTest.java:248: warning: [deprecation] RegexQuery in org.apache.lucene.sandbox.queries.regex has been deprecated
+        assertThat(query, instanceOf(RegexQuery.class));
+                                     ^
+/home/travis/build/crate/crate/sql/src/test/java/io/crate/operation/collect/collectors/NodeStatsCollectorTest.java:74: error: cannot find symbol
+            new ReferenceIdent(systable, SysNodesTableInfo.Columns.HOSTNAME),
+                               ^
+  symbol:   variable systable
+  location: class NodeStatsCollectorTest
+/home/travis/build/crate/crate/sql/src/test/java/org/apache/lucene/index/AssertingLeafReader.java:167: warning: [deprecation] DocsAndPositionsEnum in org.apache.lucene.index has been deprecated
+                assert PostingsEnum.featureRequested(flags, DocsAndPositionsEnum.OLD_NULL_SEMANTICS);
+                                                            ^
+/home/travis/build/crate/crate/sql/src/test/java/org/apache/lucene/index/AssertingLeafReader.java:167: warning: [deprecation] OLD_NULL_SEMANTICS in DocsAndPositionsEnum has been deprecated
+                assert PostingsEnum.featureRequested(flags, DocsAndPositionsEnum.OLD_NULL_SEMANTICS);
+                                                                                ^
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+1 error
+4 warnings
+ FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':sql:compileTestJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --info or --debug option to get more log output.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':sql:compileTestJava'.
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeActions(ExecuteActionsTaskExecuter.java:69)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.PostExecutionAnalysisTaskExecuter.execute(PostExecutionAnalysisTaskExecuter.java:35)
+	at org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter.execute(SkipUpToDateTaskExecuter.java:66)
+	at org.gradle.api.internal.tasks.execution.ValidatingTaskExecuter.execute(ValidatingTaskExecuter.java:58)
+	at org.gradle.api.internal.tasks.execution.SkipEmptySourceFilesTaskExecuter.execute(SkipEmptySourceFilesTaskExecuter.java:52)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:52)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:53)
+	at org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter.execute(ExecuteAtMostOnceTaskExecuter.java:43)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter$EventFiringTaskWorker.execute(DefaultTaskGraphExecuter.java:203)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter$EventFiringTaskWorker.execute(DefaultTaskGraphExecuter.java:185)
+	at org.gradle.execution.taskgraph.AbstractTaskPlanExecutor$TaskExecutorWorker.processTask(AbstractTaskPlanExecutor.java:66)
+	at org.gradle.execution.taskgraph.AbstractTaskPlanExecutor$TaskExecutorWorker.run(AbstractTaskPlanExecutor.java:50)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor.process(DefaultTaskPlanExecutor.java:25)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter.execute(DefaultTaskGraphExecuter.java:110)
+	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:37)
+	at org.gradle.execution.DefaultBuildExecuter.execute(DefaultBuildExecuter.java:37)
+	at org.gradle.execution.DefaultBuildExecuter.access$000(DefaultBuildExecuter.java:23)
+	at org.gradle.execution.DefaultBuildExecuter$1.proceed(DefaultBuildExecuter.java:43)
+	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:32)
+	at org.gradle.execution.DefaultBuildExecuter.execute(DefaultBuildExecuter.java:37)
+	at org.gradle.execution.DefaultBuildExecuter.execute(DefaultBuildExecuter.java:30)
+	at org.gradle.initialization.DefaultGradleLauncher$4.run(DefaultGradleLauncher.java:153)
+	at org.gradle.internal.Factories$1.create(Factories.java:22)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:91)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:53)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:150)
+	at org.gradle.initialization.DefaultGradleLauncher.access$200(DefaultGradleLauncher.java:32)
+	at org.gradle.initialization.DefaultGradleLauncher$1.create(DefaultGradleLauncher.java:98)
+	at org.gradle.initialization.DefaultGradleLauncher$1.create(DefaultGradleLauncher.java:92)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:91)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:63)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuild(DefaultGradleLauncher.java:92)
+	at org.gradle.initialization.DefaultGradleLauncher.run(DefaultGradleLauncher.java:83)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter$DefaultBuildController.run(InProcessBuildActionExecuter.java:99)
+	at org.gradle.tooling.internal.provider.ExecuteBuildActionRunner.run(ExecuteBuildActionRunner.java:28)
+	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:48)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:30)
+	at org.gradle.launcher.exec.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:81)
+	at org.gradle.launcher.exec.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:46)
+	at org.gradle.launcher.exec.DaemonUsageSuggestingBuildActionExecuter.execute(DaemonUsageSuggestingBuildActionExecuter.java:51)
+	at org.gradle.launcher.exec.DaemonUsageSuggestingBuildActionExecuter.execute(DaemonUsageSuggestingBuildActionExecuter.java:28)
+	at org.gradle.launcher.cli.RunBuildAction.run(RunBuildAction.java:43)
+	at org.gradle.internal.Actions$RunnableActionAdapter.execute(Actions.java:173)
+	at org.gradle.launcher.cli.CommandLineActionFactory$ParseAndBuildAction.execute(CommandLineActionFactory.java:239)
+	at org.gradle.launcher.cli.CommandLineActionFactory$ParseAndBuildAction.execute(CommandLineActionFactory.java:212)
+	at org.gradle.launcher.cli.JavaRuntimeValidationAction.execute(JavaRuntimeValidationAction.java:35)
+	at org.gradle.launcher.cli.JavaRuntimeValidationAction.execute(JavaRuntimeValidationAction.java:24)
+	at org.gradle.launcher.cli.ExceptionReportingAction.execute(ExceptionReportingAction.java:33)
+	at org.gradle.launcher.cli.ExceptionReportingAction.execute(ExceptionReportingAction.java:22)
+	at org.gradle.launcher.cli.CommandLineActionFactory$WithLogging.execute(CommandLineActionFactory.java:205)
+	at org.gradle.launcher.cli.CommandLineActionFactory$WithLogging.execute(CommandLineActionFactory.java:169)
+	at org.gradle.launcher.Main.doAction(Main.java:33)
+	at org.gradle.launcher.bootstrap.EntryPoint.run(EntryPoint.java:45)
+	at org.gradle.launcher.bootstrap.ProcessBootstrap.runNoExit(ProcessBootstrap.java:55)
+	at org.gradle.launcher.bootstrap.ProcessBootstrap.run(ProcessBootstrap.java:36)
+	at org.gradle.launcher.GradleMain.main(GradleMain.java:23)
+	at org.gradle.wrapper.BootstrapMainStarter.start(BootstrapMainStarter.java:30)
+	at org.gradle.wrapper.WrapperExecutor.execute(WrapperExecutor.java:129)
+	at org.gradle.wrapper.GradleWrapperMain.main(GradleWrapperMain.java:61)
+Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler error output for details.
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:48)
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:33)
+	at org.gradle.api.internal.tasks.compile.daemon.CompilerDaemonServer.execute(CompilerDaemonServer.java:31)
+	at org.gradle.process.internal.worker.request.WorkerAction.run(WorkerAction.java:87)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:35)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:377)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:54)
+	at org.gradle.internal.concurrent.StoppableExecutorImpl$1.run(StoppableExecutorImpl.java:40)
+
+
+BUILD FAILED
+
+Total time: 4 mins 42.635 secs
+
+travis_time:end:1d8ff434:start=1470832507486644542,finish=1470832790624989968,duration=283138345426[0K
+[31;1mThe command "./gradlew -PtestForks=2 -s test" exited with 1.[0m
+travis_time:start:156ed498[0K$ ./gradlew -s itest
+Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+Defining custom 'clean' task when using the standard Gradle lifecycle plugins has been deprecated and is scheduled to be removed in Gradle 3.0
+:blackbox:bootstrap--2016-08-10 12:40:17--  https://bootstrap.pypa.io/get-pip.py
+Resolving bootstrap.pypa.io (bootstrap.pypa.io)... 151.101.20.175
+Connecting to bootstrap.pypa.io (bootstrap.pypa.io)|151.101.20.175|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1524722 (1.5M) [text/x-python]
+Saving to: `get-pip.py'
+
+     0K .......... .......... .......... .......... ..........  3% 3.15M 0s
+    50K .......... .......... .......... .......... ..........  6% 1.95M 1s
+   100K .......... .......... .......... .......... .......... 10% 10.5M 0s
+   150K .......... .......... .......... .......... .......... 13%  213M 0s
+   200K .......... .......... .......... .......... .......... 16%  261M 0s
+   250K .......... .......... .......... .......... .......... 20% 6.39M 0s
+   300K .......... .......... .......... .......... .......... 23%  174M 0s
+   350K .......... .......... .......... .......... .......... 26%  188M 0s
+   400K .......... .......... .......... .......... .......... 30% 7.35M 0s
+   450K .......... .......... .......... .......... .......... 33%  207M 0s
+   500K .......... .......... .......... .......... .......... 36% 53.8M 0s
+   550K .......... .......... .......... .......... .......... 40%  195M 0s
+   600K .......... .......... .......... .......... .......... 43%  272M 0s
+   650K .......... .......... .......... .......... .......... 47%  266M 0s
+   700K .......... .......... .......... .......... .......... 50%  269M 0s
+   750K .......... .......... .......... .......... .......... 53%  184M 0s
+   800K .......... .......... .......... .......... .......... 57%  270M 0s
+   850K .......... .......... .......... .......... .......... 60% 7.06M 0s
+   900K .......... .......... .......... .......... .......... 63%  165M 0s
+   950K .......... .......... .......... .......... .......... 67%  160M 0s
+  1000K .......... .......... .......... .......... .......... 70%  109M 0s
+  1050K .......... .......... .......... .......... .......... 73%  199M 0s
+  1100K .......... .......... .......... .......... .......... 77%  270M 0s
+  1150K .......... .......... .......... .......... .......... 80%  211M 0s
+  1200K .......... .......... .......... .......... .......... 83%  273M 0s
+  1250K .......... .......... .......... .......... .......... 87%  270M 0s
+  1300K .......... .......... .......... .......... .......... 90%  269M 0s
+  1350K .......... .......... .......... .......... .......... 94%  253M 0s
+  1400K .......... .......... .......... .......... .......... 97% 7.48M 0s
+  1450K .......... .......... .......... ........             100% 11.6M=0.08s
+
+2016-08-10 12:40:17 (17.7 MB/s) - `get-pip.py' saved [1524722/1524722]
+
+
+Collecting pip
+  Downloading pip-8.1.2-py2.py3-none-any.whl (1.2MB)
+Collecting setuptools
+  Downloading setuptools-25.1.6-py2.py3-none-any.whl (442kB)
+Collecting wheel
+  Downloading wheel-0.29.0-py2.py3-none-any.whl (66kB)
+Installing collected packages: pip, setuptools, wheel
+Successfully installed pip-8.1.2 setuptools-25.1.6 wheel-0.29.0
+Collecting alabaster==0.7.8 (from -r requirements.txt (line 1))
+  Downloading alabaster-0.7.8-py2.py3-none-any.whl
+Collecting appdirs==1.4.0 (from -r requirements.txt (line 2))
+  Downloading appdirs-1.4.0-py2.py3-none-any.whl
+Collecting Babel==2.3.4 (from -r requirements.txt (line 3))
+  Downloading Babel-2.3.4-py2.py3-none-any.whl (7.1MB)
+Collecting colorama==0.3.7 (from -r requirements.txt (line 4))
+  Downloading colorama-0.3.7-py2.py3-none-any.whl
+Collecting crash==0.17.0 (from -r requirements.txt (line 5))
+  Downloading crash-0.17.0-py2.py3-none-any.whl (49kB)
+Collecting crate==0.16.0 (from -r requirements.txt (line 6))
+  Downloading crate-0.16.0-py2.py3-none-any.whl (74kB)
+Collecting crate-docs-theme==0.5.13 (from -r requirements.txt (line 7))
+  Downloading crate-docs-theme-0.5.13.tar.gz (3.5MB)
+Collecting docutils==0.12 (from -r requirements.txt (line 8))
+  Downloading docutils-0.12-py3-none-any.whl (508kB)
+Collecting imagesize==0.7.1 (from -r requirements.txt (line 9))
+  Downloading imagesize-0.7.1-py2.py3-none-any.whl
+Collecting Jinja2==2.8 (from -r requirements.txt (line 10))
+  Downloading Jinja2-2.8-py2.py3-none-any.whl (263kB)
+Collecting MarkupSafe==0.23 (from -r requirements.txt (line 11))
+  Downloading MarkupSafe-0.23.tar.gz
+Collecting prompt-toolkit==0.57 (from -r requirements.txt (line 12))
+  Downloading prompt_toolkit-0.57-py3-none-any.whl (208kB)
+Collecting Pygments==2.1.3 (from -r requirements.txt (line 13))
+  Downloading Pygments-2.1.3-py2.py3-none-any.whl (755kB)
+Collecting pytz==2016.4 (from -r requirements.txt (line 14))
+  Downloading pytz-2016.4-py2.py3-none-any.whl (480kB)
+Collecting six==1.10.0 (from -r requirements.txt (line 15))
+  Downloading six-1.10.0-py2.py3-none-any.whl
+Collecting snowballstemmer==1.2.1 (from -r requirements.txt (line 16))
+  Downloading snowballstemmer-1.2.1-py2.py3-none-any.whl (64kB)
+Collecting Sphinx==1.4.4 (from -r requirements.txt (line 17))
+  Downloading Sphinx-1.4.4-py2.py3-none-any.whl (1.6MB)
+Collecting sphinxcontrib-plantuml==0.8.1 (from -r requirements.txt (line 18))
+  Downloading sphinxcontrib-plantuml-0.8.1.tar.gz
+Collecting urllib3==1.16 (from -r requirements.txt (line 19))
+  Downloading urllib3-1.16-py2.py3-none-any.whl (98kB)
+Collecting wcwidth==0.1.6 (from -r requirements.txt (line 20))
+  Downloading wcwidth-0.1.6-py2.py3-none-any.whl
+Collecting zc.customdoctests==1.0.1 (from -r requirements.txt (line 21))
+  Downloading zc.customdoctests-1.0.1.zip
+Collecting zope.exceptions==4.0.8 (from -r requirements.txt (line 22))
+  Downloading zope.exceptions-4.0.8.tar.gz
+Collecting zope.interface==4.2.0 (from -r requirements.txt (line 23))
+  Downloading zope.interface-4.2.0.tar.gz (146kB)
+Collecting zope.testrunner==4.5.0 (from -r requirements.txt (line 24))
+  Downloading zope.testrunner-4.5.0.zip (267kB)
+Requirement already satisfied (use --upgrade to upgrade): setuptools in ./.venv/lib/python3.4/site-packages (from crash==0.17.0->-r requirements.txt (line 5))
+Building wheels for collected packages: crate-docs-theme, MarkupSafe, sphinxcontrib-plantuml, zc.customdoctests, zope.exceptions, zope.interface, zope.testrunner
+  Running setup.py bdist_wheel for crate-docs-theme: started
+  Running setup.py bdist_wheel for crate-docs-theme: finished with status 'done'
+  Stored in directory: /home/travis/.cache/pip/wheels/07/16/e3/c4b41352eaf3120f778d0bce5e02ecd1513de63394870b93bf
+  Running setup.py bdist_wheel for MarkupSafe: started
+  Running setup.py bdist_wheel for MarkupSafe: finished with status 'done'
+  Stored in directory: /home/travis/.cache/pip/wheels/a3/fa/dc/0198eed9ad95489b8a4f45d14dd5d2aee3f8984e46862c5748
+  Running setup.py bdist_wheel for sphinxcontrib-plantuml: started
+  Running setup.py bdist_wheel for sphinxcontrib-plantuml: finished with status 'done'
+  Stored in directory: /home/travis/.cache/pip/wheels/3a/b4/d4/10811b8ff65c23f8d8a80c15beb49a8354432facdef0e1e5fe
+  Running setup.py bdist_wheel for zc.customdoctests: started
+  Running setup.py bdist_wheel for zc.customdoctests: finished with status 'done'
+  Stored in directory: /home/travis/.cache/pip/wheels/0f/f6/76/ce8dd4e7eaba0286350c17f94daef3a779873c7888186d5713
+  Running setup.py bdist_wheel for zope.exceptions: started
+  Running setup.py bdist_wheel for zope.exceptions: finished with status 'done'
+  Stored in directory: /home/travis/.cache/pip/wheels/59/3f/39/bd4764fbbfe4036132e4311d48c6b135966433d24afb19aa0f
+  Running setup.py bdist_wheel for zope.interface: started
+  Running setup.py bdist_wheel for zope.interface: finished with status 'done'
+  Stored in directory: /home/travis/.cache/pip/wheels/20/a2/bc/74fe87cee17134f5219ba01fe82dd8c10998377e0fb910bb22
+  Running setup.py bdist_wheel for zope.testrunner: started
+  Running setup.py bdist_wheel for zope.testrunner: finished with status 'done'
+  Stored in directory: /home/travis/.cache/pip/wheels/ca/c7/d3/01aa23f7c429c65a342e2270e5a3399b497556f00574603aee
+Successfully built crate-docs-theme MarkupSafe sphinxcontrib-plantuml zc.customdoctests zope.exceptions zope.interface zope.testrunner
+Installing collected packages: alabaster, appdirs, pytz, Babel, colorama, six, Pygments, wcwidth, prompt-toolkit, urllib3, crate, crash, docutils, MarkupSafe, Jinja2, snowballstemmer, imagesize, Sphinx, sphinxcontrib-plantuml, crate-docs-theme, zc.customdoctests, zope.interface, zope.exceptions, zope.testrunner
+Successfully installed Babel-2.3.4 Jinja2-2.8 MarkupSafe-0.23 Pygments-2.1.3 Sphinx-1.4.4 alabaster-0.7.8 appdirs-1.4.0 colorama-0.3.7 crash-0.17.0 crate-0.16.0 crate-docs-theme-0.5.13 docutils-0.12 imagesize-0.7.1 prompt-toolkit-0.57 pytz-2016.4 six-1.10.0 snowballstemmer-1.2.1 sphinxcontrib-plantuml-0.8.1 urllib3-1.16 wcwidth-0.1.6 zc.customdoctests-1.0.1 zope.exceptions-4.0.8 zope.interface-4.2.0 zope.testrunner-4.5.0
+:es:compileJava UP-TO-DATE
+:es:processResources UP-TO-DATE
+:es:classes UP-TO-DATE
+:es:jar UP-TO-DATE
+:core:compileJava UP-TO-DATE
+:core:processResources UP-TO-DATE
+:core:classes UP-TO-DATE
+:core:jar UP-TO-DATE
+:admin-ui:compileJava UP-TO-DATE
+:admin-ui:processResources UP-TO-DATE
+:admin-ui:classes UP-TO-DATE
+:admin-ui:jar UP-TO-DATE
+:blob:compileJava UP-TO-DATE
+:blob:processResources UP-TO-DATE
+:blob:classes UP-TO-DATE
+:blob:jar UP-TO-DATE
+:dns-discovery:compileJava UP-TO-DATE
+:dns-discovery:processResources UP-TO-DATE
+:dns-discovery:classes UP-TO-DATE
+:dns-discovery:jar UP-TO-DATE
+:es-cloud-aws:compileJava UP-TO-DATE
+:es-cloud-aws:processResources UP-TO-DATE
+:es-cloud-aws:classes UP-TO-DATE
+:es-cloud-aws:jar UP-TO-DATE
+:es-discovery-multicast:compileJava UP-TO-DATE
+:es-discovery-multicast:processResources UP-TO-DATE
+:es-discovery-multicast:classes UP-TO-DATE
+:es-discovery-multicast:jar UP-TO-DATE
+:sql-parser:generateWithANTLR3 UP-TO-DATE
+:sql-parser:compileJava UP-TO-DATE
+:sql-parser:processResources UP-TO-DATE
+:sql-parser:classes UP-TO-DATE
+:sql-parser:jar UP-TO-DATE
+:sql:compileJava UP-TO-DATE
+:sql:compileGroovy UP-TO-DATE
+:sql:processResources UP-TO-DATE
+:sql:classes UP-TO-DATE
+:sql:jar UP-TO-DATE
+:udc:compileJava UP-TO-DATE
+:udc:processResources UP-TO-DATE
+:udc:classes UP-TO-DATE
+:udc:jar UP-TO-DATE
+:app:compileJava UP-TO-DATE
+:app:downloadCrash
+:admin-ui:writePropertiesFile
+:admin-ui:downloadPlugin
+:es-repository-hdfs:downloadUpstreamSources UP-TO-DATE
+:es-repository-hdfs:extractUpstreamSources UP-TO-DATE
+:es-repository-hdfs:compileJava UP-TO-DATE
+:es-repository-hdfs:processResources UP-TO-DATE
+:es-repository-hdfs:classes UP-TO-DATE
+:es-repository-hdfs:jar UP-TO-DATE
+:es-repository-hdfs:hadoopLinkedJar UP-TO-DATE
+:es-repository-hdfs:distZip UP-TO-DATE
+:sigar:compileJava UP-TO-DATE
+:sigar:processResources UP-TO-DATE
+:sigar:classes UP-TO-DATE
+:core:getVersionPicked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+
+gitTag: 
+version: 0.56.0-SNAPSHOT-2baf5c4
+:sigar:getVersion
+:sigar:jar UP-TO-DATE
+:app:downloadPlugins UP-TO-DATE
+:app:writeBuildInfo
+:app:processResources
+:app:classes
+:app:jar
+:app:distTar
+:client:depClasses UP-TO-DATE
+:client:compileJava UP-TO-DATE
+:client:processResources UP-TO-DATE
+:client:classes UP-TO-DATE
+:client:jar
+:blackbox:unpackDistTar
+:blackbox:ignoreDiskThreshold
+:blackbox:lessLogging
+:blackbox:itest
+Running crate.tests.crate tests:
+  Set up crate.tests.crate Picked up _JAVA_OPTIONS: -Xmx1g -XX:MaxPermSize=256m
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+[2016-08-10 12:41:06,108][WARN ][env                      ] [crate] max file descriptors [64000] for elasticsearch process likely too low, consider increasing to at least [65536]
+[2016-08-10 12:41:12,890][WARN ][discovery                ] [crate] waited for 0s and no initial state was set by the discovery
+Waiting for layer ... 0.0s
+Waiting for layer ... 0.2s
+Waiting for layer ... 0.4s
+Waiting for layer ... 0.6s
+Waiting for layer ... 0.8s
+Waiting for layer ... 1.0s
+Waiting for layer ... 1.2s
+Waiting for layer ... 1.4s
+Waiting for layer ... 1.6s
+Waiting for layer ... 1.8s
+Waiting for layer ... 2.0s
+Waiting for layer ... 2.2s
+Waiting for layer ... 2.4s
+Waiting for layer ... 2.6s
+Waiting for layer ... 2.8s
+Crate layer started.
++------------------------+-----------+---------+-----------+---------+
+| server_url             | node_name | version | connected | message |
++------------------------+-----------+---------+-----------+---------+
+| http://localhost:50310 | crate     | 0.56.0  | TRUE      | OK      |
++------------------------+-----------+---------+-----------+---------+
+CONNECT OK
+CLUSTER CHECK OK
+in 13.426 seconds.
+CREATE OK, 1 row affected  (0.233 sec)
+DELETE OK, 0 rows affected  (0.066 sec)
+[2016-08-10 12:41:17,959][DEBUG][action.bulk              ] create new coordinator for node usk-htSxT5W7uROIgccu7g and shard [locations][1]
+COPY OK, 13 rows affected  (0.159 sec)
+REFRESH OK, 1 row affected  (0.140 sec)
+[2016-08-10 12:41:18,632][WARN ][action.bulk              ] ShardUpsert Item 1 failed: Failure{id=1341, message=DocumentAlreadyExistsException[[default][1341]: document already exists], versionConflict=false}
+DROP OK, 1 row affected  (0.022 sec)
+CREATE OK, 1 row affected  (0.178 sec)
+DELETE OK, 0 rows affected  (0.011 sec)
+COPY OK, 13 rows affected  (0.153 sec)
+REFRESH OK, 1 row affected  (0.044 sec)
+ OK, 1 row affected  (0.111 sec)
+DROP OK, 1 row affected  (0.122 sec)
+DROP OK, 1 row affected  (0.006 sec)
+CREATE OK, 1 row affected  (0.121 sec)
+DELETE OK, 0 rows affected  (0.028 sec)
+COPY OK, 13 rows affected  (0.059 sec)
+REFRESH OK, 1 row affected  (0.078 sec)
+ OK, 1 row affected  (0.703 sec)
+DROP OK, 1 row affected  (0.049 sec)
+DROP OK, 1 row affected  (0.031 sec)
+CREATE OK, 1 row affected  (0.112 sec)
+DELETE OK, 0 rows affected  (0.011 sec)
+COPY OK, 13 rows affected  (0.051 sec)
+REFRESH OK, 1 row affected  (0.023 sec)
+ OK, 1 row affected  (0.035 sec)
+DROP OK, 1 row affected  (0.021 sec)
+DROP OK, 1 row affected  (0.010 sec)
+CREATE OK, 1 row affected  (0.056 sec)
+DELETE OK, 0 rows affected  (0.008 sec)
+COPY OK, 13 rows affected  (0.034 sec)
+REFRESH OK, 1 row affected  (0.036 sec)
+ OK, 1 row affected  (0.059 sec)
+DROP OK, 1 row affected  (0.012 sec)
+DROP OK, 1 row affected  (0.009 sec)
+CREATE OK, 1 row affected  (0.085 sec)
+DELETE OK, 0 rows affected  (0.030 sec)
+COPY OK, 13 rows affected  (0.070 sec)
+REFRESH OK, 1 row affected  (0.054 sec)
+ OK, 1 row affected  (0.060 sec)
+DROP OK, 1 row affected  (0.032 sec)
+DROP OK, 1 row affected  (0.034 sec)
+CREATE OK, 1 row affected  (0.113 sec)
+DELETE OK, 0 rows affected  (0.107 sec)
+COPY OK, 13 rows affected  (0.164 sec)
+REFRESH OK, 1 row affected  (0.069 sec)
+ OK, 1 row affected  (0.054 sec)
+DROP OK, 1 row affected  (0.011 sec)
+DROP OK, 1 row affected  (0.007 sec)
+CREATE OK, 1 row affected  (0.059 sec)
+DELETE OK, 0 rows affected  (0.012 sec)
+COPY OK, 13 rows affected  (0.022 sec)
+REFRESH OK, 1 row affected  (0.027 sec)
+ OK, 1 row affected  (0.034 sec)
+DROP OK, 1 row affected  (0.040 sec)
+DROP OK, 1 row affected  (0.010 sec)
+CREATE OK, 1 row affected  (0.137 sec)
+DELETE OK, 0 rows affected  (0.032 sec)
+COPY OK, 13 rows affected  (0.032 sec)
+REFRESH OK, 1 row affected  (0.045 sec)
+ OK, 1 row affected  (0.080 sec)
+DROP OK, 1 row affected  (0.016 sec)
+DROP OK, 1 row affected  (0.004 sec)
+CREATE OK, 1 row affected  (0.113 sec)
+DELETE OK, 0 rows affected  (0.004 sec)
+COPY OK, 13 rows affected  (0.053 sec)
+REFRESH OK, 1 row affected  (0.025 sec)
+ OK, 1 row affected  (0.035 sec)
+[2016-08-10 12:41:40,494][DEBUG][action.bulk              ] create 3 pending indices in bulk...
+[2016-08-10 12:41:40,511][INFO ][action.admin.indices.create] [crate] [.partitioned.parted_table.04732d1k6sr36chg60o30c1g] creating index, cause [bulk], templates [.partitioned.parted_table.], shards [4]/[1], mappings [default]
+[2016-08-10 12:41:40,511][INFO ][action.admin.indices.create] [crate] [.partitioned.parted_table.04130] creating index, cause [bulk], templates [.partitioned.parted_table.], shards [4]/[1], mappings [default]
+[2016-08-10 12:41:40,511][INFO ][action.admin.indices.create] [crate] [.partitioned.parted_table.046jid1k74qjce1g60o30c0] creating index, cause [bulk], templates [.partitioned.parted_table.], shards [4]/[1], mappings [default]
+[2016-08-10 12:41:40,971][DEBUG][action.bulk              ] create 2 pending indices in bulk...
+[2016-08-10 12:41:40,997][INFO ][action.admin.indices.create] [crate] [.partitioned.computed_parted_table.04732d1k6opj6dhg60o30c1g] creating index, cause [bulk], templates [.partitioned.computed_parted_table.], shards [4]/[1], mappings [default]
+[2016-08-10 12:41:40,997][INFO ][action.admin.indices.create] [crate] [.partitioned.computed_parted_table.04130] creating index, cause [bulk], templates [.partitioned.computed_parted_table.], shards [4]/[1], mappings [default]
+DROP OK, 1 row affected  (0.033 sec)
+DROP OK, 1 row affected  (0.005 sec)
+CREATE OK, 1 row affected  (0.302 sec)
+DELETE OK, 0 rows affected  (0.004 sec)
+COPY OK, 13 rows affected  (0.053 sec)
+REFRESH OK, 1 row affected  (0.066 sec)
+ OK, 1 row affected  (0.044 sec)
+DROP OK, 1 row affected  (0.016 sec)
+DROP OK, 1 row affected  (0.035 sec)
+CREATE OK, 1 row affected  (0.177 sec)
+DELETE OK, 0 rows affected  (0.071 sec)
+COPY OK, 13 rows affected  (0.041 sec)
+REFRESH OK, 1 row affected  (0.051 sec)
+ OK, 1 row affected  (0.054 sec)
+DROP OK, 1 row affected  (0.035 sec)
+DROP OK, 1 row affected  (0.024 sec)
+CREATE OK, 1 row affected  (0.114 sec)
+DELETE OK, 0 rows affected  (0.040 sec)
+COPY OK, 13 rows affected  (0.020 sec)
+REFRESH OK, 1 row affected  (0.070 sec)
+ OK, 1 row affected  (0.112 sec)
+DROP OK, 1 row affected  (0.032 sec)
+DROP OK, 1 row affected  (0.007 sec)
+CREATE OK, 1 row affected  (0.127 sec)
+DELETE OK, 0 rows affected  (0.003 sec)
+COPY OK, 13 rows affected  (0.015 sec)
+REFRESH OK, 1 row affected  (0.014 sec)
+ OK, 1 row affected  (0.062 sec)
+DROP OK, 1 row affected  (0.005 sec)
+DROP OK, 1 row affected  (0.005 sec)
+CREATE OK, 1 row affected  (0.034 sec)
+DELETE OK, 0 rows affected  (0.004 sec)
+COPY OK, 13 rows affected  (0.033 sec)
+REFRESH OK, 1 row affected  (0.018 sec)
+ OK, 1 row affected  (0.041 sec)
+DROP OK, 1 row affected  (0.005 sec)
+DROP OK, 1 row affected  (0.005 sec)
+CREATE OK, 1 row affected  (0.040 sec)
+DELETE OK, 0 rows affected  (0.003 sec)
+COPY OK, 13 rows affected  (0.020 sec)
+REFRESH OK, 1 row affected  (0.021 sec)
+ OK, 1 row affected  (0.038 sec)
+DROP OK, 1 row affected  (0.005 sec)
+DROP OK, 1 row affected  (0.014 sec)
+CREATE OK, 1 row affected  (0.558 sec)
+DELETE OK, 0 rows affected  (0.014 sec)
+COPY OK, 13 rows affected  (0.014 sec)
+REFRESH OK, 1 row affected  (0.022 sec)
+ OK, 1 row affected  (0.074 sec)
+DROP OK, 1 row affected  (0.006 sec)
+DROP OK, 1 row affected  (0.007 sec)
+CREATE OK, 1 row affected  (0.096 sec)
+DELETE OK, 0 rows affected  (0.019 sec)
+COPY OK, 13 rows affected  (0.014 sec)
+REFRESH OK, 1 row affected  (0.018 sec)
+ OK, 1 row affected  (0.217 sec)
+DROP OK, 1 row affected  (0.033 sec)
+DROP OK, 1 row affected  (0.024 sec)
+CREATE OK, 1 row affected  (0.101 sec)
+COPY OK, 18 rows affected  (0.028 sec)
+REFRESH OK, 1 row affected  (0.021 sec)
+CREATE OK, 1 row affected  (0.116 sec)
+COPY OK, 6 rows affected  (0.011 sec)
+REFRESH OK, 1 row affected  (0.019 sec)
+CREATE OK, 1 row affected  (0.138 sec)
+COPY OK, 4 rows affected  (0.016 sec)
+REFRESH OK, 1 row affected  (0.006 sec)
+CREATE OK, 1 row affected  (0.046 sec)
+COPY OK, 4 rows affected  (0.006 sec)
+REFRESH OK, 1 row affected  (0.006 sec)
+CREATE OK, 1 row affected  (0.199 sec)
+COPY OK, 2 rows affected  (0.019 sec)
+REFRESH OK, 1 row affected  (0.004 sec)
+CREATE OK, 1 row affected  (0.039 sec)
+COPY OK, 5 rows affected  (11.618 sec)
+REFRESH OK, 1 row affected  (0.387 sec)
+DROP OK, 1 row affected  (0.010 sec)
+DROP OK, 1 row affected  (0.009 sec)
+DROP OK, 1 row affected  (0.024 sec)
+DROP OK, 1 row affected  (0.013 sec)
+DROP OK, 1 row affected  (0.011 sec)
+DROP OK, 1 row affected  (0.031 sec)
+CREATE OK, 1 row affected  (0.139 sec)
+COPY OK, 18 rows affected  (0.057 sec)
+REFRESH OK, 1 row affected  (0.008 sec)
+CREATE OK, 1 row affected  (0.114 sec)
+COPY OK, 6 rows affected  (0.043 sec)
+REFRESH OK, 1 row affected  (0.009 sec)
+CREATE OK, 1 row affected  (0.108 sec)
+COPY OK, 4 rows affected  (0.015 sec)
+REFRESH OK, 1 row affected  (0.021 sec)
+CREATE OK, 1 row affected  (0.218 sec)
+COPY OK, 4 rows affected  (0.020 sec)
+REFRESH OK, 1 row affected  (0.010 sec)
+CREATE OK, 1 row affected  (0.075 sec)
+COPY OK, 2 rows affected  (0.019 sec)
+REFRESH OK, 1 row affected  (0.007 sec)
+CREATE OK, 1 row affected  (0.117 sec)
+COPY OK, 5 rows affected  (7.887 sec)
+REFRESH OK, 1 row affected  (0.501 sec)
+DROP OK, 1 row affected  (0.007 sec)
+DROP OK, 1 row affected  (0.007 sec)
+DROP OK, 1 row affected  (0.007 sec)
+DROP OK, 1 row affected  (0.009 sec)
+DROP OK, 1 row affected  (0.010 sec)
+DROP OK, 1 row affected  (0.041 sec)
+CREATE OK, 1 row affected  (0.106 sec)
+DELETE OK, 0 rows affected  (0.013 sec)
+COPY OK, 13 rows affected  (0.022 sec)
+REFRESH OK, 1 row affected  (0.012 sec)
+ OK, 1 row affected  (0.112 sec)
+CREATE OK, 1 row affected  (0.189 sec)
+COPY OK, 2 rows affected  (0.008 sec)
+REFRESH OK, 1 row affected  (0.004 sec)
+[2016-08-10 12:42:12,122][DEBUG][action.bulk              ] create 2 pending indices in bulk...
+[2016-08-10 12:42:12,131][INFO ][action.admin.indices.create] [crate] [.partitioned.locations_parted.042j4c1h6c] creating index, cause [bulk], templates [.partitioned.locations_parted.], shards [2]/[0], mappings [default]
+[2016-08-10 12:42:12,131][INFO ][action.admin.indices.create] [crate] [.partitioned.locations_parted.042j2e9n74] creating index, cause [bulk], templates [.partitioned.locations_parted.], shards [2]/[0], mappings [default]
+DROP OK, 1 row affected  (0.012 sec)
+DROP OK, 1 row affected  (0.008 sec)
+DROP OK, 1 row affected  (0.012 sec)
+[2016-08-10 12:42:16,786][DEBUG][action.bulk              ] create 1 pending indices in bulk...
+[2016-08-10 12:42:16,796][INFO ][action.admin.indices.create] [crate] [.partitioned.user.045j2d1g70pj2cho60o0] creating index, cause [bulk], templates [.partitioned.user.], shards [6]/[0], mappings [default]
+CREATE OK, 1 row affected  (0.030 sec)
+DELETE OK, 0 rows affected  (0.016 sec)
+COPY OK, 13 rows affected  (0.010 sec)
+REFRESH OK, 1 row affected  (0.006 sec)
+ OK, 1 row affected  (0.045 sec)
+[2016-08-10 12:42:17,731][DEBUG][action.bulk              ] create 2 pending indices in bulk...
+[2016-08-10 12:42:17,737][INFO ][action.admin.indices.create] [crate] [.partitioned.parted_table.04732d1k6kp32cho60o30c1g] creating index, cause [bulk], templates [.partitioned.parted_table.], shards [1]/[0], mappings [default]
+[2016-08-10 12:42:17,737][INFO ][action.admin.indices.create] [crate] [.partitioned.parted_table.04130] creating index, cause [bulk], templates [.partitioned.parted_table.], shards [1]/[0], mappings [default]
+[2016-08-10 12:42:18,430][ERROR][io.crate.metadata.shard.ShardReferenceResolver] Orphaned partition '[.partitioned.parted_table.04130]' with missing table 'doc.parted_table' found
+[2016-08-10 12:42:18,516][DEBUG][action.admin.indices.template.delete] [crate] failed to delete templates [.partitioned.parted_table.]
+IndexTemplateMissingException[index_template [.partitioned.parted_table.] missing]
+	at org.elasticsearch.cluster.metadata.MetaDataIndexTemplateService$1.execute(MetaDataIndexTemplateService.java:91)
+	at org.elasticsearch.cluster.ClusterStateUpdateTask.execute(ClusterStateUpdateTask.java:45)
+	at org.elasticsearch.cluster.service.InternalClusterService.runTasksForExecutor(InternalClusterService.java:468)
+	at org.elasticsearch.cluster.service.InternalClusterService$UpdateTask.run(InternalClusterService.java:772)
+	at org.elasticsearch.common.util.concurrent.PrioritizedEsThreadPoolExecutor$TieBreakingPrioritizedRunnable.runAndClean(PrioritizedEsThreadPoolExecutor.java:231)
+	at org.elasticsearch.common.util.concurrent.PrioritizedEsThreadPoolExecutor$TieBreakingPrioritizedRunnable.run(PrioritizedEsThreadPoolExecutor.java:194)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+[2016-08-10 12:42:18,520][WARN ][io.crate.executor.transport.task.DropTableTask] index_template [.partitioned.parted_table.] missing
+DROP OK, 1 row affected  (0.008 sec)
+DROP OK, 1 row affected  (0.013 sec)
+  Ran 27 tests with 0 failures, 0 errors and 0 skipped in 1 minutes 2.824 seconds.
+Running crate.tests.connecting_and_javarepl tests:
+  Set up crate.java_repl.javarepl in 1.412 seconds.
+  Set up crate.tests.connecting_and_javarepl in 0.000 seconds.
+  Ran 1 tests with 0 failures, 0 errors and 0 skipped in 6.573 seconds.
+Tearing down left over layers:
+  Tear down crate.tests.connecting_and_javarepl in 0.000 seconds.
+  Tear down crate.tests.crate in 0.022 seconds.
+  Tear down crate.java_repl.javarepl in 0.017 seconds.
+Total: 28 tests, 0 failures, 0 errors and 0 skipped in 1 minutes 24.334 seconds.
+
+BUILD SUCCESSFUL
+
+Total time: 2 mins 36.517 secs
+
+travis_time:end:156ed498:start=1470832790629657186,finish=1470832947554986271,duration=156925329085[0K
+[32;1mThe command "./gradlew -s itest" exited with 0.[0m
+travis_time:start:123fd347[0K$ ./blackbox/.venv/bin/sphinx-build -n -W -c docs/ -b html -E docs/ docs/out/html
+Running Sphinx v1.4.4
+making output directory...
+building [mo]: targets for 0 po files that are out of date
+building [html]: targets for 75 source files that are out of date
+updating environment: 75 added, 0 changed, 0 removed
+reading sources... [  1%] architecture/index
+reading sources... [  2%] architecture/joins
+reading sources... [  4%] architecture/shared_nothing
+reading sources... [  5%] architecture/storage_consistency
+reading sources... [  6%] best_practice/cluster_upgrade
+reading sources... [  8%] best_practice/crate_ami
+reading sources... [  9%] best_practice/data_import
+reading sources... [ 10%] best_practice/ec2_setup
+reading sources... [ 12%] best_practice/index
+reading sources... [ 13%] best_practice/migrating_from_mongodb
+reading sources... [ 14%] best_practice/migrating_from_mysql
+reading sources... [ 16%] best_practice/s3_setup
+reading sources... [ 17%] best_practice/systables
+reading sources... [ 18%] blob
+reading sources... [ 20%] cli
+reading sources... [ 21%] configuration
+reading sources... [ 22%] hello
+reading sources... [ 24%] index
+reading sources... [ 25%] installation
+reading sources... [ 26%] plugins
+reading sources... [ 28%] protocols/http
+reading sources... [ 29%] protocols/index
+reading sources... [ 30%] protocols/postgres
+reading sources... [ 32%] sql/aggregation
+reading sources... [ 33%] sql/analyzer
+reading sources... [ 34%] sql/arithmetic
+reading sources... [ 36%] sql/data_types
+reading sources... [ 37%] sql/ddl
+reading sources... [ 38%] sql/dml
+reading sources... [ 40%] sql/dql
+reading sources... [ 41%] sql/fulltext
+reading sources... [ 42%] sql/geo
+reading sources... [ 44%] sql/index
+reading sources... [ 45%] sql/information_schema
+reading sources... [ 46%] sql/joins
+reading sources... [ 48%] sql/kill
+reading sources... [ 49%] sql/occ
+reading sources... [ 50%] sql/optimize
+reading sources... [ 52%] sql/partitioned_tables
+reading sources... [ 53%] sql/queries
+reading sources... [ 54%] sql/reference/alter_table
+reading sources... [ 56%] sql/reference/constraints
+reading sources... [ 57%] sql/reference/copy_from
+reading sources... [ 58%] sql/reference/copy_to
+reading sources... [ 60%] sql/reference/create_analyzer
+reading sources... [ 61%] sql/reference/create_blob_table
+reading sources... [ 62%] sql/reference/create_repository
+reading sources... [ 64%] sql/reference/create_snapshot
+reading sources... [ 65%] sql/reference/create_table
+reading sources... [ 66%] sql/reference/delete
+reading sources... [ 68%] sql/reference/drop_repository
+reading sources... [ 69%] sql/reference/drop_snapshot
+reading sources... [ 70%] sql/reference/drop_table
+reading sources... [ 72%] sql/reference/explain
+reading sources... [ 73%] sql/reference/insert
+reading sources... [ 74%] sql/reference/kill
+reading sources... [ 76%] sql/reference/lexical_structure
+reading sources... [ 77%] sql/reference/optimize
+reading sources... [ 78%] sql/reference/refresh
+reading sources... [ 80%] sql/reference/restore_snapshot
+reading sources... [ 81%] sql/reference/select
+reading sources... [ 82%] sql/reference/set
+reading sources... [ 84%] sql/reference/show_columns
+reading sources... [ 85%] sql/reference/show_create_table
+reading sources... [ 86%] sql/reference/show_schemas
+reading sources... [ 88%] sql/reference/show_tables
+reading sources... [ 89%] sql/reference/update
+reading sources... [ 90%] sql/refresh
+reading sources... [ 92%] sql/scalar
+reading sources... [ 93%] sql/snapshot_restore
+reading sources... [ 94%] sql/sql
+reading sources... [ 96%] sql/subselects
+reading sources... [ 97%] sql/system
+reading sources... [ 98%] sql/table_functions
+reading sources... [100%] udc
+
+looking for now-outdated files... none found
+pickling environment... done
+checking consistency... done
+preparing documents... done
+writing output... [  1%] architecture/index
+writing output... [  2%] architecture/joins
+writing output... [  4%] architecture/shared_nothing
+writing output... [  5%] architecture/storage_consistency
+writing output... [  6%] best_practice/cluster_upgrade
+writing output... [  8%] best_practice/crate_ami
+writing output... [  9%] best_practice/data_import
+writing output... [ 10%] best_practice/ec2_setup
+writing output... [ 12%] best_practice/index
+writing output... [ 13%] best_practice/migrating_from_mongodb
+writing output... [ 14%] best_practice/migrating_from_mysql
+writing output... [ 16%] best_practice/s3_setup
+writing output... [ 17%] best_practice/systables
+writing output... [ 18%] blob
+writing output... [ 20%] cli
+writing output... [ 21%] configuration
+writing output... [ 22%] hello
+writing output... [ 24%] index
+writing output... [ 25%] installation
+writing output... [ 26%] plugins
+writing output... [ 28%] protocols/http
+writing output... [ 29%] protocols/index
+writing output... [ 30%] protocols/postgres
+writing output... [ 32%] sql/aggregation
+writing output... [ 33%] sql/analyzer
+writing output... [ 34%] sql/arithmetic
+writing output... [ 36%] sql/data_types
+writing output... [ 37%] sql/ddl
+writing output... [ 38%] sql/dml
+writing output... [ 40%] sql/dql
+writing output... [ 41%] sql/fulltext
+writing output... [ 42%] sql/geo
+writing output... [ 44%] sql/index
+writing output... [ 45%] sql/information_schema
+writing output... [ 46%] sql/joins
+writing output... [ 48%] sql/kill
+writing output... [ 49%] sql/occ
+writing output... [ 50%] sql/optimize
+writing output... [ 52%] sql/partitioned_tables
+writing output... [ 53%] sql/queries
+writing output... [ 54%] sql/reference/alter_table
+writing output... [ 56%] sql/reference/constraints
+writing output... [ 57%] sql/reference/copy_from
+writing output... [ 58%] sql/reference/copy_to
+writing output... [ 60%] sql/reference/create_analyzer
+writing output... [ 61%] sql/reference/create_blob_table
+writing output... [ 62%] sql/reference/create_repository
+writing output... [ 64%] sql/reference/create_snapshot
+writing output... [ 65%] sql/reference/create_table
+writing output... [ 66%] sql/reference/delete
+writing output... [ 68%] sql/reference/drop_repository
+writing output... [ 69%] sql/reference/drop_snapshot
+writing output... [ 70%] sql/reference/drop_table
+writing output... [ 72%] sql/reference/explain
+writing output... [ 73%] sql/reference/insert
+writing output... [ 74%] sql/reference/kill
+writing output... [ 76%] sql/reference/lexical_structure
+writing output... [ 77%] sql/reference/optimize
+writing output... [ 78%] sql/reference/refresh
+writing output... [ 80%] sql/reference/restore_snapshot
+writing output... [ 81%] sql/reference/select
+writing output... [ 82%] sql/reference/set
+writing output... [ 84%] sql/reference/show_columns
+writing output... [ 85%] sql/reference/show_create_table
+writing output... [ 86%] sql/reference/show_schemas
+writing output... [ 88%] sql/reference/show_tables
+writing output... [ 89%] sql/reference/update
+writing output... [ 90%] sql/refresh
+writing output... [ 92%] sql/scalar
+writing output... [ 93%] sql/snapshot_restore
+writing output... [ 94%] sql/sql
+writing output... [ 96%] sql/subselects
+writing output... [ 97%] sql/system
+writing output... [ 98%] sql/table_functions
+writing output... [100%] udc
+
+generating indices... genindex
+writing additional pages... search
+copying images... [  9%] architecture/conventional-deployment.png
+copying images... [ 18%] architecture/discovery-process.png
+copying images... [ 27%] best_practice/../_static/ec2-discovery-tags.png
+copying images... [ 36%] architecture/joins.png
+copying images... [ 45%] architecture/nested-loop.png
+copying images... [ 54%] best_practice/../_static/ec2-discovery-security-groups.png
+copying images... [ 63%] architecture/mesh-network-topology.png
+copying images... [ 72%] best_practice/../_static/crate-ami-search.png
+copying images... [ 81%] architecture/interconnected-crate-nodes.png
+copying images... [ 90%] architecture/shared-nothing-deployment.png
+copying images... [100%] architecture/push-down.png
+
+copying static files... done
+copying extra files... done
+dumping search index in English (code: en) ... done
+dumping object inventory... done
+build succeeded.
+
+travis_time:end:123fd347:start=1470832947559478671,finish=1470832967402570370,duration=19843091699[0K
+[32;1mThe command "./blackbox/.venv/bin/sphinx-build -n -W -c docs/ -b html -E docs/ docs/out/html" exited with 0.[0m
+travis_fold:start:before_cache[0Ktravis_time:start:21b1bb68[0K$ rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+
+travis_time:end:21b1bb68:start=1470832967407268824,finish=1470832967482509843,duration=75241019[0Ktravis_fold:end:before_cache[0Ktravis_fold:start:cache.2[0Kstore build cache
+travis_time:start:012d7604[0K
+travis_time:end:012d7604:start=1470832967486654899,finish=1470832967490059219,duration=3404320[0Ktravis_time:start:16d94b10[0K[32;1mchange detected (content changed, file is created, or file is deleted):
+/home/travis/.gradle/caches/2.14/plugin-resolution/cache.properties.lock
+
+[0m
+[32;1mchanges detected, packing new archive[0m
+.
+.
+[32;1muploading archive[0m
+
+travis_time:end:16d94b10:start=1470832967494032975,finish=1470833002986470584,duration=35492437609[0Ktravis_fold:end:cache.2[0K
+Done. Your build exited with 1.

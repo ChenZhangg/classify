@@ -1,0 +1,11 @@
+/home/travis/build/sk89q/WorldEdit/worldedit-sponge/build/sources/main/java/com/sk89q/worldedit/sponge/registry/SpongeBlockRegistry.java:102: error: incompatible types: cannot infer type arguments for SpongeBlockState<>
+            blockStates.put(trait.getName(), new SpongeBlockState<>(trait));
+                                                                 ^
+    reason: inference variable T has incompatible bounds
+      equality constraints: CAP#1
+      upper bounds: Comparable<CAP#2>,Comparable<T>
+  where T is a type-variable:
+    T extends Comparable<T> declared in class SpongeBlockState
+  where CAP#1,CAP#2 are fresh type-variables:
+    CAP#1 extends Comparable<CAP#1> from capture of ?
+    CAP#2 extends Comparable<CAP#2> from capture of ?

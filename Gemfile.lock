@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    elif (0.1.0)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  elif
+
+BUNDLED WITH
+   1.16.1

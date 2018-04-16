@@ -6,7 +6,7 @@ require 'elif'
 module Fdse
   class ParseLogFile
     MAVEN_ERROR_FLAG = /COMPILATION ERROR/
-    GRADLE_ERROR_FLAG = /Compilation failed/
+    GRADLE_ERROR_FLAG = /> Compilation failed; see the compiler error output for details/
     GRADLE_ERROR_UP_BOUNDARY = /:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
     SEGMENT_BOUNDARY = "/home/travis"
     SEGMENT_BOUNDARY_FILE = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt|sig)/
@@ -116,7 +116,7 @@ module Fdse
       array = []
       flag = false
       count = 7
-      regexp = /./
+      regexp = /zhang chen/
       Elif.foreach(log_file_path) do |line|
         temp_line = line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
         if GRADLE_ERROR_FLAG =~ temp_line
@@ -125,7 +125,9 @@ module Fdse
         end
         if flag && count == 6
           match = /Execution failed for task '(.+)'/.match(line)
-          regexp = /^#{match[1]}/
+          p log_file_path
+          p match
+          regexp = /^#{match[1]}/ if match
         end
         array.unshift(temp_line) if flag && line_validate?(temp_line)
         if flag && count <=0 && (temp_line =~ GRADLE_ERROR_UP_BOUNDARY || temp_line =~ regexp || temp_line =~ /(?<!\d)0%/)
@@ -170,12 +172,14 @@ module Fdse
       segment_array = []
       segment_array += segment_slice(mslice) if mslice && mslice.length > 0
       segment_array += segment_slice(gslice) if gslice && gslice.length > 0
+=begin
       segment_array.each do |e|
         e.lines.each{ |line| p line}
         match_key = map(e)
         puts "#{match_key}: #{@regex_hash[match_key]}"
         puts
       end
+=end
     end
 
     def self.scan_log_directory(build_logs_path)

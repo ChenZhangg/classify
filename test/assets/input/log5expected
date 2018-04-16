@@ -1,0 +1,17 @@
+:sql:compileTestJava/home/travis/build/crate/crate/sql/src/test/java/io/crate/lucene/LuceneQueryBuilderTest.java:41: warning: [deprecation] RegexQuery in org.apache.lucene.sandbox.queries.regex has been deprecated
+import org.apache.lucene.sandbox.queries.regex.RegexQuery;
+                                              ^
+/home/travis/build/crate/crate/sql/src/test/java/io/crate/lucene/LuceneQueryBuilderTest.java:248: warning: [deprecation] RegexQuery in org.apache.lucene.sandbox.queries.regex has been deprecated
+        assertThat(query, instanceOf(RegexQuery.class));
+                                     ^
+/home/travis/build/crate/crate/sql/src/test/java/io/crate/operation/collect/collectors/NodeStatsCollectorTest.java:74: error: cannot find symbol
+            new ReferenceIdent(systable, SysNodesTableInfo.Columns.HOSTNAME),
+                               ^
+  symbol:   variable systable
+  location: class NodeStatsCollectorTest
+/home/travis/build/crate/crate/sql/src/test/java/org/apache/lucene/index/AssertingLeafReader.java:167: warning: [deprecation] DocsAndPositionsEnum in org.apache.lucene.index has been deprecated
+                assert PostingsEnum.featureRequested(flags, DocsAndPositionsEnum.OLD_NULL_SEMANTICS);
+                                                            ^
+/home/travis/build/crate/crate/sql/src/test/java/org/apache/lucene/index/AssertingLeafReader.java:167: warning: [deprecation] OLD_NULL_SEMANTICS in DocsAndPositionsEnum has been deprecated
+                assert PostingsEnum.featureRequested(flags, DocsAndPositionsEnum.OLD_NULL_SEMANTICS);
+                                                                                ^

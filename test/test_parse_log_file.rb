@@ -34,5 +34,13 @@ class TestParseLogFile < Test::Unit::TestCase
     log_file_path = get_path 'log3'
     expected = File.readlines(get_path('log3expected'))
     assert_equal(expected, Fdse::ParseLogFile.gradle_slice(log_file_path))
+
+    log_file_path = get_path 'log4'
+    expected = File.readlines(get_path('log4expected'))
+    assert_equal(expected, Fdse::ParseLogFile.gradle_slice(log_file_path))
+
+    log_file_path = get_path 'log5'
+    expected = File.readlines(get_path('log5expected'))
+    assert_equal(expected, Fdse::ParseLogFile.gradle_slice(log_file_path))
   end
 end

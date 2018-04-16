@@ -1,0 +1,570 @@
+Using worker: worker-linux-docker-4c72ecb4.prod.travis-ci.org:travis-linux-4
+
+travis_fold:start:system_info[0K[33;1mBuild system information[0m
+Build language: java
+Build group: stable
+Build dist: precise
+Build id: 151982839
+Job id: 151982840
+travis-build version: 17f5a31fb
+[34m[1mBuild image provisioning date and time[0m
+Thu Feb  5 15:09:33 UTC 2015
+[34m[1mOperating System Details[0m
+Distributor ID:	Ubuntu
+Description:	Ubuntu 12.04.5 LTS
+Release:	12.04
+Codename:	precise
+[34m[1mLinux Version[0m
+3.13.0-29-generic
+[34m[1mCookbooks Version[0m
+a68419e https://github.com/travis-ci/travis-cookbooks/tree/a68419e
+[34m[1mGCC version[0m
+gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+Copyright (C) 2011 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[34m[1mLLVM version[0m
+clang version 3.4 (tags/RELEASE_34/final)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+[34m[1mPre-installed Ruby versions[0m
+ruby-1.9.3-p551
+[34m[1mPre-installed Node.js versions[0m
+v0.10.36
+[34m[1mPre-installed Go versions[0m
+1.4.1
+[34m[1mRedis version[0m
+redis-server 2.8.19
+[34m[1mriak version[0m
+2.0.2
+[34m[1mMongoDB version[0m
+MongoDB 2.4.12
+[34m[1mCouchDB version[0m
+couchdb 1.6.1
+[34m[1mNeo4j version[0m
+1.9.4
+[34m[1mRabbitMQ Version[0m
+3.4.3
+[34m[1mElasticSearch version[0m
+1.4.0
+[34m[1mInstalled Sphinx versions[0m
+2.0.10
+2.1.9
+2.2.6
+[34m[1mDefault Sphinx version[0m
+2.2.6
+[34m[1mInstalled Firefox version[0m
+firefox 31.0esr
+[34m[1mPhantomJS version[0m
+1.9.8
+[34m[1mant -version[0m
+Apache Ant(TM) version 1.8.2 compiled on December 3 2011
+[34m[1mmvn -version[0m
+Apache Maven 3.2.5 (12a6b3acb947671f09b81f49094c53f426d8cea1; 2014-12-14T17:29:23+00:00)
+Maven home: /usr/local/maven
+Java version: 1.7.0_76, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-7-oracle/jre
+Default locale: en_US, platform encoding: ANSI_X3.4-1968
+OS name: "linux", version: "3.13.0-29-generic", arch: "amd64", family: "unix"
+travis_fold:end:system_info[0K
+travis_fold:start:fix.CVE-2015-7547[0K$ export DEBIAN_FRONTEND=noninteractive
+W: Size of file /var/lib/apt/lists/us.archive.ubuntu.com_ubuntu_dists_precise-backports_multiverse_source_Sources.gz is not what the server reported 5886 5888
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_ubuntugis_ppa_ubuntu_dists_precise_main_binary-amd64_Packages.gz is not what the server reported 33653 36677
+W: Size of file /var/lib/apt/lists/ppa.launchpad.net_ubuntugis_ppa_ubuntu_dists_precise_main_binary-i386_Packages.gz is not what the server reported 33699 36733
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following extra packages will be installed:
+  libc-bin libc-dev-bin libc6-dev
+Suggested packages:
+  glibc-doc
+The following packages will be upgraded:
+  libc-bin libc-dev-bin libc6 libc6-dev
+4 upgraded, 0 newly installed, 0 to remove and 252 not upgraded.
+Need to get 8,840 kB of archives.
+After this operation, 14.3 kB disk space will be freed.
+Get:1 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6-dev amd64 2.15-0ubuntu10.15 [2,943 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-dev-bin amd64 2.15-0ubuntu10.15 [84.7 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc-bin amd64 2.15-0ubuntu10.15 [1,177 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu/ precise-updates/main libc6 amd64 2.15-0ubuntu10.15 [4,636 kB]
+Fetched 8,840 kB in 0s (35.5 MB/s)
+Preconfiguring packages ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72019 files and directories currently installed.)
+Preparing to replace libc6-dev 2.15-0ubuntu10.10 (using .../libc6-dev_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc6-dev ...
+Preparing to replace libc-dev-bin 2.15-0ubuntu10.10 (using .../libc-dev-bin_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc-dev-bin ...
+Preparing to replace libc-bin 2.15-0ubuntu10.10 (using .../libc-bin_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc-bin ...
+Processing triggers for man-db ...
+Setting up libc-bin (2.15-0ubuntu10.15) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 72018 files and directories currently installed.)
+Preparing to replace libc6 2.15-0ubuntu10.10 (using .../libc6_2.15-0ubuntu10.15_amd64.deb) ...
+Unpacking replacement libc6 ...
+Setting up libc6 (2.15-0ubuntu10.15) ...
+Setting up libc-dev-bin (2.15-0ubuntu10.15) ...
+Setting up libc6-dev (2.15-0ubuntu10.15) ...
+Processing triggers for libc-bin ...
+ldconfig deferred processing now taking place
+travis_fold:end:fix.CVE-2015-7547[0Ktravis_fold:start:git.checkout[0Ktravis_time:start:12cf0c80[0K$ git clone --depth=50 --branch=feature/seven-new https://github.com/sk89q/WorldEdit.git sk89q/WorldEdit
+Cloning into 'sk89q/WorldEdit'...
+remote: Counting objects: 3813, done.[K
+remote: Compressing objects:   0% (1/1746)   [Kremote: Compressing objects:   1% (18/1746)   [Kremote: Compressing objects:   2% (35/1746)   [Kremote: Compressing objects:   3% (53/1746)   [Kremote: Compressing objects:   4% (70/1746)   [Kremote: Compressing objects:   5% (88/1746)   [Kremote: Compressing objects:   6% (105/1746)   [Kremote: Compressing objects:   7% (123/1746)   [Kremote: Compressing objects:   8% (140/1746)   [Kremote: Compressing objects:   9% (158/1746)   [Kremote: Compressing objects:  10% (175/1746)   [Kremote: Compressing objects:  11% (193/1746)   [Kremote: Compressing objects:  12% (210/1746)   [Kremote: Compressing objects:  13% (227/1746)   [Kremote: Compressing objects:  14% (245/1746)   [Kremote: Compressing objects:  15% (262/1746)   [Kremote: Compressing objects:  16% (280/1746)   [Kremote: Compressing objects:  17% (297/1746)   [Kremote: Compressing objects:  18% (315/1746)   [Kremote: Compressing objects:  19% (332/1746)   [Kremote: Compressing objects:  20% (350/1746)   [Kremote: Compressing objects:  21% (367/1746)   [Kremote: Compressing objects:  22% (385/1746)   [Kremote: Compressing objects:  23% (402/1746)   [Kremote: Compressing objects:  24% (420/1746)   [Kremote: Compressing objects:  25% (437/1746)   [Kremote: Compressing objects:  26% (454/1746)   [Kremote: Compressing objects:  27% (472/1746)   [Kremote: Compressing objects:  28% (489/1746)   [Kremote: Compressing objects:  29% (507/1746)   [Kremote: Compressing objects:  30% (524/1746)   [Kremote: Compressing objects:  31% (542/1746)   [Kremote: Compressing objects:  32% (559/1746)   [Kremote: Compressing objects:  33% (577/1746)   [Kremote: Compressing objects:  34% (594/1746)   [Kremote: Compressing objects:  35% (612/1746)   [Kremote: Compressing objects:  36% (629/1746)   [Kremote: Compressing objects:  37% (647/1746)   [Kremote: Compressing objects:  38% (664/1746)   [Kremote: Compressing objects:  39% (681/1746)   [Kremote: Compressing objects:  40% (699/1746)   [Kremote: Compressing objects:  41% (716/1746)   [Kremote: Compressing objects:  42% (734/1746)   [Kremote: Compressing objects:  43% (751/1746)   [Kremote: Compressing objects:  44% (769/1746)   [Kremote: Compressing objects:  45% (786/1746)   [Kremote: Compressing objects:  46% (804/1746)   [Kremote: Compressing objects:  47% (821/1746)   [Kremote: Compressing objects:  48% (839/1746)   [Kremote: Compressing objects:  49% (856/1746)   [Kremote: Compressing objects:  50% (873/1746)   [Kremote: Compressing objects:  51% (891/1746)   [Kremote: Compressing objects:  52% (908/1746)   [Kremote: Compressing objects:  53% (926/1746)   [Kremote: Compressing objects:  54% (943/1746)   [Kremote: Compressing objects:  55% (961/1746)   [Kremote: Compressing objects:  56% (978/1746)   [Kremote: Compressing objects:  57% (996/1746)   [Kremote: Compressing objects:  58% (1013/1746)   [Kremote: Compressing objects:  59% (1031/1746)   [Kremote: Compressing objects:  60% (1048/1746)   [Kremote: Compressing objects:  61% (1066/1746)   [Kremote: Compressing objects:  62% (1083/1746)   [Kremote: Compressing objects:  63% (1100/1746)   [Kremote: Compressing objects:  64% (1118/1746)   [Kremote: Compressing objects:  65% (1135/1746)   [Kremote: Compressing objects:  66% (1153/1746)   [Kremote: Compressing objects:  67% (1170/1746)   [Kremote: Compressing objects:  68% (1188/1746)   [Kremote: Compressing objects:  69% (1205/1746)   [Kremote: Compressing objects:  70% (1223/1746)   [Kremote: Compressing objects:  71% (1240/1746)   [Kremote: Compressing objects:  72% (1258/1746)   [Kremote: Compressing objects:  73% (1275/1746)   [Kremote: Compressing objects:  74% (1293/1746)   [Kremote: Compressing objects:  75% (1310/1746)   [Kremote: Compressing objects:  76% (1327/1746)   [Kremote: Compressing objects:  77% (1345/1746)   [Kremote: Compressing objects:  78% (1362/1746)   [Kremote: Compressing objects:  79% (1380/1746)   [Kremote: Compressing objects:  80% (1397/1746)   [Kremote: Compressing objects:  81% (1415/1746)   [Kremote: Compressing objects:  82% (1432/1746)   [Kremote: Compressing objects:  83% (1450/1746)   [Kremote: Compressing objects:  84% (1467/1746)   [Kremote: Compressing objects:  85% (1485/1746)   [Kremote: Compressing objects:  86% (1502/1746)   [Kremote: Compressing objects:  87% (1520/1746)   [Kremote: Compressing objects:  88% (1537/1746)   [Kremote: Compressing objects:  89% (1554/1746)   [Kremote: Compressing objects:  90% (1572/1746)   [Kremote: Compressing objects:  91% (1589/1746)   [Kremote: Compressing objects:  92% (1607/1746)   [Kremote: Compressing objects:  93% (1624/1746)   [Kremote: Compressing objects:  94% (1642/1746)   [Kremote: Compressing objects:  95% (1659/1746)   [Kremote: Compressing objects:  96% (1677/1746)   [Kremote: Compressing objects:  97% (1694/1746)   [Kremote: Compressing objects:  98% (1712/1746)   [Kremote: Compressing objects:  99% (1729/1746)   [Kremote: Compressing objects: 100% (1746/1746)   [Kremote: Compressing objects: 100% (1746/1746), done.[K
+Receiving objects:   0% (1/3813)   Receiving objects:   1% (39/3813)   Receiving objects:   2% (77/3813)   Receiving objects:   3% (115/3813)   Receiving objects:   4% (153/3813)   Receiving objects:   5% (191/3813)   Receiving objects:   6% (229/3813)   Receiving objects:   7% (267/3813)   Receiving objects:   8% (306/3813)   Receiving objects:   9% (344/3813)   Receiving objects:  10% (382/3813)   Receiving objects:  11% (420/3813)   Receiving objects:  12% (458/3813)   Receiving objects:  13% (496/3813)   Receiving objects:  14% (534/3813)   Receiving objects:  15% (572/3813)   Receiving objects:  16% (611/3813)   Receiving objects:  17% (649/3813)   Receiving objects:  18% (687/3813)   Receiving objects:  19% (725/3813)   Receiving objects:  20% (763/3813)   Receiving objects:  21% (801/3813)   Receiving objects:  22% (839/3813)   Receiving objects:  23% (877/3813)   Receiving objects:  24% (916/3813)   Receiving objects:  25% (954/3813)   Receiving objects:  26% (992/3813)   Receiving objects:  27% (1030/3813)   Receiving objects:  28% (1068/3813)   Receiving objects:  29% (1106/3813)   Receiving objects:  30% (1144/3813)   Receiving objects:  31% (1183/3813)   Receiving objects:  32% (1221/3813)   Receiving objects:  33% (1259/3813)   Receiving objects:  34% (1297/3813)   Receiving objects:  35% (1335/3813)   Receiving objects:  36% (1373/3813)   Receiving objects:  37% (1411/3813)   Receiving objects:  38% (1449/3813)   Receiving objects:  39% (1488/3813)   Receiving objects:  40% (1526/3813)   Receiving objects:  41% (1564/3813)   Receiving objects:  42% (1602/3813)   Receiving objects:  43% (1640/3813)   Receiving objects:  44% (1678/3813)   Receiving objects:  45% (1716/3813)   Receiving objects:  46% (1754/3813)   Receiving objects:  47% (1793/3813)   Receiving objects:  48% (1831/3813)   Receiving objects:  49% (1869/3813)   Receiving objects:  50% (1907/3813)   Receiving objects:  51% (1945/3813)   Receiving objects:  52% (1983/3813)   Receiving objects:  53% (2021/3813)   Receiving objects:  54% (2060/3813)   Receiving objects:  55% (2098/3813)   Receiving objects:  56% (2136/3813)   Receiving objects:  57% (2174/3813)   Receiving objects:  58% (2212/3813)   Receiving objects:  59% (2250/3813)   Receiving objects:  60% (2288/3813)   Receiving objects:  61% (2326/3813)   Receiving objects:  62% (2365/3813)   Receiving objects:  63% (2403/3813)   Receiving objects:  64% (2441/3813)   Receiving objects:  65% (2479/3813)   Receiving objects:  66% (2517/3813)   Receiving objects:  67% (2555/3813)   Receiving objects:  68% (2593/3813)   Receiving objects:  69% (2631/3813)   Receiving objects:  70% (2670/3813)   Receiving objects:  71% (2708/3813)   Receiving objects:  72% (2746/3813)   Receiving objects:  73% (2784/3813)   Receiving objects:  74% (2822/3813)   Receiving objects:  75% (2860/3813)   Receiving objects:  76% (2898/3813)   Receiving objects:  77% (2937/3813)   Receiving objects:  78% (2975/3813)   Receiving objects:  79% (3013/3813)   Receiving objects:  80% (3051/3813)   Receiving objects:  81% (3089/3813)   Receiving objects:  82% (3127/3813)   Receiving objects:  83% (3165/3813)   Receiving objects:  84% (3203/3813)   Receiving objects:  85% (3242/3813)   Receiving objects:  86% (3280/3813)   Receiving objects:  87% (3318/3813)   Receiving objects:  88% (3356/3813)   Receiving objects:  89% (3394/3813)   Receiving objects:  90% (3432/3813)   Receiving objects:  91% (3470/3813)   Receiving objects:  92% (3508/3813)   remote: Total 3813 (delta 1733), reused 3065 (delta 1242), pack-reused 0[K
+Receiving objects:  93% (3547/3813)   Receiving objects:  94% (3585/3813)   Receiving objects:  95% (3623/3813)   Receiving objects:  96% (3661/3813)   Receiving objects:  97% (3699/3813)   Receiving objects:  98% (3737/3813)   Receiving objects:  99% (3775/3813)   Receiving objects: 100% (3813/3813)   Receiving objects: 100% (3813/3813), 1.44 MiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/1733)   Resolving deltas:   4% (79/1733)   Resolving deltas:   5% (101/1733)   Resolving deltas:   6% (104/1733)   Resolving deltas:   7% (122/1733)   Resolving deltas:   8% (141/1733)   Resolving deltas:   9% (158/1733)   Resolving deltas:  10% (179/1733)   Resolving deltas:  11% (192/1733)   Resolving deltas:  12% (211/1733)   Resolving deltas:  13% (227/1733)   Resolving deltas:  14% (243/1733)   Resolving deltas:  15% (262/1733)   Resolving deltas:  18% (323/1733)   Resolving deltas:  19% (337/1733)   Resolving deltas:  20% (354/1733)   Resolving deltas:  21% (364/1733)   Resolving deltas:  23% (406/1733)   Resolving deltas:  26% (462/1733)   Resolving deltas:  27% (468/1733)   Resolving deltas:  28% (489/1733)   Resolving deltas:  29% (509/1733)   Resolving deltas:  30% (525/1733)   Resolving deltas:  31% (554/1733)   Resolving deltas:  32% (558/1733)   Resolving deltas:  33% (573/1733)   Resolving deltas:  34% (592/1733)   Resolving deltas:  35% (610/1733)   Resolving deltas:  36% (639/1733)   Resolving deltas:  37% (642/1733)   Resolving deltas:  39% (682/1733)   Resolving deltas:  42% (735/1733)   Resolving deltas:  43% (754/1733)   Resolving deltas:  44% (764/1733)   Resolving deltas:  45% (780/1733)   Resolving deltas:  46% (805/1733)   Resolving deltas:  47% (815/1733)   Resolving deltas:  48% (833/1733)   Resolving deltas:  49% (852/1733)   Resolving deltas:  50% (879/1733)   Resolving deltas:  51% (884/1733)   Resolving deltas:  52% (903/1733)   Resolving deltas:  54% (936/1733)   Resolving deltas:  55% (954/1733)   Resolving deltas:  56% (973/1733)   Resolving deltas:  57% (988/1733)   Resolving deltas:  58% (1006/1733)   Resolving deltas:  59% (1024/1733)   Resolving deltas:  60% (1043/1733)   Resolving deltas:  61% (1058/1733)   Resolving deltas:  62% (1083/1733)   Resolving deltas:  63% (1092/1733)   Resolving deltas:  64% (1112/1733)   Resolving deltas:  65% (1127/1733)   Resolving deltas:  66% (1151/1733)   Resolving deltas:  67% (1164/1733)   Resolving deltas:  68% (1183/1733)   Resolving deltas:  69% (1198/1733)   Resolving deltas:  70% (1214/1733)   Resolving deltas:  71% (1233/1733)   Resolving deltas:  72% (1253/1733)   Resolving deltas:  74% (1293/1733)   Resolving deltas:  76% (1321/1733)   Resolving deltas:  77% (1339/1733)   Resolving deltas:  78% (1358/1733)   Resolving deltas:  80% (1389/1733)   Resolving deltas:  81% (1410/1733)   Resolving deltas:  82% (1436/1733)   Resolving deltas:  83% (1439/1733)   Resolving deltas:  84% (1460/1733)   Resolving deltas:  85% (1474/1733)   Resolving deltas:  86% (1491/1733)   Resolving deltas:  87% (1509/1733)   Resolving deltas:  90% (1573/1733)   Resolving deltas:  93% (1623/1733)   Resolving deltas:  96% (1669/1733)   Resolving deltas:  97% (1684/1733)   Resolving deltas:  98% (1704/1733)   Resolving deltas:  99% (1716/1733)   Resolving deltas: 100% (1733/1733)   Resolving deltas: 100% (1733/1733), done.
+Checking connectivity... done.
+
+travis_time:end:12cf0c80:start=1471055407619474531,finish=1471055410325124726,duration=2705650195[0K$ cd sk89q/WorldEdit
+$ git checkout -qf 99be0116dbb308edca29883c3ff51cba32b47628
+travis_fold:end:git.checkout[0K
+[33;1mThis job is running on container-based infrastructure, which does not allow use of 'sudo', setuid and setguid executables.[0m
+[33;1mIf you require sudo, add 'sudo: required' to your .travis.yml[0m
+[33;1mSee https://docs.travis-ci.com/user/workers/container-based-infrastructure/ for details.[0m
+$ jdk_switcher use oraclejdk8
+Switching to Oracle JDK8 (java-8-oracle), JAVA_HOME will be set to /usr/lib/jvm/java-8-oracle
+$ export TERM=dumb
+travis_fold:start:cache.1[0KSetting up build cache
+$ export CASHER_DIR=$HOME/.casher
+travis_time:start:0a6cfe14[0K$ Installing caching utilities
+
+travis_time:end:0a6cfe14:start=1471055412044318392,finish=1471055412089987419,duration=45669027[0Ktravis_time:start:0052b532[0K
+travis_time:end:0052b532:start=1471055412095144116,finish=1471055412098592105,duration=3447989[0Ktravis_time:start:17a58e50[0K[32;1mattempting to download cache archive[0m
+[32;1mfetching featureseven-new/cache-linux-precise-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--jdk-oraclejdk8.tgz[0m
+[32;1mfetching featureseven-new/cache--jdk-oraclejdk8.tgz[0m
+[32;1mfetching master/cache-linux-precise-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855--jdk-oraclejdk8.tgz[0m
+[32;1mfound cache[0m
+
+travis_time:end:17a58e50:start=1471055412102707520,finish=1471055420130451262,duration=8027743742[0Ktravis_time:start:0170808c[0K
+travis_time:end:0170808c:start=1471055420134693425,finish=1471055420138090843,duration=3397418[0Ktravis_time:start:04c99026[0K[32;1madding /home/travis/.gradle/caches to cache[0m
+[32;1madding /home/travis/.gradle/wrapper to cache[0m
+
+travis_time:end:04c99026:start=1471055420142084382,finish=1471055429444712043,duration=9302627661[0Ktravis_fold:end:cache.1[0K$ java -Xmx32m -version
+java version "1.8.0_31"
+Java(TM) SE Runtime Environment (build 1.8.0_31-b13)
+Java HotSpot(TM) 64-Bit Server VM (build 25.31-b07, mixed mode)
+$ javac -J-Xmx32m -version
+javac 1.8.0_31
+travis_fold:start:before_install[0Ktravis_time:start:00a47e55[0K$ chmod +x gradlew
+
+travis_time:end:00a47e55:start=1471055431056072430,finish=1471055431059805913,duration=3733483[0Ktravis_fold:end:before_install[0Ktravis_fold:start:install[0Ktravis_time:start:0a1a5e4c[0K$ ./gradlew setupCIWorkspace -s
+
+*******************************************
+ You are building WorldEdit!
+
+ If you encounter trouble:
+ 1) Read COMPILING.md if you haven't yet
+ 2) Try running 'build' in a separate Gradle run
+ 3) Use gradlew and not gradle
+ 4) If you still need help, ask on IRC! irc.esper.net #sk89q
+
+ Output files will be in [subproject]/build/libs
+*******************************************
+
+[buildinfo] Not using buildInfo properties file for this build.
+#################################################
+         ForgeGradle 2.2-SNAPSHOT-0447b4e        
+  https://github.com/MinecraftForge/ForgeGradle  
+#################################################
+               Powered by MCP unknown               
+             http://modcoderpack.com             
+         by: Searge, ProfMobius, Fesh0r,         
+         R4wk, ZeuX, IngisKahn, bspkrs           
+#################################################
+Found AccessTransformer: worldedit_at.cfg
+Download https://plugins.gradle.org/m2/gradle/plugin/org/spongepowered/spongegradle/0.6/spongegradle-0.6.pom
+Download https://plugins.gradle.org/m2/gradle/plugin/org/spongepowered/spongegradle/0.6/spongegradle-0.6.jar
+#################################################
+         ForgeGradle 2.2-SNAPSHOT-unknown        
+  https://github.com/MinecraftForge/ForgeGradle  
+#################################################
+               Powered by MCP unknown               
+             http://modcoderpack.com             
+         by: Searge, ProfMobius, Fesh0r,         
+         R4wk, ZeuX, IngisKahn, bspkrs           
+#################################################
+:worldedit-forge:deobfCompileDummyTask
+:worldedit-forge:getVersionJson
+:worldedit-forge:extractUserdev
+:worldedit-forge:downloadClient SKIPPED
+:worldedit-forge:downloadServer SKIPPED
+:worldedit-forge:splitServerJar SKIPPED
+:worldedit-forge:mergeJars SKIPPED
+:worldedit-forge:applyBinaryPatches
+:worldedit-forge:deobfProvidedDummyTask
+:worldedit-forge:extractDependencyATs SKIPPED
+:worldedit-forge:extractMcpData SKIPPED
+:worldedit-forge:extractMcpMappings SKIPPED
+:worldedit-forge:genSrgs SKIPPED
+:worldedit-forge:deobfMcMCP
+Applying SpecialSource...
+Applying Exceptor...
+:worldedit-forge:setupCiWorkspace
+:worldedit-sponge:deobfCompileDummyTask
+:worldedit-sponge:deobfProvidedDummyTask
+:worldedit-sponge:extractDependencyATs SKIPPED
+:worldedit-sponge:extractMcpData
+Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcp/1.10.2/mcp-1.10.2-srg.zip
+:worldedit-sponge:extractMcpMappings
+Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcp_snapshot/20160628-1.10.2/mcp_snapshot-20160628-1.10.2.zip
+:worldedit-sponge:genSrgs
+:worldedit-sponge:getVersionJson
+:worldedit-sponge:downloadServer
+:worldedit-sponge:splitServerJar
+:worldedit-sponge:deobfMcMCP
+Applying SpecialSource...
+Applying Exceptor...
+:worldedit-sponge:setupCiWorkspace
+
+BUILD SUCCESSFUL
+
+Total time: 1 mins 29.641 secs
+
+travis_time:end:0a1a5e4c:start=1471055431063723278,finish=1471055521127783983,duration=90064060705[0Ktravis_fold:end:install[0Ktravis_time:start:1be7036c[0K$ ./gradlew build -s
+
+*******************************************
+ You are building WorldEdit!
+
+ If you encounter trouble:
+ 1) Read COMPILING.md if you haven't yet
+ 2) Try running 'build' in a separate Gradle run
+ 3) Use gradlew and not gradle
+ 4) If you still need help, ask on IRC! irc.esper.net #sk89q
+
+ Output files will be in [subproject]/build/libs
+*******************************************
+
+[buildinfo] Not using buildInfo properties file for this build.
+#################################################
+         ForgeGradle 2.2-SNAPSHOT-0447b4e        
+  https://github.com/MinecraftForge/ForgeGradle  
+#################################################
+               Powered by MCP unknown               
+             http://modcoderpack.com             
+         by: Searge, ProfMobius, Fesh0r,         
+         R4wk, ZeuX, IngisKahn, bspkrs           
+#################################################
+Found AccessTransformer: worldedit_at.cfg
+#################################################
+         ForgeGradle 2.2-SNAPSHOT-unknown        
+  https://github.com/MinecraftForge/ForgeGradle  
+#################################################
+               Powered by MCP unknown               
+             http://modcoderpack.com             
+         by: Searge, ProfMobius, Fesh0r,         
+         R4wk, ZeuX, IngisKahn, bspkrs           
+#################################################
+Download http://repo.spongepowered.org/maven/org/spongepowered/spongeapi/5.0.0-SNAPSHOT/spongeapi-5.0.0-20160802.053151-96.pom
+Download https://repo1.maven.org/maven2/com/flowpowered/flow-math/1.0.3/flow-math-1.0.3.pom
+Download http://repo.spongepowered.org/maven/org/spongepowered/event-gen-core/2.0.0-SNAPSHOT/event-gen-core-2.0.0-20160513.030620-1.pom
+Download http://repo.spongepowered.org/maven/org/spongepowered/spongeapi/5.0.0-SNAPSHOT/spongeapi-5.0.0-20160802.053151-96.jar
+Download https://repo1.maven.org/maven2/com/flowpowered/flow-math/1.0.3/flow-math-1.0.3.jar
+Download http://repo.spongepowered.org/maven/org/spongepowered/event-gen-core/2.0.0-SNAPSHOT/event-gen-core-2.0.0-20160513.030620-1.jar
+:worldedit-core:compileJavawarning: [options] bootstrap class path not set in conjunction with -source 1.7
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: /home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/jnbt/ListTagBuilder.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+1 warning
+
+:worldedit-core:processResources
+:worldedit-core:classes
+:worldedit-core:jar
+:worldedit-bukkit:compileJavawarning: [options] bootstrap class path not set in conjunction with -source 1.7
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+1 warning
+
+:worldedit-bukkit:processResources
+:worldedit-bukkit:classes
+:worldedit-bukkit:jar
+:worldedit-core:javadoc/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/function/operation/BlockMapEntryPlacer.java:37: warning - Tag @link: reference not found: Map.Entry
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/util/collection/LowMemoryTupleArrayList.java:34: warning - Tag @link: reference not found: Map.Entry
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/util/collection/TupleArrayList.java:34: warning - Tag @link: reference not found: Map.Entry
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/world/World.java:226: warning - Tag @link: can't find generateTree(TreeType, EditSession, Vector) in com.sk89q.worldedit.world.World
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/world/World.java:232: warning - Tag @link: can't find generateTree(TreeType, EditSession, Vector) in com.sk89q.worldedit.world.World
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/world/World.java:238: warning - Tag @link: can't find generateTree(TreeType, EditSession, Vector) in com.sk89q.worldedit.world.World
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/world/World.java:244: warning - Tag @link: can't find generateTree(TreeType, EditSession, Vector) in com.sk89q.worldedit.world.World
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/world/World.java:220: warning - Tag @link: can't find generateTree(TreeType, EditSession, Vector) in com.sk89q.worldedit.world.World
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/util/formatting/Style.java:188: warning - Tag @link: reference not found: org.bukkit.ChatColor
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/util/formatting/Style.java:198: warning - Tag @link: reference not found: org.bukkit.ChatColor
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/LocalSession.java:594: warning - Tag @link: reference not found: null
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/function/operation/BlockMapEntryPlacer.java:37: warning - Tag @link: reference not found: Map.Entry
+/home/travis/build/sk89q/WorldEdit/worldedit-core/src/main/java/com/sk89q/worldedit/function/operation/BlockMapEntryPlacer.java:37: warning - Tag @link: reference not found: Map.Entry
+
+13 warnings
+:worldedit-bukkit:javadoc
+:worldedit-bukkit:javadocJar
+:worldedit-bukkit:sourcesJar
+:worldedit-bukkit:assemble
+:worldedit-bukkit:checkstyleMain
+:worldedit-bukkit:compileTestJavawarning: [options] bootstrap class path not set in conjunction with -source 1.7
+Note: /home/travis/build/sk89q/WorldEdit/worldedit-bukkit/src/test/java/com/sk89q/wepif/TestOfflinePermissible.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+1 warning
+
+:worldedit-bukkit:processTestResources UP-TO-DATE
+:worldedit-bukkit:testClasses
+:worldedit-bukkit:checkstyleTest
+:worldedit-bukkit:test
+:worldedit-bukkit:check
+:worldedit-bukkit:shadowJar
+:worldedit-bukkit:build
+:worldedit-core:javadocJar
+:worldedit-core:sourcesJar
+:worldedit-core:assemble
+:worldedit-core:checkstyleMain
+:worldedit-core:compileTestJavawarning: [options] bootstrap class path not set in conjunction with -source 1.7
+1 warning
+
+:worldedit-core:processTestResources UP-TO-DATE
+:worldedit-core:testClasses
+:worldedit-core:checkstyleTest
+:worldedit-core:test
+:worldedit-core:check
+:worldedit-core:shadowJar
+:worldedit-core:build
+:worldedit-forge:deobfCompileDummyTask
+:worldedit-forge:getVersionJson
+:worldedit-forge:extractUserdev UP-TO-DATE
+:worldedit-forge:downloadClient SKIPPED
+:worldedit-forge:downloadServer SKIPPED
+:worldedit-forge:splitServerJar SKIPPED
+:worldedit-forge:mergeJars SKIPPED
+:worldedit-forge:applyBinaryPatches SKIPPED
+:worldedit-forge:deobfProvidedDummyTask
+:worldedit-forge:extractDependencyATs SKIPPED
+:worldedit-forge:extractMcpData SKIPPED
+:worldedit-forge:extractMcpMappings SKIPPED
+:worldedit-forge:genSrgs SKIPPED
+:worldedit-forge:deobfMcMCP SKIPPED
+:worldedit-forge:sourceApiJava
+:worldedit-forge:compileApiJava UP-TO-DATE
+:worldedit-forge:processApiResources UP-TO-DATE
+:worldedit-forge:apiClasses UP-TO-DATE
+:worldedit-forge:sourceMainJava
+:worldedit-forge:compileJavawarning: [options] bootstrap class path not set in conjunction with -source 1.6
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+1 warning
+
+:worldedit-forge:processResources
+:worldedit-forge:classes
+:worldedit-forge:deobfJar
+:worldedit-forge:jar
+:worldedit-forge:javadoc
+:worldedit-forge:javadocJar
+:worldedit-forge:sourceTestJava
+:worldedit-forge:compileTestJava UP-TO-DATE
+:worldedit-forge:processTestResources UP-TO-DATE
+:worldedit-forge:testClasses UP-TO-DATE
+:worldedit-forge:test UP-TO-DATE
+:worldedit-forge:reobfJar
+:worldedit-forge:shadowJar
+:worldedit-forge:reobfShadowJar
+:worldedit-forge:extractRangemapReplacedMain
+/home/travis/build/sk89q/WorldEdit/worldedit-forge/build/sources/main/java
+:worldedit-forge:retromapReplacedMain
+remapping source...
+:worldedit-forge:sourceJar
+:worldedit-forge:assemble
+:worldedit-forge:checkstyleApi UP-TO-DATE
+:worldedit-forge:checkstyleMain
+:worldedit-forge:checkstyleTest UP-TO-DATE
+:worldedit-forge:check
+:worldedit-forge:build
+:worldedit-sponge:deobfCompileDummyTask
+:worldedit-sponge:deobfProvidedDummyTask
+:worldedit-sponge:extractDependencyATs SKIPPED
+:worldedit-sponge:extractMcpData SKIPPED
+:worldedit-sponge:extractMcpMappings
+:worldedit-sponge:genSrgs SKIPPED
+:worldedit-sponge:getVersionJson
+:worldedit-sponge:downloadServer SKIPPED
+:worldedit-sponge:splitServerJar SKIPPED
+:worldedit-sponge:deobfMcMCP SKIPPED
+:worldedit-sponge:sourceApiJava
+:worldedit-sponge:compileApiJava UP-TO-DATE
+:worldedit-sponge:processApiResources UP-TO-DATE
+:worldedit-sponge:apiClasses UP-TO-DATE
+:worldedit-sponge:generateMetadata
+:worldedit-sponge:sourceMainJava
+:worldedit-sponge:compileJava
+Download https://libraries.minecraft.net/com/mojang/realms/1.9.3/realms-1.9.3.pom
+Download https://libraries.minecraft.net/com/mojang/realms/1.9.3/realms-1.9.3.jar
+Note: Reading extra plugin metadata from /home/travis/build/sk89q/WorldEdit/worldedit-sponge/build/tmp/generateMetadata/mcmod.info
+Note: Writing plugin metadata to /home/travis/build/sk89q/WorldEdit/worldedit-sponge/build/tmp/generateMetadata/mcmod.info
+/home/travis/build/sk89q/WorldEdit/worldedit-sponge/build/sources/main/java/com/sk89q/worldedit/sponge/registry/SpongeBlockRegistry.java:102: error: incompatible types: cannot infer type arguments for SpongeBlockState<>
+            blockStates.put(trait.getName(), new SpongeBlockState<>(trait));
+                                                                 ^
+    reason: inference variable T has incompatible bounds
+      equality constraints: CAP#1
+      upper bounds: Comparable<CAP#2>,Comparable<T>
+  where T is a type-variable:
+    T extends Comparable<T> declared in class SpongeBlockState
+  where CAP#1,CAP#2 are fresh type-variables:
+    CAP#1 extends Comparable<CAP#1> from capture of ?
+    CAP#2 extends Comparable<CAP#2> from capture of ?
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
+1 error
+:worldedit-sponge:compileJava FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':worldedit-sponge:compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+Run with --info or --debug option to get more log output.
+
+* Exception is:
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':worldedit-sponge:compileJava'.
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeActions(ExecuteActionsTaskExecuter.java:69)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:46)
+	at org.gradle.api.internal.tasks.execution.PostExecutionAnalysisTaskExecuter.execute(PostExecutionAnalysisTaskExecuter.java:35)
+	at org.gradle.api.internal.tasks.execution.SkipUpToDateTaskExecuter.execute(SkipUpToDateTaskExecuter.java:68)
+	at org.gradle.api.internal.tasks.execution.ValidatingTaskExecuter.execute(ValidatingTaskExecuter.java:58)
+	at org.gradle.api.internal.tasks.execution.SkipEmptySourceFilesTaskExecuter.execute(SkipEmptySourceFilesTaskExecuter.java:52)
+	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:52)
+	at org.gradle.api.internal.tasks.execution.SkipOnlyIfTaskExecuter.execute(SkipOnlyIfTaskExecuter.java:53)
+	at org.gradle.api.internal.tasks.execution.ExecuteAtMostOnceTaskExecuter.execute(ExecuteAtMostOnceTaskExecuter.java:43)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter$EventFiringTaskWorker.execute(DefaultTaskGraphExecuter.java:203)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter$EventFiringTaskWorker.execute(DefaultTaskGraphExecuter.java:185)
+	at org.gradle.execution.taskgraph.AbstractTaskPlanExecutor$TaskExecutorWorker.processTask(AbstractTaskPlanExecutor.java:66)
+	at org.gradle.execution.taskgraph.AbstractTaskPlanExecutor$TaskExecutorWorker.run(AbstractTaskPlanExecutor.java:50)
+	at org.gradle.execution.taskgraph.DefaultTaskPlanExecutor.process(DefaultTaskPlanExecutor.java:25)
+	at org.gradle.execution.taskgraph.DefaultTaskGraphExecuter.execute(DefaultTaskGraphExecuter.java:110)
+	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:37)
+	at org.gradle.execution.DefaultBuildExecuter.execute(DefaultBuildExecuter.java:37)
+	at org.gradle.execution.DefaultBuildExecuter.access$000(DefaultBuildExecuter.java:23)
+	at org.gradle.execution.DefaultBuildExecuter$1.proceed(DefaultBuildExecuter.java:43)
+	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:32)
+	at org.gradle.execution.DefaultBuildExecuter.execute(DefaultBuildExecuter.java:37)
+	at org.gradle.execution.DefaultBuildExecuter.execute(DefaultBuildExecuter.java:30)
+	at org.gradle.initialization.DefaultGradleLauncher$4.run(DefaultGradleLauncher.java:154)
+	at org.gradle.internal.Factories$1.create(Factories.java:22)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:90)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:52)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuildStages(DefaultGradleLauncher.java:151)
+	at org.gradle.initialization.DefaultGradleLauncher.access$200(DefaultGradleLauncher.java:32)
+	at org.gradle.initialization.DefaultGradleLauncher$1.create(DefaultGradleLauncher.java:99)
+	at org.gradle.initialization.DefaultGradleLauncher$1.create(DefaultGradleLauncher.java:93)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:90)
+	at org.gradle.internal.progress.DefaultBuildOperationExecutor.run(DefaultBuildOperationExecutor.java:62)
+	at org.gradle.initialization.DefaultGradleLauncher.doBuild(DefaultGradleLauncher.java:93)
+	at org.gradle.initialization.DefaultGradleLauncher.run(DefaultGradleLauncher.java:82)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter$DefaultBuildController.run(InProcessBuildActionExecuter.java:94)
+	at org.gradle.tooling.internal.provider.ExecuteBuildActionRunner.run(ExecuteBuildActionRunner.java:28)
+	at org.gradle.launcher.exec.ChainingBuildActionRunner.run(ChainingBuildActionRunner.java:35)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:43)
+	at org.gradle.launcher.exec.InProcessBuildActionExecuter.execute(InProcessBuildActionExecuter.java:28)
+	at org.gradle.launcher.exec.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:81)
+	at org.gradle.launcher.exec.ContinuousBuildActionExecuter.execute(ContinuousBuildActionExecuter.java:46)
+	at org.gradle.launcher.exec.DaemonUsageSuggestingBuildActionExecuter.execute(DaemonUsageSuggestingBuildActionExecuter.java:51)
+	at org.gradle.launcher.exec.DaemonUsageSuggestingBuildActionExecuter.execute(DaemonUsageSuggestingBuildActionExecuter.java:28)
+	at org.gradle.launcher.cli.RunBuildAction.run(RunBuildAction.java:43)
+	at org.gradle.internal.Actions$RunnableActionAdapter.execute(Actions.java:173)
+	at org.gradle.launcher.cli.CommandLineActionFactory$ParseAndBuildAction.execute(CommandLineActionFactory.java:241)
+	at org.gradle.launcher.cli.CommandLineActionFactory$ParseAndBuildAction.execute(CommandLineActionFactory.java:214)
+	at org.gradle.launcher.cli.JavaRuntimeValidationAction.execute(JavaRuntimeValidationAction.java:35)
+	at org.gradle.launcher.cli.JavaRuntimeValidationAction.execute(JavaRuntimeValidationAction.java:24)
+	at org.gradle.launcher.cli.CommandLineActionFactory$WithLogging.execute(CommandLineActionFactory.java:207)
+	at org.gradle.launcher.cli.CommandLineActionFactory$WithLogging.execute(CommandLineActionFactory.java:169)
+	at org.gradle.launcher.cli.ExceptionReportingAction.execute(ExceptionReportingAction.java:33)
+	at org.gradle.launcher.cli.ExceptionReportingAction.execute(ExceptionReportingAction.java:22)
+	at org.gradle.launcher.Main.doAction(Main.java:33)
+	at org.gradle.launcher.bootstrap.EntryPoint.run(EntryPoint.java:45)
+	at org.gradle.launcher.bootstrap.ProcessBootstrap.runNoExit(ProcessBootstrap.java:55)
+	at org.gradle.launcher.bootstrap.ProcessBootstrap.run(ProcessBootstrap.java:36)
+	at org.gradle.launcher.GradleMain.main(GradleMain.java:23)
+	at org.gradle.wrapper.BootstrapMainStarter.start(BootstrapMainStarter.java:30)
+	at org.gradle.wrapper.WrapperExecutor.execute(WrapperExecutor.java:129)
+	at org.gradle.wrapper.GradleWrapperMain.main(GradleWrapperMain.java:61)
+Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler error output for details.
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:48)
+	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:33)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:104)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:53)
+	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.execute(NormalizingJavaCompiler.java:38)
+	at org.gradle.api.internal.tasks.compile.CleaningJavaCompilerSupport.execute(CleaningJavaCompilerSupport.java:35)
+	at org.gradle.api.internal.tasks.compile.CleaningJavaCompilerSupport.execute(CleaningJavaCompilerSupport.java:25)
+	at org.gradle.api.tasks.compile.JavaCompile.performCompilation(JavaCompile.java:163)
+	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:145)
+	at org.gradle.api.tasks.compile.JavaCompile.compile(JavaCompile.java:93)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:75)
+	at org.gradle.api.internal.project.taskfactory.AnnotationProcessingTaskFactory$IncrementalTaskAction.doExecute(AnnotationProcessingTaskFactory.java:245)
+	at org.gradle.api.internal.project.taskfactory.AnnotationProcessingTaskFactory$StandardTaskAction.execute(AnnotationProcessingTaskFactory.java:221)
+	at org.gradle.api.internal.project.taskfactory.AnnotationProcessingTaskFactory$IncrementalTaskAction.execute(AnnotationProcessingTaskFactory.java:232)
+	at org.gradle.api.internal.project.taskfactory.AnnotationProcessingTaskFactory$StandardTaskAction.execute(AnnotationProcessingTaskFactory.java:210)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeAction(ExecuteActionsTaskExecuter.java:80)
+	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeActions(ExecuteActionsTaskExecuter.java:61)
+	... 60 more
+
+
+BUILD FAILED
+
+Total time: 2 mins 9.19 secs
+
+travis_time:end:1be7036c:start=1471055521132186620,finish=1471055650921085174,duration=129788898554[0K
+[31;1mThe command "./gradlew build -s" exited with 1.[0m
+travis_fold:start:before_cache[0Ktravis_time:start:080b7688[0K$ find $HOME/.gradle/ -name '*.lock' -print -exec rm -f {} \;
+/home/travis/.gradle/caches/modules-2/modules-2.lock
+/home/travis/.gradle/caches/2.13/plugin-resolution/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/settings_derrz8rbxv2fxq458rt2zehgo/7sfxw8ff9fms2y6w6wzgad589/cp_settings57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/settings_derrz8rbxv2fxq458rt2zehgo/7sfxw8ff9fms2y6w6wzgad589/settings57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/build_ddngoek2oa905htpfo7psamsd/azme6z38571m46hufbv7tg9ev/cp_proj57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/build_ddngoek2oa905htpfo7psamsd/azme6z38571m46hufbv7tg9ev/proj-993044987/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/build_3p4f2vkbeytbsdp4hd8fexiiz/ddmzglvmbqb58zqm1i2it6izd/cp_proj57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/build_3p4f2vkbeytbsdp4hd8fexiiz/ddmzglvmbqb58zqm1i2it6izd/proj-1244874966/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/build_5zt4ino5jo326t9zhhec20dl3/9etl7a99k1dy7dr2tz24yb8io/cp_proj57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/build_5zt4ino5jo326t9zhhec20dl3/9etl7a99k1dy7dr2tz24yb8io/proj-1244874966/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/build_3rcz5xx33rpetlwgxeyufemfk/81keja2hxcrqolnq4g6jwe7jy/cp_proj57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/build_3rcz5xx33rpetlwgxeyufemfk/81keja2hxcrqolnq4g6jwe7jy/proj-983304194/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/build_eglz6yjxk0w6ozc4rmi7m4zr2/6sn4p6lamt7tj7dq5vi4412pi/cp_proj57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts-remapped/build_eglz6yjxk0w6ozc4rmi7m4zr2/6sn4p6lamt7tj7dq5vi4412pi/proj2044988829/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/9etl7a99k1dy7dr2tz24yb8io/cp_proj/cp_proj57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/9etl7a99k1dy7dr2tz24yb8io/proj/proj-1244874966/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/ddmzglvmbqb58zqm1i2it6izd/cp_proj/cp_proj57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/ddmzglvmbqb58zqm1i2it6izd/proj/proj-1244874966/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/7sfxw8ff9fms2y6w6wzgad589/cp_settings/cp_settings57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/7sfxw8ff9fms2y6w6wzgad589/settings/settings57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/81keja2hxcrqolnq4g6jwe7jy/cp_proj/cp_proj57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/81keja2hxcrqolnq4g6jwe7jy/proj/proj-983304194/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/azme6z38571m46hufbv7tg9ev/cp_proj/cp_proj57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/azme6z38571m46hufbv7tg9ev/proj/proj-993044987/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/6sn4p6lamt7tj7dq5vi4412pi/cp_proj/cp_proj57408229/cache.properties.lock
+/home/travis/.gradle/caches/2.13/scripts/6sn4p6lamt7tj7dq5vi4412pi/proj/proj2044988829/cache.properties.lock
+/home/travis/.gradle/caches/2.13/workerMain/cache.properties.lock
+/home/travis/.gradle/native/19/linux-amd64/libnative-platform.so.lock
+/home/travis/.gradle/native/19/linux-amd64/libnative-platform-curses.so.lock
+
+travis_time:end:080b7688:start=1471055650925463259,finish=1471055650992563871,duration=67100612[0Ktravis_fold:end:before_cache[0Ktravis_fold:start:cache.2[0Kstore build cache
+travis_time:start:029328d2[0K
+travis_time:end:029328d2:start=1471055650996792378,finish=1471055651000189945,duration=3397567[0Ktravis_time:start:221a5b28[0K[32;1mchange detected (content changed, file is created, or file is deleted):
+/home/travis/.gradle/caches/2.13/plugin-resolution/cache.properties
+/home/travis/.gradle/caches/2.13/plugin-resolution/plugin-use-metadata.bin
+/home/travis/.gradle/caches/2.13/scripts/6sn4p6lamt7tj7dq5vi4412pi/cp_proj/cp_proj57408229/cache.properties
+/home/travis/.gradle/caches/2.13/scripts/6sn4p6lamt7tj7dq5vi4412pi/cp_proj/cp_proj57408229/classes/_BuildScript_.class
+/home/travis/.gradle/caches/2.13/scripts/6sn4p6lamt7tj7dq5vi4412pi/cp_proj/cp_proj57408229/classes/_BuildScript_$_run_closure1.class
+/home/travis/.gradle/caches/2.13/scripts/6sn4p6lamt7tj7dq5vi4412pi/cp_proj/cp_proj57408229/classes/_BuildScript_$_run_closure1$_closure2.class
+/home/travis/.gradle/caches/2.13/scripts/6sn4p6lamt7tj7dq5vi4412pi/cp_proj/cp_proj57408229/classes/_BuildScript_$_run_closure1$_closure2$_closure4.class
+/home/travis/.gradle/caches/2.13/scripts/6sn4p6lamt7tj7dq5vi4412pi/cp_proj/cp_proj57408229/classes/_BuildScript_$_run_closure1$_closure2$_closure5.class
+/home/travis/.gradle/caches/2.13/scripts/6sn4p6la
+[0m
+[32;1m...
+[0m
+[32;1mchanges detected, packing new archive[0m
+.
+.
+.
+.
+.
+.
+[32;1muploading archive[0m
+
+travis_time:end:221a5b28:start=1471055651004166288,finish=1471055693773586821,duration=42769420533[0Ktravis_fold:end:cache.2[0K
+Done. Your build exited with 1.
