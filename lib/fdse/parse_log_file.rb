@@ -2,6 +2,7 @@ require 'set'
 require 'fdse/property'
 require 'csv'
 require 'elif'
+require 'fileutils'
 
 module Fdse
   class ParseLogFile
