@@ -23,7 +23,7 @@ p diff.to
 p diff.size
 p diff.stats
 p diff.lines
-
+p diff.name_status
 diff.patch.lines.each do |line|
   puts line
 end
