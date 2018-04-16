@@ -182,11 +182,13 @@ module Fdse
       segment_array += segment_slice(mslice) if mslice && mslice.length > 0
       segment_array += segment_slice(gslice) if gslice && gslice.length > 0
       output = File.expand_path(File.join('..', 'assets', 'output', 'output'), File.dirname(__FILE__))
-      segment_array.each_with_index do |segment, index|
+      index = 0
+      while segment = segment_array.shift
         hash[:output] = output
         hash[:index] = index
         hash[:key], hash[:value] = map(segment)
         hash[:segment] = segment
+        index += 1
         @queue.enq hash
       end
     end
@@ -236,7 +238,7 @@ module Fdse
             compiler_error_message_slice p
           end
           loop do
-            break if Thread.list.count{ |thread| thread.alive? } <= 10
+            break if Thread.list.count{ |thread| thread.alive? } <= 50
           end
         end
       end
