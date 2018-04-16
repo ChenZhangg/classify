@@ -23,3 +23,11 @@ p diff.to
 p diff.size
 p diff.stats
 p diff.lines
+
+diff.patch.lines.each do |line|
+  p line
+end
+
+diff.each do |e|
+  p e
+end

@@ -205,10 +205,10 @@ module Fdse
 
 
       consumer = Thread.new do
+        loop do
+          hash = @queue.deq
+          break if hash == :END_OF_WORK
         File.open(output, 'a') do |f|
-          loop do
-            hash = @queue.deq
-            break if hash == :END_OF_WORK
             f.puts
             f.puts '======================================'
             f.puts hash[:output]
@@ -217,8 +217,8 @@ module Fdse
             hash[:segment].lines.each{ |line| f.puts line }
             f.puts
             hash = nil
-          end
         end
+      end
       end
       threads = []
       Thread.list.each{ |thread| threads << thread }
