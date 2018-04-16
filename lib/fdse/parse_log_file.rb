@@ -185,7 +185,8 @@ module Fdse
       end
 
       output = File.expand_path(File.join('..', 'assets', 'output', 'output'), File.dirname(__FILE__))
-
+      dirname = File.dirname(output)
+      FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
       File.open(output, 'a') do |f|
         f.puts
         f.puts '======================================'
