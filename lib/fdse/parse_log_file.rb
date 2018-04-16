@@ -173,14 +173,16 @@ module Fdse
     end
 
     def self.compiler_error_message_slice(log_file_path)
-      hash = use_build_tool(log_file_path)
+      h = use_build_tool(log_file_path)
       mslice = nil
       gslice = nil
-      mslice = maven_slice(log_file_path) if hash[:maven]
-      gslice = gradle_slice(log_file_path) if hash[:gradle]
+      mslice = maven_slice(log_file_path) if h[:maven]
+      gslice = gradle_slice(log_file_path) if h[:gradle]
       segment_array = []
       segment_array += segment_slice(mslice) if mslice && mslice.length > 0
       segment_array += segment_slice(gslice) if gslice && gslice.length > 0
+      mslice = nil
+      gslice = nil
       output = File.expand_path(File.join('..', 'assets', 'output', 'output'), File.dirname(__FILE__))
       index = 0
       while segment = segment_array.shift
@@ -208,17 +210,17 @@ module Fdse
         loop do
           hash = @queue.deq
           break if hash == :END_OF_WORK
-        File.open(output, 'a') do |f|
-            f.puts
-            f.puts '======================================'
-            f.puts hash[:output]
-            f.puts "#{hash[:key]}: #{hash[:value]}: #{@regex_hash[hash[:key]]}"
-            f.puts
-            hash[:segment].lines.each{ |line| f.puts line }
-            f.puts
-            hash = nil
-        end
-      end
+          File.open(output, 'a') do |f|
+              f.puts
+              f.puts '======================================'
+              f.puts hash[:output]
+              f.puts "#{hash[:key]}: #{hash[:value]}: #{@regex_hash[hash[:key]]}"
+              f.puts
+              hash[:segment].lines.each{ |line| f.puts line }
+              f.puts
+              hash = nil
+          end
+       end
       end
       threads = []
       Thread.list.each{ |thread| threads << thread }
