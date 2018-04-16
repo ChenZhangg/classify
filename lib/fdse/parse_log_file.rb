@@ -242,7 +242,6 @@ module Fdse
           end
           loop do
             count = Thread.list.count{ |thread| thread.alive? }
-            sleep 1
             p count
             break if count <= 50
           end
