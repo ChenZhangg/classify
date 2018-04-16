@@ -3,6 +3,7 @@ require 'fdse/property'
 require 'csv'
 require 'elif'
 require 'fileutils'
+require 'thread'
 
 module Fdse
   class ParseLogFile
@@ -180,30 +181,45 @@ module Fdse
       segment_array = []
       segment_array += segment_slice(mslice) if mslice && mslice.length > 0
       segment_array += segment_slice(gslice) if gslice && gslice.length > 0
-      match_array = []
-      segment_array.each_with_index do |e, index|
-        match_array << (map(e) << index)
-      end
-
       output = File.expand_path(File.join('..', 'assets', 'output', 'output'), File.dirname(__FILE__))
-      dirname = File.dirname(output)
-      FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
-      File.open(output, 'a') do |f|
-        f.puts
-        f.puts '======================================'
-        f.puts log_file_path
-        f.puts
-        match_array.each do |e|
-          f.puts "#{e[0]}: #{e[1]}: #{@regex_hash[e[0]]}"
-          f.puts
-          segment_array[e[2]].lines.each{ |line| f.puts line }
-          f.puts
-        end
+      segment_array.each_with_index do |segment, index|
+        hash[:output] = output
+        hash[:index] = index
+        hash[:key], hash[:value] = map(segment)
+        hash[:segment] = segment
+        @queue.enq hash
       end
+    end
 
+    def self.queue_initialize
+      @queue = SizedQueue.new(50)
     end
 
     def self.scan_log_directory(build_logs_path)
+      output = File.expand_path(File.join('..', 'assets', 'output', 'output'), File.dirname(__FILE__))
+      dirname = File.dirname(output)
+      FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
+      queue_initialize
+
+
+      consumer = Thread.new do
+        File.open(output, 'a') do |f|
+          loop do
+            hash = @queue.deq
+            break if hash == :END_OF_WORK
+            f.puts
+            f.puts '======================================'
+            f.puts hash[:output]
+            f.puts "#{hash[:key]}: #{hash[:value]}: #{@regex_hash[hash[:key]]}"
+            f.puts
+            hash[:segment].lines.each{ |line| f.puts line }
+            f.puts
+          end
+          hash = nil
+        end
+      end
+      threads = []
+      Thread.list.each{ |thread| threads << thread }
       #flag = true
       Dir.foreach(build_logs_path) do |repo_name|
         next if /.+@.+/ !~ repo_name
@@ -224,7 +240,9 @@ module Fdse
           end
         end
       end
-      Thread.list.each{ |thread| thread.join if thread.alive? && thread != Thread.current}
+      @queue.enq(:END_OF_WORK)
+      Thread.list.each{ |thread| thread.join if thread.alive? && !threads.include?(thread)}
+      consumer.join
     end
   end
 end

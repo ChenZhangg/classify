@@ -3,7 +3,7 @@ require 'fdse/parse_log_file'
 class TestParseLogFile < Test::Unit::TestCase
 
   def setup
-    #@parser = Fdse::ParseLogFile.new
+    Fdse::ParseLogFile.queue_initialize
   end
 
   def get_path(filename)

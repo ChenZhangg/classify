@@ -1,3 +1,7 @@
-require 'elif'
+threads = []
+Thread.list.each{ |thread| threads << thread }
+thr = Thread.new do
 
-p a&.b
+end
+p thr
+p threads
