@@ -225,11 +225,11 @@ module Fdse
       end
       threads = []
       Thread.list.each{ |thread| threads << thread }
-      #flag = true
+      flag = true
       Dir.foreach(build_logs_path) do |repo_name|
         next if /.+@.+/ !~ repo_name
-        #flag = false if repo_name.include? 'selenium'
-        #next if flag
+        flag = false if repo_name.include? 'janusgraph'
+        next if flag
         repo_path = File.join(build_logs_path, repo_name)
         puts "Scanning projects: #{repo_path}"
 
@@ -242,6 +242,7 @@ module Fdse
           end
           loop do
             count = Thread.list.count{ |thread| thread.alive? }
+            sleep 1
             p count
             break if count <= 50
           end
