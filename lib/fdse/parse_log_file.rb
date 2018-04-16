@@ -214,8 +214,8 @@ module Fdse
             f.puts
             hash[:segment].lines.each{ |line| f.puts line }
             f.puts
+            hash = nil
           end
-          hash = nil
         end
       end
       threads = []
