@@ -1,6 +1,6 @@
 /build_logs
 /data
 /.idea
-/lib/assets/output
+/lib/assets/output/
 *~
 .DS_Store
