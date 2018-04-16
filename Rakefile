@@ -8,5 +8,5 @@ Rake::TestTask.new('test') do |t|
 end
 
 task :log do
-  ruby '-XX:+HeapDumpOnOutOfMemoryError -Ilib bin/classify.rb'
+  ruby '-J-XX:+HeapDumpOnOutOfMemoryError -Ilib bin/classify.rb'
 end
