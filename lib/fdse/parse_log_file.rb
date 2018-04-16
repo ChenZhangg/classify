@@ -236,7 +236,7 @@ module Fdse
             compiler_error_message_slice p
           end
           loop do
-            break if Thread.list.count{ |thread| thread.alive? } <= 50
+            break if Thread.list.count{ |thread| thread.alive? } <= 10
           end
         end
       end
