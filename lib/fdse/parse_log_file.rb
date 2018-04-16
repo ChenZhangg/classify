@@ -119,7 +119,11 @@ module Fdse
       count = 7
       regexp = /zhang chen/
       Elif.foreach(log_file_path) do |line|
-        temp_line = line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
+        begin
+          temp_line = line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
+        rescue
+          temp_line = line.encode('ISO-8859-1', 'ISO-8859-1').gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
+        end
         if GRADLE_ERROR_FLAG =~ temp_line
           flag = true
           count = 7
@@ -141,7 +145,11 @@ module Fdse
       array = []
       flag = false
       File.foreach(log_file_path) do |line|
-        temp_line = line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
+        begin
+          temp_line = line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
+        rescue
+          temp_line = line.encode('ISO-8859-1', 'ISO-8859-1').gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
+        end
         flag = true if MAVEN_ERROR_FLAG =~ temp_line
         flag = false if flag && temp_line =~ /[0-9]+ error|Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin/
         array << temp_line if flag && line_validate?(temp_line)
@@ -171,17 +179,26 @@ module Fdse
       segment_array = []
       segment_array += segment_slice(mslice) if mslice && mslice.length > 0
       segment_array += segment_slice(gslice) if gslice && gslice.length > 0
-      puts
-      puts '======================================'
-      puts log_file_path
-      puts
-      segment_array.each do |e|
-        match = map(e)
-        puts "#{match[0]}: #{match[1]}: #{@regex_hash[match[0]]}"
-        puts
-        e.lines.each{ |line| p line}
-        puts
+      match_array = []
+      segment_array.each_with_index do |e, index|
+        match_array << (map(e) << index)
       end
+
+      output = File.expand_path(File.join('..', 'assets', 'output', 'output'), File.dirname(__FILE__))
+
+      File.open(output, 'a') do |f|
+        f.puts
+        f.puts '======================================'
+        f.puts log_file_path
+        f.puts
+        match_array.each do |e|
+          f.puts "#{e[0]}: #{e[1]}: #{@regex_hash[e[0]]}"
+          f.puts
+          segment_array[e[2]].lines.each{ |line| f.puts line }
+          f.puts
+        end
+      end
+
     end
 
     def self.scan_log_directory(build_logs_path)

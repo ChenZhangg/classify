@@ -43,4 +43,10 @@ class TestParseLogFile < Test::Unit::TestCase
     expected = File.readlines(get_path('log5expected'))
     assert_equal(expected, Fdse::ParseLogFile.gradle_slice(log_file_path))
   end
+
+  def test_encode
+    log_file_path = get_path 'encode0'
+    Fdse::ParseLogFile.maven_slice(log_file_path)
+    Fdse::ParseLogFile.gradle_slice(log_file_path)
+  end
 end
