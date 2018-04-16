@@ -13,6 +13,8 @@ module Fdse
     def push_error_induce(sha_pre, sha_next)
       diff = @g.diff(sha_pre, sha_next)
     end
+
+    def segment_analyze(segment, )
     attr_reader :g
   end
 end
