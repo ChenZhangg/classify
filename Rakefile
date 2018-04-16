@@ -8,5 +8,5 @@ Rake::TestTask.new('test') do |t|
 end
 
 task :log do
-  ruby '-Ilib bin/classify.rb'
+  ruby '-J-Xmx1024M -Ilib bin/classify.rb'
 end

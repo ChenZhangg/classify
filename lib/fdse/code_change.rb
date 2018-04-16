@@ -17,4 +17,9 @@ module Fdse
   end
 end
 cc = Fdse::CodeChange.new 'checkstyle/checkstyle'
-p cc.g
+diff = cc.push_error_induce('63005f9a5e64f94ed3325188504f74e50e0fed88', '53d8e10fd3d049457f7aa3da503d48faef6264aa')
+p diff.from
+p diff.to
+p diff.size
+p diff.stats
+p diff.lines
