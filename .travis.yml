@@ -2,5 +2,5 @@ language: ruby
 rvm:
   - jruby
 jdk:
-  -oraclejdk8
-  -oraclejdk9
+  - oraclejdk8
+  - oraclejdk9
