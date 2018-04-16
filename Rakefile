@@ -6,3 +6,7 @@ Rake::TestTask.new('test') do |t|
   t.pattern = "test/test_*.rb"
   t.verbose = true
 end
+
+task :log do
+  ruby '-Ilib bin/classify.rb'
+end

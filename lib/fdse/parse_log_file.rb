@@ -51,10 +51,11 @@ module Fdse
         match = regex.match(segment)
         if match && match[0] == segment
           match_key = key
+          max_value_word_number = 1
           break
         end
       end
-      match_key
+      [match_key, max_value_word_number]
     end
 
     def self.segment_slice(segment_lines)
@@ -125,8 +126,6 @@ module Fdse
         end
         if flag && count == 6
           match = /Execution failed for task '(.+)'/.match(line)
-          p log_file_path
-          p match
           regexp = /^#{match[1]}/ if match
         end
         array.unshift(temp_line) if flag && line_validate?(temp_line)
@@ -172,14 +171,17 @@ module Fdse
       segment_array = []
       segment_array += segment_slice(mslice) if mslice && mslice.length > 0
       segment_array += segment_slice(gslice) if gslice && gslice.length > 0
-=begin
+      puts
+      puts '======================================'
+      puts log_file_path
+      puts
       segment_array.each do |e|
+        match = map(e)
+        puts "#{match[0]}: #{match[1]}: #{@regex_hash[match[0]]}"
+        puts
         e.lines.each{ |line| p line}
-        match_key = map(e)
-        puts "#{match_key}: #{@regex_hash[match_key]}"
         puts
       end
-=end
     end
 
     def self.scan_log_directory(build_logs_path)
