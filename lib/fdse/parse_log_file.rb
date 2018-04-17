@@ -187,7 +187,7 @@ module Fdse
       index = 0
       hash = Hash.new
       while segment = segment_array.shift
-        hash[:output] = output
+        hash[:input] = log_file_path
         hash[:index] = index
         hash[:key], hash[:value] = map(segment)
         hash[:segment] = segment
@@ -214,9 +214,9 @@ module Fdse
           File.open(output, 'a') do |f|
               f.puts
               f.puts '======================================'
-              f.puts hash[:output]
+              f.puts hash[:input]
               f.puts "#{hash[:key]}: #{hash[:value]}: #{@regex_hash[hash[:key]]}"
-              f.puts
+              f.puts hash[:index]
               hash[:segment].lines.each{ |line| f.puts line }
               f.puts
               hash = nil
@@ -242,7 +242,7 @@ module Fdse
           end
           loop do
             count = Thread.list.count{ |thread| thread.alive? }
-            p count
+            #p count
             break if count <= 50
           end
         end
