@@ -4,7 +4,8 @@ require 'csv'
 require 'elif'
 require 'fileutils'
 require 'thread'
-
+require 'travis_java_repository'
+require 'compiler_error_match'
 module Fdse
   class ParseLogFile
     MAVEN_ERROR_FLAG = /COMPILATION ERROR/
@@ -173,7 +174,7 @@ module Fdse
       hash
     end
 
-    def self.compiler_error_message_slice(log_file_path)
+    def self.compiler_error_message_slice(log_file_path, repo_name, job_number)
       h = use_build_tool(log_file_path)
       mslice = nil
       gslice = nil
@@ -185,20 +186,23 @@ module Fdse
       mslice = nil
       gslice = nil
       output = File.expand_path(File.join('..', 'assets', 'output', 'output'), File.dirname(__FILE__))
-      index = 0
-      hash = Hash.new
+
+      order = 0
+
       while segment = segment_array.shift
-        hash[:input] = log_file_path
-        hash[:index] = index
-        hash[:key], hash[:value] = map(segment)
+        hash = Hash.new
+        hash[:repo_name] = repo_name
+        hash[:job_number] =job_number
+        hash[:order] = order
+        hash[:regex_key], hash[:similarity] = map(segment)
         hash[:segment] = segment
-        index += 1
+        order += 1
         @queue.enq hash
       end
     end
 
     def self.queue_initialize
-      @queue = SizedQueue.new(50)
+      @queue = SizedQueue.new(20)
     end
 
     def self.scan_log_directory(build_logs_path)
@@ -207,50 +211,45 @@ module Fdse
       FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
       queue_initialize
 
-
       consumer = Thread.new do
+        id = 0
         loop do
+          id += 1
           hash = @queue.deq
           break if hash == :END_OF_WORK
-          File.open(output, 'a') do |f|
-              f.puts
-              f.puts '======================================'
-              f.puts hash[:input]
-              f.puts "#{hash[:key]}: #{hash[:value]}: #{@regex_hash[hash[:key]]}"
-              f.puts hash[:index]
-              hash[:segment].lines.each{ |line| f.puts line }
-              f.puts
-              hash = nil
-          end
+          hash[:id] = id
+          CompilerErrorMatch.create hash
+          hash = nil
        end
       end
       threads = []
       Thread.list.each{ |thread| threads << thread }
       #flag = true
-      Dir.foreach(build_logs_path) do |repo_name|
-        next if /.+@.+/ !~ repo_name
-        #flag = false if repo_name.include? 'janusgraph'
-        #next if flag
-        repo_path = File.join(build_logs_path, repo_name)
-        puts "Scanning projects: #{repo_path}"
 
+      TravisJavaRepository.where("repo_id >= ? AND builds >= ? AND stars>= ?", 1, 50, 25).find_each do |repo|
+        repo_name = repo.repo_name
+        repo_path = File.join(build_logs_path, repo_name.sub(/\//, '@'))
+        puts "Scanning projects: #{repo_path}"
+        next unless File.exist? repo_path
         Dir.foreach(repo_path) do |log_file_name|
           next if /.+@.+/ !~ log_file_name
           log_file_path = File.join(repo_path, log_file_name)
           puts "--Scanning file: #{log_file_path}"
-          Thread.new(log_file_path) do |p|
-            compiler_error_message_slice p
+
+          Thread.new(log_file_path, repo_name, log_file_name.sub(/@/, '.').sub(/\.log/, '').to_f) do |p, r, n|
+            compiler_error_message_slice p, r, n
           end
+
           loop do
             count = Thread.list.count{ |thread| thread.alive? }
-            #p count
-            break if count <= 50
+            break if count <= 20
           end
         end
       end
-      @queue.enq(:END_OF_WORK)
-      Thread.list.each{ |thread| thread.join if thread.alive? && !threads.include?(thread)}
       consumer.join
+      sleep 6000
+      @queue.enq(:END_OF_WORK)
+      puts "Scan Over"
     end
   end
 end
