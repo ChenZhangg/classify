@@ -155,7 +155,7 @@ module Fdse
   def self.test
     i = 0
     Property.new.run.each do |key,value|
-      RegularExpression.create(regex_key: key.to_s, regxe_value: value.to_s)
+      RegularExpression.create(regex_key: key.to_s, regex_value: value.to_s)
       i += 1
       puts "#{key}"
       puts "#{value}"
