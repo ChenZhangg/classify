@@ -1,5 +1,4 @@
-require 'active_record'
-require 'activerecord-jdbcmysql-adapter'
+require 'regular_expression'
 module Fdse
   class Property
 
@@ -139,19 +138,6 @@ module Fdse
     end
   end
 
-  class RegularExpression < ActiveRecord::Base
-    establish_connection(
-        adapter:  "mysql",
-        host:     "10.131.252.160",
-        port: 3306,
-        username: "root",
-        password: "root",
-        database: "zc",
-        encoding: "utf8mb4",
-        collation: "utf8mb4_bin"
-    )
-  end
-
   def self.test
     i = 0
     Property.new.run.each do |key,value|
@@ -167,7 +153,7 @@ module Fdse
 end
 
 
-Fdse.test
+#Fdse.test
 
 #test
 #Fdse::Property.new.test

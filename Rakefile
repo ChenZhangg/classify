@@ -7,6 +7,10 @@ Rake::TestTask.new('test') do |t|
   t.verbose = true
 end
 
+task :property do
+  ruby '-Ilib bin/property.rb'
+end
+
 task :log do
   ruby '-Ilib bin/classify.rb'
 end
