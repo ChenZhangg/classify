@@ -17,8 +17,8 @@ module Fdse
       end
     end
 
-    def self.lines(file)
-      file.map.with_index { |text, index| Line.new(index + 1, text) }
+    def self.lines(lines)
+      lines.map.with_index { |text, index| Line.new(index + 1, text) }
     end
 
     def self.shortest_edit(lines_old, lines_new)
@@ -86,4 +86,4 @@ module Fdse
     end
   end
 end
-Fdse::Printer.new.print(Fdse::Diff.diff('old', 'new'))
+Fdse::Printer.new.print(Fdse::Diff.diff('old.log', 'new.log'))

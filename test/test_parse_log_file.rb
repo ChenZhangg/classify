@@ -28,6 +28,14 @@ class TestParseLogFile < Test::Unit::TestCase
     log_file_path = get_path 'log2'
     expected = File.readlines(get_path('log2expected'))
     assert_equal(expected, Fdse::ParseLogFile.maven_slice(log_file_path))
+
+    log_file_path = get_path 'sk89q@WorldEdit@559@3.log'
+    result = Fdse::ParseLogFile.segment_slice(Fdse::ParseLogFile.maven_slice(log_file_path))
+    flag = false
+    result.each do |segemnt|
+      flag = true if segemnt =~ Fdse::ParseLogFile::SEGMENT_BOUNDARY_JAVAC_ERROR
+    end
+    refute(flag)
   end
 
   def test_gradle_slice
@@ -48,5 +56,15 @@ class TestParseLogFile < Test::Unit::TestCase
     log_file_path = get_path 'encode0'
     Fdse::ParseLogFile.maven_slice(log_file_path)
     Fdse::ParseLogFile.gradle_slice(log_file_path)
+  end
+
+  def test_map
+    log_file_path = get_path 'sk89q@WorldEdit@803@2@2'
+    segment = File.read log_file_path
+    assert_equal([:zc_apply_given_type, 1], Fdse::ParseLogFile.map(segment))
+
+    log_file_path = get_path 'sk89q@WorldEdit@803@2@3'
+    segment = File.read log_file_path
+    assert_equal([:zc_apply_given_type, 1], Fdse::ParseLogFile.map(segment))
   end
 end

@@ -1,0 +1,441 @@
+Using worker: worker-linux-5-1.bb.travis-ci.org:travis-linux-16
+
+travis_fold:start:git.1$ git clone --depth=50 --branch=mail git://github.com/sk89q/worldedit.git sk89q/worldedit
+Cloning into 'sk89q/worldedit'...
+remote: Counting objects: 1201, done.[K
+remote: Compressing objects:   0% (1/869)   [Kremote: Compressing objects:   1% (9/869)   [Kremote: Compressing objects:   2% (18/869)   [Kremote: Compressing objects:   3% (27/869)   [Kremote: Compressing objects:   4% (35/869)   [Kremote: Compressing objects:   5% (44/869)   [Kremote: Compressing objects:   6% (53/869)   [Kremote: Compressing objects:   7% (61/869)   [Kremote: Compressing objects:   8% (70/869)   [Kremote: Compressing objects:   9% (79/869)   [Kremote: Compressing objects:  10% (87/869)   [Kremote: Compressing objects:  11% (96/869)   [Kremote: Compressing objects:  12% (105/869)   [Kremote: Compressing objects:  13% (113/869)   [Kremote: Compressing objects:  14% (122/869)   [Kremote: Compressing objects:  15% (131/869)   [Kremote: Compressing objects:  16% (140/869)   [Kremote: Compressing objects:  17% (148/869)   [Kremote: Compressing objects:  18% (157/869)   [Kremote: Compressing objects:  19% (166/869)   [Kremote: Compressing objects:  20% (174/869)   [Kremote: Compressing objects:  21% (183/869)   [Kremote: Compressing objects:  22% (192/869)   [Kremote: Compressing objects:  23% (200/869)   [Kremote: Compressing objects:  24% (209/869)   [Kremote: Compressing objects:  25% (218/869)   [Kremote: Compressing objects:  26% (226/869)   [Kremote: Compressing objects:  27% (235/869)   [Kremote: Compressing objects:  28% (244/869)   [Kremote: Compressing objects:  29% (253/869)   [Kremote: Compressing objects:  30% (261/869)   [Kremote: Compressing objects:  31% (270/869)   [Kremote: Compressing objects:  32% (279/869)   [Kremote: Compressing objects:  33% (287/869)   [Kremote: Compressing objects:  34% (296/869)   [Kremote: Compressing objects:  35% (305/869)   [Kremote: Compressing objects:  36% (313/869)   [Kremote: Compressing objects:  37% (322/869)   [Kremote: Compressing objects:  38% (331/869)   [Kremote: Compressing objects:  39% (339/869)   [Kremote: Compressing objects:  40% (348/869)   [Kremote: Compressing objects:  41% (357/869)   [Kremote: Compressing objects:  42% (365/869)   [Kremote: Compressing objects:  43% (374/869)   [Kremote: Compressing objects:  44% (383/869)   [Kremote: Compressing objects:  45% (392/869)   [Kremote: Compressing objects:  46% (400/869)   [Kremote: Compressing objects:  47% (409/869)   [Kremote: Compressing objects:  48% (418/869)   [Kremote: Compressing objects:  49% (426/869)   [Kremote: Compressing objects:  50% (435/869)   [Kremote: Compressing objects:  51% (444/869)   [Kremote: Compressing objects:  52% (452/869)   [Kremote: Compressing objects:  53% (461/869)   [Kremote: Compressing objects:  54% (470/869)   [Kremote: Compressing objects:  55% (478/869)   [Kremote: Compressing objects:  56% (487/869)   [Kremote: Compressing objects:  57% (496/869)   [Kremote: Compressing objects:  58% (505/869)   [Kremote: Compressing objects:  59% (513/869)   [Kremote: Compressing objects:  60% (522/869)   [Kremote: Compressing objects:  61% (531/869)   [Kremote: Compressing objects:  62% (539/869)   [Kremote: Compressing objects:  63% (548/869)   [Kremote: Compressing objects:  64% (557/869)   [Kremote: Compressing objects:  65% (565/869)   [Kremote: Compressing objects:  66% (574/869)   [Kremote: Compressing objects:  67% (583/869)   [Kremote: Compressing objects:  68% (591/869)   [Kremote: Compressing objects:  69% (600/869)   [Kremote: Compressing objects:  70% (609/869)   [Kremote: Compressing objects:  71% (617/869)   [Kremote: Compressing objects:  72% (626/869)   [Kremote: Compressing objects:  73% (635/869)   [Kremote: Compressing objects:  74% (644/869)   [Kremote: Compressing objects:  75% (652/869)   [Kremote: Compressing objects:  76% (661/869)   [Kremote: Compressing objects:  77% (670/869)   [Kremote: Compressing objects:  78% (678/869)   [Kremote: Compressing objects:  79% (687/869)   [Kremote: Compressing objects:  80% (696/869)   [Kremote: Compressing objects:  81% (704/869)   [Kremote: Compressing objects:  82% (713/869)   [Kremote: Compressing objects:  83% (722/869)   [Kremote: Compressing objects:  84% (730/869)   [Kremote: Compressing objects:  85% (739/869)   [Kremote: Compressing objects:  86% (748/869)   [Kremote: Compressing objects:  87% (757/869)   [Kremote: Compressing objects:  88% (765/869)   [Kremote: Compressing objects:  89% (774/869)   [Kremote: Compressing objects:  90% (783/869)   [Kremote: Compressing objects:  91% (791/869)   [Kremote: Compressing objects:  92% (800/869)   [Kremote: Compressing objects:  93% (809/869)   [Kremote: Compressing objects:  94% (817/869)   [Kremote: Compressing objects:  95% (826/869)   [Kremote: Compressing objects:  96% (835/869)   [Kremote: Compressing objects:  97% (843/869)   [Kremote: Compressing objects:  98% (852/869)   [Kremote: Compressing objects:  99% (861/869)   [Kremote: Compressing objects: 100% (869/869)   [Kremote: Compressing objects: 100% (869/869), done.[K
+Receiving objects:   0% (1/1201)   Receiving objects:   1% (13/1201)   Receiving objects:   2% (25/1201)   Receiving objects:   3% (37/1201)   Receiving objects:   4% (49/1201)   Receiving objects:   5% (61/1201)   Receiving objects:   6% (73/1201)   Receiving objects:   7% (85/1201)   Receiving objects:   8% (97/1201)   Receiving objects:   9% (109/1201)   Receiving objects:  10% (121/1201)   Receiving objects:  11% (133/1201)   Receiving objects:  12% (145/1201)   Receiving objects:  13% (157/1201)   Receiving objects:  14% (169/1201)   Receiving objects:  15% (181/1201)   Receiving objects:  16% (193/1201)   Receiving objects:  17% (205/1201)   Receiving objects:  18% (217/1201)   Receiving objects:  19% (229/1201)   Receiving objects:  20% (241/1201)   Receiving objects:  21% (253/1201)   Receiving objects:  22% (265/1201)   Receiving objects:  23% (277/1201)   Receiving objects:  24% (289/1201)   Receiving objects:  25% (301/1201)   Receiving objects:  26% (313/1201)   Receiving objects:  27% (325/1201)   Receiving objects:  28% (337/1201)   Receiving objects:  29% (349/1201)   Receiving objects:  30% (361/1201)   Receiving objects:  31% (373/1201)   Receiving objects:  32% (385/1201)   Receiving objects:  33% (397/1201)   Receiving objects:  34% (409/1201)   Receiving objects:  35% (421/1201)   Receiving objects:  36% (433/1201)   Receiving objects:  37% (445/1201)   Receiving objects:  38% (457/1201)   Receiving objects:  39% (469/1201)   Receiving objects:  40% (481/1201)   Receiving objects:  41% (493/1201)   Receiving objects:  42% (505/1201)   Receiving objects:  43% (517/1201)   Receiving objects:  44% (529/1201)   Receiving objects:  45% (541/1201)   Receiving objects:  46% (553/1201)   Receiving objects:  47% (565/1201)   Receiving objects:  48% (577/1201)   Receiving objects:  49% (589/1201)   Receiving objects:  50% (601/1201)   Receiving objects:  51% (613/1201)   Receiving objects:  52% (625/1201)   Receiving objects:  53% (637/1201)   Receiving objects:  54% (649/1201)   Receiving objects:  55% (661/1201)   Receiving objects:  56% (673/1201)   Receiving objects:  57% (685/1201)   Receiving objects:  58% (697/1201)   Receiving objects:  59% (709/1201)   Receiving objects:  60% (721/1201)   Receiving objects:  61% (733/1201)   Receiving objects:  62% (745/1201)   Receiving objects:  63% (757/1201)   Receiving objects:  64% (769/1201)   Receiving objects:  65% (781/1201)   Receiving objects:  66% (793/1201)   Receiving objects:  67% (805/1201)   Receiving objects:  68% (817/1201)   remote: Total 1201 (delta 552), reused 723 (delta 169)[K
+Receiving objects:  69% (829/1201)   Receiving objects:  70% (841/1201)   Receiving objects:  71% (853/1201)   Receiving objects:  72% (865/1201)   Receiving objects:  73% (877/1201)   Receiving objects:  74% (889/1201)   Receiving objects:  75% (901/1201)   Receiving objects:  76% (913/1201)   Receiving objects:  77% (925/1201)   Receiving objects:  78% (937/1201)   Receiving objects:  79% (949/1201)   Receiving objects:  80% (961/1201)   Receiving objects:  81% (973/1201)   Receiving objects:  82% (985/1201)   Receiving objects:  83% (997/1201)   Receiving objects:  84% (1009/1201)   Receiving objects:  85% (1021/1201)   Receiving objects:  86% (1033/1201)   Receiving objects:  87% (1045/1201)   Receiving objects:  88% (1057/1201)   Receiving objects:  89% (1069/1201)   Receiving objects:  90% (1081/1201)   Receiving objects:  91% (1093/1201)   Receiving objects:  92% (1105/1201)   Receiving objects:  93% (1117/1201)   Receiving objects:  94% (1129/1201)   Receiving objects:  95% (1141/1201)   Receiving objects:  96% (1153/1201)   Receiving objects:  97% (1165/1201)   Receiving objects:  98% (1177/1201)   Receiving objects:  99% (1189/1201)   Receiving objects: 100% (1201/1201)   Receiving objects: 100% (1201/1201), 644.26 KiB | 0 bytes/s, done.
+Resolving deltas:   0% (0/552)   Resolving deltas:   9% (50/552)   Resolving deltas:  10% (57/552)   Resolving deltas:  11% (62/552)   Resolving deltas:  13% (72/552)   Resolving deltas:  14% (80/552)   Resolving deltas:  15% (84/552)   Resolving deltas:  16% (90/552)   Resolving deltas:  17% (94/552)   Resolving deltas:  18% (103/552)   Resolving deltas:  19% (110/552)   Resolving deltas:  20% (111/552)   Resolving deltas:  21% (117/552)   Resolving deltas:  22% (125/552)   Resolving deltas:  28% (155/552)   Resolving deltas:  29% (163/552)   Resolving deltas:  30% (169/552)   Resolving deltas:  31% (173/552)   Resolving deltas:  34% (188/552)   Resolving deltas:  37% (209/552)   Resolving deltas:  38% (212/552)   Resolving deltas:  39% (216/552)   Resolving deltas:  40% (221/552)   Resolving deltas:  41% (227/552)   Resolving deltas:  42% (237/552)   Resolving deltas:  44% (243/552)   Resolving deltas:  47% (262/552)   Resolving deltas:  48% (269/552)   Resolving deltas:  51% (284/552)   Resolving deltas:  52% (288/552)   Resolving deltas:  54% (301/552)   Resolving deltas:  55% (305/552)   Resolving deltas:  56% (310/552)   Resolving deltas:  57% (319/552)   Resolving deltas:  58% (321/552)   Resolving deltas:  59% (327/552)   Resolving deltas:  60% (332/552)   Resolving deltas:  61% (338/552)   Resolving deltas:  62% (343/552)   Resolving deltas:  63% (348/552)   Resolving deltas:  65% (361/552)   Resolving deltas:  67% (375/552)   Resolving deltas:  69% (386/552)   Resolving deltas:  70% (391/552)   Resolving deltas:  71% (394/552)   Resolving deltas:  72% (399/552)   Resolving deltas:  73% (403/552)   Resolving deltas:  74% (411/552)   Resolving deltas:  75% (417/552)   Resolving deltas:  77% (427/552)   Resolving deltas:  78% (431/552)   Resolving deltas:  79% (437/552)   Resolving deltas:  81% (451/552)   Resolving deltas:  82% (454/552)   Resolving deltas:  83% (459/552)   Resolving deltas:  84% (464/552)   Resolving deltas:  85% (471/552)   Resolving deltas:  86% (476/552)   Resolving deltas:  87% (481/552)   Resolving deltas:  88% (486/552)   Resolving deltas:  89% (493/552)   Resolving deltas:  90% (498/552)   Resolving deltas:  91% (503/552)   Resolving deltas:  92% (508/552)   Resolving deltas:  94% (519/552)   Resolving deltas:  95% (527/552)   Resolving deltas:  98% (541/552)   Resolving deltas:  99% (550/552)   Resolving deltas: 100% (552/552)   Resolving deltas: 100% (552/552), done.
+travis_fold:end:git.1$ cd sk89q/worldedit
+travis_fold:start:git.2$ git checkout -qf b2608d95d498539dca3ad0635c2c0b03be05a4ce
+travis_fold:end:git.2$ jdk_switcher use openjdk6
+Switching to OpenJDK6 (java-1.6.0-openjdk-amd64), JAVA_HOME will be set to /usr/lib/jvm/java-6-openjdk-amd64
+update-alternatives: error: no alternatives for apt.
+update-java-alternatives: plugin alternative does not exist: /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64/IcedTeaPlugin.so
+$ java -version
+java version "1.6.0_27"
+OpenJDK Runtime Environment (IcedTea6 1.12.5) (6b27-1.12.5-0ubuntu0.12.04.1)
+OpenJDK 64-Bit Server VM (build 20.0-b12, mixed mode)
+$ javac -version
+javac 1.6.0_27
+travis_fold:start:install$ mvn install -DskipTests=true -B
+[INFO] Scanning for projects...
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-ftp/1.0-beta-6/wagon-ftp-1.0-beta-6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-ftp/1.0-beta-6/wagon-ftp-1.0-beta-6.pom (3 KB at 28.8 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-providers/1.0-beta-6/wagon-providers-1.0-beta-6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-providers/1.0-beta-6/wagon-providers-1.0-beta-6.pom (3 KB at 147.2 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon/1.0-beta-6/wagon-1.0-beta-6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon/1.0-beta-6/wagon-1.0-beta-6.pom (13 KB at 756.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom (32 KB at 1438.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom (5 KB at 285.8 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/commons-net/commons-net/2.0/commons-net-2.0.pom
+Downloaded: http://repo.maven.apache.org/maven2/commons-net/commons-net/2.0/commons-net-2.0.pom (8 KB at 502.7 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/11/commons-parent-11.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/commons/commons-parent/11/commons-parent-11.pom (25 KB at 1504.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/apache/4/apache-4.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/apache/4/apache-4.pom (5 KB at 292.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-provider-api/1.0-beta-6/wagon-provider-api-1.0-beta-6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-provider-api/1.0-beta-6/wagon-provider-api-1.0-beta-6.pom (2 KB at 143.2 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.2/plexus-utils-1.4.2.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.2/plexus-utils-1.4.2.pom (2 KB at 159.4 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom (9 KB at 625.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-ftp/1.0-beta-6/wagon-ftp-1.0-beta-6.jar
+Downloading: http://repo.maven.apache.org/maven2/commons-net/commons-net/2.0/commons-net-2.0.jar
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.2/plexus-utils-1.4.2.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/wagon/wagon-ftp/1.0-beta-6/wagon-ftp-1.0-beta-6.jar (15 KB at 875.0 KB/sec)
+Downloaded: http://repo.maven.apache.org/maven2/commons-net/commons-net/2.0/commons-net-2.0.jar (193 KB at 3773.5 KB/sec)
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.2/plexus-utils-1.4.2.jar (186 KB at 3506.8 KB/sec)
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WorldEdit 5.5.9-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.3/maven-resources-plugin-2.3.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.3/maven-resources-plugin-2.3.pom (5 KB at 304.9 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/12/maven-plugins-12.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/12/maven-plugins-12.pom (12 KB at 717.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/9/maven-parent-9.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/9/maven-parent-9.pom (33 KB at 1781.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.3/maven-resources-plugin-2.3.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-resources-plugin/2.3/maven-resources-plugin-2.3.jar (21 KB at 1489.1 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/2.3.2/maven-compiler-plugin-2.3.2.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/2.3.2/maven-compiler-plugin-2.3.2.pom (8 KB at 550.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/18/maven-plugins-18.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/18/maven-plugins-18.pom (13 KB at 906.9 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/16/maven-parent-16.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/16/maven-parent-16.pom (23 KB at 1420.4 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/apache/7/apache-7.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/apache/7/apache-7.pom (15 KB at 1006.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/2.3.2/maven-compiler-plugin-2.3.2.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/2.3.2/maven-compiler-plugin-2.3.2.jar (29 KB at 370.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.7.2/maven-surefire-plugin-2.7.2.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.7.2/maven-surefire-plugin-2.7.2.pom (10 KB at 751.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/2.7.2/surefire-2.7.2.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire/2.7.2/surefire-2.7.2.pom (11 KB at 927.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/18/maven-parent-18.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/18/maven-parent-18.pom (24 KB at 1962.1 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/apache/8/apache-8.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/apache/8/apache-8.pom (14 KB at 1247.7 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.7.2/maven-surefire-plugin-2.7.2.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/2.7.2/maven-surefire-plugin-2.7.2.jar (29 KB at 2363.2 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.3.1/maven-jar-plugin-2.3.1.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.3.1/maven-jar-plugin-2.3.1.pom (6 KB at 508.4 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.3.1/maven-jar-plugin-2.3.1.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-jar-plugin/2.3.1/maven-jar-plugin-2.3.1.jar (32 KB at 2853.7 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.2-beta-2/maven-assembly-plugin-2.2-beta-2.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.2-beta-2/maven-assembly-plugin-2.2-beta-2.pom (17 KB at 1381.4 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/8/maven-plugins-8.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/8/maven-plugins-8.pom (6 KB at 542.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/5/maven-parent-5.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/5/maven-parent-5.pom (15 KB at 450.9 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/apache/3/apache-3.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/apache/3/apache-3.pom (4 KB at 304.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.2-beta-2/maven-assembly-plugin-2.2-beta-2.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-assembly-plugin/2.2-beta-2/maven-assembly-plugin-2.2-beta-2.jar (185 KB at 9249.9 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/1.7.1/maven-shade-plugin-1.7.1.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/1.7.1/maven-shade-plugin-1.7.1.pom (6 KB at 172.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/22/maven-plugins-22.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/22/maven-plugins-22.pom (13 KB at 1157.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/21/maven-parent-21.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/21/maven-parent-21.pom (26 KB at 2340.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/apache/10/apache-10.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/apache/10/apache-10.pom (15 KB at 1445.2 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/1.7.1/maven-shade-plugin-1.7.1.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-shade-plugin/1.7.1/maven-shade-plugin-1.7.1.jar (84 KB at 6457.2 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.3/maven-install-plugin-2.3.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.3/maven-install-plugin-2.3.pom (5 KB at 445.4 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/13/maven-plugins-13.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/13/maven-plugins-13.pom (12 KB at 1046.3 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.3/maven-install-plugin-2.3.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/2.3/maven-install-plugin-2.3.jar (23 KB at 1707.7 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/de/schlichtherle/truezip/6.8.3/truezip-6.8.3.pom
+Downloaded: https://oss.sonatype.org/content/repositories/releases/de/schlichtherle/truezip/6.8.3/truezip-6.8.3.pom (5 KB at 7.9 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/de/schlichtherle/asl20-oss-parent/13/asl20-oss-parent-13.pom
+Downloaded: https://oss.sonatype.org/content/repositories/releases/de/schlichtherle/asl20-oss-parent/13/asl20-oss-parent-13.pom (10 KB at 44.1 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/rhino/js/1.7R2/js-1.7R2.pom
+Downloading: https://repository.apache.org/releases/rhino/js/1.7R2/js-1.7R2.pom
+Downloading: http://maven.sk89q.com/repo/rhino/js/1.7R2/js-1.7R2.pom
+Downloading: http://repo.bukkit.org/content/groups/public/rhino/js/1.7R2/js-1.7R2.pom
+Downloading: http://repo.maven.apache.org/maven2/rhino/js/1.7R2/js-1.7R2.pom
+Downloaded: http://repo.maven.apache.org/maven2/rhino/js/1.7R2/js-1.7R2.pom (832 B at 73.9 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.pom
+Downloading: https://repository.apache.org/releases/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.pom
+Downloading: http://maven.sk89q.com/repo/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.pom
+[WARNING] Checksum validation failed, no checksums available from the repository for http://maven.sk89q.com/repo/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.pom
+Downloaded: http://maven.sk89q.com/repo/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.pom (2 KB at 3.6 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/junit/junit/4.8.1/junit-4.8.1.pom
+Downloaded: https://oss.sonatype.org/content/repositories/releases/junit/junit/4.8.1/junit-4.8.1.pom (949 B at 4.2 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/com/sk89q/dummypermscompat/1.7/dummypermscompat-1.7.pom
+Downloading: https://repository.apache.org/releases/com/sk89q/dummypermscompat/1.7/dummypermscompat-1.7.pom
+Downloading: http://maven.sk89q.com/repo/com/sk89q/dummypermscompat/1.7/dummypermscompat-1.7.pom
+Downloaded: http://maven.sk89q.com/repo/com/sk89q/dummypermscompat/1.7/dummypermscompat-1.7.pom (2 KB at 5.1 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/org/bukkit/bukkit/1.5.1-R0.2/bukkit-1.5.1-R0.2.pom
+Downloading: https://repository.apache.org/releases/org/bukkit/bukkit/1.5.1-R0.2/bukkit-1.5.1-R0.2.pom
+Downloading: http://maven.sk89q.com/repo/org/bukkit/bukkit/1.5.1-R0.2/bukkit-1.5.1-R0.2.pom
+Downloading: http://repo.bukkit.org/content/groups/public/org/bukkit/bukkit/1.5.1-R0.2/bukkit-1.5.1-R0.2.pom
+Downloaded: http://repo.bukkit.org/content/groups/public/org/bukkit/bukkit/1.5.1-R0.2/bukkit-1.5.1-R0.2.pom (4 KB at 38.7 KB/sec)
+Downloading: https://repository.apache.org/snapshots/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/maven-metadata.xml
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/maven-metadata.xml
+Downloading: https://nexus.codehaus.org/snapshots/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/maven-metadata.xml
+Downloading: http://maven.sk89q.com/repo/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/maven-metadata.xml
+Downloading: http://repo.bukkit.org/content/groups/public/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/maven-metadata.xml
+Downloaded: http://repo.bukkit.org/content/groups/public/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/maven-metadata.xml (2 KB at 12.4 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/snapshots/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/craftbukkit-1.6.4-R0.1-20131021.004109-18.pom
+Downloading: https://repository.apache.org/snapshots/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/craftbukkit-1.6.4-R0.1-20131021.004109-18.pom
+Downloading: https://nexus.codehaus.org/snapshots/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/craftbukkit-1.6.4-R0.1-20131021.004109-18.pom
+Downloading: http://maven.sk89q.com/repo/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/craftbukkit-1.6.4-R0.1-20131021.004109-18.pom
+Downloading: http://repo.bukkit.org/content/groups/public/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/craftbukkit-1.6.4-R0.1-20131021.004109-18.pom
+Downloaded: http://repo.bukkit.org/content/groups/public/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/craftbukkit-1.6.4-R0.1-20131021.004109-18.pom (12 KB at 41.6 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/org/mockito/mockito-core/1.9.0-rc1/mockito-core-1.9.0-rc1.pom
+Downloaded: https://oss.sonatype.org/content/repositories/releases/org/mockito/mockito-core/1.9.0-rc1/mockito-core-1.9.0-rc1.pom (2 KB at 4.3 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.pom
+Downloaded: https://oss.sonatype.org/content/repositories/releases/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.pom (481 B at 0.8 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/org/hamcrest/hamcrest-parent/1.1/hamcrest-parent-1.1.pom
+Downloaded: https://oss.sonatype.org/content/repositories/releases/org/hamcrest/hamcrest-parent/1.1/hamcrest-parent-1.1.pom (6 KB at 26.4 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/org/objenesis/objenesis/1.0/objenesis-1.0.pom
+Downloaded: https://oss.sonatype.org/content/repositories/releases/org/objenesis/objenesis/1.0/objenesis-1.0.pom (853 B at 3.5 KB/sec)
+Downloading: https://oss.sonatype.org/content/repositories/releases/de/schlichtherle/truezip/6.8.3/truezip-6.8.3.jar
+Downloading: https://oss.sonatype.org/content/repositories/releases/rhino/js/1.7R2/js-1.7R2.jar
+Downloading: https://oss.sonatype.org/content/repositories/releases/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.jar
+Downloading: https://oss.sonatype.org/content/repositories/releases/junit/junit/4.8.1/junit-4.8.1.jar
+Downloading: https://oss.sonatype.org/content/repositories/releases/com/sk89q/dummypermscompat/1.7/dummypermscompat-1.7.jar
+Downloading: https://oss.sonatype.org/content/repositories/releases/org/bukkit/bukkit/1.5.1-R0.2/bukkit-1.5.1-R0.2.jar
+Downloading: https://oss.sonatype.org/content/repositories/releases/org/mockito/mockito-core/1.9.0-rc1/mockito-core-1.9.0-rc1.jar
+Downloading: https://oss.sonatype.org/content/repositories/releases/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar
+Downloading: https://oss.sonatype.org/content/repositories/releases/org/objenesis/objenesis/1.0/objenesis-1.0.jar
+Downloaded: https://oss.sonatype.org/content/repositories/releases/de/schlichtherle/truezip/6.8.3/truezip-6.8.3.jar (469 KB at 687.5 KB/sec)
+Downloaded: https://oss.sonatype.org/content/repositories/releases/org/hamcrest/hamcrest-core/1.1/hamcrest-core-1.1.jar (75 KB at 202.3 KB/sec)
+Downloaded: https://oss.sonatype.org/content/repositories/releases/junit/junit/4.8.1/junit-4.8.1.jar (232 KB at 331.2 KB/sec)
+Downloaded: https://oss.sonatype.org/content/repositories/releases/org/objenesis/objenesis/1.0/objenesis-1.0.jar (28 KB at 79.9 KB/sec)
+Downloaded: https://oss.sonatype.org/content/repositories/releases/org/mockito/mockito-core/1.9.0-rc1/mockito-core-1.9.0-rc1.jar (1380 KB at 1630.5 KB/sec)
+Downloading: https://repository.apache.org/releases/rhino/js/1.7R2/js-1.7R2.jar
+Downloading: https://repository.apache.org/releases/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.jar
+Downloading: https://repository.apache.org/releases/com/sk89q/dummypermscompat/1.7/dummypermscompat-1.7.jar
+Downloading: https://repository.apache.org/releases/org/bukkit/bukkit/1.5.1-R0.2/bukkit-1.5.1-R0.2.jar
+Downloading: http://maven.sk89q.com/repo/rhino/js/1.7R2/js-1.7R2.jar
+Downloading: http://maven.sk89q.com/repo/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.jar
+Downloading: http://maven.sk89q.com/repo/com/sk89q/dummypermscompat/1.7/dummypermscompat-1.7.jar
+Downloading: http://maven.sk89q.com/repo/org/bukkit/bukkit/1.5.1-R0.2/bukkit-1.5.1-R0.2.jar
+Downloaded: http://maven.sk89q.com/repo/com/sk89q/dummypermscompat/1.7/dummypermscompat-1.7.jar (11 KB at 44.8 KB/sec)
+[WARNING] Checksum validation failed, no checksums available from the repository for http://maven.sk89q.com/repo/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.jar
+Downloaded: http://maven.sk89q.com/repo/com/sk89q/jchronic/0.2.4a/jchronic-0.2.4a.jar (103 KB at 290.6 KB/sec)
+Downloading: http://repo.bukkit.org/content/groups/public/rhino/js/1.7R2/js-1.7R2.jar
+Downloading: http://repo.bukkit.org/content/groups/public/org/bukkit/bukkit/1.5.1-R0.2/bukkit-1.5.1-R0.2.jar
+Downloading: http://repo.bukkit.org/content/groups/public/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/craftbukkit-1.6.4-R0.1-20131021.004109-18.jar
+Downloaded: http://repo.bukkit.org/content/groups/public/org/bukkit/bukkit/1.5.1-R0.2/bukkit-1.5.1-R0.2.jar (4749 KB at 1538.2 KB/sec)
+Downloaded: http://repo.bukkit.org/content/groups/public/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/craftbukkit-1.6.4-R0.1-20131021.004109-18.jar (14936 KB at 1709.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/rhino/js/1.7R2/js-1.7R2.jar
+Downloaded: http://repo.maven.apache.org/maven2/rhino/js/1.7R2/js-1.7R2.jar (851 KB at 21816.4 KB/sec)
+[INFO] 
+[INFO] --- maven-resources-plugin:2.3:resources (default-resources) @ worldedit ---
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.0.6/maven-plugin-api-2.0.6.pom (2 KB at 142.1 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.6/maven-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven/2.0.6/maven-2.0.6.pom (9 KB at 883.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-project/2.0.6/maven-project-2.0.6.pom (3 KB at 257.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-settings/2.0.6/maven-settings-2.0.6.pom (2 KB at 177.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.0.6/maven-model-2.0.6.pom (3 KB at 297.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.1/plexus-utils-1.4.1.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.4.1/plexus-utils-1.4.1.pom (2 KB at 207.1 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-container-default/1.0-alpha-9-stable-1/plexus-container-default-1.0-alpha-9-stable-1.pom (4 KB at 385.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-containers/1.0.3/plexus-containers-1.0.3.pom (492 B at 48.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.4/plexus-1.0.4.pom (6 KB at 560.3 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom
+Downloaded: http://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.pom (998 B at 108.3 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.0.4/plexus-utils-1.0.4.pom (7 KB at 669.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom
+Downloaded: http://repo.maven.apache.org/maven2/classworlds/classworlds/1.1-alpha-2/classworlds-1.1-alpha-2.pom (4 KB at 277.7 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-profile/2.0.6/maven-profile-2.0.6.pom (2 KB at 193.4 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact-manager/2.0.6/maven-artifact-manager-2.0.6.pom (3 KB at 256.1 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-repository-metadata/2.0.6/maven-repository-metadata-2.0.6.pom (2 KB at 200.7 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-artifact/2.0.6/maven-artifact-2.0.6.pom (2 KB at 154.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-registry/2.0.6/maven-plugin-registry-2.0.6.pom (2 KB at 190.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.6/plexus-utils-1.5.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.6/plexus-utils-1.5.6.pom (6 KB at 517.8 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.12/plexus-1.0.12.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/1.0.12/plexus-1.0.12.pom (10 KB at 957.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.0-beta-2/maven-filtering-1.0-beta-2.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.0-beta-2/maven-filtering-1.0-beta-2.pom (4 KB at 357.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/10/maven-shared-components-10.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/10/maven-shared-components-10.pom (9 KB at 823.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-core/2.0.6/maven-core-2.0.6.pom (7 KB at 655.4 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-parameter-documenter/2.0.6/maven-plugin-parameter-documenter-2.0.6.pom (2 KB at 186.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.pom (2 KB at 171.1 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.0.6/maven-reporting-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting/2.0.6/maven-reporting-2.0.6.pom (2 KB at 140.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.pom (424 B at 46.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0-alpha-7/doxia-1.0-alpha-7.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia/1.0-alpha-7/doxia-1.0-alpha-7.pom (4 KB at 382.1 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-error-diagnostics/2.0.6/maven-error-diagnostics-2.0.6.pom (2 KB at 166.4 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.pom
+Downloaded: http://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.pom (3 KB at 228.4 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-descriptor/2.0.6/maven-plugin-descriptor-2.0.6.pom (2 KB at 197.1 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.pom (7 KB at 692.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-monitor/2.0.6/maven-monitor-2.0.6.pom (2 KB at 111.3 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.pom
+Downloaded: http://repo.maven.apache.org/maven2/classworlds/classworlds/1.1/classworlds-1.1.pom (4 KB at 17.9 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.6/plexus-interpolation-1.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.6/plexus-interpolation-1.6.pom (3 KB at 283.9 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.6/plexus-utils-1.5.6.jar
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.0-beta-2/maven-filtering-1.0-beta-2.jar
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.jar
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.jar (10 KB at 882.5 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar (6 KB at 527.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-filtering/1.0-beta-2/maven-filtering-1.0-beta-2.jar (33 KB at 2945.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.6/plexus-interpolation-1.6.jar
+Downloaded: http://repo.maven.apache.org/maven2/junit/junit/3.8.1/junit-3.8.1.jar (119 KB at 7882.2 KB/sec)
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar (14 KB at 1309.3 KB/sec)
+Downloaded: http://repo.maven.apache.org/maven2/commons-cli/commons-cli/1.0/commons-cli-1.0.jar (30 KB at 2673.7 KB/sec)
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-interpolation/1.6/plexus-interpolation-1.6.jar (50 KB at 4981.2 KB/sec)
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.6/plexus-utils-1.5.6.jar (245 KB at 239.2 KB/sec)
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource to .
+[INFO] Copying 1 resource to defaults/
+[INFO] Copying 11 resources to nmsblocks/
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ worldedit ---
+Downloading: http://repo.maven.apache.org/maven2/org/apache/maven/maven-toolchain/1.0/maven-toolchain-1.0.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/apache/maven/maven-toolchain/1.0/maven-toolchain-1.0.pom (4 KB at 370.4 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.pom (4 KB at 361.8 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.6/plexus-2.0.6.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.6/plexus-2.0.6.pom (17 KB at 1637.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/1.8.1/plexus-compiler-api-1.8.1.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/1.8.1/plexus-compiler-api-1.8.1.pom (805 B at 3.8 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/1.8.1/plexus-compiler-1.8.1.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/1.8.1/plexus-compiler-1.8.1.pom (4 KB at 308.7 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.18/plexus-components-1.1.18.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-components/1.1.18/plexus-components-1.1.18.pom (6 KB at 581.1 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.7/plexus-2.0.7.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus/2.0.7/plexus-2.0.7.pom (17 KB at 1689.0 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.5.5/plexus-utils-1.5.5.pom (6 KB at 502.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/1.8.1/plexus-compiler-manager-1.8.1.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/1.8.1/plexus-compiler-manager-1.8.1.pom (713 B at 69.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/1.8.1/plexus-compiler-javac-1.8.1.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/1.8.1/plexus-compiler-javac-1.8.1.pom (710 B at 57.8 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/1.8.1/plexus-compilers-1.8.1.pom
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/1.8.1/plexus-compilers-1.8.1.pom (2 KB at 99.6 KB/sec)
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.jar
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/1.8.1/plexus-compiler-api-1.8.1.jar
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/1.8.1/plexus-compiler-manager-1.8.1.jar
+Downloading: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/1.8.1/plexus-compiler-javac-1.8.1.jar
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/1.8.1/plexus-compiler-manager-1.8.1.jar (6 KB at 472.7 KB/sec)
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/1.8.1/plexus-compiler-javac-1.8.1.jar (13 KB at 1222.8 KB/sec)
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/1.8.1/plexus-compiler-api-1.8.1.jar (20 KB at 1624.4 KB/sec)
+Downloaded: http://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.jar (218 KB at 9906.4 KB/sec)
+[INFO] Compiling 342 source files to /home/travis/build/sk89q/worldedit/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] Failure executing javac, but could not parse the error:
+javac: invalid target release: 1.7
+Usage: javac <options> <source files>
+use -help for a list of possible options
+
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 23.236s
+[INFO] Finished at: Mon Oct 21 17:11:30 UTC 2013
+[INFO] Final Memory: 9M/196M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile (default-compile) on project worldedit: Compilation failure
+[ERROR] Failure executing javac, but could not parse the error:
+[ERROR] javac: invalid target release: 1.7
+[ERROR] Usage: javac <options> <source files>
+[ERROR] use -help for a list of possible options
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+[33;1mThe command "mvn install -DskipTests=true -B" failed. Retrying, 2 of 3.[0m
+
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WorldEdit 5.5.9-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: https://repository.apache.org/snapshots/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/maven-metadata.xml
+[INFO] 
+[INFO] --- maven-resources-plugin:2.3:resources (default-resources) @ worldedit ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource to .
+[INFO] Copying 1 resource to defaults/
+[INFO] Copying 11 resources to nmsblocks/
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ worldedit ---
+[INFO] Compiling 342 source files to /home/travis/build/sk89q/worldedit/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] Failure executing javac, but could not parse the error:
+javac: invalid target release: 1.7
+Usage: javac <options> <source files>
+use -help for a list of possible options
+
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.606s
+[INFO] Finished at: Mon Oct 21 17:11:36 UTC 2013
+[INFO] Final Memory: 8M/132M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile (default-compile) on project worldedit: Compilation failure
+[ERROR] Failure executing javac, but could not parse the error:
+[ERROR] javac: invalid target release: 1.7
+[ERROR] Usage: javac <options> <source files>
+[ERROR] use -help for a list of possible options
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+[33;1mThe command "mvn install -DskipTests=true -B" failed. Retrying, 3 of 3.[0m
+
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building WorldEdit 5.5.9-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: https://repository.apache.org/snapshots/org/bukkit/craftbukkit/1.6.4-R0.1-SNAPSHOT/maven-metadata.xml
+[INFO] 
+[INFO] --- maven-resources-plugin:2.3:resources (default-resources) @ worldedit ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource to .
+[INFO] Copying 1 resource to defaults/
+[INFO] Copying 11 resources to nmsblocks/
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ worldedit ---
+[INFO] Compiling 342 source files to /home/travis/build/sk89q/worldedit/target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] Failure executing javac, but could not parse the error:
+javac: invalid target release: 1.7
+Usage: javac <options> <source files>
+use -help for a list of possible options
+
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.625s
+[INFO] Finished at: Mon Oct 21 17:11:42 UTC 2013
+[INFO] Final Memory: 8M/133M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:2.3.2:compile (default-compile) on project worldedit: Compilation failure
+[ERROR] Failure executing javac, but could not parse the error:
+[ERROR] javac: invalid target release: 1.7
+[ERROR] Usage: javac <options> <source files>
+[ERROR] use -help for a list of possible options
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+The command "mvn install -DskipTests=true -B" failed and exited with 1 during install.
+
+Your build has been stopped.

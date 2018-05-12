@@ -1,0 +1,2 @@
+[ERROR] /home/travis/build/sk89q/worldedit/src/main/java/com/sk89q/worldedit/masks/UnderOverlayMask.java:[69,20] error: method matches in interface Mask cannot be applied to given types;
+[ERROR]  actual argument Extent cannot be converted to EditSession by method invocation conversion

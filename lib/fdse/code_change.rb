@@ -1,4 +1,8 @@
 require 'git'
+# 需要链接哪些东西
+# 出编译错误的地方的代码，diff中可能关联部分
+# 确定相关的commit, 错误的，修复的
+#
 module Fdse
   class CodeChange
     def initialize(repo_name)

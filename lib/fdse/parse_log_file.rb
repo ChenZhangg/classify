@@ -18,6 +18,7 @@ module Fdse
     SEGMENT_BOUNDARY_KOTLIN = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.kt/
     SEGMENT_BOUNDARY_SIG = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.sig/
     SEGMENT_BOUNDARY_JAR = /(\/[^\n\/]+){2,}\/\w+[-\w\d]*\.jar/
+    SEGMENT_BOUNDARY_JAVAC_ERROR = /Failure executing javac, but could not parse the error/
     @regex_hash = Fdse::Property.new.run
 
     def self.word_number_similarity(segment, regex)
@@ -78,7 +79,7 @@ module Fdse
 
       segment_array = []
       slice_range.each do |range|
-        segment_array << segment_lines[range].join if segment_lines[range.begin] !~ SEGMENT_BOUNDARY_GROOVY && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_SCALA && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_KOTLIN
+        segment_array << segment_lines[range].join if segment_lines[range.begin] !~ SEGMENT_BOUNDARY_GROOVY && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_SCALA && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_KOTLIN && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_JAVAC_ERROR
       end
       segment_array
     end

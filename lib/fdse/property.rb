@@ -1,3 +1,5 @@
+require 'active_record'
+require 'activerecord-jdbcmysql-adapter'
 module Fdse
   class Property
 
@@ -129,6 +131,7 @@ module Fdse
 
       remove_duplication! hash
 
+      hash[:zc_apply_given_type] = /^[^\n]*in[^\n]*cannot be applied to given types([^\n]*\n[^\n]*){0,3}[^\n]*\n/
       hash = sort_by_length hash
       similarity_hash = similarity_matrix_initialize hash
       calculate_similarity_matrix!(hash, similarity_hash)
@@ -136,18 +139,35 @@ module Fdse
     end
   end
 
-  def self.test
-    Property.new.run.each do |key,value|
+  class RegularExpression < ActiveRecord::Base
+    establish_connection(
+        adapter:  "mysql",
+        host:     "10.131.252.160",
+        port: 3306,
+        username: "root",
+        password: "root",
+        database: "zc",
+        encoding: "utf8mb4",
+        collation: "utf8mb4_bin"
+    )
+  end
 
+  def self.test
+    i = 0
+    Property.new.run.each do |key,value|
+      RegularExpression.create(regex_key: key.to_s, regxe_value: value.to_s)
+      i += 1
       puts "#{key}"
       puts "#{value}"
       puts
     end
+    puts i
   end
 
 end
 
-#Fdse.test
+
+Fdse.test
 
 #test
 #Fdse::Property.new.test
