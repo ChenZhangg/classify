@@ -6,6 +6,7 @@ require 'fileutils'
 require 'thread'
 require 'travis_java_repository'
 require 'compiler_error_match'
+require 'java_repo_build_datum'
 module Fdse
   class ParseLogFile
     MAVEN_ERROR_FLAG = /COMPILATION ERROR/
@@ -193,7 +194,8 @@ module Fdse
         hash = Hash.new
         hash[:repo_name] = repo_name
         hash[:job_number] =job_number
-        hash[:order] = order
+        hash[:java_repo_build_datum_id] = JavaRepoBuildDatum.where(repo_name: repo_name, job_number: job_number).id
+        hash[:order_number] = order
         hash[:regex_key], hash[:similarity] = map(segment)
         hash[:segment] = segment
         order += 1
@@ -222,9 +224,6 @@ module Fdse
           hash = nil
        end
       end
-      threads = []
-      Thread.list.each{ |thread| threads << thread }
-      #flag = true
 
       TravisJavaRepository.where("repo_id >= ? AND builds >= ? AND stars>= ?", 1, 50, 25).find_each do |repo|
         repo_name = repo.repo_name
@@ -236,7 +235,7 @@ module Fdse
           log_file_path = File.join(repo_path, log_file_name)
           puts "--Scanning file: #{log_file_path}"
 
-          Thread.new(log_file_path, repo_name, log_file_name.sub(/@/, '.').sub(/\.log/, '').to_f) do |p, r, n|
+          Thread.new(log_file_path, repo_name, log_file_name.sub(/@/, '.').sub(/\.log/, '')) do |p, r, n|
             compiler_error_message_slice p, r, n
           end
 
