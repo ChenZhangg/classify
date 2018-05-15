@@ -7,7 +7,7 @@ require 'compiler_error_match'
 require 'java_repo_build_datum'
 require 'elif'
 module Fdse
-  class ParseLogFile
+  class Slice
     MAVEN_ERROR_FLAG = /COMPILATION ERROR/
     GRADLE_ERROR_FLAG = /> Compilation failed; see the compiler error output for details/
     GRADLE_ERROR_UP_BOUNDARY = /:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
