@@ -5,7 +5,7 @@ require 'thread'
 require 'travis_java_repository'
 require 'compiler_error_match'
 require 'java_repo_build_datum'
-require 'elif'
+require 'activerecord-import'
 module Fdse
   class ParseLogFile
     MAVEN_ERROR_FLAG = /COMPILATION ERROR/
@@ -122,7 +122,7 @@ module Fdse
       flag = false
       count = 7
       regexp = /zhang chen/
-      Elif.foreach(log_file_path) do |line|
+      IO.readlines(log_file_path).reverse!.each do |line|
         begin
           temp_line = line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
         rescue
@@ -202,7 +202,7 @@ module Fdse
     end
 
     def self.queue_initialize
-      @queue = SizedQueue.new(20)
+      @queue = SizedQueue.new(200)
     end
 
     def self.scan_log_directory(build_logs_path)
@@ -212,27 +212,29 @@ module Fdse
       queue_initialize
 
       consumer = Thread.new do
-        id = 0
+        id = 624794
         loop do
-          id += 1
-          hash = @queue.deq
-          break if hash == :END_OF_WORK
-          hash[:id] = id
-          hash[:java_repo_build_datum_id] = JavaRepoBuildDatum.find_by(repo_name: hash[:repo_name], job_number: hash[:job_number]).id
-          CompilerErrorMatch.create hash
-          hash = nil
+          bulk = []
+          200.times do
+            hash = @queue.deq
+            break if hash == :END_OF_WORK
+            id += 1
+            hash[:id] = id
+            build_datum = JavaRepoBuildDatum.find_by(repo_name: hash[:repo_name], job_number: hash[:job_number])
+            hash[:java_repo_build_datum_id] = build_datum ? build_datum.id : nil
+            bulk << CompilerErrorMatch.new(hash)
+          end
+          CompilerErrorMatch.import bulk
        end
       end
 
-      TravisJavaRepository.where("id >= ? AND builds >= ? AND stars>= ?", 1, 50, 25).find_each do |repo|
+      TravisJavaRepository.where("id >= ? AND builds >= ? AND stars>= ?", 92854, 50, 25).find_each do |repo|
         repo_name = repo.repo_name
         repo_path = File.join(build_logs_path, repo_name.sub(/\//, '@'))
-        puts "Scanning projects: #{repo_path}"
-        next unless File.exist? repo_path
+        puts "Scanning projects: #{repo.id}: #{repo_path}"
         Dir.foreach(repo_path) do |log_file_name|
           next if /.+@.+/ !~ log_file_name
           log_file_path = File.join(repo_path, log_file_name)
-          puts "--Scanning file: #{log_file_path}"
 
           Thread.new(log_file_path, repo_name, log_file_name.sub(/@/, '.').sub(/\.log/, '')) do |p, r, n|
             compiler_error_message_slice p, r, n
@@ -240,9 +242,10 @@ module Fdse
 
           loop do
             count = Thread.list.count{ |thread| thread.alive? }
-            break if count <= 20
+            break if count <= 800
           end
         end
+        puts "Scanning projects over: #{repo_path}"
       end
       consumer.join
       sleep 6000
