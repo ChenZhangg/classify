@@ -59,14 +59,11 @@ module Fdse
       array
     end
 
-    def self.use_build_tool(file_array_reverse)    
+    def self.use_build_tool(file)    
       maven_flag = false
       gradle_flag = false
-      file_array_reverse.each do |line|
-        maven_flag = true if maven_flag == false && MAVEN_ERROR_FLAG =~ line
-        gradle_flag = true if gradle_flag =false && GRADLE_ERROR_FLAG_1 =~ line
-
-      end
+      maven_flag = true if file.include?('COMPILATION ERROR')
+      gradle_flag = true if file.include?('Compilation failed')
       hash = Hash.new
       hash[:maven] = maven_flag
       hash[:gradle] = gradle_flag
@@ -74,24 +71,29 @@ module Fdse
     end
 
     def self.compiler_error_message_slice(log_file_path, repo_name, job_number)
-      file_array = IO.readlines(log_file_path).collect! do |line|
-        begin 
-          line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
-        rescue
-          line.encode('ISO-8859-1', 'ISO-8859-1').gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
-        end
+      file = IO.read(log_file_path)
+      begin
+        file = file.gsub!(/[^[:print:]\e\n]/, '') || file 
+        file = file.gsub!(/\e[^m]+m/, '') || file 
+        file = file.gsub!(/\r\n?/, "\n") || file 
+      rescue
+        file = file.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/[^[:print:]\e\n]/, '') || file 
+        file = file.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/\e[^m]+m/, '') || file 
+        file = file.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/\r\n?/, "\n") || file 
       end
-      file_array_reverse = file_array.reverse
-      h = use_build_tool(file_array_reverse)
+      
+      h = use_build_tool(file)
       mslice = []
       gslice = []
+
+      file_array = file.lines if h[:maven] || h[:gradle]
       mslice = maven_slice(file_array) if h[:maven]
-      gslice = gradle_slice(file_array_reverse) if h[:gradle]
+      gslice = gradle_slice(file_array.reverse) if h[:gradle]
       array = mslice + gslice
 
       hash = Hash.new
-      hash[:repo_name] = repo_name
-      hash[:job_number] =job_number
+      hash[:repo_name] = repo_name.dup
+      hash[:job_number] =job_number.dup
       hash[:has_compiler_error] = (h[:maven] || h[:gradle]) ? true : false
       hash[:slice_segment] = array.join
       @queue.enq hash
@@ -100,7 +102,7 @@ module Fdse
     def self.scan_log_directory(build_logs_path)
       @queue = SizedQueue.new(200)
       consumer = Thread.new do
-        id = 2824121
+        id = 3558121
         loop do
           bulk = []
           200.times do
@@ -114,14 +116,14 @@ module Fdse
        end
       end
 
-      TravisJavaRepository.where("id > ? AND builds >= ? AND stars>= ?", 273885, 50, 25).find_each do |repo|
+      TravisJavaRepository.where("id > ? AND builds >= ? AND stars>= ?", 428892, 50, 25).find_each do |repo|
         repo_name = repo.repo_name
         repo_path = File.join(build_logs_path, repo_name.sub(/\//, '@'))
         puts "Scanning projects: #{repo_path}"
         Dir.foreach(repo_path) do |log_file_name|
           next if /.+@.+/ !~ log_file_name
           log_file_path = File.join(repo_path, log_file_name)
-          puts "--Scanning file: #{log_file_path}"
+          #puts "--Scanning file: #{log_file_path}"
 
           Thread.new(log_file_path, repo_name, log_file_name.sub(/@/, '.').sub(/\.log/, '')) do |p, r, n|
             compiler_error_message_slice p, r, n
@@ -129,7 +131,7 @@ module Fdse
 
           loop do
             count = Thread.list.count{ |thread| thread.alive? }
-            break if count <= 200
+            break if count <= 300
           end
         end
       end
