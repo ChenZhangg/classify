@@ -24,19 +24,14 @@ module Fdse
     SEGMENT_BOUNDARY_JAR = /(\/[^\n\/]+){2,}\/\w+[-\w\d]*\.jar/
     SEGMENT_BOUNDARY_JAVAC_ERROR = /Failure executing javac, but could not parse the error/
 
-    def self.gradle_slice(log_file_path)
+    def self.gradle_slice(file_array_reverse)
       array = []
       flag = false
       count = 7
       regexp = /zhang chen/
       #Elif.foreach(log_file_path) do |line|
-      IO.readlines(log_file_path).reverse!.each do |line|
-        begin
-          temp_line = line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
-        rescue
-          temp_line = line.encode('ISO-8859-1', 'ISO-8859-1').gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
-        end
-        if GRADLE_ERROR_FLAG =~ temp_line
+      file_array_reverse.each do |line|
+        if GRADLE_ERROR_FLAG =~ line
           flag = true
           count = 7
         end
@@ -44,8 +39,8 @@ module Fdse
           match = /Execution failed for task '(.+)'/.match(line)
           regexp = /^#{match[1]}/ if match
         end
-        array.unshift(temp_line) if flag
-        if flag && count <=0 && (temp_line =~ GRADLE_ERROR_UP_BOUNDARY || temp_line =~ regexp || temp_line =~ /(?<!\d)0%/)
+        array.unshift(line) if flag
+        if flag && count <=0 && (line =~ GRADLE_ERROR_UP_BOUNDARY || line =~ regexp || line =~ /(?<!\d)0%/)
           flag = false
         end
         count -= 1
@@ -53,51 +48,45 @@ module Fdse
       array
     end
 
-    def self.maven_slice(log_file_path)
+    def self.maven_slice(file_array)
       array = []
       flag = false
-      File.foreach(log_file_path) do |line|
-        begin
-          temp_line = line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
-        rescue
-          temp_line = line.encode('ISO-8859-1', 'ISO-8859-1').gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
-        end
-        flag = true if MAVEN_ERROR_FLAG =~ temp_line
-        flag = false if flag && temp_line =~ /[0-9]+ error|Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin/
-        array << temp_line if flag
+      file_array.each do |line|
+        flag = true if MAVEN_ERROR_FLAG =~ line
+        array << line if flag
+        flag = false if flag && line =~ /[0-9]+ error|Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin/  
       end
       array
     end
 
-    def self.use_build_tool(log_file_path)
+    def self.use_build_tool(file_array_reverse)    
       maven_flag = false
       gradle_flag = false
-      maven_flag = true if `grep -m 1 -c "COMPILATION ERROR" #{log_file_path}`.chomp.to_i >= 1
-      gradle_flag = true if `grep -m 1 -c "Compilation failed" #{log_file_path}`.chomp.to_i >= 1
-      hash = Hash.new
-      hash[:maven] = maven_flag
-      hash[:gradle] = gradle_flag
-      hash
-=begin      
-      maven_flag = false
-      gradle_flag = false
-      File.foreach(log_file_path) do |line|
-        maven_flag = true if MAVEN_ERROR_FLAG =~ line
-        gradle_flag = true if GRADLE_ERROR_FLAG_1 =~ line
+      file_array_reverse.each do |line|
+        maven_flag = true if maven_flag == false && MAVEN_ERROR_FLAG =~ line
+        gradle_flag = true if gradle_flag =false && GRADLE_ERROR_FLAG_1 =~ line
+
       end
       hash = Hash.new
       hash[:maven] = maven_flag
       hash[:gradle] = gradle_flag
       hash
-=end      
     end
 
     def self.compiler_error_message_slice(log_file_path, repo_name, job_number)
-      h = use_build_tool(log_file_path)
+      file_array = IO.readlines(log_file_path).collect! do |line|
+        begin 
+          line.gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
+        rescue
+          line.encode('ISO-8859-1', 'ISO-8859-1').gsub(/[^[:print:]\e\n]/, '').gsub(/\e[^m]+m/, '').gsub(/\r\n?/, "\n")
+        end
+      end
+      file_array_reverse = file_array.reverse
+      h = use_build_tool(file_array_reverse)
       mslice = []
       gslice = []
-      mslice = maven_slice(log_file_path) if h[:maven]
-      gslice = gradle_slice(log_file_path) if h[:gradle]
+      mslice = maven_slice(file_array) if h[:maven]
+      gslice = gradle_slice(file_array_reverse) if h[:gradle]
       array = mslice + gslice
 
       hash = Hash.new
@@ -140,7 +129,7 @@ module Fdse
 
           loop do
             count = Thread.list.count{ |thread| thread.alive? }
-            break if count <= 300
+            break if count <= 200
           end
         end
       end
