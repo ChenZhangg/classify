@@ -88,23 +88,28 @@ module Fdse
 
       file_array = file.lines if h[:maven] || h[:gradle]
       mslice = maven_slice(file_array) if h[:maven]
-      gslice = gradle_slice(file_array.reverse) if h[:gradle]
+      gslice = gradle_slice(file_array.reverse!) if h[:gradle]
       array = mslice + gslice
 
       hash = Hash.new
-      hash[:repo_name] = repo_name.dup
-      hash[:job_number] =job_number.dup
+      hash[:repo_name] = repo_name
+      hash[:job_number] =job_number
       hash[:has_compiler_error] = (h[:maven] || h[:gradle]) ? true : false
       hash[:slice_segment] = array.join
       @queue.enq hash
+
+      mslice.clear
+      gslice.clear
+      array.clear
+      file_array.clear if h[:maven] || h[:gradle]
     end
 
     def self.scan_log_directory(build_logs_path)
       @queue = SizedQueue.new(200)
       consumer = Thread.new do
-        id = 3558121
+        id = 3990971
+        bulk = []
         loop do
-          bulk = []
           200.times do
             hash = @queue.deq
             break if hash == :END_OF_WORK
@@ -113,10 +118,11 @@ module Fdse
             bulk << CompilerErrorSlice.new(hash)
           end
           CompilerErrorSlice.import bulk
+          bulk.clear
        end
       end
 
-      TravisJavaRepository.where("id > ? AND builds >= ? AND stars>= ?", 428892, 50, 25).find_each do |repo|
+      TravisJavaRepository.where("id >= ? AND builds >= ? AND stars>= ?", 507516, 50, 25).find_each do |repo|
         repo_name = repo.repo_name
         repo_path = File.join(build_logs_path, repo_name.sub(/\//, '@'))
         puts "Scanning projects: #{repo_path}"

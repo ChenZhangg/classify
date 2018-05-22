@@ -16,5 +16,5 @@ task :log do
 end
 
 task :slice do
-  ruby '-J-Xms12g -J-Xmx12g -Ilib bin/slice_run.rb'
+  ruby '-J-XX:+UseParallelOldGC -J-Xms12g -J-Xmx12g -Ilib bin/slice_run.rb'
 end
