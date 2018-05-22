@@ -104,10 +104,12 @@ module Fdse
       file_array.clear if h[:maven] || h[:gradle]
     end
 
-    def self.scan_log_directory(build_logs_path)
+    def self.thread_init
       @queue = SizedQueue.new(200)
+      @repo_queue = SizedQueue.new(200)
+
       consumer = Thread.new do
-        id = 4155615
+        id = 4194486
         bulk = []
         loop do
           200.times do
@@ -121,31 +123,46 @@ module Fdse
           bulk.clear
        end
       end
+      threads = []
+      126.times do
+        thread = Thread.new do
+          loop do
+            h = @repo_queue.deq
+            break if h == :END_OF_WORK
+            compiler_error_message_slice h[:log_file_path], h[:repo_name], h[:job_number]
+          end
+        end
+        threads << thread
+      end
+      threads << consumer
+    end
 
-      TravisJavaRepository.where("id >= ? AND builds >= ? AND stars>= ?", 560138, 50, 25).find_each do |repo|
+    def self.scan_log_directory(build_logs_path)
+      threads = thread_init
+      TravisJavaRepository.where("id >= ? AND builds >= ? AND stars>= ?", 589324, 50, 25).find_each do |repo|
         repo_name = repo.repo_name
         repo_path = File.join(build_logs_path, repo_name.sub(/\//, '@'))
         puts "Scanning projects: #{repo_path}"
         Dir.foreach(repo_path) do |log_file_name|
           next if /.+@.+/ !~ log_file_name
           log_file_path = File.join(repo_path, log_file_name)
-          #puts "--Scanning file: #{log_file_path}"
-
-          Thread.new(log_file_path, repo_name, log_file_name.sub(/@/, '.').sub(/\.log/, '')) do |p, r, n|
-            compiler_error_message_slice p, r, n
-          end
-
-          loop do
-            count = Thread.list.count{ |thread| thread.alive? }
-            break if count <= 32
-          end
+          hash = Hash.new
+          hash[:log_file_path] = log_file_path
+          hash[:repo_name] = repo_name
+          hash[:job_number] = log_file_name.sub(/@/, '.').sub(/\.log/, '')
+          @repo_queue.enq hash
         end
       end
-      consumer.join
-      sleep 1200
+   
+      126.times do
+        @repo_queue.enq :END_OF_WORK
+      end
       @queue.enq(:END_OF_WORK)
+      threads.each { |t| t.join }
       puts "Scan Over"
     end
+
+
   end
 end
 

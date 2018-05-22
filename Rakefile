@@ -16,5 +16,5 @@ task :log do
 end
 
 task :slice do
-  ruby '-J-XX:+UseParallelGC -J-XX:NewRatio=1 -J-Xms10g -J-Xmx10g -Ilib bin/slice_run.rb'
+  ruby '-J-Xms10g -J-Xmx10g -Ilib bin/slice_run.rb'
 end
