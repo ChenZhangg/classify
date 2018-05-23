@@ -12,7 +12,7 @@ task :property do
 end
 
 task :log do
-  ruby '-J-Xmx6144m -Ilib bin/classify.rb'
+  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/classify.rb'
 end
 
 task :slice do
