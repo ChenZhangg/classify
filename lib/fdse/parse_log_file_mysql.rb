@@ -3,7 +3,7 @@ require 'fdse/property'
 require 'fileutils'
 require 'thread'
 require 'travis_java_repository'
-require 'compiler_error_match'
+require 'compiler_error_mysql_match'
 require 'java_repo_job_datum'
 require 'activerecord-import'
 module Fdse
@@ -151,41 +151,14 @@ module Fdse
       array
     end
 
-    def self.use_build_tool(file)
-      maven_flag = false
-      gradle_flag = false
-      maven_flag = true if file.include?('COMPILATION ERROR')
-      gradle_flag = true if file.include?('Compilation failed')
-      hash = Hash.new
-      hash[:maven] = maven_flag
-      hash[:gradle] = gradle_flag
-      hash
-    end
-
-    def self.compiler_error_message_slice(log_file_path, repo_name, job_number)
-      file = IO.read(log_file_path)
-      begin
-        file = file.gsub!(/[^[:print:]\e\n]/, '') || file 
-        file = file.gsub!(/\e[^m]+m/, '') || file 
-        file = file.gsub!(/\r\n?/, "\n") || file 
-      rescue
-        file = file.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/[^[:print:]\e\n]/, '') || file 
-        file = file.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/\e[^m]+m/, '') || file 
-        file = file.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/\r\n?/, "\n") || file 
+    def self.compiler_error_message_slice(repo_name, job_number, java_repo_job_datum_id, slice_segment)
+      temp_lines = slice_segment.lines
+      lines = []
+      temp_lines.each do |line|
+        lines << line if  line_validate?(line)
       end
-
-      h = use_build_tool(file)
-      mslice = nil
-      gslice = nil
-      file_array = file.lines if h[:maven] || h[:gradle]
-      mslice = maven_slice(file_array) if h[:maven]
-      gslice = gradle_slice(file_array.reverse!) if h[:gradle]
      
-      segment_array = []
-      segment_array += segment_slice(mslice) if mslice && mslice.length > 0
-      segment_array += segment_slice(gslice) if gslice && gslice.length > 0
-      mslice = nil
-      gslice = nil
+      segment_array = segment_slice(lines)
 
       order = 0
 
@@ -194,6 +167,7 @@ module Fdse
         hash[:repo_name] = repo_name
         hash[:job_number] =job_number
         hash[:order_number] = order
+        hash[:java_repo_job_datum_id] = java_repo_job_datum_id
         hash[:regex_key], hash[:similarity] = map(segment)
         hash[:segment] = segment
         order += 1
@@ -203,9 +177,9 @@ module Fdse
 
     def self.thread_init
       @queue = SizedQueue.new(200)
-      @repo_queue = SizedQueue.new(200)
+      @job_queue = SizedQueue.new(200)
       consumer = Thread.new do
-        id = 3419244
+        id = 0
         loop do
           bulk = []
           200.times do
@@ -213,11 +187,10 @@ module Fdse
             break if hash == :END_OF_WORK
             id += 1
             hash[:id] = id
-            build_datum = JavaRepoJobDatum.find_by(repo_name: hash[:repo_name], job_number: hash[:job_number])
-            hash[:java_repo_build_datum_id] = build_datum ? build_datum.id : nil
-            bulk << CompilerErrorMatch.new(hash)
+            bulk << CompilerErrorMysqlMatch.new(hash)
           end
-          CompilerErrorMatch.import bulk
+          CompilerErrorMysqlMatch.import bulk
+          break if bulk.length < 200
        end
       end
 
@@ -225,9 +198,9 @@ module Fdse
       30.times do
         thread = Thread.new do
           loop do
-            h = @repo_queue.deq
+            h = @job_queue.deq
             break if h == :END_OF_WORK
-            compiler_error_message_slice h[:log_file_path], h[:repo_name], h[:job_number]
+            compiler_error_message_slice h[:repo_name], h[:job_number], h[:java_repo_job_datum_id], h[:slice_segment]
           end
         end
         threads << thread
@@ -235,21 +208,16 @@ module Fdse
       threads << consumer
     end
 
-    def self.scan_log_directory(build_logs_path)
+    def self.scan_log
       threads = thread_init
-      TravisJavaRepository.where("id >= ? AND builds >= ? AND stars>= ?", 1184141, 50, 25).find_each do |repo|
-        repo_name = repo.repo_name
-        repo_path = File.join(build_logs_path, repo_name.sub(/\//, '@'))
-        puts "Scanning projects: #{repo.id}: #{repo_path}"
-        Dir.foreach(repo_path) do |log_file_name|
-          next if /.+@.+/ !~ log_file_name
-          log_file_path = File.join(repo_path, log_file_name)
-          hash = Hash.new
-          hash[:log_file_path] = log_file_path
-          hash[:repo_name] = repo_name
-          hash[:job_number] = log_file_name.sub(/@/, '.').sub(/\.log/, '')
-          @repo_queue.enq hash
-        end
+      JavaRepoJobDatum.where("has_compiler_error = 1").find_each do |job|
+        puts "Scanning: #{job.id}: #{job.repo_name}  #{job.job_number}"
+        hash = Hash.new
+        hash[:repo_name] = job.repo_name
+        hash[:job_number] = job.job_number
+        hash[:java_repo_job_datum_id] = job.id
+        hash[:slice_segment] = job.slice_segment
+        @job_queue.enq hash
       end
       @queue.enq(:END_OF_WORK)
       30.times do
