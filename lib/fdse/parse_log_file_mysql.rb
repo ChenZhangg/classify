@@ -177,7 +177,7 @@ module Fdse
 
     def self.scan_log
       threads = thread_init
-      JavaRepoJobDatum.where("id > 220000 and has_compiler_error = 1").find_each do |job|
+      JavaRepoJobDatum.where("id > 0 and has_compiler_error = 1").find_each do |job|
         puts "Scanning: #{job.id}: #{job.repo_name}  #{job.job_number}"
         hash = Hash.new
         hash[:repo_name] = job.repo_name
