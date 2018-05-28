@@ -64,6 +64,8 @@ module Fdse
 
     def self.segment_slice(segment_lines)
       slice_point = []
+      segment_array = []
+      return segment_array if segment_lines.length < 1
       segment_lines.each_with_index do |line, index|
         next unless SEGMENT_BOUNDARY_FILE =~ line || SEGMENT_BOUNDARY_JAR =~ line
         slice_point << index if index != 0
@@ -78,7 +80,6 @@ module Fdse
       end
       slice_range << (begin_number..(segment_lines.length - 1))
 
-      segment_array = []
       slice_range.each do |range|
         segment_array << segment_lines[range].join if segment_lines[range.begin] !~ SEGMENT_BOUNDARY_GROOVY && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_SCALA && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_KOTLIN && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_JAVAC_ERROR
       end
@@ -115,40 +116,6 @@ module Fdse
       flag = false if line =~ /SKIPPED/
       flag = false if line =~ /:[a-zA-Z]+:[a-zA-Z]+$/
       flag
-    end
-
-    def self.gradle_slice(file_array_reverse)
-      array = []
-      flag = false
-      count = 7
-      regexp = /zhang chen/
-      file_array_reverse.each do |line|
-        if GRADLE_ERROR_FLAG =~ line
-          flag = true
-          count = 7
-        end
-        if flag && count == 6
-          match = /Execution failed for task '(.+)'/.match(line)
-          regexp = /^#{match[1]}/ if match
-        end
-        array.unshift(line) if flag && line_validate?(line)
-        if flag && count <=0 && (line =~ GRADLE_ERROR_UP_BOUNDARY || line =~ regexp || line =~ /(?<!\d)0%/)
-          flag = false
-        end
-        count -= 1
-      end
-      array
-    end
-
-    def self.maven_slice(file_array)
-      array = []
-      flag = false
-      file_array.each do |line|
-        flag = true if MAVEN_ERROR_FLAG =~ line
-        array << line if flag && line_validate?(line)
-        flag = false if flag && line =~ /[0-9]+ error|Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin/
-      end
-      array
     end
 
     def self.compiler_error_message_slice(repo_name, job_number, java_repo_job_datum_id, slice_segment)
@@ -210,7 +177,7 @@ module Fdse
 
     def self.scan_log
       threads = thread_init
-      JavaRepoJobDatum.where("has_compiler_error = 1").find_each do |job|
+      JavaRepoJobDatum.where("id > 220000 and has_compiler_error = 1").find_each do |job|
         puts "Scanning: #{job.id}: #{job.repo_name}  #{job.job_number}"
         hash = Hash.new
         hash[:repo_name] = job.repo_name
