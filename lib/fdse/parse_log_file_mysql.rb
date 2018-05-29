@@ -188,7 +188,7 @@ module Fdse
       end
       @queue.enq(:END_OF_WORK)
       30.times do
-        @repo_queue.enq :END_OF_WORK
+        @job_queue.enq :END_OF_WORK
       end
       threads.each { |t| t.join }
       puts "Scan Over"
