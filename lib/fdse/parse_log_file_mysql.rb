@@ -146,7 +146,7 @@ module Fdse
       @queue = SizedQueue.new(200)
       @job_queue = SizedQueue.new(200)
       consumer = Thread.new do
-        id = 0
+        id = 3808701
         loop do
           bulk = []
           hash = nil
@@ -178,7 +178,7 @@ module Fdse
 
     def self.scan_log
       consumer, threads = thread_init
-      JavaRepoJobDatum.where("id > 0 and has_compiler_error = 1").find_each do |job|
+      JavaRepoJobDatum.where("id > 6485680 and has_compiler_error = 1").find_each do |job|
         puts "Scanning: #{job.id}: #{job.repo_name}  #{job.job_number}"
         hash = Hash.new
         hash[:repo_name] = job.repo_name
