@@ -149,6 +149,7 @@ module Fdse
         id = 0
         loop do
           bulk = []
+          hash = nil
           200.times do
             hash = @queue.deq
             break if hash == :END_OF_WORK
@@ -157,7 +158,7 @@ module Fdse
             bulk << CompilerErrorMysqlMatch.new(hash)
           end
           CompilerErrorMysqlMatch.import bulk
-          break if bulk.length < 200
+          break if hash == :END_OF_WORK
        end
       end
 
@@ -172,11 +173,11 @@ module Fdse
         end
         threads << thread
       end
-      threads << consumer
+      [consumer, threads]
     end
 
     def self.scan_log
-      threads = thread_init
+      consumer, threads = thread_init
       JavaRepoJobDatum.where("id > 0 and has_compiler_error = 1").find_each do |job|
         puts "Scanning: #{job.id}: #{job.repo_name}  #{job.job_number}"
         hash = Hash.new
@@ -186,11 +187,12 @@ module Fdse
         hash[:slice_segment] = job.slice_segment
         @job_queue.enq hash
       end
-      @queue.enq(:END_OF_WORK)
       30.times do
         @job_queue.enq :END_OF_WORK
       end
       threads.each { |t| t.join }
+      @queue.enq(:END_OF_WORK)
+      consumer.join
       puts "Scan Over"
     end
   end
