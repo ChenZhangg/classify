@@ -92,6 +92,16 @@ class TestProperty < Test::Unit::TestCase
     [ERROR] /home/travis/build/openzipkin/zipkin/zipkin-storage/zipkin2_cassandra/src/main/java/zipkin2/storage/cassandra/InsertSpan.java:[52,29] Primitive types cannot be @Nullable
     openzipkin/zipkin6466.1
     assert(hash[:zc_primitive_cannot_nullable] =~ s)
+
+    s = <<~'TwilioDevEd/api-snippets862.1'
+    /home/travis/build/TwilioDevEd/api-snippets/testable_snippets/rest/making-calls/template/java/6/src/main/java/Example.java:28: error: illegal character: '#'
+    {{#callStatusCallback}}params.add(new BasicNameValuePair("StatusCallback", "{{callStatusCallback}}"));{{/callStatusCallback}}
+      ^
+    TwilioDevEd/api-snippets862.1
+    p s
+    p hash[:zc_illegal_character]
+    m = hash[:zc_illegal_character] =~ s
+    p m
   end
 
   def test_run
