@@ -20,7 +20,7 @@ module Fdse
         str += '[^\n]*\n[^\n]*'+regexp_string(properties_file[k]) if k != index+2 && k != index+1
         k += 1
       end
-      str += '[^\n]*\n'
+      str += '([^\n]*\n[^\n]*){0,3}[^\n]*\n'
       str.gsub(/(\[\^\\n\]\*|[\s&&[^\n]]){2,}/, '[^\n]*')
     end
 
