@@ -16,11 +16,11 @@ module Fdse
       index = k - 1
       while properties_file[k] !~ /^$/ && properties_file[k] != nil
         str ||= '^[^\n]*' + regexp_string(properties_file[k]) if k == index+1
-        str += '([^\n]*\n[^\n]*){0,3}' + regexp_string(properties_file[k]) if k == index+2
+        str += '([^\n]*\n){0,3}[^\n]*' + regexp_string(properties_file[k]) if k == index+2
         str += '[^\n]*\n[^\n]*'+regexp_string(properties_file[k]) if k != index+2 && k != index+1
         k += 1
       end
-      str += '([^\n]*\n[^\n]*){0,3}[^\n]*\n'
+      str += '([^\n]*\n){0,3}[^\n]*\n'
       str.gsub(/(\[\^\\n\]\*|[\s&&[^\n]]){2,}/, '[^\n]*')
     end
 
@@ -141,6 +141,8 @@ module Fdse
       hash[:zc_raw_type] = /^[^\n]*found raw type[^\n]*([^\n]*\n[^\n]*){1,3}?missing type arguments for generic class([^\n]*\n[^\n]*){1,3}\n/m
       hash[:zc_javadoc_comment] = /^[^\n]*missing javadoc comment([^\n]*\n[^\n]*){1,3}\n/m
       hash[:zc_jcannot_find_mapping] = /^[^\n]*Cannot find[^\n]*mapping([^\n]*\n[^\n]*){1,3}\n/m
+      hash[:zc_jcannot_find_mapping] = /^[^\n]*uses or overrides a deprecated API[^\n]*([^\n]*\n[^\n]*){0,3}[^\n]*\n/m
+
       hash = sort_by_length hash
       similarity_hash = similarity_matrix_initialize hash
       calculate_similarity_matrix!(hash, similarity_hash)
