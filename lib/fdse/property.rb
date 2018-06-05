@@ -16,7 +16,7 @@ module Fdse
       index = k - 1
       while properties_file[k] !~ /^$/ && properties_file[k] != nil
         str ||= '^[^\n]*' + regexp_string(properties_file[k]) if k == index+1
-        str += '([^\n]*\n[^\n]*){1,3}' + regexp_string(properties_file[k]) if k == index+2
+        str += '([^\n]*\n[^\n]*){0,3}' + regexp_string(properties_file[k]) if k == index+2
         str += '[^\n]*\n[^\n]*'+regexp_string(properties_file[k]) if k != index+2 && k != index+1
         k += 1
       end
