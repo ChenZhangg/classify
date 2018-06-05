@@ -130,7 +130,11 @@ module Fdse
 
       remove_duplication! hash
 
-      hash[:zc_apply_given_type] = /^[^\n]*in[^\n]*cannot be applied to given types([^\n]*\n[^\n]*){0,3}[^\n]*\n/
+      hash[:zc_apply_given_type] = /^[^\n]*in[^\n]*cannot be applied to given types([^\n]*\n[^\n]*){0,3}[^\n]*\n/m
+      hash[:zc_cannot_applied] = /^[^\n]*cannot be applied to([^\n]*\n[^\n]*){0,3}[^\n]*\n/m
+      hash[:zc_primitive_cannot_nullable] = /^[^\n]*Primitive types cannot be @Nullable[^\n]*\n/m
+      hash[:zc_illegal_character] = /^[^\n]*illegal character([^\n]*\n[^\n]*){0,3}[^\n]*\n/m
+
       hash = sort_by_length hash
       similarity_hash = similarity_matrix_initialize hash
       calculate_similarity_matrix!(hash, similarity_hash)
@@ -141,7 +145,7 @@ module Fdse
   def self.test
     i = 0
     Property.new.run.each do |key,value|
-      RegularExpression.create(regex_key: key.to_s, regex_value: value.to_s)
+      #RegularExpression.create(regex_key: key.to_s, regex_value: value.to_s)
       i += 1
       puts "#{key}"
       puts "#{value}"

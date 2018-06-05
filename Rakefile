@@ -3,7 +3,7 @@ task :default => :test
 
 Rake::TestTask.new('test') do |t|
   #t.libs << "test"
-  t.pattern = "test/test_*.rb"
+  t.pattern = "test/test_property.rb"
   t.verbose = true
 end
 

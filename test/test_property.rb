@@ -81,6 +81,19 @@ class TestProperty < Test::Unit::TestCase
     #p result
   end
 
+  def test_log_match
+    hash = Fdse::Property.new.run
+    s = <<~'openmicroscopy/bioformats2179.7'
+    [ERROR] /home/travis/build/openmicroscopy/bioformats/components/ome-xml/target/generated-sources/ome/xml/model/MapAnnotation.java:[149,9] update(org.w3c.dom.Element,ome.xml.model.OMEModel) in ome.xml.model.MapPairs cannot be applied to (org.w3c.dom.Element)s
+    openmicroscopy/bioformats2179.7
+    assert(hash[:zc_cannot_applied] =~ s)
+
+    s = <<~'openzipkin/zipkin6466.1'
+    [ERROR] /home/travis/build/openzipkin/zipkin/zipkin-storage/zipkin2_cassandra/src/main/java/zipkin2/storage/cassandra/InsertSpan.java:[52,29] Primitive types cannot be @Nullable
+    openzipkin/zipkin6466.1
+    assert(hash[:zc_primitive_cannot_nullable] =~ s)
+  end
+
   def test_run
     refute_nil Fdse::Property.new.run
     #puts Fdse::Property.new.run
