@@ -19,7 +19,7 @@ module Fdse
     SEGMENT_BOUNDARY_SCALA = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.scala/
     SEGMENT_BOUNDARY_KOTLIN = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.kt/
     SEGMENT_BOUNDARY_SIG = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.sig/
-    SEGMENT_BOUNDARY_JAR = /(\/[^\n\/]+){2,}\/\w+[.-\w\d]*\.jar/
+    SEGMENT_BOUNDARY_JAR = /(\/[^\n\/]+){2,}\/\w+[-.\w\d]*\.jar/
     SEGMENT_BOUNDARY_JAVAC_ERROR = /Failure executing javac, but could not parse the error/
     @regex_hash = Fdse::Property.new.run
 
