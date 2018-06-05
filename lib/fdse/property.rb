@@ -131,17 +131,17 @@ module Fdse
 
       remove_duplication! hash
 
-      hash[:zc_apply_given_type] = /^[^\n]*in[^\n]*cannot be applied to given types([^\n]*\n[^\n]*){0,3}[^\n]*\n/m
-      hash[:zc_cannot_applied] = /^[^\n]*cannot be applied to([^\n]*\n[^\n]*){0,3}[^\n]*\n/m
+      hash[:zc_apply_given_type] = /^[^\n]*in[^\n]*cannot be applied to given types([^\n]*\n){0,3}[^\n]*\n/m
+      hash[:zc_cannot_applied] = /^[^\n]*cannot be applied to([^\n]*\n){0,3}[^\n]*\n/m
       hash[:zc_primitive_cannot_nullable] = /^[^\n]*Primitive types cannot be @Nullable[^\n]*\n/m
-      hash[:zc_illegal_character] = /^[^\n]*illegal character([^\n]*\n[^\n]*){0,3}[^\n]*\n/m
+      hash[:zc_illegal_character] = /^[^\n]*illegal character([^\n]*\n){0,3}[^\n]*\n/m
       hash[:zc_ambiguous] = /^([^\n]*\n){0,3}[^\n]*is ambiguous for[^\n]*\n/m
-      hash[:zc_ambiguous_1] = /^[^\n]*reference to[^\n]*is ambiguous([^\n]*\n[^\n]*){1,3}\n/m
-      hash[:zc_ambiguous_2] = /^[^\n]*reference to[^\n]*is ambiguous([^\n]*\n[^\n]*){1,3}?both[^\n]*in[^\n]*and[^\n]*in[^\n]*match([^\n]*\n[^\n]*){1,3}\n/m
-      hash[:zc_raw_type] = /^[^\n]*found raw type[^\n]*([^\n]*\n[^\n]*){1,3}?missing type arguments for generic class([^\n]*\n[^\n]*){1,3}\n/m
-      hash[:zc_javadoc_comment] = /^[^\n]*missing javadoc comment([^\n]*\n[^\n]*){1,3}\n/m
-      hash[:zc_jcannot_find_mapping] = /^[^\n]*Cannot find[^\n]*mapping([^\n]*\n[^\n]*){1,3}\n/m
-      hash[:zc_jcannot_find_mapping] = /^[^\n]*uses or overrides a deprecated API[^\n]*([^\n]*\n[^\n]*){0,3}[^\n]*\n/m
+      hash[:zc_ambiguous_1] = /^[^\n]*reference to[^\n]*is ambiguous([^\n]*\n){0,3}[^\n]*\n/m
+      hash[:zc_ambiguous_2] = /^[^\n]*reference to[^\n]*is ambiguous([^\n]*\n){0,3}[^\n]*both[^\n]*in[^\n]*and[^\n]*in[^\n]*match([^\n]*\n){0,3}[^\n]*\n/m
+      hash[:zc_raw_type] = /^[^\n]*found raw type[^\n]*([^\n]*\n){0,3}[^\n]*missing type arguments for generic class([^\n]*\n){0,3}[^\n]*\n/m
+      hash[:zc_javadoc_comment] = /^[^\n]*missing javadoc comment([^\n]*\n){0,3}[^\n]*\n/m
+      hash[:zc_jcannot_find_mapping] = /^[^\n]*Cannot find[^\n]*mapping([^\n]*\n){0,3}[^\n]*\n/m
+      #hash[:zc_jcannot_find_mapping] = /^[^\n]*uses or overrides a deprecated API[^\n]*([^\n]*\n){0,3}[^\n]*\n/m
 
       hash = sort_by_length hash
       similarity_hash = similarity_matrix_initialize hash
