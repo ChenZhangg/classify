@@ -137,6 +137,7 @@ module Fdse
         hash[:order_number] = order
         hash[:java_repo_job_datum_id] = java_repo_job_datum_id
         hash[:regex_key], hash[:similarity] = map(segment)
+        hash[:regex_value] = @regex_hash[hash[:regex_key]]
         hash[:segment] = segment
         order += 1
         @queue.enq hash
