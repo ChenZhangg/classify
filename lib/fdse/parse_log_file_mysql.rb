@@ -4,6 +4,7 @@ require 'fileutils'
 require 'thread'
 require 'travis_java_repository'
 require 'compiler_error_mysql_match'
+require 'temp_match'
 require 'java_repo_job_datum'
 require 'activerecord-import'
 module Fdse
@@ -18,7 +19,7 @@ module Fdse
     SEGMENT_BOUNDARY_SCALA = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.scala/
     SEGMENT_BOUNDARY_KOTLIN = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.kt/
     SEGMENT_BOUNDARY_SIG = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.sig/
-    SEGMENT_BOUNDARY_JAR = /(\/[^\n\/]+){2,}\/\w+[-\w\d]*\.jar/
+    SEGMENT_BOUNDARY_JAR = /(\/[^\n\/]+){2,}\/\w+[.-\w\d]*\.jar/
     SEGMENT_BOUNDARY_JAVAC_ERROR = /Failure executing javac, but could not parse the error/
     @regex_hash = Fdse::Property.new.run
 
@@ -146,7 +147,7 @@ module Fdse
       @queue = SizedQueue.new(200)
       @job_queue = SizedQueue.new(200)
       consumer = Thread.new do
-        id = 3808701
+        id = 0
         loop do
           bulk = []
           hash = nil
@@ -155,9 +156,9 @@ module Fdse
             break if hash == :END_OF_WORK
             id += 1
             hash[:id] = id
-            bulk << CompilerErrorMysqlMatch.new(hash)
+            bulk << TempMatch.new(hash)
           end
-          CompilerErrorMysqlMatch.import bulk
+          TempMatch.import bulk
           break if hash == :END_OF_WORK
        end
       end

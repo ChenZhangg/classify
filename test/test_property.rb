@@ -86,22 +86,78 @@ class TestProperty < Test::Unit::TestCase
     s = <<~'openmicroscopy/bioformats2179.7'
     [ERROR] /home/travis/build/openmicroscopy/bioformats/components/ome-xml/target/generated-sources/ome/xml/model/MapAnnotation.java:[149,9] update(org.w3c.dom.Element,ome.xml.model.OMEModel) in ome.xml.model.MapPairs cannot be applied to (org.w3c.dom.Element)s
     openmicroscopy/bioformats2179.7
-    assert(hash[:zc_cannot_applied] =~ s)
+    m = hash[:zc_cannot_applied].match s
+    assert_equal s, m[0]
 
     s = <<~'openzipkin/zipkin6466.1'
     [ERROR] /home/travis/build/openzipkin/zipkin/zipkin-storage/zipkin2_cassandra/src/main/java/zipkin2/storage/cassandra/InsertSpan.java:[52,29] Primitive types cannot be @Nullable
     openzipkin/zipkin6466.1
-    assert(hash[:zc_primitive_cannot_nullable] =~ s)
+    m = hash[:zc_primitive_cannot_nullable].match s
+    assert_equal s, m[0]
 
     s = <<~'TwilioDevEd/api-snippets862.1'
     /home/travis/build/TwilioDevEd/api-snippets/testable_snippets/rest/making-calls/template/java/6/src/main/java/Example.java:28: error: illegal character: '#'
     {{#callStatusCallback}}params.add(new BasicNameValuePair("StatusCallback", "{{callStatusCallback}}"));{{/callStatusCallback}}
       ^
+
     TwilioDevEd/api-snippets862.1
-    p s
-    p hash[:zc_illegal_character]
-    m = hash[:zc_illegal_character] =~ s
-    p m
+    m = hash[:zc_illegal_character].match s
+    assert_equal s, m[0]
+
+    s = <<~'apache/beam5326.4'
+    2016-10-29T15:41:10.114 [ERROR] /home/travis/build/apache/incubator-beam/runners/spark/src/main/java/org/apache/beam/runners/spark/io/SourceRDD.java:[220] 
+scala.collection.immutable.List.empty();
+                                ^^^^^
+The method empty() is ambiguous for the type List
+    apache/beam5326.4
+    m = hash[:zc_ambiguous].match s
+    assert_equal s, m[0]
+
+    s = <<~'afollestad/ason90.1'
+    [ERROR] /home/travis/build/geoserver/geoserver/src/main/src/main/java/org/geoserver/catalog/impl/AbstractFilteredCatalog.java:[821,15] error: reference to list is ambiguous
+[ERROR] 
+    T#1 extends CatalogInfo declared in method <T#1>list(Class<T#1>,Filter,Long,Long,SortBy)
+    T#2 extends CatalogInfo declared in method <T#2>list(Class<T#2>,Filter,Integer,Integer,SortBy)
+    afollestad/ason90.1
+    m = hash[:zc_ambiguous_1].match s
+    assert_equal s, m[0]
+
+    s = <<~'redisson/redisson487.108'
+    [ERROR] /home/travis/build/redisson/redisson/redisson/src/test/java/org/redisson/RedissonLexSortedSetReactiveTest.java:[39,19] error: reference to sync is ambiguous
+  both method <V#1>sync(RScoredSortedSetReactive<V#1>) in BaseReactiveTest and method <V#2>sync(RCollectionReactive<V#2>) in BaseReactiveTest match
+  where V#1,V#2 are type-variables:
+    V#1 extends Object declared in method <V#1>sync(RScoredSortedSetReactive<V#1>)
+    V#2 extends Object declared in method <V#2>sync(RCollectionReactive<V#2>)
+    redisson/redisson487.108
+    m = hash[:zc_ambiguous_2].match s
+    assert_equal s, m[0]
+
+    s = <<~'mongodb/mongo-java-driver1749.1'
+    /home/travis/build/mongodb/mongo-java-driver/bson/src/main/org/bson/codecs/configuration/mapper/FieldModel.java:23: warning: [rawtypes] found raw type: Codec
+    private Codec codec;
+            ^
+  missing type arguments for generic class Codec<T>
+  where T is a type-variable:
+    T extends Object declared in interface Codec
+    mongodb/mongo-java-driver1749.1
+    m = hash[:zc_raw_type].match s
+    assert_equal s, m[0]
+
+    s = <<~'OpenCubicChunks/CubicChunks661.1'
+    /home/travis/build/OpenCubicChunks/CubicChunks/build/sources/main/java/cubicchunks/asm/mixin/core/common/MixinChunk_Cubes.java:708: warning: @Overwrite is missing javadoc comment
+    public boolean isEmptyBetween(int startY, int endY) {
+                   ^
+    OpenCubicChunks/CubicChunks661.1
+    m = hash[:zc_javadoc_comment].match s
+    assert_equal s, m[0]
+
+    s = <<~'OpenCubicChunks/CubicChunks723.2'
+    /home/travis/build/OpenCubicChunks/CubicChunks/build/sources/main/java/cubicchunks/asm/mixin/core/client/MixinRenderGlobal.java:108: warning: Cannot find method mapping for @At(INVOKE.<target>) 'Lnet/minecraft/client/renderer/chunk/RenderChunk;getChunk(Lnet/minecraft/world/World;)Lnet/minecraft/world/chunk/Chunk;'
+    @Inject(method = "renderEntities",
+    ^
+    OpenCubicChunks/CubicChunks723.2
+    m = hash[:zc_jcannot_find_mapping].match s
+    assert_equal s, m[0]
   end
 
   def test_run
