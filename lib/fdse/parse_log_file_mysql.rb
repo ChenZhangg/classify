@@ -20,6 +20,7 @@ module Fdse
     SEGMENT_BOUNDARY_KOTLIN = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.kt/
     SEGMENT_BOUNDARY_SIG = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.sig/
     SEGMENT_BOUNDARY_JAR = /(\/[^\n\/]+){2,}\/\w+[-.\w\d]*\.jar/
+    SEGMENT_BOUNDARY_TARGET_RELEASE = /invalid target release/
     SEGMENT_BOUNDARY_JAVAC_ERROR = /Failure executing javac, but could not parse the error/
     @regex_hash = Fdse::Property.new.run
 
@@ -68,7 +69,7 @@ module Fdse
       segment_array = []
       return segment_array if segment_lines.length < 1
       segment_lines.each_with_index do |line, index|
-        next unless SEGMENT_BOUNDARY_FILE =~ line || SEGMENT_BOUNDARY_JAR =~ line
+        next unless SEGMENT_BOUNDARY_FILE =~ line || SEGMENT_BOUNDARY_JAR =~ line || SEGMENT_BOUNDARY_TARGET_RELEASE =~ line
         slice_point << index if index != 0
       end
 

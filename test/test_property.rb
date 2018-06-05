@@ -31,9 +31,9 @@ class TestProperty < Test::Unit::TestCase
 
   def test_regexp_strings
     lines = IO.readlines(get_path('regexp_strings0'))
-    assert_equal '^[^\n]*is abstract[^\n]*cannot be instantiated[^\n]*\n', @property.regexp_strings(lines, 0)
+    assert_equal '^[^\n]*is abstract[^\n]*cannot be instantiated([^\n]*\n){0,3}[^\n]*\n', @property.regexp_strings(lines, 0)
     lines = IO.readlines(get_path('regexp_strings1'))
-    assert_equal '^[^\n]*inference variable[^\n]*has incompatible bounds([^\n]*\n[^\n]*){1,3}?equality constraints[^\n]*\n[^\n]*lower bounds[^\n]*\n', @property.regexp_strings(lines, 0)
+    assert_equal '^[^\n]*inference variable[^\n]*has incompatible bounds([^\n]*\n){0,3}[^\n]*equality constraints[^\n]*\n[^\n]*lower bounds[^\n]*([^\n]*\n){0,3}[^\n]*\n', @property.regexp_strings(lines, 0)
   end
 
   def test_detect_duplication
@@ -159,7 +159,28 @@ The method empty() is ambiguous for the type List
     @Inject(method = "renderEntities",
     ^
     OpenCubicChunks/CubicChunks723.2
-    m = hash[:zc_jcannot_find_mapping].match s
+    m = hash[:zc_cannot_find_mapping].match s
+    assert_equal s, m[0]
+
+    s = <<~'grails/grails-core1803.1'
+    :grails-test-suite-base:compileGroovyNote: /home/travis/build/grails/grails-core/grails-test-suite-base/src/main/groovy/org/grails/commons/test/AbstractGrailsMockTests.java uses or overrides a deprecated API.
+startup failed:
+    grails/grails-core1803.1
+    m = hash[:zc_uses_deprecated_API].match s
+    assert_equal s, m[0]
+
+    s = <<~'geotools/geotools2448.2'
+    [ERROR] javac: invalid target release: 1.8
+Usage: javac <options> <source files>
+use -help for a list of possible options
+    geotools/geotools2448.2
+    m = hash[:zc_target_release].match s
+    assert_equal s, m[0]
+
+    s = <<~'androidannotations/androidannotations438.2'
+    [ERROR] /home/travis/build/excilys/androidannotations/[secure]/functional-test-1-5/src/main/java/org/androidannotations/test15/efragment/MyListFragment.java:[84,9] @org.androidannotations.annotations.ItemClick can only have the following parameters: [ [  extending android.widget.AdapterView (optional) ],[  extending java.lang.Object (optional) ],[  extending android.view.View (optional) ],[ int (optional) ],[ long (optional) ], ] in the order above
+    androidannotations/androidannotations438.2
+    m = hash[:zc_have_parameters].match s
     assert_equal s, m[0]
   end
 
