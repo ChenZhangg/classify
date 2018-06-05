@@ -9,7 +9,7 @@ module Fdse
 
     def regexp_string(line)
       #line.chomp.strip.sub(/\\n\\/,'').sub(/\\$/,'').gsub(/{[0-9]}|:|;|,|\[|\]|\\u\d+|'|"/,' ').gsub(/(?=[().\[\]])/,"\\").gsub(/\s{2,}/,'[^\n]*').gsub(/\d/,"\d+")
-      line.chomp.strip.sub(/\\n\\/,'').sub(/\\$/,'').gsub(/{[0-9]}|:|;|,|\[|\]|\\u\d+|'|"|\(|\)|\.|@/,'  ').gsub(/\s{2,}/,'[^\n]*').gsub(/\d/,"\d+")
+      line.chomp.strip.sub(/\\n\\/,'').sub(/\\$/,'').gsub(/{[0-9]}|:|;|,|\[|\]|\\u\d+|'|"|\(|\)|\.|@/,'  ').gsub(/\s{2,}/,'[^\n]*').gsub(/\d/,"\\d+")
     end
 
     def regexp_strings(properties_file, k)

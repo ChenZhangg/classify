@@ -24,6 +24,9 @@ class TestProperty < Test::Unit::TestCase
     assert_equal 'a type with the same simple name is already defined by the single-type-import of[^\n]*', @property.regexp_string(lines[3])
     assert_equal 'annotation[^\n]*is missing a default value for the element[^\n]*', @property.regexp_string(lines[4])
     assert_equal '[^\n]*missing in reference', @property.regexp_string(lines[5])
+    #s = 'use -source 7 or higher to enable diamond operator'
+    #puts s.chomp.strip.sub(/\\n\\/,'').sub(/\\$/,'').gsub(/{[0-9]}|:|;|,|\[|\]|\\u\d+|'|"|\(|\)|\.|@/,'  ').gsub(/\s{2,}/,'[^\n]*').gsub(/\d+/,"\\d+")
+
   end
 
   def test_regexp_strings
