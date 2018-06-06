@@ -31,9 +31,9 @@ class TestProperty < Test::Unit::TestCase
 
   def test_regexp_strings
     lines = IO.readlines(get_path('regexp_strings0'))
-    assert_equal '^[^\n]*is abstract[^\n]*cannot be instantiated([^\n]*\n){0,3}[^\n]*\n', @property.regexp_strings(lines, 0)
+    assert_equal '^[^\n]*is abstract[^\n]*cannot be instantiated([^\n]*\n){0,}[^\n]*\n', @property.regexp_strings(lines, 0)
     lines = IO.readlines(get_path('regexp_strings1'))
-    assert_equal '^[^\n]*inference variable[^\n]*has incompatible bounds([^\n]*\n){0,3}[^\n]*equality constraints[^\n]*\n[^\n]*lower bounds[^\n]*([^\n]*\n){0,3}[^\n]*\n', @property.regexp_strings(lines, 0)
+    assert_equal '^[^\n]*inference variable[^\n]*has incompatible bounds([^\n]*\n){0,3}[^\n]*equality constraints[^\n]*\n[^\n]*lower bounds[^\n]*([^\n]*\n){0,}[^\n]*\n', @property.regexp_strings(lines, 0)
   end
 
   def test_detect_duplication
@@ -181,6 +181,13 @@ use -help for a list of possible options
     [ERROR] /home/travis/build/excilys/androidannotations/[secure]/functional-test-1-5/src/main/java/org/androidannotations/test15/efragment/MyListFragment.java:[84,9] @org.androidannotations.annotations.ItemClick can only have the following parameters: [ [  extending android.widget.AdapterView (optional) ],[  extending java.lang.Object (optional) ],[  extending android.view.View (optional) ],[ int (optional) ],[ long (optional) ], ] in the order above
     androidannotations/androidannotations438.2
     m = hash[:zc_have_parameters].match s
+    assert_equal s, m[0]
+
+    s = <<~'google/guice389.3'
+    /home/travis/build/google/guice/extensions/jmx/src/com/google/inject/tools/jmx/Manager.java:[56,6] error: cannot find symbol
+[ERROR]  class Manager
+    google/guice389.3
+    m = hash[:zc_cannot_find_symbol].match s
     assert_equal s, m[0]
   end
 

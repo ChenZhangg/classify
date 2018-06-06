@@ -9,7 +9,7 @@ module Fdse
 
     def regexp_string(line)
       #line.chomp.strip.sub(/\\n\\/,'').sub(/\\$/,'').gsub(/{[0-9]}|:|;|,|\[|\]|\\u\d+|'|"/,' ').gsub(/(?=[().\[\]])/,"\\").gsub(/\s{2,}/,'[^\n]*').gsub(/\d/,"\d+")
-      line.chomp.strip.sub(/\\n\\/,'').sub(/\\$/,'').gsub(/{[0-9]}|:|;|,|\[|\]|\\u\d+|'|"|\(|\)|\.|@/,'  ').gsub(/\s{2,}/,'[^\n]*').gsub(/\d/,"\\d+")
+      line.chomp.strip.sub(/\\n\\/,'').sub(/\\$/,'').gsub(/{[0-9]}|:|;|,|\[|\]|\\u\d+|'|"|\(|\)|\.|@/,'  ').gsub(/\s{2,}/,'[^\n]*')#.gsub(/\d/,"\\d+")
     end
 
     def regexp_strings(properties_file, k)
@@ -20,7 +20,7 @@ module Fdse
         str += '[^\n]*\n[^\n]*'+regexp_string(properties_file[k]) if k != index+2 && k != index+1
         k += 1
       end
-      str += '([^\n]*\n){0,3}[^\n]*\n'
+      str += '([^\n]*\n){0,}[^\n]*\n'
       str.gsub(/(\[\^\\n\]\*|[\s&&[^\n]]){2,}/, '[^\n]*')
     end
 
@@ -131,20 +131,29 @@ module Fdse
 
       remove_duplication! hash
 
-      hash[:zc_apply_given_type] = /^[^\n]*in[^\n]*cannot be applied to given types[^\n]*([^\n]*\n){0,3}[^\n]*\n/m
-      hash[:zc_cannot_applied] = /^[^\n]*cannot be applied to[^\n]*([^\n]*\n){0,3}[^\n]*\n/m
-      hash[:zc_primitive_cannot_nullable] = /^[^\n]*Primitive types cannot be @Nullable[^\n]*([^\n]*\n){0,3}[^\n]*\n/m
-      hash[:zc_primitive_meaningless] = /^[^\n]*is meaningless[^\n]*([^\n]*\n){0,3}[^\n]*\n/m
-      hash[:zc_illegal_character] = /^[^\n]*illegal character([^\n]*\n){0,3}[^\n]*\n/m
+      hash[:zc_apply_given_type] = /^[^\n]*in[^\n]*cannot be applied to given types[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_cannot_applied] = /^[^\n]*cannot be applied to[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_primitive_cannot_nullable] = /^[^\n]*Primitive types cannot be @Nullable[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_primitive_meaningless] = /^[^\n]*is meaningless[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_illegal_character] = /^[^\n]*illegal character([^\n]*\n){0,}[^\n]*\n/m
       hash[:zc_ambiguous] = /^([^\n]*\n){0,3}[^\n]*is ambiguous for[^\n]*\n/m
       hash[:zc_ambiguous_1] = /^[^\n]*reference to[^\n]*is ambiguous([^\n]*\n){0,3}[^\n]*\n/m
-      hash[:zc_ambiguous_2] = /^[^\n]*reference to[^\n]*is ambiguous([^\n]*\n){0,3}[^\n]*both[^\n]*in[^\n]*and[^\n]*in[^\n]*match([^\n]*\n){0,3}[^\n]*\n/m
-      hash[:zc_raw_type] = /^[^\n]*found raw type[^\n]*([^\n]*\n){0,3}[^\n]*missing type arguments for generic class([^\n]*\n){0,3}[^\n]*\n/m
-      hash[:zc_javadoc_comment] = /^[^\n]*missing javadoc comment([^\n]*\n){0,3}[^\n]*\n/m
-      hash[:zc_cannot_find_mapping] = /^[^\n]*Cannot find[^\n]*mapping([^\n]*\n){0,3}[^\n]*\n/m
-      hash[:zc_uses_deprecated_API] = /^[^\n]*uses or overrides a deprecated API[^\n]*([^\n]*\n){0,3}[^\n]*\n/m
-      hash[:zc_target_release] = /^[^\n]*invalid target release[^\n]*([^\n]*\n){0,3}[^\n]*\n/m
-      hash[:zc_have_parameters] = /^[^\n]*only have the following parameters[^\n]*([^\n]*\n){0,3}[^\n]*\n/m
+      hash[:zc_ambiguous_2] = /^[^\n]*reference to[^\n]*is ambiguous([^\n]*\n){0,3}[^\n]*both[^\n]*in[^\n]*and[^\n]*in[^\n]*match([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_raw_type] = /^[^\n]*found raw type[^\n]*([^\n]*\n){0,3}[^\n]*missing type arguments for generic class([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_javadoc_comment] = /^[^\n]*missing javadoc comment([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_cannot_find_mapping] = /^[^\n]*Cannot find[^\n]*mapping([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_uses_deprecated_API] = /^[^\n]*uses or overrides a deprecated API[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_target_release] = /^[^\n]*invalid target release[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_have_parameters] = /^[^\n]*only have the following parameters[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_cannot_find_symbol] = /^[^\n]*cannot find symbol[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_bootstrap] = /^([^\n]*\n){0,3}[^\n]*bootstrap class path not set in conjunction with -source[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_without_call_superclass] = /^[^\n]*Generating[^\n]*without a call to superclass[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_redundant_cast] = /^[^\n]*redundant cast[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_not_applicable] = /^[^\n]*not applicable to[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_package_not_visible] = /^[^\n]*package[^\n]*is not visible[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_bad_operand] = /^[^\n]*bad operand type[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+
+
       hash = sort_by_length hash
       similarity_hash = similarity_matrix_initialize hash
       calculate_similarity_matrix!(hash, similarity_hash)
@@ -155,7 +164,7 @@ module Fdse
   def self.test
     i = 0
     Property.new.run.each do |key,value|
-      #RegularExpression.create(regex_key: key.to_s, regex_value: value.to_s)
+      RegularExpression.create(regex_key: key.to_s, regex_value: value.to_s)
       i += 1
       puts "#{key}"
       puts "#{value}"
