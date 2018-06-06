@@ -142,6 +142,8 @@ module Fdse
       hash[:zc_raw_type] = /^[^\n]*found raw type[^\n]*([^\n]*\n){0,3}[^\n]*missing type arguments for generic class([^\n]*\n){0,}[^\n]*\n/m
       hash[:zc_javadoc_comment] = /^[^\n]*missing javadoc comment([^\n]*\n){0,}[^\n]*\n/m
       hash[:zc_cannot_find_mapping] = /^[^\n]*Cannot find[^\n]*mapping([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_cannot_locate_mapping] = /^[^\n]*Unable to locate[^\n]*mapping([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_miss_tag] = /^[^\n]*missing[^\n]*tag([^\n]*\n){0,}[^\n]*\n/m
       hash[:zc_uses_deprecated_API] = /^[^\n]*uses or overrides a deprecated API[^\n]*([^\n]*\n){0,}[^\n]*\n/m
       hash[:zc_target_release] = /^[^\n]*invalid target release[^\n]*([^\n]*\n){0,}[^\n]*\n/m
       hash[:zc_have_parameters] = /^[^\n]*only have the following parameters[^\n]*([^\n]*\n){0,}[^\n]*\n/m
@@ -152,7 +154,8 @@ module Fdse
       hash[:zc_not_applicable] = /^[^\n]*not applicable to[^\n]*([^\n]*\n){0,}[^\n]*\n/m
       hash[:zc_package_not_visible] = /^[^\n]*package[^\n]*is not visible[^\n]*([^\n]*\n){0,}[^\n]*\n/m
       hash[:zc_bad_operand] = /^[^\n]*bad operand type[^\n]*([^\n]*\n){0,}[^\n]*\n/m
-
+      hash[:zc_cannot_find_target] = /^[^\n]*Cannot find target[^\n]*([^\n]*\n){0,}[^\n]*\n/m
+      hash[:zc_unknown_problem] =  /^[^\n]*unknown compilation problem[^\n]*([^\n]*\n){0,}[^\n]*\n/m
 
       hash = sort_by_length hash
       similarity_hash = similarity_matrix_initialize hash
