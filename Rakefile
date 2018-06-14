@@ -18,3 +18,7 @@ end
 task :match do
   ruby '-J-Xms4g -J-Xmx4g -Ilib bin/match.rb'
 end
+
+task :judge do
+  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/judge_error.rb'
+end
