@@ -22,3 +22,7 @@ end
 task :judge do
   ruby '-J-Xms4g -J-Xmx4g -Ilib bin/judge_error.rb'
 end
+
+task :judge_build_tool do
+  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/judge_build_tool.rb'
+end
