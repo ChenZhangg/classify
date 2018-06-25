@@ -1,12 +1,12 @@
 require 'fileutils'
 require 'thread'
 require 'temp_job_datum'
-require 'build_tools'
+require 'build_tool'
 require 'test_slice'
 require 'activerecord-import'
 
 module Fdse
-  class Slice
+  class ExtractTest
     def self.ant_slice(file_array)
       test_lines = []
       test_section_started = false
@@ -21,6 +21,7 @@ module Fdse
           test_lines << line
         end
       end
+      test_lines
     end
 
     def self.maven_slice(file_array)
@@ -31,25 +32,18 @@ module Fdse
       file_array.each do |line|
         if (line =~ /-------------------------------------------------------/) && line_marker == 0
           line_marker = 1
-        elsif line =~ /\[INFO\] Reactor Summary:/
-          test_section_started = false
         elsif (line =~ / T E S T S/) && line_marker == 1
           line_marker = 2
-        elsif (line_marker == 1)
-          line =~ /Building ([^ ]*)/
-          line_marker = 0
-        elsif (line =~ /-------------------------------------------------------/) && line_marker == 2
-          line_marker = 3
           test_section_started = true
-        elsif !(line =~ /-------------------------------------------------------/).nil? && line_marker == 3
-          line_marker = 0
+          test_lines << "-------------------------------------------------------\n"
+        elsif line =~ /\[INFO\] Reactor Summary:/ || line =~ /Building ([^ ]*)/
           test_section_started = false
         else
           line_marker = 0
         end
- 
-        @test_lines << line if test_section_started
+        test_lines << line if test_section_started
       end
+      test_lines
     end
 
     def self.gradle_slice(file_array)
@@ -61,13 +55,14 @@ module Fdse
         if line =~ /\A:(test|integrationTest)/
           line_marker = 1
           test_section_started = true
-        elsif !(line =~ /\A:(\w*)/).nil? && line_marker == 1
+        elsif line =~ /\A:(\w*)/ && line_marker == 1
           line_marker = 0
           test_section_started = false
         end
 
         test_lines << line if test_section_started
       end
+      test_lines
     end
 
 
@@ -81,7 +76,24 @@ module Fdse
         end
       end
 
-      use_build_tool(file, hash)
+      if hash[:use_ant]
+        ant_slice = ant_slice(file_array)    
+        hash[:ant_slice] = ant_slice.length > 0 ? ant_slice.join : nil
+      end
+
+      if hash[:use_maven]
+        maven_slice = maven_slice(file_array)
+        hash[:maven_slice] = maven_slice.length > 0 ? maven_slice.join : nil
+      end
+
+      if hash[:use_gradle]
+        gradle_slice = gradle_slice(file_array)
+        hash[:gradle_slice] = gradle_slice.length > 0 ? gradle_slice.join : nil
+      end
+
+      hash.delete :use_ant
+      hash.delete :use_maven
+      hash.delete :use_gradle
       hash.delete :log_file_path
       @out_queue.enq hash
     end
@@ -123,7 +135,6 @@ module Fdse
 
     def self.scan_log_directory(build_logs_path)
       consumer, threads = thread_init
-      
       TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 1, 'errored', 'failed').find_each do |job|
         repo_name = job.repo_name
         job_number = job.job_number
@@ -133,9 +144,10 @@ module Fdse
         use_ant = build_tool.ant == 1 ? true : false
         use_maven = build_tool.maven == 1 ? true : false
         use_gradle = build_tool.gradle == 1 ? true : false
-        next if use_ant == 0 && use_maven == 0 && use_gradle == 0
-        log_file_path = File.join(build_logs_path, repo_name.sub(/\//, '@'), job_number.sub(/\./, '@'), '.log')
+        next if use_ant == false && use_maven == false && use_gradle == false
+        log_file_path = File.join(build_logs_path, repo_name.sub(/\//, '@'), job_number.sub(/\./, '@') + '.log')
         next if File.exist?(log_file_path) == false
+        puts "Scan #{log_file_path}"
         hash = Hash.new
         hash[:repo_name] = repo_name
         hash[:job_number] = job_number
@@ -156,11 +168,11 @@ module Fdse
       consumer.join
       puts "Scan Over"
     end
-  end
 
-  def self.run(build_logs_path)
-    Thread.abort_on_exception = true
-    scan_log_directory build_logs_path
+    def self.run(build_logs_path)
+      Thread.abort_on_exception = true
+      scan_log_directory build_logs_path
+    end
   end
 end
 

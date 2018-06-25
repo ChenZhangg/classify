@@ -26,3 +26,11 @@ end
 task :judge_build_tool do
   ruby '-J-Xms4g -J-Xmx4g -Ilib bin/judge_build_tool.rb'
 end
+
+task :extract_test do
+  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/extract_test_run.rb'
+end
+
+task :fail_reason do
+  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/fail_reason_run.rb'
+end
