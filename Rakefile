@@ -34,3 +34,15 @@ end
 task :fail_reason do
   ruby '-J-Xms4g -J-Xmx4g -Ilib bin/fail_reason_run.rb'
 end
+
+task :fail_reason do
+  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/fail_reason_run.rb'
+end
+
+task :user_info do
+  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/user_info_run.rb'
+end
+
+task :timezone do
+  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/timezone.rb'
+end

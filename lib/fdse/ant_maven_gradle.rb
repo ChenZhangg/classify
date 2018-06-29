@@ -29,7 +29,7 @@ module Fdse
       @out_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
-        id = 0
+        id = 6226400
         loop do
           hash = nil
           bulk = []
@@ -61,7 +61,7 @@ module Fdse
 
     def self.scan_log_directory(build_logs_path)
       consumer, threads = thread_init
-      TravisJavaRepository.where("id >= ? AND builds >= ? AND stars>= ?", 1, 50, 25).find_each do |repo|
+      TravisJavaRepository.where("id >= ? AND builds >= ? AND stars>= ?", 1358099, 50, 25).find_each do |repo|
         repo_id = repo.id
         repo_name = repo.repo_name
         repo_path = File.join(build_logs_path, repo_name.sub(/\//, '@'))

@@ -8,6 +8,7 @@ require 'activerecord-import'
 module Fdse
   class FailReason
     def self.maven_slice(file_array)
+      wrong_mark = []
       wrong_lines = []
       wrong_section_started = false
 
@@ -22,8 +23,9 @@ module Fdse
           #wrong_lines << temp_wrong_lines.join
         end
         wrong_lines << line if wrong_section_started
+        wrong_mark << line if line =~ /Failed to execute goal/
       end
-      wrong_lines
+      [wrong_lines, wrong_mark]
     end
 
     def self.gradle_slice(file_array)
@@ -58,8 +60,9 @@ module Fdse
       end
 
       if hash[:use_maven]
-        maven_slice = maven_slice(file_array)
+        maven_slice, maven_mark = maven_slice(file_array)
         hash[:maven_slice] = maven_slice.length > 0 ? maven_slice : nil
+        hash[:maven_mark] = maven_mark.length > 0 ? maven_mark : nil
       end
 
       if hash[:use_gradle]
@@ -79,7 +82,7 @@ module Fdse
       @out_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
-        id = 0
+        id = 265979
         loop do
           hash = nil
           bulk = []
@@ -111,19 +114,25 @@ module Fdse
 
     def self.scan_log_directory(build_logs_path)
       consumer, threads = thread_init
-      TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 1, 'errored', 'failed').find_each do |job|
+      TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 1347115, 'errored', 'failed').find_each do |job|
         repo_name = job.repo_name
         job_number = job.job_number
         build_number_int = job.build_number_int
         job_order_number = job.job_order_number
         build_tool = BuildTool.find_by(repo_name: repo_name, job_number: job_number)
-        use_ant = build_tool.ant == 1 ? true : false
-        use_maven = build_tool.maven == 1 ? true : false
-        use_gradle = build_tool.gradle == 1 ? true : false
+        if build_tool.nil?
+          use_ant = true
+          use_maven = true
+          use_gradle = true
+        else
+          use_ant = build_tool.ant == 1 ? true : false
+          use_maven = build_tool.maven == 1 ? true : false
+          use_gradle = build_tool.gradle == 1 ? true : false
+        end
         next if use_ant == false && use_maven == false && use_gradle == false
         log_file_path = File.join(build_logs_path, repo_name.sub(/\//, '@'), job_number.sub(/\./, '@') + '.log')
         next if File.exist?(log_file_path) == false
-        puts "Scan #{log_file_path}"
+        puts "Scan #{job.id} #{log_file_path}"
         hash = Hash.new
         hash[:repo_name] = repo_name
         hash[:job_number] = job_number

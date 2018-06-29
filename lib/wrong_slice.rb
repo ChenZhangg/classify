@@ -12,4 +12,5 @@ class WrongSlice < ActiveRecord::Base
   )
   serialize :maven_slice, Array
   serialize :gradle_slice, Array
+  serialize :maven_mark, Array
 end
