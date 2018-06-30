@@ -107,8 +107,8 @@ module Fdse
     end
 
     def self.thread_init
-      @queue = SizedQueue.new(200)
-      @repo_queue = SizedQueue.new(200)
+      @in_queue = SizedQueue.new(200)
+      @out_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
         id = 0
