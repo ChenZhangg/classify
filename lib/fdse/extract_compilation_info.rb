@@ -157,7 +157,6 @@ module Fdse
         hash[:maven_error_not_precise] = job.maven_error_not_precise
         hash[:gradle_error_not_precise] = job.gradle_error_not_precise
         @in_queue.enq hash
-        end
       end
   
       126.times do
