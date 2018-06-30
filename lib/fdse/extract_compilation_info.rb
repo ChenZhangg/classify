@@ -147,11 +147,12 @@ module Fdse
         repo_name = job.repo_name
         job_number = job.job_number
         log_path = File.join(logs_path, repo_name.sub(/\//, '@'), job_number.sub(/\./, '@') + '.log')
-        puts "Scanning log: #{log_path}"
+        puts "Scanning log:#{job.id} #{log_path}"
         hash = Hash.new
         hash[:log_path] = log_path
         hash[:repo_name] = repo_name
         hash[:job_number] = job_number
+        hash[:job_number] = job.id
         hash[:maven] = job.maven
         hash[:gradle] = job.gradle
         hash[:maven_error_not_precise] = job.maven_error_not_precise
