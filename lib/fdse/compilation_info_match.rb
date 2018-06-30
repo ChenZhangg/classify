@@ -8,9 +8,9 @@ require 'temp_match'
 require 'java_repo_job_datum'
 require 'activerecord-import'
 module Fdse
-  class ParseLogFile
+  class CompilationInfoMatch
     MAVEN_ERROR_FLAG = /COMPILATION ERROR/
-    GRADLE_ERROR_FLAG = /> Compilation failed; see the compiler error output for details/
+    GRADLE_ERROR_FLAG = /Compilation failed/
     GRADLE_ERROR_UP_BOUNDARY = /:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
     SEGMENT_BOUNDARY = "/home/travis"
     SEGMENT_BOUNDARY_FILE = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt|sig)/

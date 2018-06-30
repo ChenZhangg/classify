@@ -1,12 +1,9 @@
-require 'set'
-require 'fdse/property'
 require 'fileutils'
 require 'thread'
-require 'travis_java_repository'
-require 'compiler_error_slice'
-require 'java_repo_build_datum'
-require 'elif'
+require 'active_record'
+require 'activerecord-jdbcmysql-adapter'
 require 'activerecord-import'
+require 'temp_job_datum'
 
 module Fdse
   class ExtractCompilationInfo
@@ -138,6 +135,7 @@ module Fdse
     end
 
     def self.scan_log_directory(build_logs_path)
+      Thread.abort_on_exception = true
       threads = thread_init
       TravisJavaRepository.where("id > ? AND builds >= ? AND stars>= ?", 901908, 50, 25).find_each do |repo|
         repo_name = repo.repo_name
@@ -161,12 +159,5 @@ module Fdse
       threads.each { |t| t.join }
       puts "Scan Over"
     end
-
-
   end
 end
-
-Thread.abort_on_exception = true
-#build_logs_path = ARGV[0]||'../../bodyLog2/build_logs/'
-
-#scan_log_directory build_logs_path
