@@ -27,7 +27,7 @@ module Fdse
       flag = false
       count = 7
       regexp = /zhang chen/
-      temp = []
+      temp = nil
       file_array_reverse.each do |line|
         if GRADLE_ERROR_FLAG_1 =~ line
           flag = true

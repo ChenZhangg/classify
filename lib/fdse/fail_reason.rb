@@ -12,6 +12,11 @@ module Fdse
       wrong_section_started = false
 
       file_array.each do |line|
+        if ! line.valid_encoding?
+          line = line.encode("UTF-16be", :invalid=>:replace, :replace=>"?").encode('UTF-8')
+          puts line
+        end
+
         if line =~ /BUILD FAILURE/
           wrong_section_started = true
           #temp_wrong_lines = []
@@ -32,6 +37,11 @@ module Fdse
       wrong_section_started = false
 
       file_array.each do |line|
+        if ! line.valid_encoding?
+          line = line.encode("UTF-16be", :invalid=>:replace, :replace=>"?").encode('UTF-8')
+          puts line
+        end
+
         if line =~ /What went wrong:/
           wrong_section_started = true
           #temp_wrong_lines = []
@@ -82,7 +92,7 @@ module Fdse
       @out_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
-        id = 438579
+        id = 557779
         loop do
           hash = nil
           bulk = []
@@ -114,7 +124,7 @@ module Fdse
 
     def self.scan_log_directory(build_logs_path)
       consumer, threads = thread_init
-      TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 2441300, 'errored', 'failed').find_each do |job|
+      TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 2999870, 'errored', 'failed').find_each do |job|
         repo_name = job.repo_name
         job_number = job.job_number
         build_number_int = job.build_number_int

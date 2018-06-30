@@ -85,7 +85,7 @@ module Fdse
       microsoft_key = "Ar4ssnlEILYgCEeG-FsQbWoQ5gJ76MVT2zjT5bc9-MN8cwcjgZHWd8M9LokUYUxy"
       baidu_key = "FbT8WvUs610W7Vslb61CPfyDmsAKuYPU"
       Geocoder.configure(lookup: :bing, api_key: microsoft_key, timeout: 100)
-      Location.where("id > 74").find_each do |item|
+      Location.where("id > 1773").find_each do |item|
         puts "#{item.id}  #{item.location}"
         results = Geocoder.search item.location
         if results.first
