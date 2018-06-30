@@ -9,7 +9,7 @@ module Fdse
   class ExtractCompilationInfo
     MAVEN_ERROR_FLAG = /COMPILATION ERROR/
     GRADLE_ERROR_FLAG = /> Compilation failed; see the compiler error output for details/
-    GRADLE_ERROR_FLAG_1 = /Compilation failed/i
+    GRADLE_ERROR_FLAG_1 = /Compilation failed/
     GRADLE_ERROR_UP_BOUNDARY = /:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
     SEGMENT_BOUNDARY = "/home/travis"
     SEGMENT_BOUNDARY_FILE = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt|sig)/
@@ -56,18 +56,16 @@ module Fdse
       array
     end
 
-    def self.use_build_tool(file)    
-      maven_flag = false
-      gradle_flag = false
-      maven_flag = true if file.include?('COMPILATION ERROR')
-      gradle_flag = true if file.include?('Compilation failed')
-      hash = Hash.new
-      hash[:maven] = maven_flag
-      hash[:gradle] = gradle_flag
-      hash
-    end
-
     def self.compiler_error_message_slice(log_file_path, repo_name, job_number)
+      file_array = IO.readlines(hash[:log_file_path])
+      file_array.collect! do |line|
+        begin
+          line.gsub!(/\r\n?/, "\n")  
+        rescue
+          line.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/\r\n?/, "\n")
+        end
+      end
+
       file = IO.read(log_file_path)
       begin
         file = file.gsub!(/[^[:print:]\e\n]/, '') || file 
@@ -93,7 +91,7 @@ module Fdse
       hash[:job_number] =job_number
       hash[:has_compiler_error] = (h[:maven] || h[:gradle]) ? true : false
       hash[:slice_segment] = array.join
-      @queue.enq hash
+      @out_queue.enq hash
 
       mslice.clear
       gslice.clear
@@ -110,7 +108,7 @@ module Fdse
         bulk = []
         loop do
           200.times do
-            hash = @queue.deq
+            hash = @out_queue.deq
             break if hash == :END_OF_WORK
             id += 1
             hash[:id] = id
@@ -124,39 +122,40 @@ module Fdse
       126.times do
         thread = Thread.new do
           loop do
-            h = @repo_queue.deq
-            break if h == :END_OF_WORK
-            compiler_error_message_slice h[:log_file_path], h[:repo_name], h[:job_number]
+            hash = @in_queue.deq
+            break if hash == :END_OF_WORK
+            compiler_error_message_slice hash
           end
         end
         threads << thread
       end
-      threads << consumer
+      [consumer, threads]
     end
 
-    def self.scan_log_directory(build_logs_path)
+    def self.scan_log_directory(logs_path)
       Thread.abort_on_exception = true
-      threads = thread_init
-      TravisJavaRepository.where("id > ? AND builds >= ? AND stars>= ?", 901908, 50, 25).find_each do |repo|
-        repo_name = repo.repo_name
-        repo_path = File.join(build_logs_path, repo_name.sub(/\//, '@'))
-        puts "Scanning projects: #{repo_path}"
-        Dir.foreach(repo_path) do |log_file_name|
-          next if /.+@.+/ !~ log_file_name
-          log_file_path = File.join(repo_path, log_file_name)
-          hash = Hash.new
-          hash[:log_file_path] = log_file_path
-          hash[:repo_name] = repo_name
-          hash[:job_number] = log_file_name.sub(/@/, '.').sub(/\.log/, '')
-          @repo_queue.enq hash
+      consumer, threads = thread_init
+      TempJobDatum.where("id > ? AND (maven_error_not_precise = 1 OR gradle_error_not_precise = 1)", 0).find_each do |job|
+        repo_name = job.repo_name
+        job_number = job.job_number
+        log_path = File.join(logs_path, repo_name.sub(/\//, '@'), job_number.sub(/\./, '@') + '.log')
+        puts "Scanning log: #{log_path}"
+        hash = Hash.new
+        hash[:log_path] = log_path
+        hash[:repo_name] = repo_name
+        hash[:job_number] = job_number
+        hash[:maven_error_not_precise] = job.maven_error_not_precise
+        hash[:gradle_error_not_precise] = job.gradle_error_not_precise
+        @in_queue.enq hash
         end
       end
-   
+  
       126.times do
-        @repo_queue.enq :END_OF_WORK
+        @in_queue.enq :END_OF_WORK
       end
-      @queue.enq(:END_OF_WORK)
       threads.each { |t| t.join }
+      @out_queue.enq :END_OF_WORK
+      consumer.join
       puts "Scan Over"
     end
   end
