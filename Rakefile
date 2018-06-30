@@ -36,7 +36,7 @@ task :fail_reason do
 end
 
 task :fail_reason do
-  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/fail_reason_run.rb'
+  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/fail_reason_run.rb'
 end
 
 task :user_info do

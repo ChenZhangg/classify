@@ -1,7 +1,6 @@
 require 'fileutils'
 require 'thread'
 require 'temp_job_datum'
-require 'build_tool'
 require 'wrong_slice'
 require 'activerecord-import'
 
@@ -13,7 +12,7 @@ module Fdse
       wrong_section_started = false
 
       file_array.each do |line|
-        if line =~ /Reactor Summary:/
+        if line =~ /BUILD FAILURE/
           wrong_section_started = true
           #temp_wrong_lines = []
         end
@@ -82,7 +81,7 @@ module Fdse
       @out_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
-        id = 265979
+        id = 330779
         loop do
           hash = nil
           bulk = []
@@ -114,21 +113,14 @@ module Fdse
 
     def self.scan_log_directory(build_logs_path)
       consumer, threads = thread_init
-      TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 1347115, 'errored', 'failed').find_each do |job|
+      TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 1707700, 'errored', 'failed').find_each do |job|
         repo_name = job.repo_name
         job_number = job.job_number
         build_number_int = job.build_number_int
         job_order_number = job.job_order_number
-        build_tool = BuildTool.find_by(repo_name: repo_name, job_number: job_number)
-        if build_tool.nil?
-          use_ant = true
-          use_maven = true
-          use_gradle = true
-        else
-          use_ant = build_tool.ant == 1 ? true : false
-          use_maven = build_tool.maven == 1 ? true : false
-          use_gradle = build_tool.gradle == 1 ? true : false
-        end
+        use_ant = job.ant == 1 ? true : false
+        use_maven = job.maven == 1 ? true : false
+        use_gradle = job.gradle == 1 ? true : false
         next if use_ant == false && use_maven == false && use_gradle == false
         log_file_path = File.join(build_logs_path, repo_name.sub(/\//, '@'), job_number.sub(/\./, '@') + '.log')
         next if File.exist?(log_file_path) == false
