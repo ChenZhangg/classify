@@ -10,7 +10,7 @@ module Fdse
     MAVEN_ERROR_FLAG = /COMPILATION ERROR/
     GRADLE_ERROR_FLAG = /> Compilation failed; see the compiler error output for details/
     GRADLE_ERROR_FLAG_1 = /Compilation failed/
-    GRADLE_ERROR_UP_BOUNDARY = /:compileTestJava|:compileJava|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
+    GRADLE_ERROR_UP_BOUNDARY = /:compileTestJava|:compileJava|:compileKotlin|:compileTestKotlin|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
     SEGMENT_BOUNDARY = "/home/travis"
     SEGMENT_BOUNDARY_FILE = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt|sig)/
     SEGMENT_BOUNDARY_JAVA = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.java/
@@ -26,64 +26,75 @@ module Fdse
       flag = false
       count = 7
       regexp = /zhang chen/
-      #Elif.foreach(log_file_path) do |line|
+      temp = []
       file_array_reverse.each do |line|
         if GRADLE_ERROR_FLAG =~ line
           flag = true
+          temp = []
           count = 7
         end
         if flag && count == 6
           match = /Execution failed for task '(.+)'/.match(line)
           regexp = /^#{match[1]}/ if match
         end
-        array.unshift(line) if flag
+        temp.unshift(line) if flag
         if flag && count <=0 && (line =~ GRADLE_ERROR_UP_BOUNDARY || line =~ regexp || line =~ /(?<!\d)0%/)
           flag = false
+          s = temp.join
+          temp = nil
+          mark = true
+          array.each do |item|
+            mark = false if item.eql?(s)
+          end
+          array << s if mark
         end
         count -= 1
       end
+      array << temp.join if temp
       array
     end
 
     def self.maven_slice(file_array)
       array = []
       flag = false
+      temp = nil
       file_array.each do |line|
-        flag = true if MAVEN_ERROR_FLAG =~ line
-        array << line if flag
-        flag = false if flag && line =~ /[0-9]+ error|Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin/  
+        if MAVEN_ERROR_FLAG =~ line
+          flag = true
+          temp = [] 
+        end
+        if flag && line =~ /[0-9]+ error|Failed to execute goal|--------------------------------------/  
+          flag = false 
+          s = temp.join
+          temp = nil
+          mark = true
+          array.each do |item|
+            mark = false if item.eql?(s)
+          end
+          array << s if mark
+        end
+        temp << line if flag
       end
+      array << temp.join if temp
       array
     end
 
-    def self.compiler_error_message_slice(log_file_path, repo_name, job_number)
-      file_array = IO.readlines(hash[:log_file_path])
+    def self.compiler_error_message_slice(log_hash)
+      file_array = IO.readlines(log_hash[:log_path])
       file_array.collect! do |line|
         begin
-          line.gsub!(/\r\n?/, "\n")  
+          line.sub(/\r\n?/, "\n")  
         rescue
-          line.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/\r\n?/, "\n")
+          line.encode('ISO-8859-1', 'ISO-8859-1').sub(/\r\n?/, "\n")
         end
-      end
-
-      file = IO.read(log_file_path)
-      begin
-        file = file.gsub!(/[^[:print:]\e\n]/, '') || file 
-        file = file.gsub!(/\e[^m]+m/, '') || file 
-        file = file.gsub!(/\r\n?/, "\n") || file 
-      rescue
-        file = file.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/[^[:print:]\e\n]/, '') || file 
-        file = file.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/\e[^m]+m/, '') || file 
-        file = file.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/\r\n?/, "\n") || file 
+        line
       end
       
-      h = use_build_tool(file)
       mslice = []
       gslice = []
 
-      file_array = file.lines if h[:maven] || h[:gradle]
-      mslice = maven_slice(file_array) if h[:maven]
-      gslice = gradle_slice(file_array.reverse!) if h[:gradle]
+      mslice = maven_slice(file_array) if log_hash[:maven]
+      gslice = gradle_slice(file_array.reverse!) if log_hash[:gradle]
       array = mslice + gslice
 
       hash = Hash.new
@@ -144,6 +155,8 @@ module Fdse
         hash[:log_path] = log_path
         hash[:repo_name] = repo_name
         hash[:job_number] = job_number
+        hash[:maven] = job.maven
+        hash[:gradle] = job.gradle
         hash[:maven_error_not_precise] = job.maven_error_not_precise
         hash[:gradle_error_not_precise] = job.gradle_error_not_precise
         @in_queue.enq hash

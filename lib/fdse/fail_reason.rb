@@ -52,10 +52,11 @@ module Fdse
       file_array = IO.readlines(hash[:log_file_path])
       file_array.collect! do |line|
         begin
-          line.gsub!(/\r\n?/, "\n")  
+          line.sub(/\r\n?/, "\n")  
         rescue
-          line.encode('ISO-8859-1', 'ISO-8859-1').gsub!(/\r\n?/, "\n")
+          line.encode('ISO-8859-1', 'ISO-8859-1').sub(/\r\n?/, "\n")
         end
+        line
       end
 
       if hash[:use_maven]
@@ -81,7 +82,7 @@ module Fdse
       @out_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
-        id = 330779
+        id = 438579
         loop do
           hash = nil
           bulk = []
@@ -113,7 +114,7 @@ module Fdse
 
     def self.scan_log_directory(build_logs_path)
       consumer, threads = thread_init
-      TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 1707700, 'errored', 'failed').find_each do |job|
+      TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 2441300, 'errored', 'failed').find_each do |job|
         repo_name = job.repo_name
         job_number = job.job_number
         build_number_int = job.build_number_int
