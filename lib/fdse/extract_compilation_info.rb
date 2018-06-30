@@ -4,12 +4,13 @@ require 'active_record'
 require 'activerecord-jdbcmysql-adapter'
 require 'activerecord-import'
 require 'temp_job_datum'
+require 'temp_compilation_slice'
 
 module Fdse
   class ExtractCompilationInfo
     MAVEN_ERROR_FLAG = /COMPILATION ERROR/
     GRADLE_ERROR_FLAG = /> Compilation failed; see the compiler error output for details/
-    GRADLE_ERROR_FLAG_1 = /Compilation failed/
+    GRADLE_ERROR_FLAG_1 = /Compilation failed|Compilation error/
     GRADLE_ERROR_UP_BOUNDARY = /:compileTestJava|:compileJava|:compileKotlin|:compileTestKotlin|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
     SEGMENT_BOUNDARY = "/home/travis"
     SEGMENT_BOUNDARY_FILE = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt|sig)/
@@ -28,7 +29,7 @@ module Fdse
       regexp = /zhang chen/
       temp = []
       file_array_reverse.each do |line|
-        if GRADLE_ERROR_FLAG =~ line
+        if GRADLE_ERROR_FLAG_1 =~ line
           flag = true
           temp = []
           count = 7
@@ -95,19 +96,14 @@ module Fdse
 
       mslice = maven_slice(file_array) if log_hash[:maven]
       gslice = gradle_slice(file_array.reverse!) if log_hash[:gradle]
-      array = mslice + gslice
 
       hash = Hash.new
-      hash[:repo_name] = repo_name
-      hash[:job_number] =job_number
-      hash[:has_compiler_error] = (h[:maven] || h[:gradle]) ? true : false
-      hash[:slice_segment] = array.join
-      @out_queue.enq hash
+      hash[:repo_name] = log_hash[:repo_name]
+      hash[:job_number] = log_hash[:job_number]
+      hash[:maven_slice] = mslice.length > 0 ? mslice : nil
+      hash[:gradle_slice] = gslice.length > 0 ? gslice : nil
 
-      mslice.clear
-      gslice.clear
-      array.clear
-      file_array.clear if h[:maven] || h[:gradle]
+      @out_queue.enq hash
     end
 
     def self.thread_init
@@ -115,18 +111,19 @@ module Fdse
       @repo_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
-        id = 5010653
-        bulk = []
+        id = 0
         loop do
+          hash = nil
+          bulk = []
           200.times do
             hash = @out_queue.deq
             break if hash == :END_OF_WORK
             id += 1
             hash[:id] = id
-            bulk << CompilerErrorSlice.new(hash)
+            bulk << TempCompilationSlice.new(hash)
           end
-          CompilerErrorSlice.import bulk
-          bulk.clear
+          TempCompilationSlice.import bulk
+          break if hash == :END_OF_WORK
        end
       end
       threads = []
