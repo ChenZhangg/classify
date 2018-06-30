@@ -5,7 +5,7 @@ require 'travis_java_repository'
 require 'activerecord-import'
 
 module Fdse
-  class Slice
+  class HasCompilationError
     def self.use_build_tool(file, hash) 
       hash[:maven_error_not_precise] = file.scan(/COMPILATION ERROR/i).size >= 1 ? 1 : 0
       hash[:gradle_error_not_precise] = file.scan(/Compilation failed/i).size >= 1 ? 1 : 0
