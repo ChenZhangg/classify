@@ -108,11 +108,11 @@ module Fdse
     end
 
     def self.thread_init
-      @in_queue = SizedQueue.new(200)
+      @in_queue = SizedQueue.new(30)
       @out_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
-        id = 0
+        id = 100200
         loop do
           hash = nil
           bulk = []
@@ -128,7 +128,7 @@ module Fdse
        end
       end
       threads = []
-      126.times do
+      30.times do
         thread = Thread.new do
           loop do
             hash = @in_queue.deq
@@ -144,7 +144,7 @@ module Fdse
     def self.scan_log_directory(logs_path)
       Thread.abort_on_exception = true
       consumer, threads = thread_init
-      TempJobDatum.where("id > ? AND (maven_error_not_precise = 1 OR gradle_error_not_precise = 1)", 0).find_each do |job|
+      TempJobDatum.where("id > ? AND (maven_error_not_precise = 1 OR gradle_error_not_precise = 1)", 3231558).find_each do |job|
         repo_name = job.repo_name
         job_number = job.job_number
         log_path = File.join(logs_path, repo_name.sub(/\//, '@'), job_number.sub(/\./, '@') + '.log')
@@ -161,7 +161,7 @@ module Fdse
         @in_queue.enq hash
       end
   
-      126.times do
+      30.times do
         @in_queue.enq :END_OF_WORK
       end
       threads.each { |t| t.join }
