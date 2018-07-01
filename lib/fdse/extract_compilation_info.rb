@@ -84,14 +84,14 @@ module Fdse
       file_array = IO.readlines(log_hash[:log_path])
       file_array.collect! do |line|
         begin
-          line.gsub(/\r\n?/, "\n")  
+          sub = line.gsub(/\r\n?/, "\n")  
         rescue
-          line.encode('ISO-8859-1', 'ISO-8859-1').gsub(/\r\n?/, "\n")
+          sub = line.encode('ISO-8859-1', 'ISO-8859-1').gsub(/\r\n?/, "\n")
         end
-        line
+        sub
       end
       file_array.each { |line| p line }
-=begin      
+      
       mslice = []
       gslice = []
 
@@ -105,7 +105,6 @@ module Fdse
       hash[:gradle_slice] = gslice.length > 0 ? gslice : nil
 
       @out_queue.enq hash
-=end      
     end
 
     def self.thread_init
