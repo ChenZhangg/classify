@@ -62,11 +62,11 @@ module Fdse
       file_array = IO.readlines(hash[:log_file_path])
       file_array.collect! do |line|
         begin
-          line.sub(/\r\n?/, "\n")  
+          sub = line.sub(/\r\n?/, "\n")  
         rescue
-          line.encode('ISO-8859-1', 'ISO-8859-1').sub(/\r\n?/, "\n")
+          sub = line.encode('ISO-8859-1', 'ISO-8859-1').sub(/\r\n?/, "\n")
         end
-        line
+        sub
       end
 
       if hash[:use_maven]
@@ -92,7 +92,7 @@ module Fdse
       @out_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
-        id = 557779
+        id = 1001379
         loop do
           hash = nil
           bulk = []
@@ -124,7 +124,7 @@ module Fdse
 
     def self.scan_log_directory(build_logs_path)
       consumer, threads = thread_init
-      TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 2999870, 'errored', 'failed').find_each do |job|
+      TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 5145900, 'errored', 'failed').find_each do |job|
         repo_name = job.repo_name
         job_number = job.job_number
         build_number_int = job.build_number_int
@@ -160,6 +160,37 @@ module Fdse
     def self.run(build_logs_path)
       Thread.abort_on_exception = true
       scan_log_directory build_logs_path
+    end
+
+    def self.update(build_logs_path)
+      WrongSlice.where("id > ?", 0).find_each do |wrong|
+        repo_name = wrong.repo_name
+        job_number = wrong.job_number
+        log_file_path = File.join(build_logs_path, repo_name.sub(/\//, '@'), job_number.sub(/\./, '@') + '.log')
+        puts "wrong_slice: #{wrong.id} #{log_file_path}"
+        file_array = IO.readlines log_file_path
+        file_array.collect! do |line|
+          begin
+            sub = line.sub(/\r\n?/, "\n")  
+          rescue
+            sub = line.encode('ISO-8859-1', 'ISO-8859-1').sub(/\r\n?/, "\n")
+          end
+          sub
+        end
+        job = TempJobDatum.find_by(repo_name: repo_name, job_number: job_number)
+
+        if job.maven == 1
+          maven_slice, maven_mark = maven_slice(file_array)
+          wrong.maven_slice = maven_slice.length > 0 ? maven_slice : nil
+          wrong.maven_mark = maven_mark.length > 0 ? maven_mark : nil
+        end
+
+        if job.gradle == 1
+          gradle_slice = gradle_slice(file_array)
+          wrong.gradle_slice = gradle_slice.length > 0 ? gradle_slice : nil
+        end
+        wrong.save
+      end
     end
   end
 end
