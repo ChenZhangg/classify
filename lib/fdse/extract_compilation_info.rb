@@ -29,7 +29,7 @@ module Fdse
       regexp = /zhang chen/
       temp = nil
       file_array_reverse.each do |line|
-        if GRADLE_ERROR_FLAG_1 =~ line
+        if GRADLE_ERROR_FLAG_1 =~ line && /Caused by/ !~ line
           flag = true
           temp = []
           count = 7
