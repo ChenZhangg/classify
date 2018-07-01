@@ -109,14 +109,14 @@ module Fdse
 
     def self.thread_init
       @in_queue = SizedQueue.new(30)
-      @out_queue = SizedQueue.new(200)
+      @out_queue = SizedQueue.new(100)
 
       consumer = Thread.new do
         id = 101200
         loop do
           hash = nil
           bulk = []
-          200.times do
+          100.times do
             hash = @out_queue.deq
             break if hash == :END_OF_WORK
             id += 1
