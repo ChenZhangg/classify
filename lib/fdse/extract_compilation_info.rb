@@ -152,7 +152,7 @@ module Fdse
         hash[:log_path] = log_path
         hash[:repo_name] = repo_name
         hash[:job_number] = job_number
-        hash[:job_number] = job.id
+        hash[:job_id] = job.id
         hash[:maven] = job.maven
         hash[:gradle] = job.gradle
         hash[:maven_error_not_precise] = job.maven_error_not_precise
