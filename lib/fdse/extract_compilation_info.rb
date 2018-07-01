@@ -90,7 +90,6 @@ module Fdse
         end
         sub
       end
-      file_array.each { |line| p line }
       
       mslice = []
       gslice = []
