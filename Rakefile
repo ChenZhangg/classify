@@ -12,7 +12,7 @@ task :property do
 end
 
 task :extract_compilation_info do
-  ruby '-J-Xms10g -J-Xmx10g -Ilib bin/extract_compilation_info_run.rb'
+  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/extract_compilation_info_run.rb'
 end
 
 task :match do
