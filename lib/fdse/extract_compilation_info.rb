@@ -100,6 +100,7 @@ module Fdse
       hash = Hash.new
       hash[:repo_name] = log_hash[:repo_name]
       hash[:job_number] = log_hash[:job_number]
+      hash[:job_id] = log_hash[:job_id]
       hash[:maven_slice] = mslice.length > 0 ? mslice : nil
       hash[:gradle_slice] = gslice.length > 0 ? gslice : nil
 
