@@ -64,7 +64,8 @@ module Fdse
           flag = true
           temp = [] 
         end
-        if flag && line =~ /[0-9]+ error|Failed to execute goal|--------------------------------------/  
+        temp << line if flag
+        if flag && line =~ /[0-9]+ error|Failed to execute goal/
           flag = false 
           s = temp.join
           temp = nil
@@ -74,7 +75,6 @@ module Fdse
           end
           array << s if mark
         end
-        temp << line if flag
       end
       array << temp.join if temp
       array
