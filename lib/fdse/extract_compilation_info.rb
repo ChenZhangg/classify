@@ -91,6 +91,7 @@ module Fdse
         line
       end
       file_array.each { |line| p line }
+=begin      
       mslice = []
       gslice = []
 
@@ -104,6 +105,7 @@ module Fdse
       hash[:gradle_slice] = gslice.length > 0 ? gslice : nil
 
       @out_queue.enq hash
+=end      
     end
 
     def self.thread_init
