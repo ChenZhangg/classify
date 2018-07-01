@@ -84,13 +84,13 @@ module Fdse
       file_array = IO.readlines(log_hash[:log_path])
       file_array.collect! do |line|
         begin
-          line.gsub(/\r\n/, "\n")  
+          line.gsub(/\r\n?/, "\n")  
         rescue
-          line.encode('ISO-8859-1', 'ISO-8859-1').gsub(/\r\n/, "\n")
+          line.encode('ISO-8859-1', 'ISO-8859-1').gsub(/\r\n?/, "\n")
         end
         line
       end
-      
+      file_array.each { |line| p line }
       mslice = []
       gslice = []
 

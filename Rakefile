@@ -46,3 +46,7 @@ end
 task :timezone do
   ruby '-J-Xms4g -J-Xmx4g -Ilib bin/timezone.rb'
 end
+
+task :zc_test do
+  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/zc_test.rb'
+end
