@@ -90,7 +90,7 @@ module Fdse
        end
       end
       threads = []
-      30.times do
+      10.times do
         thread = Thread.new do
           loop do
             hash = @in_queue.deq
@@ -119,7 +119,7 @@ module Fdse
         hash[:compare_url] = compare_url
         @in_queue.enq hash
       end
-      30.times do
+      10.times do
         @in_queue.enq :END_OF_WORK
       end
       threads.each { |t| t.join }
