@@ -98,7 +98,7 @@ module Fdse
       html.css('.commit').each do |commit|
         data_channel = commit.attribute('data-channel')
         match = commit_sha_regexp.match data_channel
-        commit_array << match[1]
+        commit_array << match[1] if match
       end
       hash[:commits] = commit_array
       hash[:commits_number] = commit_array.length
@@ -149,7 +149,7 @@ module Fdse
       Thread.abort_on_exception = true
       consumer, threads = thread_init
       url_regexp = /\/compare\/.+/
-      TempJobDatum.where("id > ? AND job_order_number = 1", 496570).find_each do |job|
+      TempJobDatum.where("id > ? AND job_order_number = 1", 737130).find_each do |job|
         compare_url = job.commit_compare_url
         next if compare_url !~ url_regexp
         repo_name = job.repo_name

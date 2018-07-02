@@ -216,7 +216,7 @@ module Fdse
 
     def self.run
       consumer, threads = thread_init
-      TempCompilationSlice.where("id > ?", 100900).find_each do |slice|
+      TempCompilationSlice.where("id > ?", 101606).find_each do |slice|
         puts "Scanning: #{slice.id}: #{slice.repo_name}  #{slice.job_number}"
         hash = Hash.new
         hash[:repo_name] = slice.repo_name
