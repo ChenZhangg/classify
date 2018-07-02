@@ -108,9 +108,7 @@ module Fdse
       else
         big_file_info(html, hash)
       end
-      puts hash
-
-      #@out_queue.enq hash   
+      @out_queue.enq hash   
     end
 
     def self.thread_init
