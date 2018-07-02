@@ -147,14 +147,14 @@ module Fdse
 
     def self.thread_init
       @in_queue = SizedQueue.new(200)
-      @job_queue = SizedQueue.new(200)
+      @out_queue = SizedQueue.new(200)
       consumer = Thread.new do
         id = 0
         loop do
           bulk = []
           hash = nil
           200.times do
-            hash = @queue.deq
+            hash = @out_queue.deq
             break if hash == :END_OF_WORK
             id += 1
             hash[:id] = id
@@ -169,7 +169,7 @@ module Fdse
       30.times do
         thread = Thread.new do
           loop do
-            h = @job_queue.deq
+            h = @in_queue.deq
             break if h == :END_OF_WORK
             compiler_error_message_slice h[:repo_name], h[:job_number], h[:java_repo_job_datum_id], h[:slice_segment]
           end
