@@ -16,7 +16,7 @@ task :extract_compilation_info do
 end
 
 task :compilation_info_match do
-  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/compilation_info_match_run.rb'
+  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/compilation_info_match_run.rb'
 end
 
 task :has_compilation_error do

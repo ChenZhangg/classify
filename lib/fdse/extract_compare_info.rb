@@ -54,7 +54,13 @@ module Fdse
         content = nav.content
         if content =~ /Commits/
           match = number_regexp.match content
+          commits_number = match[0].gsub(/,/, '').to_i
+        elsif content =~ /Files/
+          match = number_regexp.match content
+          files_number = match[0].gsub(/,/, '').to_i
         end
+        puts commits_number
+        puts files_number
       end
     end
 

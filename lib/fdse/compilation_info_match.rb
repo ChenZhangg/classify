@@ -201,7 +201,7 @@ module Fdse
       end
 
       threads = []
-      20.times do
+      30.times do
         thread = Thread.new do
           loop do
             hash = @in_queue.deq
@@ -227,7 +227,7 @@ module Fdse
         @in_queue.enq hash
       end
 
-      20.times do
+      30.times do
         @in_queue.enq :END_OF_WORK
       end
       threads.each { |t| t.join }
