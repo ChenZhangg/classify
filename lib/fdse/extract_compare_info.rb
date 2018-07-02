@@ -78,7 +78,7 @@ module Fdse
         loop do
           hash = nil
           bulk = []
-          200.times do
+          50.times do
             hash = @out_queue.deq
             break if hash == :END_OF_WORK
             #id += 1
