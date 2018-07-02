@@ -115,7 +115,7 @@ module Fdse
       @out_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
-        id = 0
+        id = 11400
         loop do
           hash = nil
           bulk = []
@@ -148,7 +148,7 @@ module Fdse
       Thread.abort_on_exception = true
       consumer, threads = thread_init
       url_regexp = /\/compare\/.+/
-      TempJobDatum.where("id > ? AND job_order_number = 1", 0).find_each do |job|
+      TempJobDatum.where("id > ? AND job_order_number = 1", 78432).find_each do |job|
         compare_url = job.commit_compare_url
         next if compare_url !~ url_regexp
         repo_name = job.repo_name
