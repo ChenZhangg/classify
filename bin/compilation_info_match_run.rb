@@ -1,3 +1,3 @@
 #! /usr/bin/ruby
-require 'fdse/parse_log_file_mysql'
+require 'fdse/compilation_info_match'
 Fdse::CompilationInfoMatch.run
