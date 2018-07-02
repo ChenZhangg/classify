@@ -155,7 +155,7 @@ module Fdse
         hash[:repo_name] = compilation_hash[:repo_name]
         hash[:job_number] =compilation_hash[:job_number]
         hash[:order_number] = order
-        hash[:type] = 'm'
+        hash[:tool_type] = 'm'
         hash[:job_id] = compilation_hash[:job_id]
         hash[:regex_key], hash[:similarity] = map(segment)
         hash[:regex_value] = @regex_hash[hash[:regex_key]]
@@ -170,7 +170,7 @@ module Fdse
         hash[:repo_name] = compilation_hash[:repo_name]
         hash[:job_number] =compilation_hash[:job_number]
         hash[:order_number] = order
-        hash[:type] = 'g'
+        hash[:tool_type] = 'g'
         hash[:job_id] = compilation_hash[:job_id]
         hash[:regex_key], hash[:similarity] = map(segment)
         hash[:regex_value] = @regex_hash[hash[:regex_key]]
