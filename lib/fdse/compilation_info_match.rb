@@ -6,6 +6,7 @@ require 'active_record'
 require 'activerecord-jdbcmysql-adapter'
 require 'activerecord-import'
 require 'temp_compilation_slice'
+require 'temp_compilation_match'
 
 module Fdse
   class CompilationInfoMatch
@@ -64,7 +65,7 @@ module Fdse
       [match_key, max_value_word_number]
     end
 
-    def self.segment_slice(segment_lines)
+    def self.divide_slice(segment_lines)
       slice_point = []
       segment_array = []
       return segment_array if segment_lines.length < 1
@@ -120,23 +121,57 @@ module Fdse
       flag
     end
 
-    def self.compiler_error_message_slice(repo_name, job_number, java_repo_job_datum_id, slice_segment)
-      temp_lines = slice_segment.lines
-      lines = []
-      temp_lines.each do |line|
-        lines << line if  line_validate?(line)
+    def self.compilation_info_slice(compilation_hash)
+      maven_slice = compilation_hash[:maven_slice]
+      gradle_slice = compilation_hash[:gradle_slice]
+
+      maven_array = []
+      if maven_slice
+        maven_slice.each do |slice|
+          temp_lines = slice.lines
+          lines = []
+          temp_lines.each do |line|
+            lines << line if  line_validate?(line)
+          end
+          maven_array += divide_slice(lines)
+        end
       end
      
-      segment_array = segment_slice(lines)
+      gradle_array = []
+      if gradle_slice
+        gradle_slice.each do |slice|
+          temp_lines = slice.lines
+          lines = []
+          temp_lines.each do |line|
+            lines << line if  line_validate?(line)
+          end
+          gradle_array += divide_slice(lines)
+        end
+      end
 
       order = 0
-
-      while segment = segment_array.shift
+      while segment = maven_array.shift
         hash = Hash.new
-        hash[:repo_name] = repo_name
-        hash[:job_number] =job_number
+        hash[:repo_name] = compilation_hash[:repo_name]
+        hash[:job_number] =compilation_hash[:job_number]
         hash[:order_number] = order
-        hash[:java_repo_job_datum_id] = java_repo_job_datum_id
+        hash[:type] = 'm'
+        hash[:job_id] = compilation_hash[:job_id]
+        hash[:regex_key], hash[:similarity] = map(segment)
+        hash[:regex_value] = @regex_hash[hash[:regex_key]]
+        hash[:segment] = segment
+        order += 1
+        @queue.enq hash
+      end
+
+      order = 0
+      while segment = gradle_array.shift
+        hash = Hash.new
+        hash[:repo_name] = compilation_hash[:repo_name]
+        hash[:job_number] =compilation_hash[:job_number]
+        hash[:order_number] = order
+        hash[:type] = 'g'
+        hash[:job_id] = compilation_hash[:job_id]
         hash[:regex_key], hash[:similarity] = map(segment)
         hash[:regex_value] = @regex_hash[hash[:regex_key]]
         hash[:segment] = segment
@@ -158,9 +193,9 @@ module Fdse
             break if hash == :END_OF_WORK
             id += 1
             hash[:id] = id
-            bulk << TempMatch.new(hash)
+            bulk << TempCompilationMatch.new(hash)
           end
-          TempMatch.import bulk
+          TempCompilationMatch.import bulk
           break if hash == :END_OF_WORK
        end
       end
@@ -169,9 +204,9 @@ module Fdse
       30.times do
         thread = Thread.new do
           loop do
-            h = @in_queue.deq
-            break if h == :END_OF_WORK
-            compiler_error_message_slice h[:repo_name], h[:job_number], h[:java_repo_job_datum_id], h[:slice_segment]
+            hash = @in_queue.deq
+            break if hash == :END_OF_WORK
+            compilation_info_slice hash
           end
         end
         threads << thread
@@ -183,7 +218,6 @@ module Fdse
       consumer, threads = thread_init
       TempCompilationSlice.where("id > ?", 0).find_each do |slice|
         puts "Scanning: #{slice.id}: #{slice.repo_name}  #{slice.job_number}"
-=begin        
         hash = Hash.new
         hash[:repo_name] = slice.repo_name
         hash[:job_number] = slice.job_number
@@ -191,7 +225,6 @@ module Fdse
         hash[:maven_slice] = slice.maven_slice
         hash[:gradle_slice] = gradle.maven_slice
         @in_queue.enq hash
-=end        
       end
 
       30.times do
