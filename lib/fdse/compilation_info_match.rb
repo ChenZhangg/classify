@@ -184,15 +184,15 @@ module Fdse
       @in_queue = SizedQueue.new(200)
       @out_queue = SizedQueue.new(200)
       consumer = Thread.new do
-        id = 0
+        #id = 0
         loop do
           bulk = []
           hash = nil
           200.times do
             hash = @out_queue.deq
             break if hash == :END_OF_WORK
-            id += 1
-            hash[:id] = id
+            #id += 1
+            #hash[:id] = id
             bulk << TempCompilationMatch.new(hash)
           end
           TempCompilationMatch.import bulk
@@ -201,7 +201,7 @@ module Fdse
       end
 
       threads = []
-      30.times do
+      20.times do
         thread = Thread.new do
           loop do
             hash = @in_queue.deq
@@ -216,7 +216,7 @@ module Fdse
 
     def self.run
       consumer, threads = thread_init
-      TempCompilationSlice.where("id > ?", 0).find_each do |slice|
+      TempCompilationSlice.where("id > ?", 100900).find_each do |slice|
         puts "Scanning: #{slice.id}: #{slice.repo_name}  #{slice.job_number}"
         hash = Hash.new
         hash[:repo_name] = slice.repo_name
@@ -227,7 +227,7 @@ module Fdse
         @in_queue.enq hash
       end
 
-      30.times do
+      20.times do
         @in_queue.enq :END_OF_WORK
       end
       threads.each { |t| t.join }

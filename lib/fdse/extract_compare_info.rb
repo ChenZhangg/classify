@@ -4,33 +4,13 @@ require 'nokogiri'
 require 'active_record'
 require 'activerecord-jdbcmysql-adapter'
 require 'activerecord-import'
-require 'temp_job_datum'
-require 'github_compare_datum'
+#require 'temp_job_datum'
+#require 'github_compare_datum'
 require 'thread'
 module Fdse
   module ExtractCompareInfo
-    def self.crawl(hash)
-      url = hash[:compare_url]
-      html = nil
-      begin
-        open(url) { |r| html = Nokogiri::HTML(r) }
-      rescue
-        puts url
-        puts $!
-        puts $@
-        @out_queue.enq hash
-        return
-      end
-      commit_sha_regexp = /commit:(.+)/
-      commit_array = []
-      html.css('.commit').each do |commit|
-        data_channel = commit.attribute('data-channel')
-        match = commit_sha_regexp.match data_channel
-        commit_array << match[1]
-      end
-      hash[:commits] = commit_array
-      hash[:commits_number] = commit_array.length
 
+    def self.little_file_info(html, hash)
       file_array = []
       addition_regexp = /[,\d]+/m
       deletion_regexp = /[,\d]+/m
@@ -66,6 +46,45 @@ module Fdse
       end
       hash[:additions] = additions
       hash[:deletions] = deletions
+    end
+
+    def self.big_file_info(html, hash)
+      number_regexp = /[,\d]+/m
+      html.css('.tabnav-tab').each do |nav|
+        content = nav.content
+        if content =~ /Commits/
+          match = number_regexp.match content
+        end
+      end
+    end
+
+    def self.crawl(hash)
+      url = hash[:compare_url]
+      html = nil
+      begin
+        open(url) { |r| html = Nokogiri::HTML(r) }
+      rescue
+        puts url
+        puts $!
+        puts $@
+        @out_queue.enq hash
+        return
+      end
+      commit_sha_regexp = /commit:(.+)/
+      commit_array = []
+      html.css('.commit').each do |commit|
+        data_channel = commit.attribute('data-channel')
+        match = commit_sha_regexp.match data_channel
+        commit_array << match[1]
+      end
+      hash[:commits] = commit_array
+      hash[:commits_number] = commit_array.length
+
+      if hash[:commits_number] < 250
+        little_file_info(html, hash)
+      else
+
+      end
       @out_queue.enq hash   
     end
 
@@ -129,3 +148,8 @@ module Fdse
     end
   end
 end
+
+url = 'https://github.com/Netflix/Priam/compare/3.11.15'
+html = nil
+open(url) { |r| html = Nokogiri::HTML(r) }
+Fdse::ExtractCompareInfo.big_file_info(html, nil)
