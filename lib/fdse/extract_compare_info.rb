@@ -36,10 +36,10 @@ module Fdse
       deletion_regexp = /[,\d]+/m
       html.css('.content > li').each do |li|
         temp = []
-        temp << li.css('a:not(.tooltipped)').first.content
+        temp << li.css('a:not(.tooltipped)').first.content.dup
         temp << li.css('svg').first.attribute('title').to_s
 
-        addition = li.css('.text-green').first ? li.css('.text-green').first.content : '0'
+        addition = li.css('.text-green').first ? li.css('.text-green').first.content.dup : '0'
         match = addition_regexp.match addition
         if match
           temp << match[0].gsub(/,/, '').to_i 
@@ -47,7 +47,7 @@ module Fdse
           temp << 0
         end
 
-        deletion = li.css('.text-red').first ? li.css('.text-red').first.content : '0'
+        deletion = li.css('.text-red').first ? li.css('.text-red').first.content.dup : '0'
         match = deletion_regexp.match deletion
         if match
           temp << match[0].gsub(/,/, '').to_i 
@@ -74,15 +74,15 @@ module Fdse
       @out_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
-        id = 91400
+        #id = 91400
         loop do
           hash = nil
           bulk = []
           200.times do
             hash = @out_queue.deq
             break if hash == :END_OF_WORK
-            id += 1
-            hash[:id] = id
+            #id += 1
+            #hash[:id] = id
             bulk << GithubCompareDatum.new(hash)
           end
           GithubCompareDatum.import bulk
@@ -107,12 +107,12 @@ module Fdse
       Thread.abort_on_exception = true
       consumer, threads = thread_init
       url_regexp = /\/compare\/.+/
-      TempJobDatum.where("id > ? AND job_order_number = 1", 334965).find_each do |job|
+      TempJobDatum.where("id > ? AND job_order_number = 1", 352124).find_each do |job|
         compare_url = job.commit_compare_url
         next if compare_url !~ url_regexp
         repo_name = job.repo_name
         build_number_int = job.build_number_int
-        puts "Scan #{repo_name}: #{build_number_int}"
+        puts "Scan #{job.id}  #{repo_name}: #{build_number_int}"
         hash = Hash.new
         hash[:repo_name] = repo_name
         hash[:build_number_int] = build_number_int
