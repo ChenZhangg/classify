@@ -29,7 +29,7 @@ module Fdse
         wrong_lines << line if wrong_section_started
         wrong_mark << line if line =~ /Failed to execute goal/
       end
-      [wrong_lines, wrong_mark]
+      [wrong_lines.join, wrong_mark.join]
     end
 
     def self.gradle_slice(file_array)
@@ -54,7 +54,7 @@ module Fdse
 
         wrong_lines << line if wrong_section_started
       end
-      wrong_lines
+      wrong_lines.join
     end
 
 

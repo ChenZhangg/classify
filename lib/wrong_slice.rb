@@ -10,7 +10,7 @@ class WrongSlice < ActiveRecord::Base
     encoding: "utf8mb4",
     collation: "utf8mb4_bin"
   )
-  serialize :maven_slice, Array
-  serialize :gradle_slice, Array
-  serialize :maven_mark, Array
+  #serialize :maven_slice, Array
+  #serialize :gradle_slice, Array
+  #serialize :maven_mark, Array
 end

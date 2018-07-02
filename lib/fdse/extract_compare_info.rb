@@ -66,48 +66,7 @@ module Fdse
       end
       hash[:additions] = additions
       hash[:deletions] = deletions
-      @out_queue.enq hash
-=begin      
-      html.css('#toc>div:eq(2)').each do |row| 
-        changed_file = nil
-        row.css('button').each { |row| changed_file = row.content }
-        changed_file_regexp = /(\d)+ changed file/
-        match = changed_file_regexp.match changed_file
-        changed_file_number = match[1].to_i
-        #addition_regexp = /(\d)+ additions/
-        #deletion_regexp = /(\d)+ deletions/
-        addition_deletion_regexp = /[,\d]+/
-        addition_number = nil
-        deletion_number = nil
-        row.css('strong').each do |row| 
-          content = row.content 
-          m = addition_deletion_regexp.match content
-          if content.include?('addition')
-            addition_number = m[0].gsub(/,/, '').to_i
-          elsif content.include?('deletion')
-            deletion_number = m[0].gsub(/,/, '').to_i
-          end
-        end
-        summary[:changed_file_number] = changed_file_number
-        summary[:addition_number] = addition_number
-        summary[:deletion_number] = deletion_number
-      end
-      file_list = []
-      num_regexp = /[,\d]+/
-      html.css('#toc>ol li').each do |row| 
-        file_datum = Hash.new
-        content = nil
-        row.css('.text-green').each { |row| content = row.content }
-        match = num_regexp.match content
-        file_datum[:addition_number] = match ? match[0].gsub(/,/, '').to_i : 0
-        row.css('.text-red').each { |row| content = row.content }
-        match = num_regexp.match content
-        file_datum[:deletion_number] = match ? match[0].gsub(/,/, '').to_i : 0
-        row.css('a').each { |row| file_datum[:file_name] = row.content }
-        file_list << file_datum
-      end
-      [summary, file_list]
-=end      
+      @out_queue.enq hash   
     end
 
     def self.thread_init
@@ -115,7 +74,7 @@ module Fdse
       @out_queue = SizedQueue.new(200)
 
       consumer = Thread.new do
-        id = 11400
+        id = 85000
         loop do
           hash = nil
           bulk = []
@@ -148,7 +107,7 @@ module Fdse
       Thread.abort_on_exception = true
       consumer, threads = thread_init
       url_regexp = /\/compare\/.+/
-      TempJobDatum.where("id > ? AND job_order_number = 1", 78432).find_each do |job|
+      TempJobDatum.where("id > ? AND job_order_number = 1", 283503).find_each do |job|
         compare_url = job.commit_compare_url
         next if compare_url !~ url_regexp
         repo_name = job.repo_name

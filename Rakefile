@@ -48,7 +48,7 @@ task :timezone do
 end
 
 task :extract_compare_info do
-  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/extract_compare_info_run.rb'
+  ruby '-J-Xms12g -J-Xmx12g -Ilib bin/extract_compare_info_run.rb'
 end
 
 task :zc_test do

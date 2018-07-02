@@ -2,11 +2,11 @@ require 'set'
 require 'fdse/property'
 require 'fileutils'
 require 'thread'
-require 'travis_java_repository'
-require 'compiler_error_mysql_match'
-require 'temp_match'
-require 'java_repo_job_datum'
+require 'active_record'
+require 'activerecord-jdbcmysql-adapter'
 require 'activerecord-import'
+require 'temp_compilation_slice'
+
 module Fdse
   class CompilationInfoMatch
     MAVEN_ERROR_FLAG = /COMPILATION ERROR/
@@ -146,7 +146,7 @@ module Fdse
     end
 
     def self.thread_init
-      @queue = SizedQueue.new(200)
+      @in_queue = SizedQueue.new(200)
       @job_queue = SizedQueue.new(200)
       consumer = Thread.new do
         id = 0
@@ -179,17 +179,21 @@ module Fdse
       [consumer, threads]
     end
 
-    def self.scan_log
+    def self.run
       consumer, threads = thread_init
-      JavaRepoJobDatum.where("id > 0 and has_compiler_error = 1").find_each do |job|
-        puts "Scanning: #{job.id}: #{job.repo_name}  #{job.job_number}"
+      TempCompilationSlice.where("id > ?", 0).find_each do |slice|
+        puts "Scanning: #{slice.id}: #{slice.repo_name}  #{slice.job_number}"
+=begin        
         hash = Hash.new
-        hash[:repo_name] = job.repo_name
-        hash[:job_number] = job.job_number
-        hash[:java_repo_job_datum_id] = job.id
-        hash[:slice_segment] = job.slice_segment
-        @job_queue.enq hash
+        hash[:repo_name] = slice.repo_name
+        hash[:job_number] = slice.job_number
+        hash[:job_id] = slice.job_id
+        hash[:maven_slice] = slice.maven_slice
+        hash[:gradle_slice] = gradle.maven_slice
+        @in_queue.enq hash
+=end        
       end
+
       30.times do
         @job_queue.enq :END_OF_WORK
       end
