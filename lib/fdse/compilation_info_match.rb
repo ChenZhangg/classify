@@ -161,7 +161,7 @@ module Fdse
         hash[:regex_value] = @regex_hash[hash[:regex_key]]
         hash[:segment] = segment
         order += 1
-        @queue.enq hash
+        @out_queue.enq hash
       end
 
       order = 0
@@ -176,7 +176,7 @@ module Fdse
         hash[:regex_value] = @regex_hash[hash[:regex_key]]
         hash[:segment] = segment
         order += 1
-        @queue.enq hash
+        @out_queue.enq hash
       end
     end
 
@@ -228,10 +228,10 @@ module Fdse
       end
 
       30.times do
-        @job_queue.enq :END_OF_WORK
+        @in_queue.enq :END_OF_WORK
       end
       threads.each { |t| t.join }
-      @queue.enq(:END_OF_WORK)
+      @out_queue.enq(:END_OF_WORK)
       consumer.join
       puts "Scan Over"
     end
