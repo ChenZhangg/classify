@@ -149,7 +149,7 @@ module Fdse
       Thread.abort_on_exception = true
       consumer, threads = thread_init
       url_regexp = /\/compare\/.+/
-      TempJobDatum.where("id > ? AND job_order_number = 1", 431900).find_each do |job|
+      TempJobDatum.where("id > ? AND job_order_number = 1", 496570).find_each do |job|
         compare_url = job.commit_compare_url
         next if compare_url !~ url_regexp
         repo_name = job.repo_name

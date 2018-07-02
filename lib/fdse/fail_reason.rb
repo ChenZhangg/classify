@@ -163,7 +163,7 @@ module Fdse
     end
 
     def self.update(build_logs_path)
-      WrongSlice.where("id > ?", 0).find_each do |wrong|
+      WrongSlice.where("id > ?", 93418).find_each do |wrong|
         repo_name = wrong.repo_name
         job_number = wrong.job_number
         log_file_path = File.join(build_logs_path, repo_name.sub(/\//, '@'), job_number.sub(/\./, '@') + '.log')
