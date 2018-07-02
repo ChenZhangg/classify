@@ -4,8 +4,8 @@ require 'nokogiri'
 require 'active_record'
 require 'activerecord-jdbcmysql-adapter'
 require 'activerecord-import'
-#require 'temp_job_datum'
-#require 'github_compare_datum'
+require 'temp_job_datum'
+require 'github_compare_datum'
 require 'thread'
 module Fdse
   module ExtractCompareInfo
@@ -50,18 +50,35 @@ module Fdse
 
     def self.big_file_info(html, hash)
       number_regexp = /[,\d]+/m
+      commits_number = 0
+      files_number = 0
       html.css('.tabnav-tab').each do |nav|
         content = nav.content
         if content =~ /Commits/
           match = number_regexp.match content
           commits_number = match[0].gsub(/,/, '').to_i
-        elsif content =~ /Files/
+        end
+      end
+      hash[:commits_number] = commits_number
+      files_number = 0
+      additions = 0
+      deletions = 0
+      html.css('.toc-diff-stats > strong').each do |strong|
+        content = strong.content
+        if content =~ /files/
           match = number_regexp.match content
           files_number = match[0].gsub(/,/, '').to_i
+        elsif content =~ /addition/
+          match = number_regexp.match content
+          additions = match[0].gsub(/,/, '').to_i
+        elsif content =~ /deletion/
+          match = number_regexp.match content
+          deletions = match[0].gsub(/,/, '').to_i
         end
-        puts commits_number
-        puts files_number
       end
+      hash[:files_number] = files_number
+      hash[:additions] = additions
+      hash[:deletions] = deletions
     end
 
     def self.crawl(hash)
@@ -89,9 +106,11 @@ module Fdse
       if hash[:commits_number] < 250
         little_file_info(html, hash)
       else
-
+        big_file_info(html, hash)
       end
-      @out_queue.enq hash   
+      puts hash
+
+      #@out_queue.enq hash   
     end
 
     def self.thread_init
@@ -132,7 +151,7 @@ module Fdse
       Thread.abort_on_exception = true
       consumer, threads = thread_init
       url_regexp = /\/compare\/.+/
-      TempJobDatum.where("id > ? AND job_order_number = 1", 352124).find_each do |job|
+      TempJobDatum.where("id > ? AND job_order_number = 1", 431900).find_each do |job|
         compare_url = job.commit_compare_url
         next if compare_url !~ url_regexp
         repo_name = job.repo_name
@@ -158,4 +177,4 @@ end
 url = 'https://github.com/Netflix/Priam/compare/3.11.15'
 html = nil
 open(url) { |r| html = Nokogiri::HTML(r) }
-Fdse::ExtractCompareInfo.big_file_info(html, nil)
+Fdse::ExtractCompareInfo.big_file_info(html, {})
