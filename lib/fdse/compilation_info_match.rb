@@ -223,7 +223,7 @@ module Fdse
         hash[:job_number] = slice.job_number
         hash[:job_id] = slice.job_id
         hash[:maven_slice] = slice.maven_slice
-        hash[:gradle_slice] = gradle.maven_slice
+        hash[:gradle_slice] = slice.gradle_slice
         @in_queue.enq hash
       end
 
