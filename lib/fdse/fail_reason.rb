@@ -163,7 +163,7 @@ module Fdse
     end
 
     def self.update(build_logs_path)
-      WrongSlice.where("id > ?", 150000).find_each do |wrong|
+      WrongSlice.where("id > ?", 207459).find_each do |wrong|
         repo_name = wrong.repo_name
         job_number = wrong.job_number
         log_file_path = File.join(build_logs_path, repo_name.sub(/\//, '@'), job_number.sub(/\./, '@') + '.log')
@@ -189,6 +189,24 @@ module Fdse
           gradle_slice = gradle_slice(file_array)
           wrong.gradle_slice = gradle_slice.length > 0 ? gradle_slice : nil
         end
+        wrong.save
+      end
+    end
+
+    def self.has_failed_test
+      maven_mark = 'test failure'
+      gradle_mark = 'failing test'
+      WrongSlice.where("id > ?", 0).find_each do |wrong|
+        maven = wrong.maven_mark
+        gradle = wrong.gradle_slice
+        flag = 0
+        if maven && maven.include?(maven_mark)
+          flag = 1
+        end
+        if gradle && gradle.include?(gradle_mark)
+          flag = 1
+        end
+        wrong.test_failed = flag
         wrong.save
       end
     end

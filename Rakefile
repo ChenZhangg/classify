@@ -39,6 +39,10 @@ task :fail_reason_update do
   ruby '-J-Xms4g -J-Xmx4g -Ilib bin/fail_reason_update.rb'
 end
 
+task :fail_reason_is_test do
+  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/fail_reason_is_test.rb'
+end
+
 task :user_info do
   ruby '-J-Xms4g -J-Xmx4g -Ilib bin/user_info_run.rb'
 end
