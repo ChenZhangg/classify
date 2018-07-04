@@ -4,7 +4,7 @@ require 'nokogiri'
 require 'active_record'
 require 'activerecord-jdbcmysql-adapter'
 require 'activerecord-import'
-require 'temp_job_datum'
+require 'job'
 require 'github_compare_datum'
 require 'thread'
 module Fdse
@@ -149,7 +149,7 @@ module Fdse
       Thread.abort_on_exception = true
       consumer, threads = thread_init
       url_regexp = /\/compare\/.+/
-      TempJobDatum.where("id > ? AND job_order_number = 1", 737130).find_each do |job|
+      Job.where("id > ? AND job_order_number = 1", 1817725).find_each do |job|
         compare_url = job.commit_compare_url
         next if compare_url !~ url_regexp
         repo_name = job.repo_name

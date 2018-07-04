@@ -1,6 +1,6 @@
 require 'active_record'
 require 'activerecord-jdbcmysql-adapter'
-class JavaRepoJobDatum < ActiveRecord::Base
+class CompilationMatch < ActiveRecord::Base
   establish_connection(
       adapter:  "mysql",
       host:     "10.131.252.160",
