@@ -196,7 +196,7 @@ module Fdse
     def self.has_failed_test
       maven_mark = 'test failure'
       gradle_mark = 'failing test'
-      WrongSlice.where("id > ?", 0).find_each do |wrong|
+      WrongSlice.where("id > ?", 273999).find_each do |wrong|
         puts wrong.id
         maven = wrong.maven_mark
         gradle = wrong.gradle_slice
