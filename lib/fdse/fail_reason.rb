@@ -1,6 +1,6 @@
 require 'fileutils'
 require 'thread'
-require 'temp_job_datum'
+require 'job'
 require 'wrong_slice'
 require 'activerecord-import'
 
@@ -124,7 +124,7 @@ module Fdse
 
     def self.scan_log_directory(build_logs_path)
       consumer, threads = thread_init
-      TempJobDatum.where("id >= ? AND (job_state = ? OR job_state = ?)", 5145900, 'errored', 'failed').find_each do |job|
+      Job.where("id >= ? AND (job_state = ? OR job_state = ?)", 5145900, 'errored', 'failed').find_each do |job|
         repo_name = job.repo_name
         job_number = job.job_number
         build_number_int = job.build_number_int
@@ -177,7 +177,7 @@ module Fdse
           end
           sub
         end
-        job = TempJobDatum.find_by(repo_name: repo_name, job_number: job_number)
+        job = Job.find_by(repo_name: repo_name, job_number: job_number)
 
         if job.maven == 1
           maven_slice, maven_mark = maven_slice(file_array)
