@@ -172,7 +172,7 @@ module Fdse
     end
 
     def self.werror
-      CompilationSlice.where("id > ?", 0).find_each do |slice|
+      CompilationSlice.where("id > ?", 100988).find_each do |slice|
         maven_slice = slice.maven_slice
         gradle_slice = slice.gradle_slice
         werror = 0
@@ -193,7 +193,7 @@ module Fdse
       end
     end
 
-    def self.maven_slice(file_array)
+    def self.maven_warning_slice(file_array)
       array = []
       flag = false
       temp = nil
@@ -234,8 +234,8 @@ module Fdse
           sub
         end  
         mslice = []
-        mslice = maven_slice(file_array) if log_hash[:maven]
-        slice.maven_warning_slice] = mslice.length > 0 ? mslice : nil
+        mslice = maven_warning_slice(file_array) if log_hash[:maven]
+        slice.maven_warning_slice = mslice.length > 0 ? mslice : nil
         slice.save
     end
 
