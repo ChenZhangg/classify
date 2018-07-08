@@ -3,8 +3,8 @@ require 'thread'
 require 'active_record'
 require 'activerecord-jdbcmysql-adapter'
 require 'activerecord-import'
-require 'temp_job_datum'
-require 'temp_compilation_slice'
+require 'job'
+require 'compilation_slice'
 
 module Fdse
   class ExtractCompilationInfo
@@ -169,5 +169,27 @@ module Fdse
       consumer.join
       puts "Scan Over"
     end
+
+    def self.werror
+      CompilationSlice.where("id > ?", 0).find_each do |slice|
+        maven_slice = slice.maven_slice
+        gradle_slice = slice.gradle_slice
+        werror = 0
+        if maven_slice
+          maven_slice.each do |segment|
+            werror = 1 if segment.include?("Werror")
+          end
+        end
+
+        if gradle_slice
+          gradle_slice.each do |segment|
+            werror = 1 if segment.include?("Werror")
+          end
+        end
+        slice.werror = werror
+        slice.save
+      end
+    end
+
   end
 end

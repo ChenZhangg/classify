@@ -15,6 +15,10 @@ task :extract_compilation_info do
   ruby '-J-Xms8g -J-Xmx8g -Ilib bin/extract_compilation_info_run.rb'
 end
 
+task :werror do
+  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/werror.rb'
+end
+
 task :compilation_info_match do
   ruby '-J-Xms8g -J-Xmx8g -Ilib bin/compilation_info_match_run.rb'
 end
