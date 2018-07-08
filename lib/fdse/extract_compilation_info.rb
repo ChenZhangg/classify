@@ -186,6 +186,7 @@ module Fdse
             werror = 1 if segment.include?("Werror")
           end
         end
+        puts "#{slice.id}->werror: #{werror}"
         slice.werror = werror
         slice.save
       end
