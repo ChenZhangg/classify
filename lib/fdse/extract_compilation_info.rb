@@ -237,6 +237,7 @@ module Fdse
         mslice = maven_warning_slice(file_array) if log_hash[:maven]
         slice.maven_warning_slice = mslice.length > 0 ? mslice : nil
         slice.save
+      end
     end
 
   end
