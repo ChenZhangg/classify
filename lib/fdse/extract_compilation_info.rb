@@ -9,6 +9,7 @@ require 'compilation_slice'
 module Fdse
   class ExtractCompilationInfo
     MAVEN_ERROR_FLAG = /COMPILATION ERROR/
+    MAVEN_WARNING_FLAG = /COMPILATION WARNING/
     GRADLE_ERROR_FLAG = /> Compilation failed; see the compiler error output for details/
     GRADLE_ERROR_FLAG_1 = /Compilation failed|Compilation error/
     GRADLE_ERROR_UP_BOUNDARY = /:compileTestJava|:compileJava|:compileKotlin|:compileTestKotlin|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
@@ -190,6 +191,52 @@ module Fdse
         slice.werror = werror
         slice.save
       end
+    end
+
+    def self.maven_slice(file_array)
+      array = []
+      flag = false
+      temp = nil
+      file_array.each do |line|
+        if MAVEN_WARNING_FLAG =~ line
+          flag = true
+          temp = [] 
+        end
+        temp << line if flag
+        if flag && line =~ /[0-9]+ warning|Failed to execute goal|COMPILATION ERROR/
+          flag = false 
+          s = temp.join
+          temp = nil
+          mark = true
+          array.each do |item|
+            mark = false if item.eql?(s)
+          end
+          array << s if mark
+        end
+      end
+      array << temp.join if temp
+      array
+    end
+
+    def self.extract_maven_warning_info
+      CompilationSlice.where("id > ? AND werror = 1 AND maven_slice IS NOT NULL", 0).find_each do |slice|
+        puts slice.id
+        repo_name = slice.repo_name.sub(/\./, "@")
+        job_number = slice.job_number.sub(/\./, "@")
+        log_path = File.expand_path(File.join('..', '..', '..', 'bodyLog2', 'build_logs', repo_name, job_number, '.log'), File.dirname(__FILE__))
+        file_array = IO.readlines(log_path)
+        file_array.collect! do |line|
+          begin
+            sub = line.gsub(/\r\n?/, "\n")  
+          rescue
+            sub = line.encode('ISO-8859-1', 'ISO-8859-1').gsub(/\r\n?/, "\n")
+          end
+          sub
+        end  
+        mslice = []
+        mslice = maven_slice(file_array) if log_hash[:maven]
+        slice.maven_warning_slice] = mslice.length > 0 ? mslice : nil
+        slice.save
     end
 
   end
