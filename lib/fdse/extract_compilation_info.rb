@@ -221,9 +221,9 @@ module Fdse
     def self.extract_maven_warning_info
       CompilationSlice.where("id > ? AND werror = 1 AND maven_slice IS NOT NULL", 0).find_each do |slice|
         puts slice.id
-        repo_name = slice.repo_name.sub(/\./, "@")
+        repo_name = slice.repo_name.sub(/\//, "@")
         job_number = slice.job_number.sub(/\./, "@")
-        log_path = File.expand_path(File.join('..', '..', '..', 'bodyLog2', 'build_logs', repo_name, job_number, '.log'), File.dirname(__FILE__))
+        log_path = File.expand_path(File.join('..', '..', '..', 'bodyLog2', 'build_logs', repo_name, job_number + '.log'), File.dirname(__FILE__))
         file_array = IO.readlines(log_path)
         file_array.collect! do |line|
           begin
@@ -234,7 +234,7 @@ module Fdse
           sub
         end  
         mslice = []
-        mslice = maven_warning_slice(file_array) if log_hash[:maven]
+        mslice = maven_warning_slice(file_array)
         slice.maven_warning_slice = mslice.length > 0 ? mslice : nil
         slice.save
       end

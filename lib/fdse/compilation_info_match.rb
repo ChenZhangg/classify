@@ -5,7 +5,7 @@ require 'thread'
 require 'active_record'
 require 'activerecord-jdbcmysql-adapter'
 require 'activerecord-import'
-require 'temp_compilation_slice'
+require 'compilation_slice'
 require 'temp_compilation_match'
 
 module Fdse
@@ -14,6 +14,7 @@ module Fdse
     GRADLE_ERROR_FLAG = /Compilation failed/
     GRADLE_ERROR_UP_BOUNDARY = /:compileTestJava|:compileJava|:compileKotlin|:compileTestKotlin|:compileGroovy|:compileTestGroovy|:compileScala|:compileTestScala|\.\/gradle|travis_time/
     SEGMENT_BOUNDARY = "/home/travis"
+    SEGMENT_BOUNDARY_WARNING = /warning:/
     SEGMENT_BOUNDARY_FILE = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.(java|groovy|scala|kt|sig)/
     SEGMENT_BOUNDARY_JAVA = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.java/
     SEGMENT_BOUNDARY_GROOVY = /(\/[^\n\/]+){2,}\/\w+[\w\d]*\.groovy/
@@ -65,7 +66,7 @@ module Fdse
       [match_key, max_value_word_number]
     end
 
-    def self.divide_slice(segment_lines)
+    def self.divide_slice(segment_lines, werror)
       slice_point = []
       segment_array = []
       return segment_array if segment_lines.length < 1
@@ -84,7 +85,11 @@ module Fdse
       slice_range << (begin_number..(segment_lines.length - 1))
 
       slice_range.each do |range|
-        segment_array << segment_lines[range].join if segment_lines[range.begin] !~ SEGMENT_BOUNDARY_GROOVY && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_SCALA && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_KOTLIN && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_JAVAC_ERROR
+        if segment_lines[range.begin] !~ SEGMENT_BOUNDARY_GROOVY && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_SCALA && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_KOTLIN && segment_lines[range.begin] !~ SEGMENT_BOUNDARY_JAVAC_ERROR
+          if werror == 1 || segment_lines[range.begin] !~ SEGMENT_BOUNDARY_WARNING
+            segment_array << segment_lines[range].join
+          end 
+        end
       end
       segment_array
     end
@@ -124,6 +129,8 @@ module Fdse
     def self.compilation_info_slice(compilation_hash)
       maven_slice = compilation_hash[:maven_slice]
       gradle_slice = compilation_hash[:gradle_slice]
+      maven_warning_slice = compilation_hash[:maven_warning_lice]
+      werror = compilation_hash[:werror]
 
       maven_array = []
       if maven_slice
@@ -133,10 +140,21 @@ module Fdse
           temp_lines.each do |line|
             lines << line if  line_validate?(line)
           end
-          maven_array += divide_slice(lines)
+          maven_array += divide_slice(lines, werror)
         end
       end
      
+      if werror && maven_warning_slice
+        maven_warning_slice.each do |slice|
+          temp_lines = slice.lines
+          lines = []
+          temp_lines.each do |line|
+            lines << line if  line_validate?(line)
+          end
+          maven_array += divide_slice(lines, werror)
+      end
+
+
       gradle_array = []
       if gradle_slice
         gradle_slice.each do |slice|
@@ -145,7 +163,7 @@ module Fdse
           temp_lines.each do |line|
             lines << line if  line_validate?(line)
           end
-          gradle_array += divide_slice(lines)
+          gradle_array += divide_slice(lines, werror)
         end
       end
 
@@ -216,14 +234,16 @@ module Fdse
 
     def self.run
       consumer, threads = thread_init
-      TempCompilationSlice.where("id > ?", 101606).find_each do |slice|
+      CompilationSlice.where("id > ?", 0).find_each do |slice|
         puts "Scanning: #{slice.id}: #{slice.repo_name}  #{slice.job_number}"
         hash = Hash.new
         hash[:repo_name] = slice.repo_name
         hash[:job_number] = slice.job_number
         hash[:job_id] = slice.job_id
+        hash[:werror] = slice.werror
         hash[:maven_slice] = slice.maven_slice
         hash[:gradle_slice] = slice.gradle_slice
+        hash[:maven_warning_slice] = slice.gradle_slice
         @in_queue.enq hash
       end
 
