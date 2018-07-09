@@ -1,6 +1,6 @@
 require 'active_record'
 require 'activerecord-jdbcmysql-adapter'
-class CompilationMatch < ActiveRecord::Base
+class TempCompilationMatch < ActiveRecord::Base
   establish_connection(
       adapter:  "mysql",
       host:     "10.131.252.160",
