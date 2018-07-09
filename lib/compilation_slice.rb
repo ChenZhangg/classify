@@ -12,4 +12,5 @@ class CompilationSlice < ActiveRecord::Base
   )
   serialize :maven_slice, Array
   serialize :gradle_slice, Array
+  serialize :maven_warning_slice, Array
 end
