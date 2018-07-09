@@ -152,6 +152,7 @@ module Fdse
             lines << line if  line_validate?(line)
           end
           maven_array += divide_slice(lines, werror)
+        end
       end
 
 
@@ -233,6 +234,7 @@ module Fdse
     end
 
     def self.run
+      Thread.abort_on_exception = true
       consumer, threads = thread_init
       CompilationSlice.where("id > ?", 0).find_each do |slice|
         puts "Scanning: #{slice.id}: #{slice.repo_name}  #{slice.job_number}"
@@ -255,7 +257,7 @@ module Fdse
       consumer.join
       puts "Scan Over"
     end
+
   end
 end
 
-Thread.abort_on_exception = true
