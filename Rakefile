@@ -66,3 +66,7 @@ end
 task :zc_test do
   ruby '-J-Xms4g -J-Xmx4g -Ilib bin/zc_test.rb'
 end
+
+task :compilation_error_phase do
+  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/compilation_error_phase.rb'
+end

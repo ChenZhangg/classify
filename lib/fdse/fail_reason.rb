@@ -2,6 +2,7 @@ require 'fileutils'
 require 'thread'
 require 'job'
 require 'wrong_slice'
+require 'compilation_slice'
 require 'activerecord-import'
 
 module Fdse
@@ -211,5 +212,37 @@ module Fdse
         wrong.save
       end
     end
+
+    def self.compilation_error_phase
+      maven_production = /maven-compiler-plugin:[.\d]+:compile/
+      maven_test = /maven-compiler-plugin:[.\d]+:testCompile/
+      gradle_production = /:compileJava/
+      gradle_test = /:compileTestJava/
+      CompilationSlice.where("id > ?", 663).find_each do |slice|
+        puts slice.id
+        repo_name = slice.repo_name
+        job_number = slice.job_number
+        wrong_slice = WrongSlice.find_by(repo_name: repo_name, job_number: job_number)
+
+        production = 0
+        test = 0
+
+        maven_mark = wrong_slice.nil? ? nil : wrong_slice.maven_mark
+        gradle_slice = wrong_slice.nil? ? nil : wrong_slice.gradle_slice
+        if maven_mark
+          production = 1 if maven_mark =~ maven_production
+          test = 1 if maven_mark =~ maven_test
+        end
+
+        if gradle_slice
+          production = 1 if gradle_slice =~ gradle_production
+          test = 1 if gradle_slice =~ gradle_test
+        end
+        slice.production = production
+        slice.test = test
+        slice.save
+      end
+    end
+
   end
 end
