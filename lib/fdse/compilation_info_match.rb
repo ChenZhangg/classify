@@ -105,9 +105,11 @@ module Fdse
       flag = false if line =~ /^$/
       flag = false if line =~ /-{10,}/
       flag = false if line =~ /COMPILATION ERROR/
+      flag = false if line =~ /COMPILATION WARNING/
       flag = false if line =~ /[0-9]+ (error|errors)[\s&&[^\n]]*$/
       flag = false if line =~ /[0-9]+ (warning|warnings)[\s&&[^\n]]*$/
       flag = false if line =~ /^Note:/
+      flag = false if line =~ /^startup failed/
 
       flag = false if line =~ /Failed to execute goal/
       flag = false if line =~ /What went wrong/
@@ -129,7 +131,7 @@ module Fdse
     def self.compilation_info_slice(compilation_hash)
       maven_slice = compilation_hash[:maven_slice]
       gradle_slice = compilation_hash[:gradle_slice]
-      maven_warning_slice = compilation_hash[:maven_warning_lice]
+      maven_warning_slice = compilation_hash[:maven_warning_slice]
       werror = compilation_hash[:werror]
 
       maven_array = []
@@ -144,7 +146,7 @@ module Fdse
         end
       end
      
-      if werror && maven_warning_slice
+      if werror == 1 && maven_warning_slice
         maven_warning_slice.each do |slice|
           temp_lines = slice.lines
           lines = []
@@ -245,7 +247,7 @@ module Fdse
         hash[:werror] = slice.werror
         hash[:maven_slice] = slice.maven_slice
         hash[:gradle_slice] = slice.gradle_slice
-        hash[:maven_warning_slice] = slice.gradle_slice
+        hash[:maven_warning_slice] = slice.maven_warning_slice
         @in_queue.enq hash
       end
 
