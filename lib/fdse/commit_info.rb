@@ -32,7 +32,7 @@ module Fdse
     end
 
     def self.run
-      TimeCost.where("id > ? AND pre = ?", 43896, "-1").find_each do |time_cost|
+      TimeCost.where("id > ? AND pre = ?", 0, "-1").find_each do |time_cost|
         repo_name = time_cost.repo_name
         job_number = time_cost.now
         puts "#{repo_name}: #{job_number}"
@@ -48,8 +48,8 @@ module Fdse
           parent_job = Job.find_by("repo_name = ? AND commit_sha = ? AND job_order_number = ?", repo_name, parent_commit_sha, job_order_number)
           if parent_job
             p parent_job.job_number
-            job.parent = parent_job.job_number
-            job.save
+            time_cost.parent = parent_job.job_number
+            time_cost.save
             break
           end
           commit_sha = parent_commit_sha
