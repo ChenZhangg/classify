@@ -218,7 +218,7 @@ module Fdse
       maven_test = /maven-compiler-plugin:[.\d]+:testCompile/
       gradle_production = /:compileJava/
       gradle_test = /:compileTestJava/
-      CompilationSlice.where("id > ?", 663).find_each do |slice|
+      CompilationSlice.select(:id, :repo_name, :job_number).where("id > ?", 101480).find_each do |slice|
         puts slice.id
         repo_name = slice.repo_name
         job_number = slice.job_number

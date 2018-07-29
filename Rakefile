@@ -68,5 +68,9 @@ task :zc_test do
 end
 
 task :compilation_error_phase do
-  ruby '-J-Xms4g -J-Xmx4g -Ilib bin/compilation_error_phase.rb'
+  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/compilation_error_phase.rb'
+end
+
+task :commit_info_run do
+  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/commit_info_run.rb'
 end
