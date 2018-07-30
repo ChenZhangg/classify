@@ -244,5 +244,45 @@ module Fdse
       end
     end
 
+    def self.compilation_error_task
+      hash = Hash.new(0)
+      i = 0
+      gradle_regexp = /Execution failed for task '+(:[^:\s]+)*:([^:\s]+)'+/
+      maven_regexp = /Failed to execute goal ([^:\s]+):([^:\s]+):([^:\s]+):(\S+) /
+      CompilationSlice.select(:id, :repo_name, :job_number).where("id > ?", 0).find_each do |slice|
+        i += 1
+        #puts slice.id
+        repo_name = slice.repo_name
+        job_number = slice.job_number
+        wrong_slice = WrongSlice.find_by(repo_name: repo_name, job_number: job_number)
+        puts hash if i % 10000 == 0
+        maven_mark = wrong_slice.nil? ? nil : wrong_slice.maven_mark
+        gradle_slice = wrong_slice.nil? ? nil : wrong_slice.gradle_slice
+
+        if maven_mark
+          maven_mark = maven_mark.gsub(/\e\[\d*m/, '')
+          m = maven_regexp.match(maven_mark)
+          if m
+            hash[m[4]] += 1
+          else
+            p slice.id
+            p maven_mark
+          end
+        end
+
+        if gradle_slice
+          gradle_slice = gradle_slice.gsub(/\e\[\d*m/, '')
+          m = gradle_regexp.match(gradle_slice)
+          if m
+            hash[m[2]] += 1 
+          else
+            p slice.id
+            p gradle_slice
+          end
+        end
+
+      end
+    end
+
   end
 end

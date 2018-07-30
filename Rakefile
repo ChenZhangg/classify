@@ -71,6 +71,10 @@ task :compilation_error_phase do
   ruby '-J-Xms8g -J-Xmx8g -Ilib bin/compilation_error_phase.rb'
 end
 
+task :commit_error_task do
+  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/compilation_error_task.rb'
+end
+
 task :commit_info_run do
   ruby '-J-Xms8g -J-Xmx8g -Ilib bin/commit_info_run.rb'
 end
