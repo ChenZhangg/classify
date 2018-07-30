@@ -282,6 +282,7 @@ module Fdse
         end
 
       end
+      puts hash
     end
 
   end
