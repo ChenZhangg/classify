@@ -32,15 +32,16 @@ module Fdse
     end
 
     def self.run
-      TimeCost.where("id > ? AND pre = ?", 0, "-1").find_each do |time_cost|
+      TimeCost.where("id > ? AND pre = ?", 61153, "-1").find_each do |time_cost|
         repo_name = time_cost.repo_name
         job_number = time_cost.now
-        puts "#{repo_name}: #{job_number}"
+        puts "#{repo_name}: #{job_number}: #{time_cost.id}"
         job = Job.find_by("repo_name = ? AND job_number = ?", repo_name, job_number)
         job_order_number = job.job_order_number
         build_event_type = job.build_event_type
         commit_sha = job.commit_sha
         10.times do
+          break if commit_sha.nil?
           commit_url = 'https://github.com/' + repo_name + '/commit/' + commit_sha
           p commit_url
           parent_commit_sha = crawl(commit_url)
