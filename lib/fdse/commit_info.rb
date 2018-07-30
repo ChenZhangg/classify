@@ -59,5 +59,33 @@ module Fdse
 
       puts "Scan Over"
     end
+
+    def self.update_job
+      Job.where("id > ? AND pre_id IS NULL", 0).find_each do |job|
+        repo_name = job.repo_name
+        job_number = job.job_number
+        puts "#{repo_name}: #{job_number}: #{job.id}"
+        job_order_number = job.job_order_number
+        commit_sha = job.commit_sha
+        10.times do
+          break if commit_sha.nil?
+          commit_url = 'https://github.com/' + repo_name + '/commit/' + commit_sha
+          p commit_url
+          parent_commit_sha = crawl(commit_url)
+          break if parent_commit_sha == -1
+          parent_job = Job.find_by("repo_name = ? AND commit_sha = ? AND job_order_number = ?", repo_name, parent_commit_sha, job_order_number)
+          if parent_job
+            p parent_job.job_number
+            job.parent_id = parent_job.id
+            job.save
+            break
+          end
+          commit_sha = parent_commit_sha
+        end
+      end
+
+      puts "Scan Over"
+    end
+
   end
 end

@@ -78,3 +78,7 @@ end
 task :commit_info_run do
   ruby '-J-Xms8g -J-Xmx8g -Ilib bin/commit_info_run.rb'
 end
+
+task :commit_info_update_job do
+  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/commit_info_update_job.rb'
+end
