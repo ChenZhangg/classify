@@ -263,6 +263,7 @@ module Fdse
           maven_mark = maven_mark.gsub(/\e\[\d*m/, '')
           m = maven_regexp.match(maven_mark)
           if m
+            slice.task_name = m[4]
             hash[m[4]] += 1
           else
             p slice.id
@@ -274,13 +275,14 @@ module Fdse
           gradle_slice = gradle_slice.gsub(/\e\[\d*m/, '')
           m = gradle_regexp.match(gradle_slice)
           if m
+            slice.task_name = m[2]
             hash[m[2]] += 1 
           else
             p slice.id
             p gradle_slice
           end
         end
-
+        slice.save
       end
       puts hash
     end
