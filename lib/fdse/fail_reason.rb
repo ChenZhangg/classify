@@ -294,7 +294,12 @@ module Fdse
         repo_name = job.repo_name.gsub('/', '@')
         job_number = job.job_number.gsub('.', '@')
         file_path = File.expand_path(File.join('..', '..', '..', 'bodyLog2', 'build_logs', repo_name, job_number + '.log'), File.dirname(__FILE__))
-        lines = IO.readlines(file_path).reverse!
+        begin
+          lines = IO.readlines(file_path).reverse!
+        rescue
+          p "#{job.id} #{repo_name} #{job_number} does not exist"
+          next
+        end
         task_name = nil
         lines.each do |line|
           s = line.gsub(/\e\[\d*m/, '')
