@@ -145,7 +145,7 @@ module Fdse
     def self.scan_log_directory(logs_path)
       Thread.abort_on_exception = true
       consumer, threads = thread_init
-      TempJobDatum.where("id > 3500000 AND (maven_error_not_precise = 1 OR gradle_error_not_precise = 1)", 3237014).find_each do |job|
+      TempJobDatum.where("id > ? AND (maven_error_not_precise = 1 OR gradle_error_not_precise = 1)", 3237014).find_each do |job|
         repo_name = job.repo_name
         job_number = job.job_number
         log_path = File.join(logs_path, repo_name.sub(/\//, '@'), job_number.sub(/\./, '@') + '.log')
