@@ -325,39 +325,32 @@ module Fdse
       end
     end
 
-    def self.unmap
-      #Job.where("compilation_error = 1 AND task_name != 'compile' AND task_name != 'testCompile' AND task_name != 'compileJava' AND task_name != 'compileTestJava'")#.find_each do |job|
-      #  task_name = job.task_name
-      #  p task_name
-      #end
-#=begin      
-      Job.where("compilation_error = 1 AND task_name != 'compile' AND task_name != 'testCompile' AND task_name != 'compileJava' AND task_name != 'compileTestJava' AND task_name_o IS NULL").find_each do |job|
+    def self.unmap    
+      Job.where("compilation_error = 1 AND task_name IS NULL").find_each do |job|
         p job.id
-        maven_slice = job.compilation_slice.maven_slice
-        if maven_slice
-          if maven_slice.include?('src/main')
-            job.task_name_o = 'compile'
-            job.save
-          elsif maven_slice.include?('src/test')
-            job.task_name_o = 'testCompile'
-            job.save
-          end
+        repo_name = job.repo_name
+        job_number = job.job_number
+        file_path = File.expand_path(File.join('..', '..', '..', 'bodyLog2', 'build_logs', repo_name, job_number + '.log'), File.dirname(__FILE__))
+        begin
+          lines = IO.readlines(file_path).reverse!
+        rescue
+          p "#{job.id} #{repo_name} #{job_number} does not exist"
           next
+        end
+        
+        lines.each do |line|
+          if(line.include?('src/main'))
+            job.task_name_o = 'production'
+            job.save
+            break
+          elsif (line.include?('src/test'))
+            job.task_name_o = 'test'
+            job.save
+            break
+          end
         end
 
-        gradle_slice = job.compilation_slice.gradle_slice
-        if maven_slice
-          if maven_slice.include?('src/main')
-            job.task_name_o = 'compileJava'
-            job.save
-          elsif maven_slice.include?('src/test')
-            job.task_name_o = 'compileTestJava'
-            job.save
-          end
-          next
-        end
-      end
-#=end      
+      end     
     end
 
   end
