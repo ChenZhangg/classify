@@ -1,5 +1,6 @@
 require 'active_record'
 require 'activerecord-jdbcmysql-adapter'
+require 'job'
 class CompilationSlice < ActiveRecord::Base
   establish_connection(
       adapter:  "mysql",
@@ -10,7 +11,8 @@ class CompilationSlice < ActiveRecord::Base
       encoding: "utf8mb4",
       collation: "utf8mb4_bin"
   )
-  serialize :maven_slice, Array
-  serialize :gradle_slice, Array
+  belongs_to :job
+  #serialize :maven_slice, Array
+  #serialize :gradle_slice, Array
   serialize :maven_warning_slice, Array
 end

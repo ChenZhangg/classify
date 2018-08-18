@@ -325,6 +325,41 @@ module Fdse
       end
     end
 
+    def self.unmap
+      #Job.where("compilation_error = 1 AND task_name != 'compile' AND task_name != 'testCompile' AND task_name != 'compileJava' AND task_name != 'compileTestJava'")#.find_each do |job|
+      #  task_name = job.task_name
+      #  p task_name
+      #end
+#=begin      
+      Job.where("compilation_error = 1 AND task_name != 'compile' AND task_name != 'testCompile' AND task_name != 'compileJava' AND task_name != 'compileTestJava' AND task_name_o IS NULL").find_each do |job|
+        p job.id
+        maven_slice = job.compilation_slice.maven_slice
+        if maven_slice
+          if maven_slice.include?('src/main')
+            job.task_name_o = 'compile'
+            job.save
+          elsif maven_slice.include?('src/test')
+            job.task_name_o = 'testCompile'
+            job.save
+          end
+          next
+        end
+
+        gradle_slice = job.compilation_slice.gradle_slice
+        if maven_slice
+          if maven_slice.include?('src/main')
+            job.task_name_o = 'compileJava'
+            job.save
+          elsif maven_slice.include?('src/test')
+            job.task_name_o = 'compileTestJava'
+            job.save
+          end
+          next
+        end
+      end
+#=end      
+    end
+
   end
 end
 =begin

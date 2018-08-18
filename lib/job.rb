@@ -1,5 +1,6 @@
 require 'active_record'
 require 'activerecord-jdbcmysql-adapter'
+require 'compilation_slice'
 class Job < ActiveRecord::Base
   establish_connection(
     adapter:  "mysql",
@@ -10,4 +11,5 @@ class Job < ActiveRecord::Base
     encoding: "utf8mb4",
     collation: "utf8mb4_bin"
   )
+  has_one :compilation_slice
 end

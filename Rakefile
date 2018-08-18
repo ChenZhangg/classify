@@ -86,3 +86,7 @@ end
 task :passed_task_name do
   ruby '-J-Xms2g -J-Xmx2g -Ilib bin/passed_task_name.rb'
 end
+
+task :unmap_run do
+  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/unmap_run.rb'
+end
