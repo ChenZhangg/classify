@@ -84,5 +84,5 @@ task :commit_info_update_job do
 end
 
 task :passed_task_name do
-  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/passed_task_name.rb'
+  ruby '-J-Xms2g -J-Xmx2g -Ilib bin/passed_task_name.rb'
 end
