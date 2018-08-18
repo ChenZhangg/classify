@@ -290,7 +290,7 @@ module Fdse
     def self.passed_task_name
       gradle_regexp = /Execution failed for task '+(:[^:\s]+)*:([^:\s]+)'+/
       maven_regexp = /Failed to execute goal ([^:\s]+):([^:\s]+):([^:\s]+):(\S+) /
-      Job.where("id > 3233174 AND job_state = 'passed' AND compilation_error = 1").find_each do |job|
+      Job.where("id > 4733174 AND job_state = 'passed' AND compilation_error = 1").find_each do |job|
         repo_name = job.repo_name.gsub('/', '@')
         job_number = job.job_number.gsub('.', '@')
         file_path = File.expand_path(File.join('..', '..', '..', 'bodyLog2', 'build_logs', repo_name, job_number + '.log'), File.dirname(__FILE__))
