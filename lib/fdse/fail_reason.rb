@@ -326,7 +326,7 @@ module Fdse
     end
 
     def self.unmap          
-      Job.where("compilation_error = 1 AND task_name_o IS NULL").find_each do |job|
+      Job.where("id >1800844 AND compilation_error = 1 AND task_name_o IS NULL").find_each do |job|
         p job.id
         repo_name = job.repo_name.gsub('/', '@')
         job_number = job.job_number.gsub('.', '@')
