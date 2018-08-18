@@ -67,11 +67,11 @@ task :zc_test do
   ruby '-J-Xms4g -J-Xmx4g -Ilib bin/zc_test.rb'
 end
 
-task :compilation_error_phase do
+task :compilation_error_phase do  
   ruby '-J-Xms8g -J-Xmx8g -Ilib bin/compilation_error_phase.rb'
 end
 
-task :commit_error_task do
+task :compilation_error_task do
   ruby '-J-Xms8g -J-Xmx8g -Ilib bin/compilation_error_task.rb'
 end
 
@@ -81,4 +81,8 @@ end
 
 task :commit_info_update_job do
   ruby '-J-Xms8g -J-Xmx8g -Ilib bin/commit_info_update_job.rb'
+end
+
+task :passed_task_name do
+  ruby '-J-Xms8g -J-Xmx8g -Ilib bin/passed_task_name.rb'
 end
