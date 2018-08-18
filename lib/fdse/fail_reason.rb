@@ -328,16 +328,17 @@ module Fdse
     def self.unmap    
       Job.where("compilation_error = 1 AND task_name IS NULL").find_each do |job|
         p job.id
-        repo_name = job.repo_name
-        job_number = job.job_number
+        repo_name = job.repo_name.gsub('/', '@')
+        job_number = job.job_number.gsub('.', '@')
         file_path = File.expand_path(File.join('..', '..', '..', 'bodyLog2', 'build_logs', repo_name, job_number + '.log'), File.dirname(__FILE__))
+        p file_path
         begin
           lines = IO.readlines(file_path).reverse!
         rescue
           p "#{job.id} #{repo_name} #{job_number} does not exist"
           next
         end
-        
+
         lines.each do |line|
           if(line.include?('src/main'))
             job.task_name_o = 'production'
